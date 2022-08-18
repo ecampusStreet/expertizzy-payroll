@@ -1,0 +1,25 @@
+<!-- <mat-list role="list" class="sidebar">
+    <mat-list-item role="listitem"><a href="dashboard">Dashboard</a></mat-list-item>
+    <mat-list-item role="listitem"><a href="">Employee</a></mat-list-item>
+    <mat-list-item role="listitem">Item 3</mat-list-item>
+  </mat-list> -->
+  
+<div class="side-nav-content ">
+    <div class="logo">
+        <a href="/" class="logo- mini">
+          <img src="assets/images/logo.png" alt="logo of company" />
+        </a>
+      </div>
+  <hr style="border-bottom: 1 px solid white; width: 90%; margin-left: 8px" />
+    <ul class="nav-list ">
+        <li class="nav-list-item 
+        " *ngFor="let item of list "
+        routerLink="{{ item.routeLink }}"
+        >
+            <i class="{{item.icon}} "></i> 
+            <span>
+                <a> {{item.name}}</a>  
+            </span> 
+        </li>
+    </ul>
+</div>

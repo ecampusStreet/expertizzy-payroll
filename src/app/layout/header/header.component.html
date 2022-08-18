@@ -1,0 +1,29 @@
+<mat-toolbar class="w-full" color="primary">
+  <mat-toolbar-row>
+    <button mat-icon-button class="">
+      <mat-icon>menu</mat-icon>
+    </button>
+   
+    <div class="space">     
+      <a mat-button> Total </a>
+      <a
+        mat-button
+        [matMenuTriggerFor]="menu"
+        color=""
+        matBadge="13"
+        matBadgePosition="before"
+        matBadgeColor="accent"
+        >Employees
+      </a>
+      <mat-menu #menu="matMenu">
+        <a mat-menu-item>Male 8</a>
+        <a mat-menu-item>Female <span>5</span></a>
+      </mat-menu>
+
+      <div class="float-right flex">
+        <a mat-button> Create Contact </a>
+        <a mat-button> Admin & HR </a>
+      </div>
+    </div>
+  </mat-toolbar-row>
+</mat-toolbar>
