@@ -1,15 +1,23 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-// import { EmployeesComponent } from './employees/employees.component';
-
-
+import { RouterModule } from '@angular/router';
+import { LayoutModule } from '../layout/layout.module';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { AdminRoutingModule } from './admin-routing.module';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { EmployeesComponent } from './employees/employees.component';
+import { AdminComponent } from './admin.component';
 
 @NgModule({
-  declarations: [
-    // EmployeesComponent
-  ],
+  declarations: [AdminComponent, DashboardComponent, EmployeesComponent],
   imports: [
-    CommonModule
-  ]
+    CommonModule,
+    RouterModule,
+    AdminRoutingModule,
+    LayoutModule,
+    MatSidenavModule,
+  ],
 })
-export class AdminModule { }
+export class AdminModule {
+  constructor() {}
+}
