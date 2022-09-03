@@ -8,7 +8,6 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SidebarComponent implements OnInit {
 
-
   list=[
     {
       name:'Dashboard',
@@ -23,8 +22,6 @@ export class SidebarComponent implements OnInit {
     {
       name:'about',
       icon:'fa-solid fa-circle-info',
-
-      
     },
     {
       name:'contact',
