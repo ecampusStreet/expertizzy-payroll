@@ -4,10 +4,12 @@
     <mat-list-item role="listitem">Item 3</mat-list-item>
   </mat-list> -->
   
-<div class="side-nav-content ">
+<div class="side-nav-content"  [ngClass]="expand ? 'expand' : 'collapse'">
     <div class="logo">
         <a href="/" class="logo- mini">
-          <img src="assets/images/logo.png" alt="logo of company" />
+          <img src="assets/images/logo.png" alt="logo of company"  *ngIf="expand"/>
+          <img src="assets/images/logo-xs.png" alt="logo of company"  *ngIf="!expand"/>
+
         </a>
       </div>
   <hr style="border-bottom: 1 px solid white; width: 90%; margin-left: 8px" />

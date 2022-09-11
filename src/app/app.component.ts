@@ -7,4 +7,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'expertizy';
+  expand = true;
+  toggle(){
+    this.expand = !this.expand;
+  }
 }

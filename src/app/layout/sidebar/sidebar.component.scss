@@ -4,13 +4,18 @@
     width: 230px;
     background-color:#3f51b5;
     height: 100%;
-    width: 230px;
+  
     display: block;
     box-shadow: 0 0 45px 0 rgb(0, 0, 0,6);
-    border-top: 1px solid white;
-
+    overflow-x: hidden ;
 }
 
+.expand{
+    width: 230px;
+}
+.collapse{
+    width: 50px;
+}
 .logo {
     position:relative;
     padding:0.5rem 0.7rem ;

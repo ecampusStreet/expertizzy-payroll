@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, EventEmitter, Output } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
 
 @Component({
@@ -8,9 +8,12 @@ import { MatSidenav } from '@angular/material/sidenav';
 })
 export class HeaderComponent implements OnInit {
 
+  @Output() toggle = new EventEmitter();
   constructor() { }
 
   ngOnInit(): void {
   }
-
+  toggleMenu(){
+this.toggle.emit();
+  }
 }

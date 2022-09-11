@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 
 @Component({
@@ -8,7 +8,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SidebarComponent implements OnInit {
 
-
+@Input() expand :boolean = true;
+ 
   list=[
     {
       name:'Dashboard',
@@ -41,4 +42,5 @@ export class SidebarComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  
 }
