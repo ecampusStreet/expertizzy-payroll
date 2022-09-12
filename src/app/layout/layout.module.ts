@@ -24,9 +24,7 @@ import { RouterModule } from '@angular/router';
     MatButtonModule,
     MatMenuModule,
     MatBadgeModule,
-    RouterModule
-
-       
+    RouterModule   
   ],
   exports:[
     HeaderComponent,

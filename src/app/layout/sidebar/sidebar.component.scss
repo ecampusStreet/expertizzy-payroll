@@ -1,8 +1,9 @@
 
 .side-nav-content{
-    color: white;
+    color: rgb(81, 81, 240);
+    font-weight: 600;
     width: 230px;
-    background-color:#3f51b5;
+    background-color:white;
     height: 100%;
   
     display: block;
@@ -20,8 +21,8 @@
     position:relative;
     padding:0.5rem 0.7rem ;
     .logo-mini{
-        margin-bottom: 8px;
-        border-bottom: 1px solid white;
+        margin-bottom: 5px;
+        border-bottom: 2px solid white;
     
     }
     img{
@@ -44,11 +45,13 @@ display: flex;
 align-items: center;
 height: 50px;
 margin-top:8px;
+
 // margin-left: 25px;
 
 }
 .nav-list-item:hover{
-  background-color: rgb(255, 255, 255 ,0.3);
+  background-color: rgba(186, 178, 178, 0.3);
+  color: blue;
 //   border-radius: 15px;  
 }
 
@@ -64,10 +67,10 @@ margin-top:8px;
 .nav-list-item span{
     width: 170px;
     text-transform: capitalize;
-    font-size: 14px;
-    font-weight: 500;
+    font-size: 16px;
+    font-weight: 900;
 }
-a{
-    text-decoration: none;
-    color:white;
-}
+// a{
+//     text-decoration: none;
+//     color:blueviolet;
+// }

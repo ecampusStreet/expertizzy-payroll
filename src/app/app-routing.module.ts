@@ -4,7 +4,8 @@ import { DashboardComponent } from './admin/dashboard/dashboard.component';
 import { EmployeesComponent } from './admin/employees/employees.component';
 import { LoginComponent } from './auth/login/login.component';
 import { PrivateGuard } from './core';
-
+import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
 const routes: Routes = [
   // {path:'',   redirectTo: 'login',
   // pathMatch: 'full',},
@@ -21,6 +22,8 @@ const routes: Routes = [
     redirectTo: 'login',
     pathMatch: 'full',
   },
+  {path:'login',component:LoginComponent},
+  {path:'forgot-password',component:ForgotPasswordComponent },
   {
     path: '',
     children: [{
@@ -34,7 +37,10 @@ const routes: Routes = [
       path: '',
       loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule)
     }]
-  }
+  },
+  { path: 'user', loadChildren: () => 
+  import('./user/user.module').then(m => m.UserModule) },
+  {path:'**', component:NotFoundComponent}
 ];
 
 @NgModule({

@@ -14,8 +14,7 @@ export class SidebarComponent implements OnInit {
     {
       name:'Dashboard',
       icon:' fa-solid fa-house',
-      routeLink:"dashboard"
-      
+      routeLink:"dashboard"    
     },
     {
       name:'Employees',
@@ -25,7 +24,6 @@ export class SidebarComponent implements OnInit {
     {
       name:'about',
       icon:'fa-solid fa-circle-info',
-      
     },
     {
       name:'contact',
