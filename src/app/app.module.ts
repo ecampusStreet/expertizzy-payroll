@@ -10,7 +10,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatCardModule } from '@angular/material/card';
 import { MatToolbarModule } from '@angular/material/toolbar';
 
-import {MatFormFieldModule} from '@angular/material/form-field';
+// import {MatFormFieldModule} from '@angular/material/form-field';
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,7 +27,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
     // angular material
     MatToolbarModule,
     MatCardModule,
-    MatFormFieldModule
+    // MatFormFieldModule
     
 
 
