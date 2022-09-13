@@ -8,6 +8,14 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 import { CoreModule } from '../core/core.module';
 import { LayoutModule } from '../layout/layout.module';
 import { FlexLayoutModule } from '@angular/flex-layout'
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
+import { MatButtonModule } from '@angular/material/button';
+import { MatRippleModule } from '@angular/material/core';
+import { MatCardModule } from '@angular/material/card';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatDividerModule } from '@angular/material/divider';
 @NgModule({
   declarations: [
     // EmployeesComponent
@@ -19,7 +27,19 @@ import { FlexLayoutModule } from '@angular/flex-layout'
     MatSidenavModule,
     CoreModule,
     LayoutModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+
+    
+    MatSidenavModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSelectModule,
+    MatButtonModule,
+    MatRippleModule,
+    MatMenuModule,
+    MatCardModule,
+    MatDividerModule
+
   ]
 })
 export class AdminModule { 

@@ -55,10 +55,7 @@ export class EmployeesComponent implements OnInit {
     {value: 'Electrical', viewValue: 'Electrical'},
     {value: 'D & p', viewValue: 'D & p'},
     {value: 'Human Resourse', viewValue: 'Human Resourse'},
-    
-
-
-
+  
   ];
 
 }
