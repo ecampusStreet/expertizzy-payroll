@@ -24,61 +24,7 @@
      </div>
     <div class="min-h-screen bg-gray-100 ">
 
-       <mat-card class="p-6 bg-white border shadow-lg px-5 mx-5 my-5 ">         
-          <mat-card-title class="pl-3 text-gray-600 uppercase font-bold bg-blue-100 py-4 shadow-md -mt-20 "> Add New Employees Master Data</mat-card-title>              
-        <!-- <mat-divider class="mb-4" inset></mat-divider>         -->
-        <form class="">
-              <div class="grid  lg:grid-cols-3  gap-3 p-2">
-              <mat-form-field class="example-full-width " >
-                <mat-label>Deputy ID</mat-label>
-                <input matInput placeholder="">
-              </mat-form-field>
-
-              <mat-form-field class="example-full-width">
-                <mat-label>Emp Code</mat-label>
-                <input matInput placeholder="Username">
-              </mat-form-field>
-
-              <mat-form-field class="example-full-width">
-                <mat-label>Employee Name</mat-label>
-                <input matInput placeholder="Username">
-              </mat-form-field>
-            <!-- </div> -->
-      
-                <mat-form-field >
-                  <mat-label>Designation</mat-label>
-                  <mat-select>
-                    <mat-option *ngFor="let desg of Designation" [value]="desg.value">
-                      {{desg.viewValue}}
-                    </mat-option>
-                  </mat-select>
-                </mat-form-field>
-                <mat-form-field >
-                  <mat-label>Department</mat-label>
-                  <mat-select>
-                    <mat-option *ngFor="let dept of Department" [value]="dept.value">
-                      {{dept.viewValue}}
-                    </mat-option>
-                  </mat-select>
-                </mat-form-field>
-
-                <mat-form-field >
-                  <mat-label>Skill</mat-label>
-                  <mat-select>
-                    <mat-option *ngFor="let dept of " [value]="">
-                      <!-- {{dept.viewValue}} -->
-                    </mat-option>
-                  </mat-select>
-                </mat-form-field>
-
-              <mat-form-field class="example-full-width">
-                <mat-label>username</mat-label>
-                <input matInput placeholder="Username">
-              </mat-form-field>
-            </div>
-      
-        </form> 
-      </mat-card> 
+    
       
 
     </div>
