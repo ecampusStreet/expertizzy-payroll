@@ -2,12 +2,11 @@
   
 <div class="side-nav-content"  [ngClass]="expand ? 'expand' : 'collapse'">
     <div class="logo">
-        <a href="/" class="logo- mini">
-          <img src="assets/images/logo.png" alt="logo of company"  *ngIf="expand"/>
-          <img src="assets/images/logo-xs.png" alt="logo of company"  *ngIf="!expand"/>
-
+        <a href="/" class="logo-mini">
+          <img src="assets/images/logo.png" alt="logo of company"  *ngIf="expand"/> 
         </a>
-      </div>
+    </div>
+    <img src="assets/images/logo.png" alt="logo of company"  *ngIf="!expand"/>
   <hr style="border-bottom: 1px solid white; width: 95%; margin-left: 8px" />
     <ul class="nav-list cursor-pointer">
         <li class="nav-list-item 
