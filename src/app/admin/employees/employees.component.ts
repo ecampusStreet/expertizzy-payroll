@@ -58,4 +58,16 @@ export class EmployeesComponent implements OnInit {
   
   ];
 
+  skills =[
+    {value: 'Semi skill' , viewValue:'Semi Skill'},
+    {value: 'Semi skill' , viewValue:'Semi Skill'},
+
+  ];
+
+  qualification = [
+    {value: 'SSLC' , viewValue:'SSLC'},
+    {value: 'Graduate' , viewValue:'Graduate'},
+    {value: 'Post Graduate' , viewValue:'Post Graduate'},
+  ];
+
 }
