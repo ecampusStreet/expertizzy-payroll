@@ -22,6 +22,11 @@ export class SidebarComponent implements OnInit {
       routeLink:"employees"
     },
     {
+      name:'Employees-List',
+      icon:'fa-solid fa-people-group',
+      routeLink:"datalist"
+    },
+    {
       name:'about',
       icon:'fa-solid fa-circle-info',
     },
