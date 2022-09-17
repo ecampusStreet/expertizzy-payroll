@@ -21,12 +21,14 @@ import { FormsModule } from '@angular/forms';
 import { EmployeesComponent } from './employees/employees.component';
 import { MatIconModule } from '@angular/material/icon';
 import { DatalistComponent } from './datalist/datalist.component';
+import { DashboardCardComponent } from '../core/components';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import {MatGridListModule} from '@angular/material/grid-list';
 
 @NgModule({
-  declarations: [EmployeesComponent, AdminComponent, DatalistComponent],
+  declarations: [EmployeesComponent, AdminComponent, DatalistComponent,DashboardComponent,DashboardCardComponent],
   schemas: [NO_ERRORS_SCHEMA],
   imports: [
-    CommonModule,
     AdminRoutingModule,
     MatSidenavModule,
     CoreModule,
@@ -44,6 +46,9 @@ import { DatalistComponent } from './datalist/datalist.component';
     MatCardModule,
     MatDividerModule,
     MatIconModule,
+    CommonModule,
+    MatGridListModule
   ],
+  exports:[AdminComponent]
 })
 export class AdminModule {}
