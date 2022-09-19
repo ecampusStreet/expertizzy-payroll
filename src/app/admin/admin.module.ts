@@ -2,8 +2,6 @@ import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AdminRoutingModule } from './admin.routing.module';
 import { AdminComponent } from './admin.component';
-// import { EmployeesComponent } from './employees/employees.component';
-
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { CoreModule } from '../core/core.module';
 import { LayoutModule } from '../layout/layout.module';
@@ -21,29 +19,28 @@ import { FormsModule } from '@angular/forms';
 import { EmployeesComponent } from './employees/employees.component';
 import { MatIconModule } from '@angular/material/icon';
 import { DatalistComponent } from './datalist/datalist.component';
-
+import { EmployeesListComponent } from './employees-list/employees-list.component';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import { SharedModule } from '../shared/shared.module';
 @NgModule({
-  declarations: [EmployeesComponent, AdminComponent, DatalistComponent],
+  declarations: [
+    EmployeesComponent,
+    AdminComponent,
+    DatalistComponent,
+    EmployeesListComponent,
+  ],
   schemas: [NO_ERRORS_SCHEMA],
   imports: [
     CommonModule,
     AdminRoutingModule,
-    MatSidenavModule,
     CoreModule,
     LayoutModule,
     FlexLayoutModule,
     RouterModule,
     FormsModule,
-    MatSidenavModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatSelectModule,
-    MatButtonModule,
-    MatRippleModule,
-    MatMenuModule,
-    MatCardModule,
-    MatDividerModule,
-    MatIconModule,
+   
+    SharedModule
   ],
+  // exports: [EmployeesListComponent],
 })
 export class AdminModule {}

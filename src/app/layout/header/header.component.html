@@ -1,10 +1,10 @@
-<mat-toolbar class="w-full" color="primary">
+<mat-toolbar class="w-full  " color="primary">
   <mat-toolbar-row>
     <button mat-icon-button class="" (click)="toggleMenu()">
       <mat-icon>menu</mat-icon>
     </button>
    
-    <div class="space">     
+    <!-- <div class="space">      -->
       <!-- <a mat-button> Total </a>
       <a
         mat-button
@@ -20,12 +20,13 @@
         <a mat-menu-item>Female <span>5</span></a>
       </mat-menu> -->
 
-      <div class="float-right flex">
-        <a mat-button> Create Contact </a>
-        <a mat-button  > Admin & HR </a>
-        <a mat-button [matMenuTriggerFor]="profileMenu" > <img src="assets/images/profile.jpg" class="profile-pic" alt="profile"> </a>
+      <div class="flex  lg:flex-row ml-auto">
+        
+        
+          <a mat-button [matMenuTriggerFor]="profileMenu" > <img src="assets/images/profile.jpg" class="profile-pic" alt="profile"> </a>
+        
       </div>
-    </div>
+    <!-- </div> -->
   </mat-toolbar-row>
 </mat-toolbar>
 <mat-menu #profileMenu>

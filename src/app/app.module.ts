@@ -15,6 +15,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { MatIconModule } from '@angular/material/icon';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { MatIconModule } from '@angular/material/icon';
     ForgotPasswordComponent,
     NotFoundComponent,
   ],
+  
   imports: [
     RouterModule,
     BrowserModule,
@@ -31,6 +33,8 @@ import { MatIconModule } from '@angular/material/icon';
     MatSnackBarModule,
     ReactiveFormsModule,
     MatIconModule,
+    CommonModule
+
   ],
   providers: [],
   bootstrap: [AppComponent],
