@@ -2,8 +2,19 @@ mat-card {
     max-width: 400px;
     margin: 2em auto;
     text-align: center;
+    background-color:#ffffff8a;
   }
   
   mat-form-field {
     display: block;
   }
+
+ .bg{
+  // background-image: url("assets/images/logo-bg.png");
+  background-image: url('../../../assets/images/login-bg.png');  
+    background-size: cover;
+    height: 100%;
+    opacity: 0.9;
+
+ }
+

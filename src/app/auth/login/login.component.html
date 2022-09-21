@@ -1,25 +1,32 @@
+<div class="bg">
+<!-- <img src="assets/images/login-bg.png" alt=""> -->
 <div  style="padding-top:10%">
-<mat-card>
-    <mat-card-content>
-      <form #loginForm="ngForm">
-        <h2>Log In</h2>
-        <mat-error *ngIf="!loginValid">
-          The username and password were not recognized
-        </mat-error>
-        <mat-form-field>
-          <input matInput placeholder="Username" [(ngModel)]="user.username" name="username" required>
-          <mat-error>
-            Please provide a valid email address
+  <mat-card>
+      <mat-card-content>
+        <form #loginForm="ngForm">
+          <div class="w-25 m-auto my-2">
+            <a href="#">
+              <img src="assets/images/logo2.png" alt="logo of expertizzy">
+            </a>
+          </div>     
+          <mat-error *ngIf="!loginValid">
+            The username and password were not recognized
           </mat-error>
-        </mat-form-field>
-        <mat-form-field>
-          <input matInput type="password" placeholder="Password" [(ngModel)]="user.password" name="password" required>
-          <mat-error>
-            Please provide a valid password
-          </mat-error>
-        </mat-form-field>
-        <button mat-raised-button color="primary" [disabled]="!loginForm.form.valid" (click)="submit()">Login</button>
-      </form>
-    </mat-card-content>
-  </mat-card>
+          <mat-form-field>
+            <input matInput placeholder="Username" [(ngModel)]="user.username" name="username" required>
+            <mat-error>
+              Please provide a valid email address
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput type="password" placeholder="Password" [(ngModel)]="user.password" name="password" required>
+            <mat-error>
+              Please provide a valid password
+            </mat-error>
+          </mat-form-field>
+          <button mat-raised-button color="primary" [disabled]="!loginForm.form.valid" (click)="submit()">Login</button>
+        </form>
+      </mat-card-content>
+    </mat-card>
+    </div>
   </div>
