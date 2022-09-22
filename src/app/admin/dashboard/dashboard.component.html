@@ -8,39 +8,18 @@
     </div>
 
     <!-- card design -->
-     <div class="min-h-screen bg-gray-100">
-      <!-- <div *ngFor="let dd of cardData">dsgdfh</div>
-
-      <div
-        *ngFor="let card of cardData"
-        class="flex flex-wrap justify-between max-w-xs card-custom ml-4 mr-4 mb-4 mt-4"
-      >
-        {{ card.icon }} 
-        {{ card.label }}
-        <div>
-          <i class="material-icons">{{ card.icon }}</i>
+     <div class="min-h-screen bg-gray-100" >
+       <div fxLayout="row wrap" fxLayoutGap="10px grid">
+         <div fxFlex="24%" fxFlex.xs="100%" fxFlex.sm="50%" fxFlex.md="50%" *ngFor="let card of cardData"> <div
+          class="flex flex-wrap justify-between card-custom border ml-4 mr-4 mb-4 mt-4" 
+        >
+          <div class="bg-blue-300 text-blue-700 rounded flex justify-center p-3 ">
+            <i class="material-icons">{{card.icon}}</i>
+          </div>
+          <div class="text-center">
+            <div class="text-lg font-extrabold">{{card.count}} </div>
+            <div class="text-base">{{card.lable}}</div>
+           </div>
         </div>
-        <div class="text-center">
-          <div class="text-sm font-extrabold">{{ card.count }}</div>
-          <div class="text-xs">{{ card.label }}</div>
-         </div> -->
-
-          <!-- <div *ngFor="let dd of cardData">dsgdfh</div> -->
-         
-
-
-      <div
-        class="flex flex-wrap justify-between max-w-xs card-custom border shadow hover:shadow-lg ml-4 mr-4 mb-4 mt-4"
-      >
-        
-        <div class="bg-blue-300 text-blue-700 rounded-3xl flex justify-center p-3 ">
-          <i class="material-icons">delete</i>
-        </div>
-        <div class="text-center">
-          <div class="text-sm font-extrabold ">2200 </div>
-          <div class="text-xs font-bold ">Total Employees</div>
-         </div>
-      </div>
-    </div> 
   </div>
 </div>

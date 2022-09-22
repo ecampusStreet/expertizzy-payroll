@@ -7,27 +7,32 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardComponent implements OnInit {
   constructor() {}
+  breakpoint: number | undefined;
   cardData = [
-    // {
-    //   lable: 'Total Employees',
-    //   count: 200,
-    //   icon: 'delete',
-    // },
-    // {
-    //   lable: 'Total Employees',
-    //   count: 200,
-    //   icon: 'delete',
-    // },
-    // {
-    //   lable: 'Total Employees',
-    //   count: 200,
-    //   icon: 'delete',
-    // },
-    // {
-    //   lable: 'Total Employees',
-    //   count: 200,
-    //   icon: 'delete',
-    // },
+    {
+      lable: 'Total Employees',
+      count: 200,
+      icon: 'groups',
+    },
+    {
+      lable: 'Total Present Employees',
+      count: 100,
+      icon: 'groups',
+    },
+    {
+      lable: 'Employees Activity',
+      count: '',
+      icon: 'hub',
+    },
+    {
+      lable: 'Total Employees',
+      count: 200,
+      icon: 'delete',
+    },
   ];
   ngOnInit(): void {}
+
+  onResize(event:any) {
+    this.breakpoint = (event.target.innerWidth <= 500) ? 1 : 4;
+  }
 }

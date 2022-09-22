@@ -11,7 +11,7 @@ export class EmployeesListComponent implements OnInit {
   constructor() {}
   ngOnInit(): void {}
 
-  EmployeeList = [
+  employeeList = [
     { 
       EmplID: 1,
       name:'Gagan',
