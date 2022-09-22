@@ -6,10 +6,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./forgot-password.component.scss']
 })
 export class ForgotPasswordComponent implements OnInit {
-
+  isValidEmail = false;
+  email:any;
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  canClick(){
+    this.isValidEmail=true;
   }
 
 }
