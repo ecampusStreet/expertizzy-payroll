@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-tabledata',
@@ -6,15 +6,21 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./tabledata.component.scss']
 })
 export class TabledataComponent implements OnInit {
-@Input() titles: any
+// @Input() titles: any
 @Input() lists:any
+@Output() view = new EventEmitter<string>();
 
- 
+
 
   constructor() { }
 
   ngOnInit(): void {
     
   } 
+
+  onClick(list:any){
+    console.log("this is working");
+    this.view.emit(list);
+  }
 
 }

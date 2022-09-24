@@ -8,18 +8,20 @@
     </div>
 
     <!-- card design -->
-     <div class="min-h-screen bg-gray-100" >
-       <div fxLayout="row wrap" fxLayoutGap="10px grid">
-         <div fxFlex="24%" fxFlex.xs="100%" fxFlex.sm="50%" fxFlex.md="50%" *ngFor="let card of cardData"> <div
-          class="flex flex-wrap justify-between card-custom border ml-4 mr-4 mb-4 mt-4" 
-        >
-          <div class="bg-blue-300 text-blue-700 rounded flex justify-center p-3 ">
-            <i class="material-icons">{{card.icon}}</i>
+    <div class="min-h-screen bg-gray-100">
+      <div fxLayout="row wrap" fxLayoutGap="10px grid">
+        <div fxFlex="24%" fxFlex.xs="100%" fxFlex.sm="50%" fxFlex.md="50%" *ngFor="let card of cardData">
+          <div class="flex flex-wrap justify-between card-custom border ml-4 mr-4 mb-4 mt-4">
+            <div class="bg-blue-300 text-blue-700 rounded flex justify-center p-3 ">
+              <i class="material-icons">{{card.icon}}</i>
+            </div>
+            <div class="text-center">
+              <div class="text-lg font-extrabold">{{card.count}} </div>
+              <div class="text-base">{{card.lable}}</div>
+            </div>
           </div>
-          <div class="text-center">
-            <div class="text-lg font-extrabold">{{card.count}} </div>
-            <div class="text-base">{{card.lable}}</div>
-           </div>
         </div>
+      </div>
+    </div>
   </div>
 </div>

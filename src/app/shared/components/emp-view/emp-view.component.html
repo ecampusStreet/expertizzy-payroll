@@ -1,0 +1,55 @@
+
+   <div >
+    <div class="flex flex-col bg-white-500">
+      <div class="flex flex-row">
+        <h3 class="font-bold text-gray-500 p-2">Employee Data Form</h3>
+      </div>
+      
+    </div>
+    <!-- card design -->
+    <div class="min-h-screen bg-gray-100">
+        <div class="mx-3 my-3 p-3 ">
+            <div class=" box-border" >
+                <div style="width: 100%;">
+                    <mat-card style="margin: 10px 0px">
+                    <div style="display: flex; justify-content:center">
+                        <img class="rounded-full w-24 " src="assets/images/profile.jpg" alt="">
+                    </div>
+                        <div  style="display: flex; justify-content: space-between;">
+                            <div class="max-w-[60%] p-2 flex flex-col"> 
+                                <span class="text-grey-400 font-medium">  Gagan</span>
+                                <span class="text-grey-400 font-medium"> 25/12/1999</span>
+                                <span class="text-grey-400 font-medium">  Developer</span>
+                            </div>
+                            <div class="w-1/4 p-2 flex flex-col">
+                                <span class="text-grey-400 font-medium">  g@gamil.com</span>
+                                <span class="text-grey-400 font-medium">  xxxxx256</span>
+                            </div>
+                            </div>
+                    </mat-card>
+               
+                </div>
+               
+    <mat-accordion>
+        <mat-expansion-panel  (opened)="panelOpenState = true"
+        (closed)="panelOpenState = false">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              This is the expansion title
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <div class="flex">
+            <div class="1">
+
+            </div>
+          </div>
+        </mat-expansion-panel>
+      </mat-accordion>
+            </div>                          
+        </div>
+    </div>
+
+
+
+    
+  </div>

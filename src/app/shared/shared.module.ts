@@ -12,12 +12,14 @@ import { MatInputModule } from '@angular/material/input';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSidenavModule } from '@angular/material/sidenav';
-
+import { EmpViewComponent } from './components/emp-view/emp-view.component';
+import {MatExpansionModule} from '@angular/material/expansion';
 
 
 @NgModule({
   declarations: [
-    TabledataComponent
+    TabledataComponent,
+    EmpViewComponent
   ],
   imports: [
     CommonModule,
@@ -33,7 +35,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
     MatDividerModule,
     MatIconModule,
     MatCheckboxModule,
-
+    MatExpansionModule
   ],
   exports: [
     TabledataComponent,

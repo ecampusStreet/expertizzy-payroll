@@ -8,30 +8,39 @@
 
   <!-- card design -->
   <div class="min-h-screen bg-gray-100">
-    <mat-card class="m-3 p-0">
 
-      <div class="flex justify-between items-center m-0">
+     <mat-card class="m-3 p-0 " *ngFor="let list of lists"  >
+
+      <div class="flex  items-center" (click)="onClick(list)" routerLink="/emp">
+      <div class="w-10/12">
+      <div class="flex justify-between items-center m-0 " >
         <div class="flex flex-row items-center text-sm">
           <span class="font-bold "><i class="fa-sharp fa-solid fa-user"></i></span>
-          <span class="text-grey-400 font-medium mx-2">001 Gagan </span>
+          <span class="text-grey-400 font-medium mx-2">{{list.name}}</span>
         </div>
         <div class="flex flex-row items-center text-sm">
           <span class="font-bold "><i class="fa-sharp fa-solid fa-envelope"></i></span>
-          <span class="text-grey-400 font-medium mx-2">g@gmail.com</span>
+          <span class="text-grey-400 font-medium mx-2">{{list.emailId}}</span>
         </div>
       </div>
 
       <div class="flex justify-between items-center m-0 ">
 
         <div class="flex flex-row  items-center text-sm">
-          <span class="text-grey-400 font-medium">1  Developer</span>
+          <span class="text-grey-400 font-medium">{{list.EmpID}} Developer </span>
         </div>
         <div class="flex flex-row items-center text-sm">
           <span class="font-bold "><i class="fa-solid fa-id-badge"></i></span>
           <span class="text-grey-400 font-medium mx-3"> xxxxxxx585</span>
         </div>
       </div>
-
-    </mat-card>
+    </div>
+    <div class="2/12">
+      <div class="ml-20">
+        <span><i class="material-icons">arrow_forward_ios</i></span>
+      </div>
+    </div>
+  </div>
+    </mat-card> 
   </div>
 </div>
