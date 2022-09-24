@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { RestApiService } from 'src/app/services/rest-api.service';
 import { CurrentUserService, ToastService, urls } from '../../core'
 
 @Component({
@@ -10,51 +12,41 @@ import { CurrentUserService, ToastService, urls } from '../../core'
 export class LoginComponent implements OnInit {
   loginValid : boolean = false;
   user:any={};
+
+  auth:FormGroup | undefined;
+
   constructor(
     // private apiService:ApiService,
     private toast : ToastService,
     private userService : CurrentUserService,
-    private router : Router
+    private router : Router,
+    private api:RestApiService
+
   ) { }
 
-  users =[
-    {
-      username:'admin',
-      password:'password',
-      role:'admin'
-    },
-    {
-      username:'user',
-      password:'password',
-      role:'user'
-    }, {
-      username:'hr',
-      password:'password',
-      role:'hr'
-    }
-  ]
   ngOnInit(): void {
+    
   }
+
 
   submit(){
     console.log(this.user,"this.user");
-    // const config ={
-    //   url:urls.login,
-    //   payload:this.user
-    // }
-    // this.apiService.post(config).subscribe(data =>{
-    //     console.log(data,"data");
-    //     if(data.result){
-    //       this.toast.success(data.message);
-    //       this.userService.setUser(data.result);
-    //       this.router.navigate(['dashboard']);
-    //     }
-    // },error =>{
-    //   this.toast.error(error.message);
-    // })
-
-    let validUser = this.users.filter(user => user.username == this.user.username && user.password == this.user.password);
-    console.log(validUser,"validUser");
-    this.router.navigate(['/admin'])
+   
+    this.api.login(this.user).subscribe(data =>{
+        console.log(data,"data");
+        if(data.user){
+          this.toast.success(data.message);
+          this.userService.setUser(data);
+          if(data.user.role == 'admin' ){
+            this.router.navigate(['admin/dashboard']);
+          }else{
+          this.router.navigate(['user/home']);
+          }
+        } else{
+          this.toast.error(data.message);
+        }
+    },error =>{
+      this.toast.error(error.message);
+    })
   }
 }

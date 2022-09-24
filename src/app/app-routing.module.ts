@@ -5,7 +5,7 @@ import { EmployeesComponent } from './admin/employees/employees.component';
 import { LoginComponent } from './auth/login/login.component';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
-import { PrivateGuard } from './core';
+// import { PrivateGuard } from './core';
 const routes: Routes = [
   // {path:'',   redirectTo: 'login',
   // pathMatch: 'full',},

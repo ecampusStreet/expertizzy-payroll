@@ -24,7 +24,7 @@ export class SidebarComponent implements OnInit {
     {
       name:'Employees-List',
       icon:'fa-solid fa-people-group',
-      routeLink:"datalist"
+      routeLink:"employee-list"
     },
     {
       name:'about',

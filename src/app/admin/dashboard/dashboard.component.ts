@@ -12,17 +12,17 @@ export class DashboardComponent implements OnInit {
     {
       lable: 'Total Employees',
       count: 200,
-      icon: 'delete',
+      icon: 'groups',
     },
     {
-      lable: 'Total Employees',
-      count: 200,
-      icon: 'delete',
+      lable: 'Total Present Employees',
+      count: 100,
+      icon: 'groups',
     },
     {
-      lable: 'Total Employees',
-      count: 200,
-      icon: 'delete',
+      lable: 'Employees Activity',
+      count: '',
+      icon: 'hub',
     },
     {
       lable: 'Total Employees',
