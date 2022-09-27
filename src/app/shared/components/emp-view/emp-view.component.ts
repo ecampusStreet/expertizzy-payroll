@@ -44,6 +44,13 @@ export class EmpViewComponent implements OnInit {
   "address":"ho-20 basaveshwar nagar yadgir",
   "desg":"Developer",
  },
+ {
+  label:"experienceDetails",
+  "companyName":"webspruce",
+       "yearOfExp":2,
+       "designation":"developer"
+ }
+
  ]
 
 

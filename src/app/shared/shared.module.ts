@@ -14,7 +14,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { EmpViewComponent } from './components/emp-view/emp-view.component';
 import {MatExpansionModule} from '@angular/material/expansion';
-
+import {MatRadioModule} from '@angular/material/radio';
 
 @NgModule({
   declarations: [
@@ -35,7 +35,8 @@ import {MatExpansionModule} from '@angular/material/expansion';
     MatDividerModule,
     MatIconModule,
     MatCheckboxModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatRadioModule
   ],
   exports: [
     TabledataComponent,

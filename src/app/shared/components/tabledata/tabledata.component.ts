@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-tabledata',
@@ -11,8 +12,7 @@ export class TabledataComponent implements OnInit {
 @Output() view = new EventEmitter<string>();
 
 
-
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
     
@@ -21,6 +21,10 @@ export class TabledataComponent implements OnInit {
   onClick(list:any){
     console.log("this is working");
     this.view.emit(list);
+  }
+
+  btnClick(){
+    this.router.navigateByUrl('admin/employee-view');
   }
 
 }

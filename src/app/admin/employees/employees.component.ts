@@ -10,7 +10,11 @@ export class EmployeesComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+
   }
+
+gender =["male", "female"];
+
   Designation = [
     {value: 'M/C Operator', viewValue: 'M/C Operator'},
     {value: 'Fitter', viewValue: 'Fitter'},

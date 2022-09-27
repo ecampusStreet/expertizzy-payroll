@@ -16,11 +16,11 @@ export class SidebarComponent implements OnInit {
       icon:' fa-solid fa-house',
       routeLink:"dashboard"    
     },
-    {
-      name:'Employees',
-      icon:'fa-solid fa-people-group',
-      routeLink:"employees"
-    },
+    // {
+    //   name:'Employees',
+    //   icon:'fa-solid fa-people-group',
+    //   routeLink:"employees"
+    // },
     {
       name:'Employees-List',
       icon:'fa-solid fa-people-group',

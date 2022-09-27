@@ -1,41 +1,36 @@
 <div class="flex flex-col">
   <div class="flex flex-col bg-white-500">
-    <div class="flex flex-row">
-      <h3 class="font-bold text-gray-500 span-2">Emspanloyee Data Form</h3>
+    <div class="flex flex-row items-center">
+      <h3 class="font-bold text-gray-500 span-2">Employees List
+    </h3>
     </div>
     <!--span tag -->
   </div>
-
+  
   <!-- card design -->
   <div class="bg-gray-100">
+  
+    <!-- <button mat-raised-button class="float-right" color="primary" ><mat-icon>add</mat-icon></button> -->
 
-     <mat-card class="m-3 p-0 " *ngFor="let list of lists" (click)="onClick(list)" routerLink="/emp" >
-
-      <div class="flex justify-between items-center m-0 " >
-      <div class="w-5/12">
-        <div class="flex flex-col">
-          <span ><i class="fa-sharp fa-solid fa-user font-bold"></i><span class="text-grey-400 font-medium mx-2">{{list.name}}</span></span>      
-          <span ><i class="fa-sharp fa-solid fa-user font-bold"></i><span class="text-grey-400 font-medium mx-2">{{list.name}}</span></span>         
-        </div>
-      </div>
-      <div class="w-5/12">
-        <div class="flex flex-col">
-          <span ><i class="fa-sharp fa-solid fa-user font-bold"></i><span class="text-grey-400 font-medium mx-2">{{list.name}}</span></span>      
-          <span ><i class="fa-sharp fa-solid fa-user font-bold"></i><span class="text-grey-400 font-medium mx-2">{{list.name}}</span></span>         
-        </div>
-      </div>
-      <div class="w-2/12">
-        <div class="flex flex-col">
+     <mat-card class="m-3 p-0 " *ngFor="let list of lists" (click)="onClick(list)" routerLink="/emp"
+     (click)="btnClick();" >
+      
+        <div class="flex justify-between ">
+          <span ><i class="material-icons mx-1"></i><span class="text-grey-400 font-medium mx-2">{{list.name}}</span></span>      
+          <span >{{list.EmpID}} /  Developer</span>        
+       
+          <span ><i class="material-icons ">mail</i><span class="text-grey-400 font-medium mx-2">{{list.emailId}}</span></span>      
+          <span ><i class="material-icons mx-1"></i><span class="text-grey-400 font-medium mx-2">{{list.mobileNo}}</span></span>         
+        
           <span><i class="material-icons">arrow_forward_ios</i></span>
         
-        </div>
       </div>
        
         <!-- <div class="flex flex-row items-center text-sm">
           <span class="font-bold "><i class="fa-sharp fa-solid fa-envelope"></i></span>
           <span class="text-grey-400 font-medium mx-2">{{list.emailId}}</span>
         </div> -->
-      </div>
+      <!-- </div> -->
 
       <!-- <div class="flex justify-between items-center m-0 ">
 
@@ -47,11 +42,6 @@
           <span class="text-grey-400 font-medium mx-3"> xxxxxxx585</span>
         </div>
       </div> -->
-    <div class="2/12">
-      <div class="ml-20">
-      </div>
-    </div>
-  
     </mat-card> 
   </div>
 </div>

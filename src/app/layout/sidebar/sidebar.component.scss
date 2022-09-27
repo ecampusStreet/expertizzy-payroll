@@ -3,7 +3,7 @@
     color: rgb(81, 81, 240);
     font-weight: 600;
     width: 230px;
-    background-color:white;
+    // background-color:white;
     height: 100%;
   
     display: block;
@@ -12,10 +12,11 @@
 }
 
 .expand{
-    width: 230px;
+    width: 200px;
 }
 .collapse{
     width: 45px;
+ 
 }
 
 .logo {
@@ -32,7 +33,7 @@
        border-radius: 10px;
        padding: 8px;
     }
-    }
+ }
 
 .nav-list{
     // height: 100%;
@@ -44,7 +45,7 @@
 .nav-list-item{
 display: flex;
 align-items: center;
-height: 50px;
+height: 40px;
 margin-top:8px;
 
 // margin-left: 25px;

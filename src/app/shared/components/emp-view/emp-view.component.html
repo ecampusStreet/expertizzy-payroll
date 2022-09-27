@@ -19,16 +19,16 @@
               <div class="max-w-[60%] p-2 flex flex-col">
                 <span class="text-grey-400 font-medium "> <i
                     class="fa-solid fa-user mr-2"></i>{{employee[0].fullName | titlecase}}</span>
-                <span class="text-grey-400 font-medium"><i class="fa-solid fa-calendar-days mr-2"></i>
+                <span class="text- font-medium "><i class="fa-solid fa-calendar-days mr-2"></i>
                   {{employee[0].dob}}</span>
                 <span class="text-grey-400 font-medium"><i class="fa-solid fa-suitcase mr-2"></i>
                   {{employee[0].desg}} </span>
               </div>
               <div class="p-2 flex flex-col">
                 <span class="text-grey-400 font-medium"><i
-                    class="fa-solid fa-envelope mr-2"></i>{{employee[0].email}}</span>
+                    class="fa-solid fa-envelope mr-2"></i>{{employee[0].email | titlecase}}</span>
                 <span class="text-grey-400 font-medium"><i
-                    class="fa-solid fa-mobile-retro mr-2"></i>{{employee[0].ph_no}} </span>
+                    class="fa-solid fa-mobile-retro mr-2"></i>{{employee[0].ph_no | titlecase}} </span>
               </div>
             </div>
           </mat-card>
@@ -46,15 +46,15 @@
               <div class="w-full flex">
                 <div class="w-2/4 border-r-2 px-0">
                   <div class=" flex justify-between">
-                    <div class="flex flex-col">
-                      <span class="p-">FullName</span>
+                    <div class="flex flex-col font">
+                      <span class="">FullName</span>
                       <span class="">FatherName</span>
                       <span class="">MaritalStatus</span>
                     </div>
                     <div class="flex flex-col mx-4">
-                      <span>{{data.fullName}}</span>
-                      <span>{{data.fatherName}}</span>
-                      <span>{{data.marital_status}}</span>
+                      <span>{{data.fullName | titlecase}}</span>
+                      <span>{{data.fatherName | titlecase}}</span>
+                      <span>{{data.marital_status | titlecase}}</span>
                     </div>
                   </div>
                 </div>
@@ -62,16 +62,16 @@
                 <div class="w-2/4 border-l-2">
                   <div class="flex justify-between">
   
-                    <div class=" flex flex-col mx-4 ">
+                    <div class=" flex flex-col mx-4 font ">
                       <span>BloodGroup </span>
                       <span>AadharNo </span>
                       <span>Address </span>
                     </div>
   
                     <div class=" flex flex-col">
-                      <span>{{data.bloodGroup}}</span>
-                      <span>{{data.aadhara_no}}</span>
-                      <span>{{data.address}}</span>
+                      <span>{{data.bloodGroup | titlecase}}</span>
+                      <span>{{data.aadhara_no | titlecase}}</span>
+                      <span>{{data.address | titlecase}}</span>
                    </div>
                   
                   </div>          

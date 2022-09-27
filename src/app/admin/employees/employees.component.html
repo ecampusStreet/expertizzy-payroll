@@ -9,9 +9,9 @@
     </div>
 
     <!-- card design -->
-    <div class="bg-gray-100">
+    <div class="min-h-screen bg-gray-100">
       <mat-card class="p-6 bg-white px-2 mx-3 my-3 ">         
-        <mat-card-title class="pl-3 text-gray-600 uppercase font-bold bg-blue-100 py-4 shadow-md mx-3  "> Add New Employee Master Data</mat-card-title>              
+        <!-- <mat-card-title class="pl-3 text-gray-600 uppercase font-bold bg-blue-100 py-4 shadow-md mx-3  "> Add New Employee Master Data</mat-card-title>               -->
       <!-- <mat-divider class="mb-4" inset></mat-divider>         -->
       <form class="">
             <div class="grid  lg:grid-cols-3  gap-3 p-2">
@@ -21,13 +21,13 @@
             </mat-form-field>
 
             <mat-form-field class="example-full-width">
-              <mat-label>Emp Code</mat-label>
-              <input matInput placeholder="Username">
+              <mat-label>Name</mat-label>
+              <input matInput placeholder=" Enter Employee Name">
             </mat-form-field>
 
             <mat-form-field class="example-full-width">
               <mat-label>Employee Name</mat-label>
-              <input matInput placeholder="Username">
+              <input matInput placeholder="Enter Employee ">
             </mat-form-field>
           </div>
     
@@ -91,21 +91,14 @@
               <mat-label>Phone Number</mat-label>
               <input type="email" matInput placeholder="Employee Mobile Number">
             </mat-form-field>  
-            
-            <section class="example-section">
-              <label class="example-margin"></label>
-              <mat-radio-group>
-                <mat-radio-button class="example-margin" value="Married">Married</mat-radio-button>
-                <mat-radio-button class="example-margin" value="unmarried">unmarried</mat-radio-button>
-              </mat-radio-group>
-            </section>
-            
-              <mat-radio-group >
-                <label>Float label: </label>
-                <mat-radio-button value="married"> Married </mat-radio-button>
-                <mat-radio-button value="unmarried">UnMarried </mat-radio-button>
-              </mat-radio-group>
-            
+
+            <mat-radio-group
+              aria-labelledby="example-radio-group-label"
+              class="example-radio-group">
+              <mat-radio-button class="example-radio-button" *ngFor="let g of gender" [value]="g">
+                {{g}}
+              </mat-radio-button>
+            </mat-radio-group>
             
           </div>
           <button mat-raised-button color="primary">Add Employee</button>
