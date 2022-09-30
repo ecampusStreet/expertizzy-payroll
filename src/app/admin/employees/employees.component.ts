@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-employees',
@@ -7,10 +8,55 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EmployeesComponent implements OnInit {
 
+   form!: FormGroup;
+   expDetail!: FormGroup;
+   depDetail!: FormGroup;
+   emgDetail!:FormGroup;
   constructor() { }
 
   ngOnInit(): void {
+  this.form = new FormGroup({
+    deputy_id :new FormControl('',[Validators.required]),
+    fullName :new FormControl('',[Validators.required]),
+    fatherName :new FormControl('',[Validators.required]),
+    dob :new FormControl('',[Validators.required]),
+    ph_no :new FormControl('',[Validators.required,Validators.minLength(10), Validators.pattern("^((\\+91-?)|0)?[0-9]{10}$")]),
+    email :new FormControl('',[Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]),
+    bloodGroup :new FormControl('',[Validators.required]),
+    aadhara_no :new FormControl('',[Validators.required]),
+    address :new FormControl('',[Validators.required]),
+  });
 
+  this.expDetail =new FormGroup({
+    companyName:new FormControl('',[Validators.required]),
+    yearOfExp:new FormControl('',[Validators.required]),
+    designation:new FormControl('',[Validators.required]),
+  });
+  
+  this.depDetail =new FormGroup({
+    dept_name:new FormControl('',[Validators.required]),
+    // team:new FormControl('',[Validators.required]),
+    teamLeader:new FormControl('',[Validators.required]),
+    doj:new FormControl('',[Validators.required]),
+  });
+
+  this.emgDetail =new FormGroup({
+    name:new FormControl('',[Validators.required]),
+    relation_with:new FormControl('',[Validators.required]),
+    age:new FormControl('',[Validators.required]),
+    address:new FormControl('',[Validators.required]),
+    contact_no:new FormControl('',[Validators.required]),
+  });
+
+
+  }
+
+get f(){
+  return this.form.controls;
+}
+
+  onSubmit(){
+ console.log(this.form.value)
   }
 
 gender =["male", "female"];
@@ -74,4 +120,19 @@ gender =["male", "female"];
     {value: 'Post Graduate' , viewValue:'Post Graduate'},
   ];
 
+  checkPattern(data : any):any{
+    if(this.form.value[data]){
+      console.log(this.form.controls[data].hasError('pattern'));
+      return this.form.controls[data].hasError('pattern')
+    }
+  }
+
+  submit(){
+    console.log(this.form.value,"value");
+  let payload ={
+    personalDetails : this.form.value,
+    experienceDetails : this.expDetail.value,
+  }
+  console.log(payload,"value");
+  }
 }

@@ -15,7 +15,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatDividerModule } from '@angular/material/divider';
 import { RouterModule } from '@angular/router';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { EmployeesComponent } from './employees/employees.component';
 import { MatIconModule } from '@angular/material/icon';
 import { DatalistComponent } from './datalist/datalist.component';
@@ -49,7 +49,8 @@ import {MatGridListModule} from '@angular/material/grid-list';
     MatDividerModule,
     MatIconModule,
     CommonModule,
-    MatGridListModule
+    MatGridListModule,
+    ReactiveFormsModule
   ],
   exports:[AdminComponent]
 })

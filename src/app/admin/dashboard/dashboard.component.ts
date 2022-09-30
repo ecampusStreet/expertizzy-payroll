@@ -10,24 +10,29 @@ export class DashboardComponent implements OnInit {
   breakpoint: number | undefined;
   cardData = [
     {
-      lable: 'Total Employees',
+      lable: 'Total employees',
       count: 200,
       icon: 'groups',
+      url:'/admin/employee-list'
     },
     {
-      lable: 'Total Present Employees',
+      lable: 'Total present employees',
       count: 100,
       icon: 'groups',
+      url:'',
     },
     {
-      lable: 'Employees Activity',
+      lable: 'Employees activity',
       count: '',
       icon: 'hub',
+      url:'',
+
     },
     {
-      lable: 'Total Employees',
+      lable: 'Total leaves request',
       count: 200,
       icon: 'delete',
+      url:'',
     },
   ];
   ngOnInit(): void {}

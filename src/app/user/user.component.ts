@@ -7,5 +7,10 @@ import { Component } from '@angular/core';
 })
 export class UserComponent {
   // title = 'expertizy';
+
+  expand = true;
+  toggle(){
+    this.expand = !this.expand;
+  }
   constructor() {}
 }

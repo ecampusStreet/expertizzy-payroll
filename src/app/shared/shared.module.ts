@@ -36,7 +36,8 @@ import {MatRadioModule} from '@angular/material/radio';
     MatIconModule,
     MatCheckboxModule,
     MatExpansionModule,
-    MatRadioModule
+    MatRadioModule,
+    
   ],
   exports: [
     TabledataComponent,
