@@ -65,7 +65,6 @@
             <mat-form-field class="example-full-width ">
               <mat-label>Email</mat-label>
               <input matInput placeholder=" Please Enter Employee Email" name="email" formControlName="email">
-              <!-- <div *ngIf="form.get('email')?.invalid && (form.get('email')?.touched || form.get('email')?.dirty)"></div> -->
               <mat-error *ngIf="f['email'].touched && f['email'].invalid" class="text-red-500">
                 <mat-error *ngIf="f['email'].errors && f['email'].errors['required']">Email is required.</mat-error>
                 <mat-error *ngIf="f['email'].errors && f['email'].errors['pattern']">Please, enter valid email address.</mat-error>
@@ -131,7 +130,9 @@
                 </mat-select>
               </mat-form-field>
             </div>
+            <div class="align">
             <button mat-raised-button color="primary" [disabled]="!expDetail.valid" class="" (click)="submit()">Submit</button>
+            </div>
           </form>
         </div>
       </mat-card>
@@ -225,35 +226,35 @@
       <mat-card class="p-6 bg-white px-2 mx-3 my-3 ">
 
         <h3>AccountDetail</h3>
-        <form action="">
+        <form action="" [formGroup]="accDetail">
           <div class="grid lg:grid-cols-3 gap-3">
             <mat-form-field class="example-full-width">
               <mat-label>Account No</mat-label>
-              <input matInput placeholder="Employee Account Number">
+              <input matInput placeholder="Employee Account Number" name="acc_number" formControlName="acc_number">
             </mat-form-field>
 
             <mat-form-field class="example-full-width">
               <mat-label>Branch</mat-label>
-              <input matInput placeholder="Employee Branch Number">
+              <input matInput placeholder="Employee Branch Number" name="branch" formControlName="branch">
             </mat-form-field>
 
             <mat-form-field class="example-full-width">
               <mat-label>IFSC CODE</mat-label>
-              <input matInput placeholder="Employee Ifsc code Number">
+              <input matInput placeholder="Employee Ifsc code Number" name="ifscCode" formControlName="ifscCode">
             </mat-form-field>
 
             <mat-form-field class="example-full-width">
               <mat-label>UAN NO</mat-label>
-              <input matInput placeholder="Employee Ifsc code Number">
+              <input matInput placeholder="Employee Ifsc code Number" name="uan_no" formControlName="uan_no">
             </mat-form-field>
 
             <mat-form-field class="example-full-width">
               <mat-label>PAN CARD</mat-label>
-              <input matInput placeholder="Employee PAN Number">
+              <input matInput placeholder="Employee PAN Number" name="panCard" formControlName="panCard">
             </mat-form-field>
           </div>
           <div class="align">
-            <button mat-raised-button color="primary" class="">Submit</button>
+            <button mat-raised-button color="primary" class="" [disabled]="!accDetail.valid">Submit</button>
           </div>
 
         </form>
@@ -263,7 +264,7 @@
       <mat-card class="p-6 bg-white px-2 mx-3 my-3 ">
 
         <h3>qulificationDetail</h3>
-        <form action="">
+        <form action="" [formGroup]="qualiDetail">
           <div class="grid lg:grid-cols-3 gap-4">
             <div class="w-1/4">
               <h3>SSLC</h3>
@@ -271,7 +272,7 @@
             <!-- <div class="grid grid-cols-2 gap-4"> -->
             <mat-form-field class="example-full-width">
               <mat-label>Year of passing</mat-label>
-              <input matInput placeholder="Enter Year Of passing">
+              <input matInput placeholder="Enter Year Of passing" name="yearOfPassing" formControlName="yearOfPassing">
             </mat-form-field>
 
             <mat-form-field class="example-full-width">
@@ -349,3 +350,4 @@
 
 
     </div>
+    

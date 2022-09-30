@@ -1,0 +1,33 @@
+<div class="flex-auto">
+    <div class="flex flex-col">
+      <div class="flex flex-col bg-white-500">
+        <div class="fle flex-row">
+          <h3 class="font-bold text-gray-500 p-2">Dashboard</h3>
+        </div>
+        <!--p tag -->
+      </div>
+  
+      <!-- card design -->
+      <div class="bg-gray-100">
+        <div fxLayout="row wrap" fxLayoutGap="10px grid">
+          <div fxFlex="24%" fxFlex.xs="100%" fxFlex.sm="50%" fxFlex.md="50%" *ngFor="let card of usercardData">
+            <div class="flex flex-wrap justify-between card-custom border ml-4 mr-4 mb-4 mt-4" >
+              
+              <div class="bg-blue-300 text-blue-700 rounded flex justify-center p-3 ">
+                <i class="material-icons">{{card.icon}}</i>
+              </div>
+              <div class="text-center">
+                <div class="text-lg font-extrabold">{{card.count}} </div>
+                <div class="text-base">{{card.lable}}</div>
+              </div>
+              <div class="flex items-center">
+                <!-- <span class="material-icons" >
+                    arrow_forward_ios
+                    </span> -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

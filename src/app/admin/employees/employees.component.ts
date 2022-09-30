@@ -12,6 +12,8 @@ export class EmployeesComponent implements OnInit {
    expDetail!: FormGroup;
    depDetail!: FormGroup;
    emgDetail!:FormGroup;
+   accDetail!: FormGroup;
+   qualiDetail!: FormGroup;
   constructor() { }
 
   ngOnInit(): void {
@@ -47,7 +49,29 @@ export class EmployeesComponent implements OnInit {
     address:new FormControl('',[Validators.required]),
     contact_no:new FormControl('',[Validators.required]),
   });
-
+  this.accDetail = new FormGroup({
+    acc_number:new FormControl('',[Validators.required]),
+    branch:new FormControl('',[Validators.required]),
+    ifscCode:new FormControl('',[Validators.required]),
+    uan_no:new FormControl('',[Validators.required]),
+    panCard:new FormControl('',[Validators.required]),
+  });
+  this.qualiDetail = new FormGroup({
+    sslc: new FormGroup({
+      yearOfPassing: new FormControl('',[Validators.required]),
+      marks: new FormControl('',[Validators.required]),
+    }),
+    puc: new FormGroup({
+      yearOfPassing: new FormControl('',[Validators.required]),
+      marks: new FormControl('',[Validators.required]),
+      specialization: new FormControl('',[Validators.required]),
+      }),
+      degree: new FormGroup({
+        yearOfPassing: new FormControl('',[Validators.required]),
+        marks: new FormControl('',[Validators.required]),
+        specialization: new FormControl('',[Validators.required]),
+        }),
+  })
 
   }
 

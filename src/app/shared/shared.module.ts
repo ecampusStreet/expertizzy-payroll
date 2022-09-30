@@ -15,11 +15,13 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { EmpViewComponent } from './components/emp-view/emp-view.component';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatRadioModule} from '@angular/material/radio';
+import { DashboardCardsComponent } from './components/dashboard-cards/dashboard-cards.component';
 
 @NgModule({
   declarations: [
     TabledataComponent,
-    EmpViewComponent
+    EmpViewComponent,
+    DashboardCardsComponent
   ],
   imports: [
     CommonModule,
@@ -53,6 +55,8 @@ import {MatRadioModule} from '@angular/material/radio';
     MatIconModule,
     MatCheckboxModule,
 
+    DashboardCardsComponent,
+    
   ]
 })
 export class SharedModule { }
