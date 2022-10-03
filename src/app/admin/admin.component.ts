@@ -12,4 +12,28 @@ export class AdminComponent {
   toggle(){
     this.expand = !this.expand;
   }
+  
+  lists = [
+    {
+      name:'Dashboard',
+      icon:' dashboard',
+      routeLink:"dashboard"    
+    },
+    {
+      name:'Employees',
+      icon:'fa-solid fa-people-group',
+      routeLink:"employees"
+    },
+    {
+      name:'Employees-List',
+      icon:'fa-solid fa-people-group',
+      routeLink:"employee-list"
+    },
+   
+    // {
+    //   name:'setting',
+    //   icon:'fa-solid fa-gear'
+    // },
+  
+  ];
 }

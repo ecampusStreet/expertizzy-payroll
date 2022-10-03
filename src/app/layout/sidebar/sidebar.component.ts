@@ -8,41 +8,17 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class SidebarComponent implements OnInit {
 
-@Input() expand :boolean = true;
- 
-  list=[
-    {
-      name:'Dashboard',
-      icon:' fa-solid fa-house',
-      routeLink:"dashboard"    
-    },
-    // {
-    //   name:'Employees',
-    //   icon:'fa-solid fa-people-group',
-    //   routeLink:"employees"
-    // },
-    {
-      name:'Employees-List',
-      icon:'fa-solid fa-people-group',
-      routeLink:"employee-list"
-    },
-    {
-      name:'about',
-      icon:'fa-solid fa-circle-info',
-    },
-    {
-      name:'contact',
-      icon:'fa-solid fa-phone'
-    },
-    {
-      name:'setting',
-      icon:'fa-solid fa-gear'
-    },
+  // @Input() expand :boolean = true;
 
-  ];
+  
+ lists = [
+  
+
+];
   constructor() { }
 
   ngOnInit(): void {
+    console.log(this.lists + "");
   }
 
   

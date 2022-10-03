@@ -9,6 +9,10 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { LayoutModule } from '../layout/layout.module';
+import { AttendenceComponent } from './components/attendence/attendence.component';
+import { FeedsComponent } from './components/feeds/feeds.component';
+import { ColleguesComponent } from './components/collegues/collegues.component';
 @NgModule({
   schemas: [NO_ERRORS_SCHEMA],
 
@@ -16,6 +20,9 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     UserComponent,
     HomeComponent,
     UserDashboardComponent,
+    AttendenceComponent,
+    FeedsComponent,
+    ColleguesComponent,
   ],
   imports: [
     CommonModule,
@@ -25,6 +32,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     MatSidenavModule,
     MatToolbarModule,
     FlexLayoutModule,
+    LayoutModule,
 
   ]
 })

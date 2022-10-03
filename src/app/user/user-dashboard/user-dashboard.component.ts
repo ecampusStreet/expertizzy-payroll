@@ -17,13 +17,13 @@ export class UserDashboardComponent implements OnInit {
     lable: 'My Leaves',
     count: 100,
     icon: 'groups',
-    url:'/user/home',
+    url:'/user/leave',
   },
   {
     lable: 'Salary Slips',
     count: '',
     icon: 'hub',
-    url:'',
+    url:'user/leave',
 
   },
   {

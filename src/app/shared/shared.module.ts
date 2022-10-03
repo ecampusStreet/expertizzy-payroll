@@ -16,12 +16,14 @@ import { EmpViewComponent } from './components/emp-view/emp-view.component';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatRadioModule} from '@angular/material/radio';
 import { DashboardCardsComponent } from './components/dashboard-cards/dashboard-cards.component';
+import { LeaveComponent } from './components/leave/leave.component';
 
 @NgModule({
   declarations: [
     TabledataComponent,
     EmpViewComponent,
-    DashboardCardsComponent
+    DashboardCardsComponent,
+    LeaveComponent
   ],
   imports: [
     CommonModule,
@@ -56,7 +58,7 @@ import { DashboardCardsComponent } from './components/dashboard-cards/dashboard-
     MatCheckboxModule,
 
     DashboardCardsComponent,
-    
+    LeaveComponent
   ]
 })
 export class SharedModule { }

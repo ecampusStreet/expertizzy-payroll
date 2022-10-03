@@ -3,9 +3,9 @@
     <button mat-icon-button class="" (click)="toggleMenu()">
       <mat-icon>menu</mat-icon>
     </button>
-   
+
     <!-- <div class="space">      -->
-      <!-- <a mat-button> Total </a>
+    <!-- <a mat-button> Total </a>
       <a
         mat-button
         [matMenuTriggerFor]="menu"
@@ -20,18 +20,23 @@
         <a mat-menu-item>Female <span>5</span></a>
       </mat-menu> -->
 
-      <div class="flex lg:flex-row ml-auto">
-        
-        
-          <a mat-button [matMenuTriggerFor]="profileMenu" > <img src="assets/images/profile.jpg" class="profile-pic" alt="profile"> </a>
-        
-      </div>
+    <div class="flex lg:flex-row ml-auto">
+
+
+      <a mat-button [matMenuTriggerFor]="profileMenu"> <img src="assets/images/profile.jpg" class="profile-pic"
+          alt="profile"> </a>
+
+    </div>
     <!-- </div> -->
   </mat-toolbar-row>
 </mat-toolbar>
 <mat-menu #profileMenu>
-  <menu mat-menu-item>    <mat-icon>
-    manage_accounts</mat-icon> Profile</menu>
-  <menu mat-menu-item>   <mat-icon>logout</mat-icon> Logout</menu>
+  <menu mat-menu-item>
+    <mat-icon> manage_accounts</mat-icon> Profile
+  </menu>
+
+  <menu mat-menu-item (click)="onLogout()">
+    <mat-icon>logout</mat-icon> Logout
+  </menu>
 
 </mat-menu>
