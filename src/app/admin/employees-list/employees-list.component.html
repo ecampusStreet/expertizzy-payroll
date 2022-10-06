@@ -1,15 +1,8 @@
-<!-- <div class="flex-auto"> -->
-  <!-- <div class="flex flex-col">
-    <div class="flex flex-col bg-white-500">
-      <div class="flex flex-row">
-        <h3 class="font-bold text-gray-500 p-2">Employee Data Form</h3>
-      </div>
-      
-    </div>
 
-     card design
-    <div class="min-h-screen bg-gray-100">
+  <div class="flex justify-end ml-3 mt-3 mb-3 mr-3">
+    <button mat-raised-button color="primary" (click)="add()">+ Add</button>
     </div>
-  </div> -->
   <app-tabledata [lists]="employeeList" [titles]="tableheader" (view)="detailView($event)" ></app-tabledata>
-  <!-- (view)="viewdetail()" -->
+  <div class="flex justify-center ml-3 mt-3 mb-3 mr-3">
+    <button mat-raised-button color="primary" (click)="loadMore()">Load more</button>
+    </div>

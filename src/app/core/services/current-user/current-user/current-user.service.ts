@@ -41,7 +41,6 @@ token : any;
     return new Promise((resolve, reject) => {
       this.storage.deleteAllStorage().then(data => {
         resolve(data);
-        this.router.navigate(['login']);
       }).catch(error => {
         reject()
       })

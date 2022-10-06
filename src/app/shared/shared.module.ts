@@ -14,16 +14,19 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { EmpViewComponent } from './components/emp-view/emp-view.component';
 import {MatExpansionModule} from '@angular/material/expansion';
-
-
+import {MatListModule} from '@angular/material/list';
+import { CardListComponent } from './components/card-list/card-list.component';
+import {MatTableModule} from '@angular/material/table';
+import { ContentNavbarComponent } from './components/content-navbar/content-navbar.component';
 @NgModule({
   declarations: [
     TabledataComponent,
-    EmpViewComponent
+    EmpViewComponent,
+    CardListComponent,
+    ContentNavbarComponent
   ],
   imports: [
     CommonModule,
-
     MatSidenavModule,
     MatFormFieldModule,
     MatInputModule,
@@ -35,22 +38,14 @@ import {MatExpansionModule} from '@angular/material/expansion';
     MatDividerModule,
     MatIconModule,
     MatCheckboxModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatListModule,
+    MatTableModule
   ],
   exports: [
     TabledataComponent,
-    MatSidenavModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatSelectModule,
-    MatButtonModule,
-    MatRippleModule,
-    MatMenuModule,
-    MatCardModule,
-    MatDividerModule,
-    MatIconModule,
-    MatCheckboxModule,
-
+    CardListComponent,
+    ContentNavbarComponent
   ]
 })
 export class SharedModule { }

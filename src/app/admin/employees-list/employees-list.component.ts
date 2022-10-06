@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-employees-list',
@@ -8,7 +9,9 @@ import { Component, Input, OnInit } from '@angular/core';
 export class EmployeesListComponent implements OnInit {
  
 
-  constructor() {}
+  constructor(
+    private router : Router
+  ) {}
   ngOnInit(): void {}
 
   
@@ -21,8 +24,6 @@ export class EmployeesListComponent implements OnInit {
       Department:'driver',
       emailId:'s@gmail.com',
       mobileNo:5346546455,
-      
-      
       TeamLeader:'-',
       Grade:'d',
       gender:'male',
@@ -77,7 +78,6 @@ export class EmployeesListComponent implements OnInit {
     {title:'Department'},
     {title:'MailID'},
     {title:'MobileNo'},
-    
     // {title:'Grade'},
     // {title:'Team'},
     // {title:'DepartmentHead'},
@@ -101,7 +101,10 @@ export class EmployeesListComponent implements OnInit {
 
   detailView(lists:any){
     console.log(lists);
-
   }
-
+  add(){
+   this.router.navigate(['admin/add-employee'])
+  }
+  loadMore(){
+  }
 }

@@ -34,10 +34,10 @@ export class LoginComponent implements OnInit {
    
     this.api.login(this.user).subscribe(data =>{
         console.log(data,"data");
-        if(data.user){
+        if(data.success){
           this.toast.success(data.message);
           this.userService.setUser(data);
-          if(data.user.role == 'admin' ){
+          if(data.result.user.role == 'admin' ){
             this.router.navigate(['admin/dashboard']);
           }else{
           this.router.navigate(['user/home']);
