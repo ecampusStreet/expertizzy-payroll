@@ -1,0 +1,23 @@
+mat-card {
+    max-width: 400px;
+    margin: 2em auto;
+    text-align: center;
+    background-color: rgb(255 255 255 / 82%);
+}
+.logo{
+  width: 200px;
+ }
+  
+  mat-form-field {
+    display: block;
+  }
+
+ .bg{
+  // background-image: url("assets/images/logo-bg.png");
+  background-image: url('../../../assets/images/login-bg.png');  
+    background-size: cover;
+    height: 100%;
+    opacity:95%;
+
+ }
+

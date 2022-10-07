@@ -1,12 +1,18 @@
-import { NgModule } from '@angular/core';
+import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
-import { LayoutModule } from '../layout/layout.module';
-import { MatSidenavModule } from '@angular/material/sidenav';
-import { AdminRoutingModule } from './admin-routing.module';
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { EmployeesComponent } from './employees/employees.component';
 import { AdminComponent } from './admin.component';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { CoreModule } from '../core/core.module';
+import { LayoutModule } from '../layout/layout.module';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { RouterModule } from '@angular/router';
+import { EmployeesComponent } from './employees/employees.component';
+import { MatIconModule } from '@angular/material/icon';
+import { DatalistComponent } from './datalist/datalist.component';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import { DashboardCardComponent } from '../core/components';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import {MatGridListModule} from '@angular/material/grid-list';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {MatInputModule} from '@angular/material/input';
@@ -16,16 +22,27 @@ import { MatRippleModule } from '@angular/material/core';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatCardModule} from '@angular/material/card';
 import { MatDividerModule } from '@angular/material/divider';
+import { EmployeesListComponent } from './employees-list/employees-list.component';
+import { SharedModule } from '../shared/shared.module';
+import { AdminRoutingModule } from './admin.routing.module';
 @NgModule({
-  declarations: [AdminComponent, DashboardComponent, EmployeesComponent],
+  declarations: [EmployeesComponent, AdminComponent, DatalistComponent,EmployeesListComponent,DashboardComponent,DashboardCardComponent],
+  schemas: [NO_ERRORS_SCHEMA],
   imports: [
     CommonModule,
     RouterModule,
     FormsModule,
     ReactiveFormsModule,
     AdminRoutingModule,
+    CoreModule,
     LayoutModule,
-    
+    MatSidenavModule,
+    FlexLayoutModule,
+    RouterModule,
+    FormsModule,
+    SharedModule,
+    MatSidenavModule,
+    MatCheckboxModule,
     MatSidenavModule,
     MatFormFieldModule,
     MatInputModule,
@@ -34,11 +51,12 @@ import { MatDividerModule } from '@angular/material/divider';
     MatRippleModule,
     MatMenuModule,
     MatCardModule,
-    MatDividerModule
-
-
+    MatDividerModule,
+    MatIconModule,
+    CommonModule,
+    MatGridListModule,
+    ReactiveFormsModule
   ],
+  exports:[AdminComponent]
 })
-export class AdminModule {
-  constructor() {}
-}
+export class AdminModule {}

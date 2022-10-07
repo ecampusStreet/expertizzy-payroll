@@ -1,0 +1,86 @@
+<div>
+  <div class="flex bg-white-500">
+    <div class="flex flex-row">
+      <app-content-navbar></app-content-navbar>
+      <h3 class="font-bold text-gray-500 p-2">Employee Data Form</h3>
+    </div>
+
+  </div>
+  <!-- card design -->
+  <div class="bg-gray-100">
+
+    <div class="mx-3 my-3 p-3 ">
+      <div class=" box-border">
+        <div style="width: 100%;">
+          <mat-card style="margin: 10px 0px">
+            <div style="display: flex; justify-content:center">
+              <img class="rounded-full w-24 " src="assets/images/profile.jpg" alt="">
+            </div>
+            <div style="display: flex; justify-content: space-between;">
+              <div class="max-w-[60%] p-2 flex flex-col">
+                <span class="text-grey-400 font-medium "> <i
+                    class="fa-solid fa-user mr-2"></i>{{employee[0].fullName | titlecase}}</span>
+                <span class="text- font-medium "><i class="fa-solid fa-calendar-days mr-2"></i>
+                  {{employee[0].dob}}</span>
+                <span class="text-grey-400 font-medium"><i class="fa-solid fa-suitcase mr-2"></i>
+                  {{employee[0].desg}} </span>
+              </div>
+              <div class="p-2 flex flex-col">
+                <span class="text-grey-400 font-medium"><i
+                    class="fa-solid fa-envelope mr-2"></i>{{employee[0].email | titlecase}}</span>
+                <span class="text-grey-400 font-medium"><i
+                    class="fa-solid fa-mobile-retro mr-2"></i>{{employee[0].ph_no | titlecase}} </span>
+              </div>
+            </div>
+          </mat-card>
+        </div>
+
+
+        <!-- employee detail -->
+        <mat-accordion class="mx-4 ">
+          <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false" class="my-3" *ngFor="let data of employee" >
+            <mat-expansion-panel-header style="background-color: #dc3545">
+              <mat-panel-title class="font-medium" style="color:white">
+              {{data?.label}}
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+              <div class="w-full flex">
+                <div class="w-2/4 border-r-2 px-0">
+                  <div class=" flex justify-between">
+                    <div class="flex flex-col font">
+                      <span class="">FullName</span>
+                      <span class="">FatherName</span>
+                      <span class="">MaritalStatus</span>
+                    </div>
+                    <div class="flex flex-col mx-4">
+                      <span>{{data.fullName | titlecase}}</span>
+                      <span>{{data.fatherName | titlecase}}</span>
+                      <span>{{data.marital_status | titlecase}}</span>
+                    </div>
+                  </div>
+                </div>
+  
+                <div class="w-2/4 border-l-2">
+                  <div class="flex justify-between">
+  
+                    <div class=" flex flex-col mx-4 font ">
+                      <span>BloodGroup </span>
+                      <span>AadharNo </span>
+                      <span>Address </span>
+                    </div>
+  
+                    <div class=" flex flex-col">
+                      <span>{{data.bloodGroup | titlecase}}</span>
+                      <span>{{data.aadhara_no | titlecase}}</span>
+                      <span>{{data.address | titlecase}}</span>
+                   </div>
+                  
+                  </div>          
+                </div>  
+              </div>
+          </mat-expansion-panel>
+        </mat-accordion>
+      </div>
+    </div>
+  </div>
+</div>
