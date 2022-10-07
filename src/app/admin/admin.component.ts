@@ -1,4 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
+import { adminMenu } from '../core';
 import { SidebarComponent } from '../layout/sidebar/sidebar.component';
 
 @Component({
@@ -12,4 +13,5 @@ export class AdminComponent {
   toggle(){
     this.expand = !this.expand;
   }
+  lists = adminMenu;
 }

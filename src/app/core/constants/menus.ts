@@ -1,9 +1,55 @@
 export const adminMenu = [
-    { path: '/dashboard', title: 'Dashboard',  icon: 'dashboard', class: '' },
-    { path: '/user-profile', title: 'User Profile',  icon:'person', class: '' },
+    {
+        name:'Dashboard',
+        icon:' dashboard',
+        routeLink:"dashboard"    
+      },
+      {
+        name:'Employees',
+        icon:'groups',
+        routeLink:"employees"
+      },
+      {
+        name:'Departments',
+        icon:'badge',
+        routeLink:"departments"
+      },
+      {
+        name:'Events',
+        icon:'event_note',
+        routeLink:"events"
+      },
+      {
+        name:'Leaves',
+        icon:'edit_calendar',
+        routeLink:"leave"
+      },
 ];
 
 export const userMenu = [
-    { path: '/dashboard', title: 'Dashboard',  icon: 'dashboard', class: '' },
-    
-];
+        {
+            name:'Dashboard',
+            icon:' dashboard',
+            routeLink:"dashboard"    
+          },
+          {
+            name:'Employees',
+            icon:'groups',
+            routeLink:"employees"
+          },
+          {
+            name:'Departments',
+            icon:'badge',
+            routeLink:"departments"
+          },
+          {
+            name:'Events',
+            icon:'event_note',
+            routeLink:"events"
+          },
+          {
+            name:'Leaves',
+            icon:'edit_calendar',
+            routeLink:"leaves"
+          },
+    ];

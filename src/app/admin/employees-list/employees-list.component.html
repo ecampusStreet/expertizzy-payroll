@@ -2,7 +2,7 @@
   <div class="flex justify-end ml-3 mt-3 mb-3 mr-3">
     <button mat-raised-button color="primary" (click)="add()">+ Add</button>
     </div>
-  <app-tabledata [lists]="employeeList" [titles]="tableheader" (view)="detailView($event)" ></app-tabledata>
+  <app-tabledata [list]="employeeList" [titles]="tableheader" (eventAction)="action($event)" ></app-tabledata>
   <div class="flex justify-center ml-3 mt-3 mb-3 mr-3">
     <button mat-raised-button color="primary" (click)="loadMore()">Load more</button>
     </div>

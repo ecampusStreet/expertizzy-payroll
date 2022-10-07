@@ -17,7 +17,7 @@ export const AdminLayoutRoutes: Routes = [
       { path: 'add-employee', component: EmployeesComponent },
       { path: 'employees', component: EmployeesListComponent },
         // { path: 'datalist', component: DatalistComponent },
-        {path:'emp',component:EmpViewComponent}
+        {path:'employee-view',component:EmpViewComponent}
     ],
   },
 ];

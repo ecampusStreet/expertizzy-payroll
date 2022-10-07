@@ -18,12 +18,18 @@ import {MatListModule} from '@angular/material/list';
 import { CardListComponent } from './components/card-list/card-list.component';
 import {MatTableModule} from '@angular/material/table';
 import { ContentNavbarComponent } from './components/content-navbar/content-navbar.component';
+import {MatRadioModule} from '@angular/material/radio';
+import { DashboardCardsComponent } from './components/dashboard-cards/dashboard-cards.component';
+import { LeaveComponent } from './components/leave/leave.component';
+
 @NgModule({
   declarations: [
     TabledataComponent,
     EmpViewComponent,
     CardListComponent,
-    ContentNavbarComponent
+    ContentNavbarComponent,
+    DashboardCardsComponent,
+    LeaveComponent
   ],
   imports: [
     CommonModule,
@@ -44,8 +50,23 @@ import { ContentNavbarComponent } from './components/content-navbar/content-navb
   ],
   exports: [
     TabledataComponent,
+    MatSidenavModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSelectModule,
+    MatButtonModule,
+    MatRippleModule,
+    MatMenuModule,
+    MatCardModule,
+    MatDividerModule,
+    MatIconModule,
+    MatCheckboxModule,
+    TabledataComponent,
     CardListComponent,
-    ContentNavbarComponent
+    ContentNavbarComponent,
+    MatRadioModule,
+    DashboardCardsComponent,
+    LeaveComponent
   ]
 })
 export class SharedModule { }

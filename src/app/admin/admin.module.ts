@@ -53,7 +53,8 @@ import { AdminRoutingModule } from './admin.routing.module';
     MatDividerModule,
     MatIconModule,
     CommonModule,
-    MatGridListModule
+    MatGridListModule,
+    ReactiveFormsModule
   ],
   exports:[AdminComponent]
 })

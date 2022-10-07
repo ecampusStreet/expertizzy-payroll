@@ -5,3 +5,20 @@
     border-radius: 6px;
   }
   
+  .mat-expansion-panel-body {
+    padding: 0;
+}
+
+span i {
+  color: #dc3545;
+  font-size: 20px;
+  padding: 5px;
+}
+
+mat-accordion span {
+  padding: 5px 0;
+}
+
+.font span {
+  font-weight: 500;
+}

@@ -18,10 +18,11 @@ export class EmployeesListComponent implements OnInit {
 
   employeeList = [
     { 
-      EmpID: 1,
+      profile_photo:'assets/images/profile.jpg',
+      empId: 1,
       name:'Gagan',
-      Designation:'driver',
-      Department:'driver',
+      designation:'driver',
+      department:'driver',
       emailId:'s@gmail.com',
       mobileNo:5346546455,
       TeamLeader:'-',
@@ -42,10 +43,11 @@ export class EmployeesListComponent implements OnInit {
       Experience:'6',
     },
     { 
-      EmpID: 2,
+      profile_photo:'assets/images/profile.jpg',
+      empId: 2,
       name:'Ram',
-      Designation:'driver',
-      Department:'driver',
+      designation:'driver',
+      department:'driver',
       emailId:'s@gmail.com',
       mobileNo:8669246256,
       
@@ -68,7 +70,7 @@ export class EmployeesListComponent implements OnInit {
     },
   ];
 
-  	// Empl ID	Name	Designation	Grade	Department	Team	department Head	Team Leader	Emp mail id	emp Mobile no	Gender	Date of Joining	Date of Birth	Blood Group	Father Name	Marital Status	Bank Name 	Account no	IFSC code	UAN no	PAN No	AADHAARNo	qualification	Work Experience 	Leave entitalment 
+  	// Empl ID	Name	designation	Grade	department	Team	department Head	Team Leader	Emp mail id	emp Mobile no	Gender	Date of Joining	Date of Birth	Blood Group	Father Name	Marital Status	Bank Name 	Account no	IFSC code	UAN no	PAN No	AADHAARNo	qualification	Work Experience 	Leave entitalment 
 
 
   tableheader=[
@@ -80,7 +82,7 @@ export class EmployeesListComponent implements OnInit {
     {title:'MobileNo'},
     // {title:'Grade'},
     // {title:'Team'},
-    // {title:'DepartmentHead'},
+    // {title:'departmentHead'},
     // {title:'Team Leader'},
     // {title:'Gender'},
     // {title:'DOF'},
@@ -99,8 +101,19 @@ export class EmployeesListComponent implements OnInit {
     // {title:'Leave entitalment'},
   ];
 
-  detailView(lists:any){
-    console.log(lists);
+  action(event:any){
+    console.log(event,"event ");
+    switch(event.action){
+      case 'edit':
+        this.router.navigate(['admin/add-employee'],{queryParams:{id : event.data._id}});
+        break;
+      case 'delete':
+        this.deleteConfirmationpopup();
+        break;
+    }
+  }
+  deleteConfirmationpopup(){
+
   }
   add(){
    this.router.navigate(['admin/add-employee'])

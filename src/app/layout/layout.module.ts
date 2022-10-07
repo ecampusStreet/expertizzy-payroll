@@ -10,11 +10,13 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatBadgeModule} from '@angular/material/badge';
 import { RouterModule } from '@angular/router';
+import { SidebarmenulistComponent } from './sidebarmenulist/sidebarmenulist.component';
 @NgModule({
   declarations: [
     HeaderComponent,
     FooterComponent,
-    SidebarComponent
+    SidebarComponent,
+    SidebarmenulistComponent
   ],
   imports: [
     CommonModule,
@@ -29,7 +31,8 @@ import { RouterModule } from '@angular/router';
   exports:[
     HeaderComponent,
     FooterComponent,
-    SidebarComponent
+    SidebarComponent,
+    SidebarmenulistComponent
   ]
 })
 export class LayoutModule { }
