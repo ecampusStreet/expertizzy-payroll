@@ -13,6 +13,17 @@ import { LayoutModule } from '../layout/layout.module';
 import { AttendenceComponent } from './components/attendence/attendence.component';
 import { FeedsComponent } from './components/feeds/feeds.component';
 import { ColleguesComponent } from './components/collegues/collegues.component';
+import { DepartmentsComponent } from './components/departments/departments.component';
+import { EventsComponent } from './components/events/events.component';
+import { EmployeeComponent } from './components/employee/employee.component';
+import { LeavemanagementComponent } from './components/leavemanagement/leavemanagement.component';
+import {MatTabsModule} from '@angular/material/tabs';
+import { LeaveApplyComponent } from './leavemanagement/leave-apply/leave-apply.component';
+import { LeavehistoryComponent } from './leavemanagement/leavehistory/leavehistory.component';
+import { BalanceleaveComponent } from './leavemanagement/balanceleave/balanceleave.component';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { ReactiveFormsModule } from '@angular/forms';
 @NgModule({
   schemas: [NO_ERRORS_SCHEMA],
 
@@ -23,6 +34,13 @@ import { ColleguesComponent } from './components/collegues/collegues.component';
     AttendenceComponent,
     FeedsComponent,
     ColleguesComponent,
+    DepartmentsComponent,
+    EventsComponent,
+    EmployeeComponent,
+    LeavemanagementComponent,
+    LeaveApplyComponent,
+    LeavehistoryComponent,
+    BalanceleaveComponent,
   ],
   imports: [
     CommonModule,
@@ -33,6 +51,10 @@ import { ColleguesComponent } from './components/collegues/collegues.component';
     MatToolbarModule,
     FlexLayoutModule,
     LayoutModule,
+    MatTabsModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    ReactiveFormsModule
 
   ]
 })
