@@ -108,6 +108,7 @@
               <mat-form-field class="example-full-width">
                 <mat-label>Company Name</mat-label>
                 <input matInput placeholder="Previous Company Name" name="companyName" formControlName="companyName">
+                <mat-error>Enter previous company name</mat-error>
               </mat-form-field>
             </div>
 
@@ -115,6 +116,7 @@
               <mat-form-field class="example-full-width">
                 <mat-label>Experience</mat-label>
                 <input type="number" matInput placeholder="Enter Employee Experience" name="yearOfExp" formControlName="yearOfExp">
+                <mat-error> Enter no of year experience </mat-error>
               </mat-form-field>
 
               <mat-form-field>
@@ -124,6 +126,7 @@
                     {{desg.viewValue}}
                   </mat-option>
                 </mat-select>
+                <mat-error>Select your Designation</mat-error>
               </mat-form-field>
             </div>
             <div class="align">
