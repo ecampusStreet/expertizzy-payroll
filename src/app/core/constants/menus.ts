@@ -1,55 +1,56 @@
-export const adminMenu = [
-    {
-        name:'Dashboard',
-        icon:' dashboard',
-        routeLink:"dashboard"    
-      },
+  // Side menus
+  export const adminMenu = [
       {
-        name:'Employees',
-        icon:'groups',
-        routeLink:"employees"
-      },
-      {
-        name:'Departments',
-        icon:'badge',
-        routeLink:"departments"
-      },
-      {
-        name:'Events',
-        icon:'event_note',
-        routeLink:"events"
-      },
-      {
-        name:'Leaves',
-        icon:'edit_calendar',
-        routeLink:"leave"
-      },
-];
-
-export const userMenu = [
+          name:'Dashboard',
+          icon:' dashboard',
+          routeLink:"dashboard"    
+        },
         {
-            name:'Dashboard',
-            icon:' dashboard',
-            routeLink:"dashboard"    
-          },
+          name:'Employees',
+          icon:'groups',
+          routeLink:"employee/list"
+        },
+        {
+          name:'Departments',
+          icon:'badge',
+          routeLink:"departments"
+        },
+        {
+          name:'Events',
+          icon:'event_note',
+          routeLink:"events"
+        },
+        {
+          name:'Leaves',
+          icon:'edit_calendar',
+          routeLink:"leave"
+        },
+  ];
+
+  export const userMenu = [
           {
-            name:'Employees',
-            icon:'groups',
-            routeLink:"employees"
-          },
-          {
-            name:'Departments',
-            icon:'badge',
-            routeLink:"departments"
-          },
-          {
-            name:'Events',
-            icon:'event_note',
-            routeLink:"events"
-          },
-          {
-            name:'Leaves',
-            icon:'edit_calendar',
-            routeLink:"leaves"
-          },
-    ];
+              name:'Dashboard',
+              icon:' dashboard',
+              routeLink:"dashboard"    
+            },
+            {
+              name:'Employees',
+              icon:'groups',
+              routeLink:"employees"
+            },
+            {
+              name:'Departments',
+              icon:'badge',
+              routeLink:"departments"
+            },
+            {
+              name:'Events',
+              icon:'event_note',
+              routeLink:"events"
+            },
+            {
+              name:'Leaves',
+              icon:'edit_calendar',
+              routeLink:"leaves"
+            },
+      ];

@@ -3,11 +3,11 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
-  selector: 'app-employees',
-  templateUrl: './employees.component.html',
-  styleUrls: ['./employees.component.scss']
+  selector: 'app-employee',
+  templateUrl: './add.component.html',
+  styleUrls: ['./add.component.scss']
 })
-export class EmployeesComponent implements OnInit {
+export class AddComponent implements OnInit {
 
    form!: FormGroup;
    expDetail!: FormGroup;

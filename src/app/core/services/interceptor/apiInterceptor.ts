@@ -1,50 +1,52 @@
-// import { Injectable } from '@angular/core';
-// import {
-//     HttpRequest,
-//     HttpHandler,
-//     HttpEvent,
-//     HttpInterceptor
-// } from '@angular/common/http';
-// import { Observable, from } from 'rxjs';
-// import { AuthService } from '../auth/auth.service';
-// import { CurrentUserService } from '../current-user/current-user/current-user.service';
-// // import { CurrentUserService } from '../services';
-// // import { Platform } from '@ionic/angular';
+import { Injectable } from '@angular/core';
+import {
+    HttpRequest,
+    HttpHandler,
+    HttpEvent,
+    HttpInterceptor
+} from '@angular/common/http';
+import { Observable, from } from 'rxjs';
+import { AuthService } from '../auth/auth.service';
+import { CurrentUserService } from '../current-user/current-user/current-user.service';
+import { environment } from 'src/environments/environment';
 
-// @Injectable()
-// export class ApiInterceptor implements HttpInterceptor {
-//     token ='';
-//     constructor(
-//         private userService: CurrentUserService,
-//         // private platform: Platform,
-//         private auth: AuthService
-//     ) {
-//     }
-//     getToken(){
-//         return this.userService.getAccessToken().then(token =>{
-//             let accessToken:any =  JSON.parse(token);
-//             return accessToken.access_token;
-//         })
-//     }
-//     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-//         return this.handle(request, next );
-        
-//     }
+// import { CurrentUserService } from '../services';
+// import { Platform } from '@ionic/angular';
 
-//     async handle(req: HttpRequest<any>, next: HttpHandler) {
-//         let authReq;
-//         if (req.url != "http://44.235.110.99/acceleration/v1/account/login") {
-//             const token :any =  await this.getToken();
-//             authReq = req.clone({
-//                 setHeaders: {
-//                     'X-auth-token':'bearer '+ token,
-//                 }
-//             });
-//         return next.handle(authReq).toPromise()
-//         } else {
-//             authReq = req.clone({
-//             })
-//         }
-//         return next.handle(authReq).toPromise()
-//     }
-// }
+@Injectable()
+export class ApiInterceptor implements HttpInterceptor {
+    constructor(
+        private userService: CurrentUserService,
+        // private platform: Platform,
+        private auth: AuthService
+    ) {
+    }
+    getToken(){
+        return this.userService.getAccessToken().then(token =>{
+            let accessToken:any =  JSON.parse(token);
+            console.log(accessToken.accessToken,"accessToken");
+            return accessToken.accessToken;
+        })
+    }
+    intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+        return from(this.handle(request, next))  as Observable<HttpEvent<any>>;
+    }
+
+    async handle(req: HttpRequest<any>, next: HttpHandler) {
+        let authReq;
+        if (req.url != environment.apiBaseUrl + "login") {
+            const token :any =  await this.getToken();
+            console.log(token,"token");
+            authReq = req.clone({
+                setHeaders: {
+                    'authorization':'bearer '+ token,
+                }
+            });
+        return next.handle(authReq).toPromise()
+        } else {
+            authReq = req.clone({
+            })
+        }
+        return next.handle(authReq).toPromise()
+    }
+}

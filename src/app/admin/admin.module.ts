@@ -6,7 +6,7 @@ import { CoreModule } from '../core/core.module';
 import { LayoutModule } from '../layout/layout.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { RouterModule } from '@angular/router';
-import { EmployeesComponent } from './employees/employees.component';
+import { AddComponent } from './employee/add/add.component';
 import { MatIconModule } from '@angular/material/icon';
 import { DatalistComponent } from './datalist/datalist.component';
 import {MatCheckboxModule} from '@angular/material/checkbox';
@@ -22,11 +22,14 @@ import { MatRippleModule } from '@angular/material/core';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatCardModule} from '@angular/material/card';
 import { MatDividerModule } from '@angular/material/divider';
-import { EmployeesListComponent } from './employees-list/employees-list.component';
+import { EmployeesListComponent } from './employee/employees-list/employees-list.component';
 import { SharedModule } from '../shared/shared.module';
 import { AdminRoutingModule } from './admin.routing.module';
+import { ApiInterceptor } from '../core';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+ApiInterceptor
 @NgModule({
-  declarations: [EmployeesComponent, AdminComponent, DatalistComponent,EmployeesListComponent,DashboardComponent,DashboardCardComponent],
+  declarations: [AddComponent, AdminComponent, DatalistComponent,EmployeesListComponent,DashboardComponent,DashboardCardComponent],
   schemas: [NO_ERRORS_SCHEMA],
   imports: [
     CommonModule,
@@ -57,6 +60,7 @@ import { AdminRoutingModule } from './admin.routing.module';
     MatGridListModule,
     ReactiveFormsModule
   ],
-  exports:[AdminComponent]
+  exports:[AdminComponent],
+  providers: [  { provide: HTTP_INTERCEPTORS, useClass: ApiInterceptor, multi: true }]
 })
 export class AdminModule {}

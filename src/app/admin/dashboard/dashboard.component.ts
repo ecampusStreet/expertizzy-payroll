@@ -16,7 +16,7 @@ export class DashboardComponent implements OnInit {
       lable: 'Total employees',
       count: 200,
       icon: 'groups',
-      url:'admin/employees'
+      url:'admin/employee/list'
     },
     {
       lable: 'Total present employees',

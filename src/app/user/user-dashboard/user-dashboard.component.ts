@@ -11,7 +11,7 @@ export class UserDashboardComponent implements OnInit {
     lable: ' Today Attendence',
     count: 200,
     icon: 'groups',
-    url:'/admin/employee-list'
+    url:'/user/employee-list'
   },
   {
     lable: 'My Leaves',

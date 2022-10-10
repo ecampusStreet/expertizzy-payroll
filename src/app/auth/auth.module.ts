@@ -18,6 +18,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatOptionModule } from '@angular/material/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { AuthRoutingModule } from './auth.routing.module';
+import { CoreModule } from '../core/core.module';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import { AuthRoutingModule } from './auth.routing.module';
     MatSelectModule,
     MatOptionModule,
     MatFormFieldModule,
+    CoreModule
   ], exports:[
     MatCardModule
   ]

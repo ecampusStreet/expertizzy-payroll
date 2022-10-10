@@ -2,9 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
-// import { RequestParams } from '../../interfaces/request-params';
-// import { environment } from 'src/environments/environment';
-// import { AuthService } from '../auth/auth.service';
 import { Router } from '@angular/router';
 import { CurrentUserService } from '../current-user/current-user/current-user.service';
 import { ToastService } from '../toast.service';
@@ -28,7 +25,6 @@ export class ApiService {
 
   get(requestParam : any) {
     this.baseUrl =this.baseUrl ? this.baseUrl :  environment.appBase;
-    console.log(environment.apiBaseUrl + this.baseUrl + requestParam.url,"environment.apiBaseUrl + this.baseUrl + ");
     return this.http.get(environment.apiBaseUrl + this.baseUrl + requestParam.url).pipe(
       tap(data => {
         return data
@@ -49,7 +45,6 @@ export class ApiService {
   }
 
   put(requestParam : any): Observable<any> {
-    console.log(environment.apiBaseUrl + this.baseUrl + requestParam.url, "environment.apiBaseUrl + this.baseUrl + requestParam.url");
     return this.http.put(environment.apiBaseUrl + this.baseUrl + requestParam.url, requestParam.payload).pipe(
       tap(data => {
         return data
