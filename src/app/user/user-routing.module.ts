@@ -13,6 +13,7 @@ import { UserDashboardComponent } from './user-dashboard/user-dashboard.componen
 import { UserComponent } from './user.component';
 import { LeaveApplyComponent } from './leavemanagement/leave-apply/leave-apply.component';
 import { LeavehistoryComponent } from './leavemanagement/leavehistory/leavehistory.component';
+import { BalanceleaveComponent } from './leavemanagement/balanceleave/balanceleave.component';
 const routes: Routes = [
   {
     path: '',
@@ -29,11 +30,10 @@ const routes: Routes = [
       {path:'leaves',component:LeavemanagementComponent},
       {path:'events',component:EventsComponent},
       {path:'departments',component:DepartmentsComponent},
-      {path:'employees',component:EmployeeComponent},
+      // {path:'employees',component:EmployeeComponent},
       {path:'apply',component:LeaveApplyComponent},
       {path:'history',component:LeavehistoryComponent},
-
-
+      {path:'balance',component:BalanceleaveComponent},
     ],
   },
 ];

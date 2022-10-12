@@ -3,10 +3,10 @@ import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-emp-view',
-  templateUrl: './emp-view.component.html',
-  styleUrls: ['./emp-view.component.scss']
+  templateUrl: './view.component.html',
+  styleUrls: ['./view.component.scss']
 })
-export class EmpViewComponent implements OnInit {
+export class ViewComponent implements OnInit {
 
   panelOpenState = false;
 
