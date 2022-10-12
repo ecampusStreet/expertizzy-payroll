@@ -12,7 +12,6 @@ import { MatInputModule } from '@angular/material/input';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSidenavModule } from '@angular/material/sidenav';
-import { EmpViewComponent } from './components/emp-view/emp-view.component';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatListModule} from '@angular/material/list';
 import { CardListComponent } from './components/card-list/card-list.component';
@@ -21,11 +20,9 @@ import { ContentNavbarComponent } from './components/content-navbar/content-navb
 import {MatRadioModule} from '@angular/material/radio';
 import { DashboardCardsComponent } from './components/dashboard-cards/dashboard-cards.component';
 import { LeaveComponent } from './components/leave/leave.component';
-
 @NgModule({
   declarations: [
     TabledataComponent,
-    EmpViewComponent,
     CardListComponent,
     ContentNavbarComponent,
     DashboardCardsComponent,
@@ -46,7 +43,7 @@ import { LeaveComponent } from './components/leave/leave.component';
     MatCheckboxModule,
     MatExpansionModule,
     MatListModule,
-    MatTableModule
+    MatTableModule,
   ],
   exports: [
     TabledataComponent,
@@ -61,6 +58,8 @@ import { LeaveComponent } from './components/leave/leave.component';
     MatDividerModule,
     MatIconModule,
     MatCheckboxModule,
+    MatExpansionModule,
+
     TabledataComponent,
     CardListComponent,
     ContentNavbarComponent,

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { adminDashboard } from 'src/app/core';
 
 @Component({
   selector: 'app-dashboard',
@@ -11,33 +12,10 @@ export class DashboardComponent implements OnInit {
     private router : Router
   ) {}
   breakpoint: number | undefined;
-  cardData = [
-    {
-      lable: 'Total employees',
-      count: 200,
-      icon: 'groups',
-      url:'admin/employee/list'
-    },
-    {
-      lable: 'Total present employees',
-      count: 100,
-      icon: 'groups',
-      url:'',
-    },
-    {
-      lable: 'Employees activity',
-      count: '',
-      icon: 'hub',
-      url:'',
-
-    },
-    {
-      lable: 'Total leaves request',
-      count: 200,
-      icon: 'delete',
-      url:'',
-    },
-  ];
+     
+      
+  cardData =adminDashboard;
+  
   ngOnInit(): void {}
 
   onResize(event:any) {

@@ -22,14 +22,15 @@ import { MatRippleModule } from '@angular/material/core';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatCardModule} from '@angular/material/card';
 import { MatDividerModule } from '@angular/material/divider';
-import { EmployeesListComponent } from './employee/employees-list/employees-list.component';
 import { SharedModule } from '../shared/shared.module';
 import { AdminRoutingModule } from './admin.routing.module';
 import { ApiInterceptor } from '../core';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { ListComponent } from './employee/list/list.component';
+import { ViewComponent } from './employee/view/view.component';
 ApiInterceptor
 @NgModule({
-  declarations: [AddComponent, AdminComponent, DatalistComponent,EmployeesListComponent,DashboardComponent,DashboardCardComponent],
+  declarations: [AddComponent, AdminComponent, DatalistComponent,ListComponent,DashboardComponent,DashboardCardComponent,ViewComponent],
   schemas: [NO_ERRORS_SCHEMA],
   imports: [
     CommonModule,

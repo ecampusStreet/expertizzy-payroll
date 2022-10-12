@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ToastService } from 'src/app/core';
 
 @Component({
   selector: 'app-events',
@@ -7,9 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EventsComponent implements OnInit {
 
-  constructor() { }
+    
+    constructor(private toast : ToastService,) { }
 
   ngOnInit(): void {
+    this.toast.error("Events ui is not implemented yet",)
   }
 
 }

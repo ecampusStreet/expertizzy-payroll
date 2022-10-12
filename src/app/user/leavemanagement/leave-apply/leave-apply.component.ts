@@ -15,6 +15,22 @@ export class LeaveApplyComponent implements OnInit {
     {label:'Vacation leave',value:'sickLeave'},
     {label:'Paternity Leave',value:'paternityLeave'},
   ];
+
+  fromSession = [
+    {label:'session 1',value:'session 1'},
+    {label:'session 2',value:'session 2'},  
+  ];
+  toSession = [
+    {label:'session 1',value:'session 1'},
+    {label:'session 2',value:'session 2'},  
+  ];
+
+  selectedFiles: any;
+
+  selectFile(event: { target:any }) {
+    this.selectedFiles = event.target.files;
+}
+  
   constructor() { }
 
   ngOnInit(): void {
@@ -23,9 +39,11 @@ export class LeaveApplyComponent implements OnInit {
     this.leaveForm = new FormGroup({
       leaveType:new FormControl('',[Validators.required]),
       reason:new FormControl('',[Validators.required]),
-      phone_no:new FormControl('5564698797',[Validators.required]),
+      phone_no:new FormControl('',[Validators.required]),
       start:new FormControl('',[Validators.required]),
       end:new FormControl('',[Validators.required]),
+      fromsession:new FormControl('',[Validators.required]),
+      tosession:new FormControl('',[Validators.required]),
     });
   }
 

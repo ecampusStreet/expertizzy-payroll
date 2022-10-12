@@ -4,10 +4,10 @@ import { ApiService, ToastService, urls } from 'src/app/core';
 
 @Component({
   selector: 'app-employees-list',
-  templateUrl: './employees-list.component.html',
-  styleUrls: ['./employees-list.component.scss'],
+  templateUrl: './list.component.html',
+  styleUrls: ['./list.component.scss'],
 })
-export class EmployeesListComponent implements OnInit {
+export class ListComponent implements OnInit {
  
 
   constructor(
@@ -15,6 +15,7 @@ export class EmployeesListComponent implements OnInit {
     private apiService : ApiService,
     private toast : ToastService
   ) {}
+  
   ngOnInit(): void {
     this.getEmployees();
   }

@@ -1,1 +1,87 @@
-<p>leavehistory works!</p>
+<div class="m-4">
+    <mat-accordion class="mx-1">
+        <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false" class=" border">
+            <mat-expansion-panel-header class="shrink">
+                <mat-panel-title class="w-1/4 ">
+                    <span class="flex flex-col">
+                        <small class="text-gray-500 font-medium">category</small>
+                        <span class="font-medium"> Leave</span>
+                    </span>
+                </mat-panel-title>
+                <mat-panel-title class="w-1/4 ">
+                    <span class="flex flex-col">
+                        <small class="text-gray-500 font-medium">Leave Type</small>
+                        <span class="font-medium">casualLeave</span>
+                    </span>
+                </mat-panel-title>
+                <mat-panel-title class="w-1/4 ">
+                    <span class="flex flex-col">
+                        <small class="text-gray-500 font-medium"> No of days</small>
+                        <span class="font-medium">1</span>
+                    </span>
+                </mat-panel-title>
+                <mat-panel-title class="w-1/4 ">
+                    <span class="text-green-500 font-medium">APPROVED</span>
+                </mat-panel-title>
+            </mat-expansion-panel-header >
+            <mat-divider></mat-divider>
+            <div class="flex lg:text-base text-sm">
+            <span class="lg:w-1/12 w-3/12 text-gray-500 font-medium">Duration :</span>
+            <span class="w-11/12">08 sep 2022(session1) to  08 sep 2022(session 2)  </span>   
+            </div>
+            <div class="flex lg:text-sm ">
+            <span class="lg:w-1/12 w-3/12 text-gray-500 font-medium">Reason :</span>
+            <span class="w-11/12"> tomorrow i am planning to take leave due to emergency work please approve my request </span>   
+            </div>
+            <mat-action-row >
+                    <div class="flex flex-col">
+                        <span class="text-gray-500 font-medium">Applied on </span>
+                        <span class="font-medium">07 Sep 2022</span>
+                    </div>
+            </mat-action-row>
+        </mat-expansion-panel>
+    </mat-accordion> 
+
+    <mat-accordion class="">
+        <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false" class="border">
+            <mat-expansion-panel-header class="shrink">
+                <mat-panel-title class="w-1/4 ">
+                    <span class="flex flex-col">
+                        <small class="text-gray-500 font-medium">category</small>
+                        <span class="font-medium"> Leave</span>
+                    </span>
+                </mat-panel-title>
+                <mat-panel-title class="w-1/4 ">
+                    <span class="flex flex-col">
+                        <small class="text-gray-500 font-medium">Leave Type</small>
+                        <span class="font-medium">earnedLeave</span>
+                    </span>
+                </mat-panel-title>
+                <mat-panel-title class="w-1/4 ">
+                    <span class="flex flex-col">
+                        <small class="text-gray-500 font-medium"> No of days</small>
+                        <span class="font-medium">2</span>
+                    </span>
+                </mat-panel-title>
+                <mat-panel-title class="w-1/4 ">
+                    <span class="text-green-500 font-medium">APPROVED</span>
+                </mat-panel-title>
+            </mat-expansion-panel-header >
+            <mat-divider></mat-divider>
+            <div class="flex lg:text-sm  text-sm">
+            <span class="lg:w-1/12 w-3/12 text-gray-500 font-medium">Duration :</span>
+            <span class="w-11/12">08 sep 2022(session1) to  09 sep 2022(session 2)  </span>   
+            </div>
+            <div class="flex lg:text-sm ">
+            <span class="lg:w-1/12 w-3/12 text-gray-500 font-medium">Reason :</span>
+            <span class="w-11/12"> tomorrow i am planning to take leave due to emergency work please approve my request </span>   
+            </div>
+            <mat-action-row >
+                    <div class="flex flex-col">
+                        <span class="text-gray-500 font-medium">Applied on </span>
+                        <span class="font-medium">07 Sep 2022</span>
+                    </div>
+            </mat-action-row>
+        </mat-expansion-panel>
+    </mat-accordion> 
+</div>
