@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { UtilsService } from 'src/app/core';
 
 @Component({
   selector: 'app-tabledata',
@@ -8,9 +9,14 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 export class TabledataComponent {
   @Input() list:any;
   @Output() eventAction = new EventEmitter
-  displayedColumns: string[] = ['profile_photo','empId', 'name','mobile', 'designation', 'department','actions'];
+  displayedColumns: string[] = ['profile_photo', 'name','mobile', 'designation', 'department','actions'];
 
+  constructor(private utilService :UtilsService){
+
+  }
 /** Whether the number of selected elements matches the total number of rows. */
+
+
 action(data:any,type : any){
   let payload ={
     data:data,

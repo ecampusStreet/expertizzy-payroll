@@ -20,13 +20,17 @@ import { ContentNavbarComponent } from './components/content-navbar/content-navb
 import {MatRadioModule} from '@angular/material/radio';
 import { DashboardCardsComponent } from './components/dashboard-cards/dashboard-cards.component';
 import { LeaveComponent } from './components/leave/leave.component';
+import {MatDialogModule} from '@angular/material/dialog';
+import { GenericConfirmPopupComponent } from './components/generic-confirm-popup/generic-confirm-popup.component';
+
 @NgModule({
   declarations: [
     TabledataComponent,
     CardListComponent,
     ContentNavbarComponent,
     DashboardCardsComponent,
-    LeaveComponent
+    LeaveComponent,
+    GenericConfirmPopupComponent
   ],
   imports: [
     CommonModule,
@@ -44,6 +48,7 @@ import { LeaveComponent } from './components/leave/leave.component';
     MatExpansionModule,
     MatListModule,
     MatTableModule,
+    MatDialogModule
   ],
   exports: [
     TabledataComponent,
@@ -65,7 +70,8 @@ import { LeaveComponent } from './components/leave/leave.component';
     ContentNavbarComponent,
     MatRadioModule,
     DashboardCardsComponent,
-    LeaveComponent
+    LeaveComponent,
+    GenericConfirmPopupComponent
   ]
 })
 export class SharedModule { }

@@ -5,3 +5,4 @@ export * from  './interceptor/apiInterceptor';
 export * from  './localStorage';
 export * from './toast.service';
 export * from './header-service/header.service';
+export * from './utils.service';

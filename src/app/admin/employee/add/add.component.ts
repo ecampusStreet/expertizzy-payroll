@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ApiService, ToastService, urls } from 'src/app/core';
 
 @Component({
   selector: 'app-employee',
@@ -15,30 +16,41 @@ export class AddComponent implements OnInit {
   emgDetail!: FormGroup;
   accDetail!: FormGroup;
   qualiDetail!: FormGroup;
-  title = "Add new employee"
+  title = "Add new employee";
+  employeeData :any;
+  id:string ='';
+  showForm : boolean = false;
   constructor(
     private router: Router,
     private routerParams: ActivatedRoute,
+    private apiService : ApiService,
+    private tostService : ToastService
   ) {
     routerParams.queryParams.subscribe((params: any) => {
       // console.log(params.id);
       if (params.id) {
+        this.id = params.id;
         this.getEmployeeData();
+      }else{
+        this.prepareForm();
       }
     })
   }
 
   ngOnInit(): void {
+  }
+
+  prepareForm(){
     this.form = new FormGroup({
-      deputy_id: new FormControl('', [Validators.required]),
-      fullName: new FormControl('', [Validators.required]),
-      fatherName: new FormControl('', [Validators.required]),
-      dob: new FormControl('', [Validators.required]),
-      ph_no: new FormControl('', [Validators.required, Validators.minLength(10), Validators.pattern("^((\\+91-?)|0)?[0-9]{10}$")]),
-      email: new FormControl('', [Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]),
-      bloodGroup: new FormControl('', [Validators.required]),
-      aadhara_no: new FormControl('', [Validators.required]),
-      address: new FormControl('', [Validators.required]),
+      // deputy_id: new FormControl('', [Validators.required]),
+      fullName: new FormControl(this.employeeData.personalDetails[0]? this.employeeData.personalDetails[0].fullName :'', [Validators.required]),
+      fatherName: new FormControl(this.employeeData.personalDetails[0]? this.employeeData.personalDetails[0].fatherName :'', [Validators.required]),
+      dob: new FormControl(this.employeeData.personalDetails[0]? this.employeeData.personalDetails[0].dob :'', [Validators.required]),
+      ph_no: new FormControl(this.employeeData.personalDetails[0]? this.employeeData.personalDetails[0].ph_no :'', [Validators.required, Validators.minLength(10), Validators.pattern("^((\\+91-?)|0)?[0-9]{10}$")]),
+      email: new FormControl(this.employeeData.personalDetails[0]? this.employeeData.personalDetails[0].email :'', [Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]),
+      bloodGroup: new FormControl(this.employeeData.personalDetails[0]? this.employeeData.personalDetails[0].bloodGroup :'', [Validators.required]),
+      aadhara_no: new FormControl(this.employeeData.personalDetails[0]? this.employeeData.personalDetails[0].aadhara_no :'', [Validators.required]),
+      address: new FormControl(this.employeeData.personalDetails[0]? this.employeeData.personalDetails[0].address :'', [Validators.required]),
     });
 
     this.expDetail = new FormGroup({
@@ -84,9 +96,8 @@ export class AddComponent implements OnInit {
         specialization: new FormControl('', [Validators.required]),
       }),
     })
-
+    this.showForm = true;
   }
-
   get f() {
     return this.form.controls;
   }
@@ -115,7 +126,6 @@ export class AddComponent implements OnInit {
     { value: 'Driver', viewValue: 'Driver' },
     { value: 'Electriction', viewValue: 'Electriction' },
     { value: 'Technician', viewValue: 'Technician' },
-
   ];
 
   Department = [
@@ -163,16 +173,41 @@ export class AddComponent implements OnInit {
 
   submit() {
     console.log(this.form.value, "value");
-    let payload = {
+    let payload :any={
+      accountDetails: this.accDetail.value,
+      departmentDetails:this.depDetail.value,
+      emergencyDetails: this.emgDetail.value,
+      experienceDetails:this.expDetail.value,
       personalDetails: this.form.value,
-      experienceDetails: this.expDetail.value,
-      qualification:this.qualiDetail.value,
+      qualificationDetails: this.qualiDetail.value
+      }
+    if(this.id ){
+      payload._id = this.id
     }
-    console.log(payload, "value");
+    const config ={
+      url : this.id ? urls.employee.byId + this.id : urls.employee.create,
+      payload:payload
+    }
+    this.apiService.post(config).subscribe(resp=>{
+      if(resp.success){
+        this.tostService.success(resp.message);
+        this.router.navigate(['admin/employee/add'],{queryParams:{id: resp.result._id}});
+      }
+      console.log(resp,"resp");
+    })
   }
 
   getEmployeeData() {
     // TODO get employee on id.
+    const config ={
+      url : urls.employee.byId+this.id
+    }
+    this.apiService.get(config).subscribe(resp=>{
+      this.employeeData = resp.result.data;
+      console.log(resp,"resp get");
+      this.prepareForm();
+    })
+
   }
 }
 

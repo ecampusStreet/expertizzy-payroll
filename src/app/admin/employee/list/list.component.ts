@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { ApiService, ToastService, urls } from 'src/app/core';
+import { ApiService, ToastService, urls, UtilsService } from 'src/app/core';
 
 @Component({
   selector: 'app-employees-list',
@@ -13,7 +13,8 @@ export class ListComponent implements OnInit {
   constructor(
     private router : Router,
     private apiService : ApiService,
-    private toast : ToastService
+    private toast : ToastService,
+    private utilsService:UtilsService
   ) {}
   
   ngOnInit(): void {
@@ -55,16 +56,33 @@ export class ListComponent implements OnInit {
         this.router.navigate(['admin/employee/add'],{queryParams:{id : event.data._id}});
         break;
       case 'delete':
-        this.deleteConfirmationpopup();
+        this.deleteConfirmationpopup(event.data);
         break;
     }
   }
-  deleteConfirmationpopup(){
 
+  deleteConfirmationpopup(event:any){
+    let data = {
+      header:"",
+      message:"Are you sure, you want to delete this employee?"
+    }
+  this.utilsService.openDialog(data).then(resp =>{
+      if(resp){
+        this.delete(event);
+      }
+    })
   }
   add(){
    this.router.navigate(['admin/employee/add'])
   }
   loadMore(){
+  }
+  delete(event:any){
+    const config ={
+      url : urls.employee.delete + event._id
+    }
+    this.apiService.delete(config).subscribe(resp =>{
+      console.log(resp,"resp");
+    })
   }
 }
