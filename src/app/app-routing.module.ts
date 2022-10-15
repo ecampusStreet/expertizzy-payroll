@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './auth/login/login.component';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
+import { ProfileComponent } from './profile/profile.component';
 // import { PrivateGuard } from './core';
 const routes: Routes = [
   {
@@ -11,6 +12,7 @@ const routes: Routes = [
     pathMatch: 'full',
   },
   {path:'login',component:LoginComponent},
+  {path:'profile',component:ProfileComponent},
   {path:'forgot-password',component:ForgotPasswordComponent },
   {
     path: '',

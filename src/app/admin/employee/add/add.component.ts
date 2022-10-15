@@ -9,7 +9,8 @@ import { ApiService, ToastService, urls } from 'src/app/core';
   styleUrls: ['./add.component.scss']
 })
 export class AddComponent implements OnInit {
-
+  GradeArray: any = ['8th Grade', '9th Grade', '10th Grade', '11th Grade', '12th Grade'];
+  selectedDesignation ='technician';
   form!: FormGroup;
   expDetail!: FormGroup;
   depDetail!: FormGroup;
@@ -43,57 +44,59 @@ export class AddComponent implements OnInit {
   prepareForm(){
     this.form = new FormGroup({
       // deputy_id: new FormControl('', [Validators.required]),
-      fullName: new FormControl(this.employeeData.personalDetails[0]? this.employeeData.personalDetails[0].fullName :'', [Validators.required]),
-      fatherName: new FormControl(this.employeeData.personalDetails[0]? this.employeeData.personalDetails[0].fatherName :'', [Validators.required]),
-      dob: new FormControl(this.employeeData.personalDetails[0]? this.employeeData.personalDetails[0].dob :'', [Validators.required]),
-      ph_no: new FormControl(this.employeeData.personalDetails[0]? this.employeeData.personalDetails[0].ph_no :'', [Validators.required, Validators.minLength(10), Validators.pattern("^((\\+91-?)|0)?[0-9]{10}$")]),
-      email: new FormControl(this.employeeData.personalDetails[0]? this.employeeData.personalDetails[0].email :'', [Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]),
-      bloodGroup: new FormControl(this.employeeData.personalDetails[0]? this.employeeData.personalDetails[0].bloodGroup :'', [Validators.required]),
-      aadhara_no: new FormControl(this.employeeData.personalDetails[0]? this.employeeData.personalDetails[0].aadhara_no :'', [Validators.required]),
-      address: new FormControl(this.employeeData.personalDetails[0]? this.employeeData.personalDetails[0].address :'', [Validators.required]),
+      fullName: new FormControl(this.employeeData && this.employeeData.personalDetails[0]? this.employeeData.personalDetails[0].fullName :'', [Validators.required]),
+      fatherName: new FormControl(this.employeeData && this.employeeData.personalDetails[0]? this.employeeData.personalDetails[0].fatherName :'', [Validators.required]),
+      dob: new FormControl(this.employeeData && this.employeeData.personalDetails[0]? this.employeeData.personalDetails[0].dob :'', [Validators.required]),
+      ph_no: new FormControl(this.employeeData && this.employeeData.personalDetails[0]? this.employeeData.personalDetails[0].ph_no :'', [Validators.required, Validators.minLength(10), Validators.pattern("^((\\+91-?)|0)?[0-9]{10}$")]),
+      email: new FormControl(this.employeeData && this.employeeData.personalDetails[0]? this.employeeData.personalDetails[0].email :'', [Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]),
+      bloodGroup: new FormControl(this.employeeData && this.employeeData.personalDetails[0]? this.employeeData.personalDetails[0].bloodGroup :'', [Validators.required]),
+      aadhara_no: new FormControl(this.employeeData && this.employeeData.personalDetails[0]? this.employeeData.personalDetails[0].aadhara_no :'', [Validators.required]),
+      address: new FormControl(this.employeeData && this.employeeData.personalDetails[0]? this.employeeData.personalDetails[0].address :'', [Validators.required]),
     });
-
+    this.selectedDesignation =this.employeeData && this.employeeData.experienceDetails[0]? this.employeeData.experienceDetails[0].designation:'';
     this.expDetail = new FormGroup({
-      companyName: new FormControl('', [Validators.required]),
-      yearOfExp: new FormControl('', [Validators.required]),
-      designation: new FormControl('', [Validators.required]),
+      companyName: new FormControl(this.employeeData && this.employeeData.experienceDetails[0]? this.employeeData.experienceDetails[0].companyName :'', [Validators.required]),
+      yearOfExp: new FormControl(this.employeeData && this.employeeData.experienceDetails[0]? this.employeeData.experienceDetails[0].yearOfExp :'', [Validators.required]),
+      designation: new FormControl(this.employeeData && this.employeeData.experienceDetails[0]? this.employeeData.experienceDetails[0].designation :'', [Validators.required]),
     });
 
+    this.expDetail.patchValue({ designation: this.employeeData && this.employeeData.experienceDetails[0]? this.employeeData.experienceDetails[0].designation:'' });
     this.depDetail = new FormGroup({
-      dept_name: new FormControl('', [Validators.required]),
+      dept_name: new FormControl(this.employeeData && this.employeeData.departmentDetails[0]? this.employeeData.departmentDetails[0].dept_name
+        :'', [Validators.required]),
       // team:new FormControl('',[Validators.required]),
-      teamLeader: new FormControl('', [Validators.required]),
-      doj: new FormControl('', [Validators.required]),
+      teamLeader: new FormControl(this.employeeData && this.employeeData.departmentDetails[0]? this.employeeData.departmentDetails[0].teamLeader:'', [Validators.required]),
+      doj: new FormControl(this.employeeData && this.employeeData.departmentDetails[0]? this.employeeData.departmentDetails[0].doj:'', [Validators.required]),
     });
 
     this.emgDetail = new FormGroup({
-      name: new FormControl( '', [Validators.required]),
-      relation_with: new FormControl('', [Validators.required]),
-      age: new FormControl('', [Validators.required]),
-      address: new FormControl('', [Validators.required]),
-      contact_no: new FormControl('', [Validators.required]),
+      name: new FormControl( this.employeeData && this.employeeData.emergencyDetails[0]? this.employeeData.emergencyDetails[0].name:'', [Validators.required]),
+      relation_with: new FormControl(this.employeeData && this.employeeData.emergencyDetails[0]? this.employeeData.emergencyDetails[0].relation_with:'', [Validators.required]),
+      age: new FormControl(this.employeeData && this.employeeData.emergencyDetails[0]? this.employeeData.emergencyDetails[0].age:'', [Validators.required]),
+      address: new FormControl(this.employeeData && this.employeeData.emergencyDetails[0]? this.employeeData.emergencyDetails[0].address:'', [Validators.required]),
+      contact_no: new FormControl(this.employeeData && this.employeeData.emergencyDetails[0]? this.employeeData.emergencyDetails[0].contact_no:'', [Validators.required]),
     });
     this.accDetail = new FormGroup({
-      acc_number: new FormControl('', [Validators.required]),
-      branch: new FormControl('', [Validators.required]),
-      ifscCode: new FormControl('', [Validators.required]),
-      uan_no: new FormControl('', [Validators.required]),
-      panCard: new FormControl('', [Validators.required]),
+      acc_number: new FormControl(this.employeeData && this.employeeData.accountDetails[0]? this.employeeData.accountDetails[0].acc_number:'', [Validators.required]),
+      branch: new FormControl(this.employeeData && this.employeeData.accountDetails[0]? this.employeeData.accountDetails[0].branch:'', [Validators.required]),
+      ifscCode: new FormControl(this.employeeData && this.employeeData.accountDetails[0]? this.employeeData.accountDetails[0].ifscCode:'', [Validators.required]),
+      uan_no: new FormControl(this.employeeData && this.employeeData.accountDetails[0]? this.employeeData.accountDetails[0].uan_no:'', [Validators.required]),
+      panCard: new FormControl(this.employeeData && this.employeeData.accountDetails[0]? this.employeeData.accountDetails[0].panCard:'', [Validators.required]),
     });
     this.qualiDetail = new FormGroup({
       sslc: new FormGroup({
-        yearOfPassing: new FormControl('', [Validators.required]),
-        marks: new FormControl('', [Validators.required]),
+        yearOfPassing: new FormControl(this.employeeData && this.employeeData.qualificationDetails[0]? this.employeeData.qualificationDetails[0].sslc.yearOfPassing : '', [Validators.required]),
+        marks: new FormControl( this.employeeData && this.employeeData.qualificationDetails[0]? this.employeeData.qualificationDetails[0].sslc.marks: '', [Validators.required]),
       }),
       puc: new FormGroup({
-        yearOfPassing: new FormControl('', [Validators.required]),
-        marks: new FormControl('', [Validators.required]),
-        specialization: new FormControl('', [Validators.required]),
+        yearOfPassing: new FormControl( this.employeeData && this.employeeData.qualificationDetails[0]? this.employeeData.qualificationDetails[0].puc.yearOfPassing:'', [Validators.required]),
+        marks: new FormControl( this.employeeData && this.employeeData.qualificationDetails[0]? this.employeeData.qualificationDetails[0].puc.marks:'', [Validators.required]),
+        specialization: new FormControl( this.employeeData && this.employeeData.qualificationDetails[0]? this.employeeData.qualificationDetails[0].puc.specialization:'', [Validators.required]),
       }),
       degree: new FormGroup({
-        yearOfPassing: new FormControl('', [Validators.required]),
-        marks: new FormControl('', [Validators.required]),
-        specialization: new FormControl('', [Validators.required]),
+        yearOfPassing: new FormControl(this.employeeData && this.employeeData.qualificationDetails[0]? this.employeeData.qualificationDetails[0].puc.yearOfPassing:'', [Validators.required]),
+        marks: new FormControl(this.employeeData && this.employeeData.qualificationDetails[0]? this.employeeData.qualificationDetails[0].puc.marks:'', [Validators.required]),
+        specialization: new FormControl(this.employeeData && this.employeeData.qualificationDetails[0]? this.employeeData.qualificationDetails[0].puc.specialization:'', [Validators.required]),
       }),
     })
     this.showForm = true;
@@ -109,23 +112,23 @@ export class AddComponent implements OnInit {
   gender = ["male", "female"];
 
   Designation = [
-    { value: 'M/C Operator', viewValue: 'M/C Operator' },
-    { value: 'Fitter', viewValue: 'Fitter' },
-    { value: 'Welder', viewValue: 'Welder' },
-    { value: 'House Keeping', viewValue: 'House Keeping' },
-    { value: 'Asst.Fitter', viewValue: 'Asst.Fitter' },
-    { value: 'Office Boy', viewValue: 'Office Boy' },
-    { value: 'Trainee', viewValue: 'Trainee' },
-    { value: 'Operator', viewValue: 'Operator' },
-    { value: 'Sharing M/C Asst', viewValue: 'Sharing M/C Asst' },
-    { value: 'Store Keeper', viewValue: 'Store Keeper' },
-    { value: 'Grinder', viewValue: 'Grinder' },
-    { value: 'Hydro Helper', viewValue: 'Hydro Helper' },
-    { value: 'Trainee Welder', viewValue: 'Trainee welder' },
-    { value: 'Helper', viewValue: 'Helper' },
-    { value: 'Driver', viewValue: 'Driver' },
-    { value: 'Electriction', viewValue: 'Electriction' },
-    { value: 'Technician', viewValue: 'Technician' },
+    { value: 'M/COperator', viewValue: 'M/C Operator' },
+    { value: 'fitter', viewValue: 'Fitter' },
+    { value: 'welder', viewValue: 'Welder' },
+    { value: 'houseKeeping', viewValue: 'House Keeping' },
+    { value: 'asstFitter', viewValue: 'Asst.Fitter' },
+    { value: 'officeBoy', viewValue: 'Office Boy' },
+    { value: 'trainee', viewValue: 'Trainee' },
+    { value: 'operator', viewValue: 'Operator' },
+    { value: 'sharingM/CAsst', viewValue: 'Sharing M/C Asst' },
+    { value: 'storeKeeper', viewValue: 'Store Keeper' },
+    { value: 'grinder', viewValue: 'Grinder' },
+    { value: 'hydroHelper', viewValue: 'Hydro Helper' },
+    { value: 'traineeWelder', viewValue: 'Trainee welder' },
+    { value: 'helper', viewValue: 'Helper' },
+    { value: 'driver', viewValue: 'Driver' },
+    { value: 'electriction', viewValue: 'Electriction' },
+    { value: 'technician', viewValue: 'Technician' },
   ];
 
   Department = [
@@ -191,7 +194,9 @@ export class AddComponent implements OnInit {
     this.apiService.post(config).subscribe(resp=>{
       if(resp.success){
         this.tostService.success(resp.message);
+        if(!this.id ){
         this.router.navigate(['admin/employee/add'],{queryParams:{id: resp.result._id}});
+        }
       }
       console.log(resp,"resp");
     })
@@ -206,8 +211,12 @@ export class AddComponent implements OnInit {
       this.employeeData = resp.result.data;
       console.log(resp,"resp get");
       this.prepareForm();
+      // this.accDetail.setValue(employee);
     })
 
+  }
+  compareFn(a:any, b:any): boolean {
+    return a.value === b.value;
   }
 }
 

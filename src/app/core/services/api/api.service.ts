@@ -19,16 +19,24 @@ export class ApiService {
   header ='';
   constructor(public http: HttpClient,
     public userService : CurrentUserService,
-    public toastService : ToastService
+    public toastService : ToastService,
+    private router : Router
   ) { }
 
 
   get(requestParam : any) {
     this.baseUrl =this.baseUrl ? this.baseUrl :  environment.appBase;
     return this.http.get(environment.apiBaseUrl + this.baseUrl + requestParam.url).pipe(
-      tap(data => {
-        return data
+      tap((data:any) => {
+        if(data.status == 401){
+          this.userService.deleteUser().then(resp =>{
+            this.router.navigate(['/login']);
+          })
+        }else{
+          return data
+        }
       }, error => {
+        console.log(error,"data");
       }),
       catchError(this.handleError([]))
     )
@@ -37,8 +45,14 @@ export class ApiService {
   post(requestParam : any){
     this.baseUrl =this.baseUrl ? this.baseUrl :  environment.appBase;
     return this.http.post(environment.apiBaseUrl + this.baseUrl + requestParam.url, requestParam.payload).pipe(
-      tap(data => {
-        return data
+      tap((data:any) => {
+        if(data.status == 401){
+          this.userService.deleteUser().then(resp =>{
+            this.router.navigate(['/login']);
+          })
+        }else{
+          return data
+        }
       }),
       catchError(this.handleError([]))
     )
@@ -100,6 +114,7 @@ export class ApiService {
 
       // Let the app keep running by returning an empty result.
       if (error.status === 401) {
+        alert(error.status);
         // this.toastService.displayMessage('Session timeout, please login','danger');
         this.userService.deleteUser().then(resp =>{})
       } else {

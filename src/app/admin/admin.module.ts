@@ -18,7 +18,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {MatInputModule} from '@angular/material/input';
 import {MatSelectModule} from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
-import { MatRippleModule } from '@angular/material/core';
+import { MatNativeDateModule, MatRippleModule } from '@angular/material/core';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatCardModule} from '@angular/material/card';
 import { MatDividerModule } from '@angular/material/divider';
@@ -28,9 +28,11 @@ import { ApiInterceptor } from '../core';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ListComponent } from './employee/list/list.component';
 import { ViewComponent } from './employee/view/view.component';
-ApiInterceptor
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { DepartmentsComponent } from './departments/list/departments.component';
+import { MatTableModule } from '@angular/material/table';
 @NgModule({
-  declarations: [AddComponent, AdminComponent, DatalistComponent,ListComponent,DashboardComponent,DashboardCardComponent,ViewComponent],
+  declarations: [AddComponent, AdminComponent, DatalistComponent,ListComponent,DashboardComponent,DashboardCardComponent,ViewComponent,DepartmentsComponent],
   schemas: [NO_ERRORS_SCHEMA],
   imports: [
     CommonModule,
@@ -59,9 +61,13 @@ ApiInterceptor
     MatIconModule,
     CommonModule,
     MatGridListModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatTableModule,
+
   ],
   exports:[AdminComponent],
-  providers: [  { provide: HTTP_INTERCEPTORS, useClass: ApiInterceptor, multi: true }]
+  providers: [MatNativeDateModule,  { provide: HTTP_INTERCEPTORS, useClass: ApiInterceptor, multi: true }]
 })
 export class AdminModule {}

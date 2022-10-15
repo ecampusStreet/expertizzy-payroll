@@ -19,17 +19,17 @@
             <div style="display: flex; justify-content: space-between;">
               <div class="max-w-[60%] p-2 flex flex-col">
                 <span class="text-grey-400 font-medium "> <i
-                    class="fa-solid fa-user mr-2"></i>{{employee[0].fullName | titlecase}}</span>
+                    class="fa-solid fa-user mr-2"></i>{{employee?.personalDetails[0].fullName | titlecase}}</span>
                 <span class="text- font-medium "><i class="fa-solid fa-calendar-days mr-2"></i>
-                  {{employee[0].dob}}</span>
+                  {{employee?.personalDetails[0].dob | date :'dd/MM/yyyy'}}</span>
                 <span class="text-grey-400 font-medium"><i class="fa-solid fa-suitcase mr-2"></i>
-                  {{employee[0].desg}} </span>
+                  {{employee?.personalDetails[0].designation | titlecase}} </span>
               </div>
               <div class="p-2 flex flex-col">
                 <span class="text-grey-400 font-medium"><i
-                    class="fa-solid fa-envelope mr-2"></i>{{employee[0].email | titlecase}}</span>
+                    class="fa-solid fa-envelope mr-2"></i>{{employee?.personalDetails[0].email }}</span>
                 <span class="text-grey-400 font-medium"><i
-                    class="fa-solid fa-mobile-retro mr-2"></i>{{employee[0].ph_no | titlecase}} </span>
+                    class="fa-solid fa-mobile-retro mr-2"></i>{{employee?.personalDetails[0].ph_no }} </span>
               </div>
             </div>
           </mat-card>
@@ -38,24 +38,24 @@
 
         <!-- employee detail -->
         <mat-accordion class="mx-4 ">
-          <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false" class="my-3" *ngFor="let data of employee" >
+          <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false" class="my-3" >
             <mat-expansion-panel-header style="background-color: #dc3545">
               <mat-panel-title class="font-medium" style="color:white">
-              {{data?.label}}
+             Personal Details
               </mat-panel-title>
             </mat-expansion-panel-header>
               <div class="w-full flex">
                 <div class="w-2/4 border-r-2 px-0">
                   <div class=" flex justify-between">
                     <div class="flex flex-col font">
-                      <span class="">FullName</span>
-                      <span class="">FatherName</span>
-                      <span class="">MaritalStatus</span>
+                      <span class="">Name</span>
+                      <span class="">Father name</span>
+                      <span class="">Marital status</span>
                     </div>
                     <div class="flex flex-col mx-4">
-                      <span>{{data.fullName | titlecase}}</span>
-                      <span>{{data.fatherName | titlecase}}</span>
-                      <span>{{data.marital_status | titlecase}}</span>
+                      <span>{{employee?.personalDetails[0].fullName | titlecase}}</span>
+                      <span>{{employee?.personalDetails[0].fatherName | titlecase}}</span>
+                      <span>{{employee?.personalDetails[0].marital_status | titlecase}}</span>
                     </div>
                   </div>
                 </div>
@@ -64,19 +64,206 @@
                   <div class="flex justify-between">
   
                     <div class=" flex flex-col mx-4 font ">
-                      <span>BloodGroup </span>
-                      <span>AadharNo </span>
+                      <span>Blood group </span>
+                      <span>Aadhar no </span>
                       <span>Address </span>
                     </div>
   
                     <div class=" flex flex-col">
-                      <span>{{data.bloodGroup | titlecase}}</span>
-                      <span>{{data.aadhara_no | titlecase}}</span>
-                      <span>{{data.address | titlecase}}</span>
+                      <span>{{employee?.personalDetails[0].bloodGroup | titlecase}}</span>
+                      <span>{{employee?.personalDetails[0].aadhara_no }}</span>
+                      <span>{{employee?.personalDetails[0].address | titlecase}}</span>
                    </div>
                   
                   </div>          
                 </div>  
+              </div>
+          </mat-expansion-panel>
+          <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false" class="my-3" >
+            <mat-expansion-panel-header style="background-color: #dc3545">
+              <mat-panel-title class="font-medium" style="color:white">
+                Experience details
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+              <div class="w-full flex" *ngFor="let exp of employee?.experienceDetails">
+                <div class="w-2/4 border-r-2 px-0">
+                  <div class=" flex justify-between">
+                    <div class="flex flex-col font">
+                      <span class="">Company name</span>
+                      <span class="">Designation</span>
+                      <span class="">Experience</span>
+                    </div>
+                    <div class="flex flex-col mx-4">
+                      <span>{{exp.companyName | titlecase}}</span>
+                      <span>{{exp.designation | titlecase}}</span>
+                      <span>{{exp.yearOfExp}}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+          </mat-expansion-panel>
+
+          <!-- Department details -->
+          <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false" class="my-3" >
+            <mat-expansion-panel-header style="background-color: #dc3545">
+              <mat-panel-title class="font-medium" style="color:white">
+                Department details
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+              <div class="w-full flex" *ngFor="let dep of employee?.departmentDetails">
+                <div class="w-2/4 border-r-2 px-0">
+                  <div class=" flex justify-between">
+                    <div class="flex flex-col font">
+                      <span class="">Department</span>
+                      <span class="">Team leader</span>
+                      <span class="">Date of joining</span>
+                    </div>
+                    <div class="flex flex-col mx-4">
+                      <span>{{dep.dept_name | titlecase}}</span>
+                      <span>{{dep.teamLeader | titlecase}}</span>
+                      <span>{{dep.doj | date :'dd/MM/yyyy'}}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+          </mat-expansion-panel>
+
+          <!-- Emergency details -->
+          <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false" class="my-3" >
+            <mat-expansion-panel-header style="background-color: #dc3545">
+              <mat-panel-title class="font-medium" style="color:white">
+                Emergency details
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+              <div class="w-full flex" *ngFor="let emg of employee?.emergencyDetails">
+                <div class="w-2/4 border-r-2 px-0">
+                  <div class=" flex justify-between">
+                    <div class="flex flex-col font">
+                      <span class="">Name</span>
+                      <span class="">Contact number</span>
+                      <span class="">Relation with </span>
+                    </div>
+                    <div class="flex flex-col mx-4">
+                      <span>{{emg.name | titlecase}}</span>
+                      <span>{{emg.contact_no }}</span>
+                      <span>{{emg.relation_with}}</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="w-2/4 border-l-2">
+                  <div class="flex justify-between">
+  
+                    <div class=" flex flex-col mx-4 font ">
+                      <span>Age </span>
+                      <span>Address </span>
+                    </div>
+  
+                    <div class=" flex flex-col">
+                      <span>{{emg?.age}}</span>
+                      <span>{{emg?.address | titlecase}}</span>
+                   </div>
+                  
+                  </div>          
+                </div> 
+              </div>
+          </mat-expansion-panel>
+
+
+          <!-- Qualification details -->
+          <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false" class="my-3" >
+            <mat-expansion-panel-header style="background-color: #dc3545">
+              <mat-panel-title class="font-medium" style="color:white">
+                Qualification details
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+              <div class="w-full flex">
+                <div class="w-2/4 border-r-2 px-0">
+                  <div class=" flex justify-between">
+                    <h3> SSLC</h3>
+                    <div class="flex flex-col font">
+                    
+                      <span class="">Year of passing</span>
+                      <span class="">Marks</span>
+                    </div>
+                    <div class="flex flex-col mx-4">
+                      <span>{{employee?.qualificationDetails[0].sslc.yearOfPassing }}</span>
+                      <span>{{employee?.qualificationDetails[0].sslc.marks }}</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="w-2/4 pl-4">
+                  <div class="flex justify-between">
+                    <h3> PUC</h3>
+                    <div class=" flex flex-col mx-4 font ">
+                      <span class="">Year of passing</span>
+                      <span class="">Specialization</span>
+                      <span class="">Marks</span>
+                    </div>
+                    <div class=" flex flex-col">
+                      <span>{{employee?.qualificationDetails[0].puc.yearOfPassing }}</span>
+                      <span>{{employee?.qualificationDetails[0].puc.specialization }}</span>
+                      <span>{{employee?.qualificationDetails[0].puc.marks }}</span>
+                   </div>
+                  </div>          
+                </div> 
+              </div>
+              <div class="w-full flex">
+                <div class="w-2/4 border-r-2 px-0">
+                  <div class=" flex justify-between">
+                    <h3> Degree</h3>
+                    <div class="flex flex-col font">
+                    
+                      <span class="">Year of passing</span>
+                      <span class="">Specialization</span>
+                      <span class="">Marks</span>
+                    </div>
+                    <div class="flex flex-col mx-4">
+                      <span>{{employee?.qualificationDetails[0].degree.yearOfPassing }}</span>
+                      <span>{{employee?.qualificationDetails[0].degree.specialization }}</span>
+                      <span>{{employee?.qualificationDetails[0].degree.marks }}</span>
+                    </div>
+                  </div>
+                </div>
+                </div>
+          </mat-expansion-panel>
+
+          <!-- Account details -->
+          <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false" class="my-3" >
+            <mat-expansion-panel-header style="background-color: #dc3545">
+              <mat-panel-title class="font-medium" style="color:white">
+                Account details
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+              <div class="w-full flex">
+                <div class="w-2/4 border-r-2 px-0">
+                  <div class=" flex justify-between">
+                    <div class="flex flex-col font">
+                      <span class="">Account number</span>
+                      <span class="">Branch</span>
+                      <span class="">IFSC code</span>
+                    </div>
+                    <div class="flex flex-col mx-4">
+                      <span>{{employee?.accountDetails[0].acc_number }}</span>
+                      <span>{{employee?.accountDetails[0].branch | titlecase}}</span>
+                      <span>{{employee?.accountDetails[0].ifscCode}}</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="w-2/4  pl-4">
+                <div class=" flex justify-between">
+                  <div class="flex flex-col font">
+                    <span class="">PAN number</span>
+                    <span class="">UAN</span>
+                  </div>
+                  <div class="flex flex-col mx-4">
+                    <span>{{employee?.accountDetails[0].panCard }}</span>
+                    <span>{{employee?.accountDetails[0].uan_no}}</span>
+                    <span>{{employee?.accountDetails[0].ifscCode}}</span>
+                  </div>
+                </div>
+                </div>
               </div>
           </mat-expansion-panel>
         </mat-accordion>

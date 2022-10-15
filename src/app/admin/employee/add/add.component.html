@@ -18,7 +18,7 @@
               <mat-label> Full name</mat-label>
               <input matInput placeholder=" Enter employee name" name="fullName" formControlName="fullName">
               <mat-error *ngIf="f['fullName'].touched && f['fullName'].invalid" class="text-red-500">
-                <mat-error *ngIf="f['fullName'].errors && f['fullName'].errors['required']">fullName is required.
+                <mat-error *ngIf="f['fullName'].errors && f['fullName'].errors['required']">Full name is required.
                 </mat-error>
                 <mat-error *ngIf="f['fullName'].errors && f['fullName'].errors['']"></mat-error>
               </mat-error>
@@ -27,14 +27,15 @@
             <mat-form-field class="example-full-width">
               <mat-label>Father name</mat-label>
               <input matInput placeholder="Enter father name" name="fatherName" formControlName="fatherName">
-              <mat-error>fatherName is required</mat-error>
+              <mat-error>Father name is required</mat-error>
             </mat-form-field>
 
             <mat-form-field class="example-full-width">
               <mat-label>Date of birth </mat-label>
-              <input type="date" matInput placeholder=" Employee date Of birth" name="dob" formControlName="dob">
-              <mat-error>Please provide DOB</mat-error>
-
+              <input matInput [matDatepicker]="picker" placeholder=" Employee date Of birth" name="dob" formControlName="dob">
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+              <mat-error>Please provide Date of birth</mat-error>
             </mat-form-field>
 
             <mat-form-field class="example-full-width ">
@@ -42,19 +43,19 @@
               <input matInput placeholder="Please enter employee number" maxlength="10" name="ph_no"
                 formControlName="ph_no">
               <mat-error *ngIf="f['ph_no'].touched && f['ph_no'].invalid" class="text-red-500">
-                <mat-error *ngIf="f['ph_no'].errors && f['ph_no'].errors['required']">phoneNumber is required.
+                <mat-error *ngIf="f['ph_no'].errors && f['ph_no'].errors['required']">Phone number is required.
                 </mat-error>
                 <mat-error *ngIf="f['ph_no'].errors && f['ph_no'].errors['minlength']">Minimum length require 10
                 </mat-error>
-                <mat-error *ngIf="f['ph_no'].errors && f['ph_no'].errors['pattern']">add valid phone number</mat-error>
+                <mat-error *ngIf="f['ph_no'].errors && f['ph_no'].errors['pattern']">Add valid phone number</mat-error>
               </mat-error>
             </mat-form-field>
 
             <mat-form-field class="example-full-width ">
-              <mat-label>Email</mat-label>
+              <mat-label>Email id</mat-label>
               <input matInput placeholder=" Please enter employee email" name="email" formControlName="email">
               <mat-error *ngIf="f['email'].touched && f['email'].invalid" class="text-red-500">
-                <mat-error *ngIf="f['email'].errors && f['email'].errors['required']">Email is required.</mat-error>
+                <mat-error *ngIf="f['email'].errors && f['email'].errors['required']">Email id is required.</mat-error>
                 <mat-error *ngIf="f['email'].errors && f['email'].errors['pattern']">Please, enter valid email address.
                 </mat-error>
               </mat-error>
@@ -62,7 +63,7 @@
 
             <mat-form-field class="example-full-width ">
               <mat-label>Aadhar no</mat-label>
-              <input matInput placeholder="please enter aadhar number" name="aadhara_no" formControlName="aadhara_no">
+              <input matInput placeholder="Please enter aadhar number" name="aadhara_no" formControlName="aadhara_no">
               <mat-error *ngIf="f['aadhara_no'].touched && f['aadhara_no'].invalid" class="text-red-500">
                 <mat-error *ngIf="f['aadhara_no'].errors && f['aadhara_no'].errors['required']">Aadhar Number is
                   required.</mat-error>
@@ -72,7 +73,7 @@
 
             <mat-form-field class="example-full-width ">
               <mat-label>Blood group</mat-label>
-              <input matInput placeholder="please Enter Employee Blood Group" name="bloodGroup"
+              <input matInput placeholder="Please enter employee blood group" name="bloodGroup"
                 formControlName="bloodGroup">
             </mat-form-field>
           </div>
@@ -81,7 +82,7 @@
             <mat-form-field>
               <textarea matInput placeholder="Enter employee address" name="address"
                 formControlName="address"></textarea>
-              <mat-error>please provide address</mat-error>
+              <mat-error>Please provide address</mat-error>
             </mat-form-field>
           </div>
           <div class="align">
@@ -90,13 +91,11 @@
         </form>
       </mat-card>
 
-
       <mat-card class="p-6 bg-white px-2 mx-3 my-3 ">
         <div class="p-2 clear-both">
           <h3>Experience detail</h3>
           <form action="" [formGroup]="expDetail">
             <div class="grid lg:grid-cols-1  ">
-
               <mat-form-field class="example-full-width">
                 <mat-label>Company name</mat-label>
                 <input matInput placeholder="Previous Company Name" name="companyName" formControlName="companyName">
@@ -109,17 +108,16 @@
                 <mat-label>Experience</mat-label>
                 <input type="number" matInput placeholder="Enter employee experience" name="yearOfExp"
                   formControlName="yearOfExp">
-                <mat-error> Enter no of year experience </mat-error>
+                <mat-error> Enter no of year experience. </mat-error>
               </mat-form-field>
-
               <mat-form-field>
                 <mat-label>Designation</mat-label>
-                <mat-select name="designation" formControlName="designation">
+                <mat-select  matNativeControl name="designation" formControlName="designation" [(value)]="selectedDesignation">
                   <mat-option *ngFor="let desg of Designation" [value]="desg.value">
                     {{desg.viewValue}}
                   </mat-option>
                 </mat-select>
-                <mat-error>Select your <b> designation</b></mat-error>
+                <mat-error>Select your designation.</mat-error>
               </mat-form-field>
             </div>
             <div class="align">
@@ -131,7 +129,7 @@
       </mat-card>
 
       <mat-card class="p-6 bg-white px-2 mx-3 my-3 ">
-
+        <div class="p-2 clear-both">
         <h3>Department details</h3>
         <form action="" [formGroup]="depDetail">
           <div class="grid  lg:grid-cols-3  gap-3 ">
@@ -155,62 +153,64 @@
 
             <mat-form-field class="example-full-width">
               <mat-label>Date of joining</mat-label>
-              <input type="date" matInput placeholder="Please enter joining date" name="doj" formControlName="doj">
+              <input matInput [matDatepicker]="pickerdoj"  placeholder="Please enter joining date" name="doj" formControlName="doj">
+              <mat-datepicker-toggle matSuffix [for]="pickerdoj"></mat-datepicker-toggle>
+              <mat-datepicker #pickerdoj></mat-datepicker>
               <mat-error>Enter date of joining</mat-error>
             </mat-form-field>
 
           </div>
           <div class="align">
-            <button mat-raised-button color="primary" [disabled]="!depDetail.valid" class="">Submit</button>
+            <button mat-raised-button color="primary" [disabled]="!depDetail.valid" class=""   (click)="submit()">Submit</button>
           </div>
         </form>
+        </div>
       </mat-card>
 
       <mat-card class="p-6 bg-white px-2 mx-3 my-3 ">
-
+        <div class="p-2 clear-both">
         <h3>Emergency detail</h3>
         <form [formGroup]="emgDetail">
           <div class="grid lg:grid-cols-2 gap-3">
             <mat-form-field class="example-full-width">
               <mat-label>Name</mat-label>
-              <input matInput placeholder="" name="name" formControlName="name">
+              <input matInput placeholder="Enter name" name="name" formControlName="name">
               <mat-error>Name is required</mat-error>
             </mat-form-field>
 
             <mat-form-field class="example-full-width">
               <mat-label>Relation with</mat-label>
-              <input matInput placeholder="" name="relation_with" formControlName="relation_with">
+              <input matInput placeholder="Relation" name="relation_with" formControlName="relation_with">
               <mat-error>Please fill the above field</mat-error>
             </mat-form-field>
 
             <mat-form-field class="example-full-width">
               <mat-label>Age</mat-label>
-              <input matInput placeholder="Employee Ifsc code Number" name="age" formControlName="age">
-              <mat-error>please enter age</mat-error>
+              <input matInput placeholder="Enter IFSC code " name="age" formControlName="age">
+              <mat-error>Please enter age</mat-error>
             </mat-form-field>
 
             <mat-form-field class="example-full-width">
               <mat-label>phone no</mat-label>
               <input matInput placeholder="Employee phone number" name="contact_no" formControlName="contact_no">
-              <mat-error>phone no is required</mat-error>
+              <mat-error>Phone no is required</mat-error>
             </mat-form-field>
           </div>
           <div class="grid  lg:grid-cols-1">
             <mat-form-field>
-              <textarea matInput placeholder="Enter employee address" name="address"
+              <textarea matInput placeholder="Enter address" name="address"
                 formControlName="address"></textarea>
-              <mat-error>please provide address</mat-error>
+              <mat-error>Please provide address</mat-error>
             </mat-form-field>
           </div>
           <div class="align">
-            <button mat-raised-button color="primary" [disabled]="!emgDetail.valid">Submit</button>
+            <button mat-raised-button color="primary" [disabled]="!emgDetail.valid"   (click)="submit()">Submit</button>
           </div>
-
         </form>
+        </div>
       </mat-card>
-
       <mat-card class="p-6 bg-white px-2 mx-3 my-3 ">
-
+        <div class="p-2 clear-both">
         <h3>Account detail</h3>
         <form action="" [formGroup]="accDetail">
           <div class="grid lg:grid-cols-3 gap-3">
@@ -232,23 +232,24 @@
 
             <mat-form-field class="example-full-width">
               <mat-label>Uan no</mat-label>
-              <input matInput placeholder="Employee UAN Number" name="uan_no" formControlName="uan_no">
+              <input matInput placeholder="Employee UAN number" name="uan_no" formControlName="uan_no">
             </mat-form-field>
 
             <mat-form-field class="example-full-width">
               <mat-label>Pan card</mat-label>
-              <input matInput placeholder="Employee PAN Number" name="panCard" formControlName="panCard">
+              <input matInput placeholder="Employee PAN number" name="panCard" formControlName="panCard">
             </mat-form-field>
           </div>
           <div class="align">
-            <button mat-raised-button color="primary" class="" [disabled]="!accDetail.valid">Submit</button>
+            <button mat-raised-button color="primary" class="" [disabled]="!accDetail.valid"   (click)="submit()">Submit</button>
           </div>
 
         </form>
-
+</div>
       </mat-card>
 
       <mat-card class="p-6 bg-white px-2 mx-3 my-3 ">
+        <div class="p-2 clear-both">
         <h3>Qulification detail</h3>
         <form [formGroup]="qualiDetail">
           <div formGroupName="sslc">
@@ -325,5 +326,6 @@
             <button mat-raised-button color="primary" [disabled]="!qualiDetail.valid" (click)="submit()">Submit</button>
           </div>
         </form>
+        </div>
       </mat-card>
     </div>

@@ -24,13 +24,19 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatTableModule } from '@angular/material/table';
 
 import { AdminModule } from './admin/admin.module';
-import { FlexLayoutModule } from '@angular/flex-layout';
+import {  FlexLayoutModule } from '@angular/flex-layout';
+import { ProfileComponent } from './profile/profile.component';
+import { CoreModule } from './core/core.module';
+import { SharedModule } from './shared/shared.module';
+
+
 @NgModule({
   declarations: [
     AppComponent,
     // LoginComponent,
     ForgotPasswordComponent,
     NotFoundComponent,
+    ProfileComponent,
   ],
   
   imports: [
@@ -57,7 +63,9 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     MatFormFieldModule,
     HttpClientModule,
     AdminModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    CoreModule,
+    SharedModule
   ],
   providers: [],
   bootstrap: [AppComponent],

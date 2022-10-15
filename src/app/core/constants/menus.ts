@@ -13,7 +13,7 @@
         {
           name:'Departments',
           icon:'badge',
-          routeLink:"departments"
+          routeLink:"department/list"
         },
         {
           name:'Events',

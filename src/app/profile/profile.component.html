@@ -1,0 +1,43 @@
+<div>
+    <div class="flex bg-white-500">
+      <div class="flex flex-row">
+        <app-content-navbar></app-content-navbar>
+        <h3 class="font-bold text-gray-500 p-2">Employee Data Form</h3>
+      </div>
+  
+    </div>
+    <!-- card design -->
+    <div class="bg-gray-100">
+      <div class="mx-3 my-3 p-3 ">
+        <div class=" box-border">
+          <div style="width: 100%;">
+            <mat-card style="margin: 10px 0px">
+                <div style="display: flex; justify-content:end">
+                    <mat-icon (click)="edit()">edit</mat-icon>
+                    </div>
+              <div style="display: flex; justify-content:center">
+                <img class="rounded-full w-24 " src="assets/images/profile.jpg" alt="">
+              </div>
+           
+              <div style="display: flex; justify-content: space-between;">
+                <div class="max-w-[60%] p-2 flex flex-col">
+                  <span class="text-grey-400 font-medium "> <i
+                      class="fa-solid fa-user mr-2"></i>{{employee.fullName | titlecase}}</span>
+                  <!-- <span class="text- font-medium "><i class="fa-solid fa-calendar-days mr-2"></i>
+                    {{employee?.email | date :'dd/MM/yyyy'}}</span> -->
+                  <!-- <span class="text-grey-400 font-medium"><i class="fa-solid fa-suitcase mr-2"></i>
+                    {{employee?.personalDetails[0].designation | titlecase}} </span> -->
+                </div>
+                <div class="p-2 flex flex-col">
+                  <span class="text-grey-400 font-medium"><i
+                      class="fa-solid fa-envelope mr-2"></i>{{employee?.email }}</span>
+                  <!-- <span class="text-grey-400 font-medium"><i
+                      class="fa-solid fa-mobile-retro mr-2"></i>{{employee?.personalDetails[0].ph_no }} </span> -->
+                </div>
+              </div>
+            </mat-card>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
