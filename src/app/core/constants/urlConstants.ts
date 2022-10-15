@@ -12,5 +12,9 @@ export const urls = {
         create:'api/department/create',
         delete:'api/department/delete/',
         update:'api/department/update'
+    },
+    leaves:{
+        apply:'api/leave/apply',
+        list:'api/leave/list'
     }
 }

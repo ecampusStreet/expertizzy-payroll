@@ -28,7 +28,13 @@ const routes: Routes = [
       loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule)
     }]
   },
-
+  {
+    path: 'attendance',
+    children: [{
+      path: '',
+      loadChildren: () => import('./attendance/attendance.module').then(m => m.AttendanceModule)
+    }]
+  },
   { path: 'user', loadChildren: () => 
   import('./user/user.module').then(m => m.UserModule) },
   {path:'**', component:NotFoundComponent}

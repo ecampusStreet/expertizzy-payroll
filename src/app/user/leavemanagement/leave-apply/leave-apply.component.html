@@ -23,8 +23,8 @@
         <mat-form-field appearance="outline">
           <mat-label> Start date -- End date</mat-label>
           <mat-date-range-input [rangePicker]="picker" min="{{minDate}}">
-            <input matStartDate placeholder=" From date -" name="start" formControlName="start">
-            <input matEndDate placeholder=" To date" name="end" formControlName="end">
+            <input matStartDate placeholder=" From date -" name="start_date" formControlName="start_date">
+            <input matEndDate placeholder=" To date" name="end" formControlName="end_date">
           </mat-date-range-input>
           <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>
           <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
@@ -49,6 +49,16 @@
           </mat-select>
         </mat-form-field>
       </div>
+      <div class="grid grid-cols gap-3">
+      <mat-form-field appearance="outline">
+        <mat-label>Applying to</mat-label>
+        <mat-select name="applyingTo" formControlName="applyingTo" *ngIf="managers?.length">
+          <mat-option *ngFor="let manager of managers" [value]="manager?._id">
+            {{manager?.fullName}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      </div>
 
       <div class="grid grid-cols gap-3">
 
@@ -56,7 +66,7 @@
         <mat-label>Reason</mat-label>
         <textarea matInput name="reason" formControlName="reason"></textarea>
       </mat-form-field>
-
+   
       <!-- <mat-form-field class="columns" >
         <mat-label *ngIf="selectedFiles; else newFile">{{selectedFiles.item(0).name}}</mat-label>
         <ng-template #newFile>

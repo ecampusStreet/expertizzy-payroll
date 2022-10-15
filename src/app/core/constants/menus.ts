@@ -11,6 +11,12 @@
           routeLink:"employee/list"
         },
         {
+          name:'Attendance',
+          icon:'groups',
+          routeLink:"attendance"
+        },
+        
+        {
           name:'Departments',
           icon:'badge',
           routeLink:"department/list"
@@ -25,6 +31,11 @@
           icon:'edit_calendar',
           routeLink:"leave"
         },
+        {
+          name:'Settings',
+          icon:'settings',
+          routeLink:"settings"
+        },
   ];
 
   export const userMenu = [
@@ -33,11 +44,16 @@
               icon:' dashboard',
               routeLink:"dashboard"    
             },
-            {
-              name:'Employees',
-              icon:'groups',
-              routeLink:"employees"
-            },
+            // {
+            //   name:'Employees',
+            //   icon:'groups',
+            //   routeLink:"employees"
+            // },
+            // {
+            //   name:'Attendance',
+            //   icon:'groups',
+            //   routeLink:"attendance"
+            // },
             {
               name:'Departments',
               icon:'badge',
@@ -94,7 +110,7 @@
         lable: 'My Leaves',
         count: 100,
         icon: 'fact_check',
-        url:'/user/leave',
+        url:'/user/leaves',
       },
       {
         lable: 'Salary Slips',

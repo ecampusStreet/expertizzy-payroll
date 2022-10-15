@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ApiService, urls, ToastService } from 'src/app/core';
 
 @Component({
   selector: 'app-leave-apply',
@@ -15,7 +16,7 @@ export class LeaveApplyComponent implements OnInit {
     {label:'Vacation leave',value:'sickLeave'},
     {label:'Paternity Leave',value:'paternityLeave'},
   ];
-
+  managers:any = [];
   fromSession = [
     {label:'session 1',value:'session 1'},
     {label:'session 2',value:'session 2'},  
@@ -31,23 +32,36 @@ export class LeaveApplyComponent implements OnInit {
     this.selectedFiles = event.target.files;
 }
   
-  constructor() { }
+  constructor(private apiService : ApiService,
+    private toast : ToastService) { }
 
   ngOnInit(): void {
     this.getDate();
-
+    this.getEmployees();
     this.leaveForm = new FormGroup({
       leaveType:new FormControl('',[Validators.required]),
       reason:new FormControl('',[Validators.required]),
       phone_no:new FormControl('',[Validators.required]),
-      start:new FormControl('',[Validators.required]),
-      end:new FormControl('',[Validators.required]),
+      start_date:new FormControl('',[Validators.required]),
+      end_date:new FormControl('',[Validators.required]),
       fromsession:new FormControl('',[Validators.required]),
       tosession:new FormControl('',[Validators.required]),
+      applyingTo:new FormControl('',[Validators.required]),
     });
   }
 
-
+  getEmployees(){
+    const config ={
+      url:urls.employee.list+'?limit=100&page=1'
+    }
+    this.apiService.get(config).subscribe(resp =>{
+      if(resp.success){
+        this.managers =  resp.result.data;
+      }else{
+        this.toast.error(resp.message);
+      }
+    })
+  }
   minDate:any=""
 
   getDate(){
@@ -73,7 +87,14 @@ export class LeaveApplyComponent implements OnInit {
   }
 
   onSubmit(){
-    console.log(this.leaveForm.value);
+    const config ={
+      url : urls.leaves.apply,
+      payload:this.leaveForm.value
+    }
+    this.apiService.post(config).subscribe(data =>{
+      if(data.success){
+        this.toast.success(data.message);
+      }
+    })
   }
-
 }
