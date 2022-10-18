@@ -369,7 +369,7 @@ export class AddComponent implements OnInit {
       payload._id = this.id;
     }
     const config = {
-      url: this.id ? urls.employee.byId + this.id : urls.employee.create,
+      url: this.id ? urls.employee.update + this.id : urls.employee.create,
       payload: payload,
     };
     this.apiService.post(config).subscribe((resp) => {

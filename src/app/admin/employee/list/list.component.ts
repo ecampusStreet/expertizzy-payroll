@@ -10,7 +10,7 @@ import { ApiService, ToastService, urls, UtilsService } from 'src/app/core';
 export class ListComponent implements OnInit {
  
   count =0;
-  limit =20;
+  limit =5;
   page =1;
   employeeList = [];
   searchText:any ='';

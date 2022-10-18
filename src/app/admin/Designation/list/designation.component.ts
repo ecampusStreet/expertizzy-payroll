@@ -18,7 +18,7 @@ export class DesignationComponent implements OnInit {
     private utilsService: UtilsService
   ) {}
 
-  displayedColumns =["designationName","actions"];
+  displayedColumns = ['designationName', 'actions'];
 
   designationList = [];
 
@@ -42,50 +42,49 @@ export class DesignationComponent implements OnInit {
   }
 
   action(data: any, action: any) {
-
-    switch(action){
-      case 'edit' :
-        this.router.navigate(['admin/designation/add'],{
-          queryParams: { id: data._id },
+    switch (action) {
+      case 'edit':
+        // this.router.navigate(['admin/designation/add'], {
+        //   queryParams: { id: data._id },
+        // });
+        this.toast.error("Not yet implemented")
+        break;
+      case 'delete':
+        this.deleteConfirmationpopup(data);
+        break;
+      case 'view':
+        this.router.navigate(['admin/designation/add'], {
+          queryParams: { id: data._id, readOnly: true },
         });
         break;
-        case 'delete':
-      this.deleteConfirmationpopup(data);
-      break;
-    case 'view':
-      this.router.navigate(['admin/designation/add'], {
-        queryParams: { id: data._id, readOnly: true },
-      });
-      break;
     }
   }
 
   add() {
-    this.router.navigate(['admin/designation/add']);
+    // this.router.navigate(['admin/designation/add']);
+    this.toast.error('Not yet implemented ');
   }
   deleteConfirmationpopup(event: any) {
-      let data = {
-        header: '',
-        message: 'Are you sure, you want to delete this designation?',
-      };
-      this.utilsService.openDialog(data).then((resp) => {
-        if (resp) {
-          this.delete(event);
-        }
-      });
-    }
-    delete(event: any) {
-        const config = {
-          url: urls.designation.delete + event._id,
-        };
-        this.apiService.delete(config).subscribe((resp) => {
-          if (resp.success) {
-            this.toast.success(resp.message);
-            this.designationList = [];
-            this.getDesignation();
-          }
-        });
+    let data = {
+      header: '',
+      message: 'Are you sure, you want to delete this designation?',
+    };
+    this.utilsService.openDialog(data).then((resp) => {
+      if (resp) {
+        this.delete(event);
       }
+    });
+  }
+  delete(event: any) {
+    const config = {
+      url: urls.designation.delete + event._id,
+    };
+    this.apiService.delete(config).subscribe((resp) => {
+      if (resp.success) {
+        this.toast.success(resp.message);
+        this.designationList = [];
+        this.getDesignation();
+      }
+    });
+  }
 }
-
-
