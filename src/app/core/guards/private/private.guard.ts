@@ -17,9 +17,7 @@ export class PrivateGuard implements CanActivate {
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     return new Promise((resolve, reject) => {
-      console.log('sfddfd');
       this.userService.getUser().then(success => {
-        console.log('sfddfd');
         if (success) {
           resolve(true)
         } else {

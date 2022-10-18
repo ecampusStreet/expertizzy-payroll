@@ -13,7 +13,6 @@ export class GenericConfirmPopupComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    console.log(this.data,"data");
   }
 
   yes(){

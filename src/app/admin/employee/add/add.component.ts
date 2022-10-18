@@ -28,7 +28,6 @@ export class AddComponent implements OnInit {
     private tostService : ToastService
   ) {
     routerParams.queryParams.subscribe((params: any) => {
-      // console.log(params.id);
       if (params.id) {
         this.id = params.id;
         this.getEmployeeData();
@@ -105,9 +104,7 @@ export class AddComponent implements OnInit {
     return this.form.controls;
   }
 
-  onSubmit() {
-    console.log(this.form.value)
-  }
+  onSubmit() {}
 
   gender = ["male", "female"];
 
@@ -175,7 +172,6 @@ export class AddComponent implements OnInit {
   // }
 
   submit() {
-    console.log(this.form.value, "value");
     let payload :any={
       accountDetails: this.accDetail.value,
       departmentDetails:this.depDetail.value,
@@ -198,7 +194,6 @@ export class AddComponent implements OnInit {
         this.router.navigate(['admin/employee/add'],{queryParams:{id: resp.result._id}});
         }
       }
-      console.log(resp,"resp");
     })
   }
 
@@ -209,7 +204,6 @@ export class AddComponent implements OnInit {
     }
     this.apiService.get(config).subscribe(resp=>{
       this.employeeData = resp.result.data;
-      console.log(resp,"resp get");
       this.prepareForm();
       // this.accDetail.setValue(employee);
     })

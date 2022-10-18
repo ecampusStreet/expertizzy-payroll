@@ -7,7 +7,7 @@ import { DepartmentsComponent } from './departments/list/departments.component';
 import { AddComponent } from './employee/add/add.component';
 import { ListComponent } from './employee/list/list.component';
 import { ViewComponent } from './employee/view/view.component';
-
+import {AddDepartmentComponent} from './departments/add/add.component';
 export const AdminLayoutRoutes: Routes = [
   {
     path: '',
@@ -18,7 +18,8 @@ export const AdminLayoutRoutes: Routes = [
       { path: 'employee/add', component: AddComponent },
       { path: 'employee/list', component: ListComponent },
       { path: 'employee/view/:id',component:ViewComponent},
-      { path: 'department/list',component:DepartmentsComponent}
+      { path: 'department/list',component:DepartmentsComponent},
+      { path: 'department/add',component:AddDepartmentComponent}
     ],
   },
 ];

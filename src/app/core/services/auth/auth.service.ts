@@ -12,7 +12,6 @@ export class AuthService {
 
     getUser() {
       return this.currentUser.getUser().then(user =>{
-        console.log(user,"user");
         return user;
       })
     }

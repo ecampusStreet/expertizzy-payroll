@@ -11,7 +11,8 @@ export const urls = {
         list:'api/department/list',
         create:'api/department/create',
         delete:'api/department/delete/',
-        update:'api/department/update'
+        update:'api/department/update',
+        getById : 'api/department/'
     },
     leaves:{
         apply:'api/leave/apply',

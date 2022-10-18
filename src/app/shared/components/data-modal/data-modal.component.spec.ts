@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AddDepartmentComponent } from './add.component';
+import { DataModalComponent } from './data-modal.component';
 
-describe('AddComponent', () => {
-  let component: AddDepartmentComponent;
-  let fixture: ComponentFixture<AddDepartmentComponent>;
+describe('DataModalComponent', () => {
+  let component: DataModalComponent;
+  let fixture: ComponentFixture<DataModalComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AddDepartmentComponent ]
+      declarations: [ DataModalComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(AddDepartmentComponent);
+    fixture = TestBed.createComponent(DataModalComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

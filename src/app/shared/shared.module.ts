@@ -22,6 +22,9 @@ import { DashboardCardsComponent } from './components/dashboard-cards/dashboard-
 import { LeaveComponent } from './components/leave/leave.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import { GenericConfirmPopupComponent } from './components/generic-confirm-popup/generic-confirm-popup.component';
+import { DataModalComponent } from './components/data-modal/data-modal.component';
+import { FormsModule } from '@angular/forms';
+
 
 @NgModule({
   declarations: [
@@ -30,7 +33,8 @@ import { GenericConfirmPopupComponent } from './components/generic-confirm-popup
     ContentNavbarComponent,
     DashboardCardsComponent,
     LeaveComponent,
-    GenericConfirmPopupComponent
+    GenericConfirmPopupComponent,
+    DataModalComponent
   ],
   imports: [
     CommonModule,
@@ -48,7 +52,10 @@ import { GenericConfirmPopupComponent } from './components/generic-confirm-popup
     MatExpansionModule,
     MatListModule,
     MatTableModule,
-    MatDialogModule
+    MatDialogModule,
+    MatRadioModule,
+    FormsModule
+
   ],
   exports: [
     TabledataComponent,
@@ -68,10 +75,10 @@ import { GenericConfirmPopupComponent } from './components/generic-confirm-popup
     TabledataComponent,
     CardListComponent,
     ContentNavbarComponent,
-    MatRadioModule,
     DashboardCardsComponent,
     LeaveComponent,
-    GenericConfirmPopupComponent
+    GenericConfirmPopupComponent,
+    DataModalComponent
   ]
 })
 export class SharedModule { }

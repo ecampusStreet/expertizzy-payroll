@@ -12,7 +12,7 @@ export class DepartmentsComponent implements OnInit {
   displayedColumns: string[] = ['departmentId', 'name','location','departmentHead','actions'];
   count =0;
   page=1;
-  limit=15;
+  limit=7;
   constructor(
     private apiService : ApiService,
     private toastService : ToastService,
@@ -29,26 +29,25 @@ export class DepartmentsComponent implements OnInit {
     }
     this.apiService.get(config).subscribe(data =>{
       this.list = this.list.concat(data.result.data);
+      this.count = data.result.count;
     })
   }
   action(data:any,action:any){
     switch(action){
       case 'edit':
-        // this.router.navigate(['admin/employee/add'],{queryParams:{id :data._id}});
-        this.noImplemented();
+        this.router.navigate(['admin/department/add'],{queryParams:{id :data._id}});
         break;
       case 'delete':
         this.deleteConfirmationpopup(data);
         break;
         case 'view':
-          // this.router.navigate(['admin/employee/view',data._id]);
-          this.noImplemented();
+          this.router.navigate(['admin/department/add'],{queryParams:{id :data._id, readOnly:true}});
           break;
         
     }
   }
   add(){
-    this.noImplemented();
+    this.router.navigate(['admin/department/add']);
   }
   loadMore(){
     this.count =0;

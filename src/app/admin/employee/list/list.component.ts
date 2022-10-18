@@ -13,6 +13,7 @@ export class ListComponent implements OnInit {
   limit =20;
   page =1;
   employeeList = [];
+  searchText:any ='';
 
   constructor(
     private router : Router,
@@ -27,7 +28,7 @@ export class ListComponent implements OnInit {
 
   getEmployees(showToast = true){
     const config ={
-      url:urls.employee.list+'?limit='+this.limit + '&page=' +this.page
+      url:urls.employee.list+'?limit='+this.limit + '&page=' +this.page+'&search='+this.searchText
     }
     this.apiService.get(config).subscribe(resp =>{
       if(resp.success){
@@ -54,7 +55,6 @@ export class ListComponent implements OnInit {
   ];
 
   action(event:any){
-    console.log(event,"event ");
     switch(event.action){
       case 'edit':
         this.router.navigate(['admin/employee/add'],{queryParams:{id : event.data._id}});
@@ -86,6 +86,12 @@ export class ListComponent implements OnInit {
   loadMore(){
     this.count =0;
     this.page =this.page + 1;
+    this.getEmployees();
+  }
+  search(){
+    this.count =0;
+    this.page = 1;
+    this.employeeList=[];
     this.getEmployees();
   }
   delete(event:any){

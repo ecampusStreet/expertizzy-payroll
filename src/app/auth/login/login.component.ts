@@ -30,7 +30,6 @@ export class LoginComponent implements OnInit {
 
 
   submit(){
-    console.log(this.user,"this.user");
     const config ={
       url : urls.login,
       payload:this.user
@@ -48,7 +47,6 @@ export class LoginComponent implements OnInit {
         this.toast.error(data.message);
       }
     },error =>{
-      console.log(error,"error");
       this.toast.error(error.message);
     })
   }

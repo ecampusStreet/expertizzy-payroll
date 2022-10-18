@@ -1,6 +1,13 @@
 
-  <div class="flex justify-end ml-3 mt-3 mb-3 mr-3">
-    <button mat-raised-button color="primary" (click)="add()">+ Add</button>
+  <div class="flex justify-space-between ml-3 mt-3 mb-3 mr-3">
+    <mat-form-field class="example-full-width w-full search-box" >
+      <span matPrefix> </span>
+      <input type="text" matInput placeholder="Search here" name= "search" [(ngModel)]= "searchText">
+      <button matSuffix mat-button><mat-icon (click)="search()">search</mat-icon></button>
+      </mat-form-field>
+    <div class="margin">
+      <button mat-raised-button color="primary" (click)="add()">+ Add</button>
+      </div>
     </div>
   <app-tabledata [list]="employeeList" [titles]="tableheader" (eventAction)="action($event)" ></app-tabledata>
   <div class="flex justify-center ml-3 mt-3 mb-3 mr-3">

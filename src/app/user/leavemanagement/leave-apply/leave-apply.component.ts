@@ -78,9 +78,6 @@ export class LeaveApplyComponent implements OnInit {
 
     var year:any = date.getFullYear();
     this.minDate = year + "-" + month +"-"+ todate ;
-
-    console.log(this.minDate);
-    // console.log(todate);
   }
   get m(){
     return this.leaveForm.controls;

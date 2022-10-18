@@ -15,7 +15,6 @@ token : any;
 
   setUser(data:any): Promise<any> {
     return new Promise((resolve, reject) => {
-      console.log(data,"data");
       this.storage.setLocalStorage('userDetails', JSON.stringify(data)).then(success => {
         this.token = data;
         resolve(data);
@@ -29,7 +28,6 @@ token : any;
     return new Promise((resolve, reject) => {
       this.storage.getLocalStorage('userDetails').then((data:any) => {
         this.token = JSON.parse(data);
-        console.log(JSON.stringify(JSON.parse(data)),"data");
         resolve(JSON.parse(data));
       }).catch(error => {
         reject()

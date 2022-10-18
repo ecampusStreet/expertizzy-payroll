@@ -1,0 +1,21 @@
+<div mat-dialog-content>
+<mat-form-field class="example-full-width w-full" >
+    <span matPrefix> </span>
+    <input type="text" matInput placeholder="Search here" name= "search" [(ngModel)]= "search">
+    <button matSuffix mat-button><mat-icon >search</mat-icon></button>
+    </mat-form-field>
+    <mat-list role="list">
+        <mat-list-item role="listitem" *ngFor="let data of dataList" >
+            <mat-radio-button color="primary" [value]="data" (change)="valueChange($event)">
+                {{data?.fullName}}
+            </mat-radio-button>
+        </mat-list-item>
+    </mat-list>
+    <div class="flex justify-center ml-3 mt-3 mb-3 mr-3">
+        <button mat-raised-button color="primary" (click)="loadMore()" *ngIf="dataList.length && count > dataList.length">Load more</button>
+        </div>
+</div>
+    <div mat-dialog-actions>
+        <button mat-button (click)="action()">Cancel </button>
+        <button mat-button  (click)="action()">Submit</button>
+      </div>

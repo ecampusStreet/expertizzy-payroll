@@ -5,7 +5,6 @@ import { Injectable } from '@angular/core';
 })
 export class LocalStorageService {
   constructor() {
-    console.log("Hello LocalStorageProvider Provider");
   }
 
   setLocalStorage(key:any, value:any): Promise<any> {

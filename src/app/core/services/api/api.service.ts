@@ -36,7 +36,6 @@ export class ApiService {
           return data
         }
       }, error => {
-        console.log(error,"data");
       }),
       catchError(this.handleError([]))
     )
@@ -69,7 +68,6 @@ export class ApiService {
   }
 
   delete(requestParam : any): Observable<any> {
-    console.log(environment.apiBaseUrl + this.baseUrl + requestParam.url, "environment.apiBaseUrl + this.baseUrl + requestParam.url");
     return this.http.delete(environment.apiBaseUrl + this.baseUrl + requestParam.url).pipe(
       tap(data => {
         return data
@@ -79,7 +77,6 @@ export class ApiService {
     )
   }
   patch(requestParam : any): Observable<any> {
-    console.log(environment.apiBaseUrl + this.baseUrl + requestParam.url, "environment.apiBaseUrl + this.baseUrl + requestParam.url");
     return this.http.patch(environment.apiBaseUrl + this.baseUrl + requestParam.url,requestParam.payload).pipe(
       tap(data => {
         return data
@@ -105,10 +102,8 @@ export class ApiService {
   // }
 
   private handleError(result : any) {
-    console.log(result,"result");
     return (error: any): Observable<any> => {
       // TODO: send the error to remote logging infrastructure
-      console.log(error,"errror"); // log to console instead
       // TODO: better job of transforming error for user consumption
       // this.log(`${operation} failed: ${error.message}`);
 
@@ -118,7 +113,6 @@ export class ApiService {
         // this.toastService.displayMessage('Session timeout, please login','danger');
         this.userService.deleteUser().then(resp =>{})
       } else {
-        console.log(error.message);
         this.toastService.error(error.error.message);
       }
       return of(result);

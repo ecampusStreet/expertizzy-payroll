@@ -37,4 +37,7 @@
       <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="action(row,'view')"></tr>
     </table>
     </div>
+    <div class="flex justify-center ml-3 mt-3 mb-3 mr-3">
+      <button mat-raised-button color="primary" (click)="loadMore()" *ngIf="list.length && count > list.length">Load more</button>
+      </div>
   
