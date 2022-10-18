@@ -39,7 +39,7 @@ export class LeaveApplyComponent implements OnInit {
     this.getDate();
     this.getEmployees();
     this.leaveForm = new FormGroup({
-      leaveType:new FormControl('',[Validators.required]),
+      type:new FormControl('',[Validators.required]),
       reason:new FormControl('',[Validators.required]),
       phone_no:new FormControl('',[Validators.required]),
       start_date:new FormControl('',[Validators.required]),
@@ -89,6 +89,7 @@ export class LeaveApplyComponent implements OnInit {
       payload:this.leaveForm.value
     }
     this.apiService.post(config).subscribe(data =>{
+      console.log(data);
       if(data.success){
         this.toast.success(data.message);
       }

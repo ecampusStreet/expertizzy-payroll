@@ -22,6 +22,11 @@
           routeLink:"department/list"
         },
         {
+          name:'Designation',
+          icon:'badge',
+          routeLink:"designation/list"
+        },
+        {
           name:'Events',
           icon:'event_note',
           routeLink:"events"
@@ -36,6 +41,7 @@
           icon:'settings',
           routeLink:"settings"
         },
+        // 
   ];
 
   export const userMenu = [
