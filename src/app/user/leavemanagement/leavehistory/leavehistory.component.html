@@ -1,5 +1,8 @@
 <div class="m-4">
-    <mat-accordion class="mx-1">
+
+    {{leaveHistory|json}}
+
+    <mat-accordion class="mx-1" *ngFor=" let leave of leaveHistory ; let i=index  ">
         <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false" class=" border">
             <mat-expansion-panel-header class="shrink">
                 <mat-panel-title class="w-1/4 ">
@@ -11,7 +14,7 @@
                 <mat-panel-title class="w-1/4 ">
                     <span class="flex flex-col">
                         <small class="text-gray-500 font-medium">Leave Type</small>
-                        <span class="font-medium">casualLeave</span>
+                        <span class="font-medium">{{leave ['type']}}</span>
                     </span>
                 </mat-panel-title>
                 <mat-panel-title class="w-1/4 ">

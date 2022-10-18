@@ -1,0 +1,42 @@
+<div class="flex justify-end ml-3 mt-3 mb-3 mr-3">
+  <button mat-raised-button color="primary" (click)="add()">+ Add</button>
+</div>
+<div style="margin: 15px" class="example-container">
+  <table mat-table [dataSource]="designationList" class="mat-elevation-z8">
+    <ng-container matColumnDef="designationName">
+      <th mat-header-cell *matHeaderCellDef> Designation </th>
+      <td mat-cell *matCellDef="let element">{{ element.designationName | titlecase }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef>Action</th>
+      <td mat-cell *matCellDef="let element">
+        <button
+          mat-icon-button
+          color="primary"
+          aria-label="Example icon button with a vertical three dot icon"
+          (click)="$event.stopPropagation(); action(element, 'edit')"
+        >
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button
+          mat-icon-button
+          color="primary"
+          aria-label="Example icon button with a home icon"
+          (click)="$event.stopPropagation(); action(element, 'delete')"
+        >
+          <mat-icon>delete_forever</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+    <tr
+      mat-row
+      *matRowDef="let row; columns: displayedColumns"
+      (click)="action(row, 'view')"
+    ></tr>
+  </table>
+</div>
+<!-- <pre>
+  {{designationList|json }}
+</pre> -->

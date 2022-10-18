@@ -31,8 +31,10 @@ import { ViewComponent } from './employee/view/view.component';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { DepartmentsComponent } from './departments/list/departments.component';
 import { MatTableModule } from '@angular/material/table';
+import { DesignationComponent } from './Designation/list/designation.component';
+
 @NgModule({
-  declarations: [AddComponent, AdminComponent, DatalistComponent,ListComponent,DashboardComponent,DashboardCardComponent,ViewComponent,DepartmentsComponent],
+  declarations: [AddComponent, AdminComponent, DatalistComponent,ListComponent,DashboardComponent,DashboardCardComponent,ViewComponent,DepartmentsComponent, DesignationComponent],
   schemas: [NO_ERRORS_SCHEMA],
   imports: [
     CommonModule,
@@ -62,10 +64,9 @@ import { MatTableModule } from '@angular/material/table';
     CommonModule,
     MatGridListModule,
     ReactiveFormsModule,
-    MatDatepickerModule,
     MatNativeDateModule,
     MatTableModule,
-
+    MatDatepickerModule
   ],
   exports:[AdminComponent],
   providers: [MatNativeDateModule,  { provide: HTTP_INTERCEPTORS, useClass: ApiInterceptor, multi: true }]

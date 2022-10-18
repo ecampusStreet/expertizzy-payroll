@@ -16,5 +16,9 @@ export const urls = {
     leaves:{
         apply:'api/leave/apply',
         list:'api/leave/list'
+    },
+    designation :{
+        list:'api/designation/list',
+        delete:'api/designation/delete/',
     }
 }
