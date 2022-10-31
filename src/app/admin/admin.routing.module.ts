@@ -8,6 +8,8 @@ import { AddComponent } from './employee/add/add.component';
 import { ListComponent } from './employee/list/list.component';
 import { ViewComponent } from './employee/view/view.component';
 import {AddDepartmentComponent} from './departments/add/add.component';
+import { OverviewComponent } from './employee/overview/overview.component';
+
 export const AdminLayoutRoutes: Routes = [
   {
     path: '',
@@ -18,10 +20,16 @@ export const AdminLayoutRoutes: Routes = [
       { path: 'employee/add', component: AddComponent },
       { path: 'employee/list', component: ListComponent },
       { path: 'employee/view/:id',component:ViewComponent},
+      { path: 'employee/overview',component:OverviewComponent},
       { path: 'department/list',component:DepartmentsComponent},
-      { path: 'department/add',component:AddDepartmentComponent}
+      { path: 'department/add',component:AddDepartmentComponent},
+      {
+        path:'attendance',
+        loadChildren : () => import('../attendance/attendance.module').then(m => m.AttendanceModule)
+      }
     ],
   },
+ 
 ];
 
 @NgModule({

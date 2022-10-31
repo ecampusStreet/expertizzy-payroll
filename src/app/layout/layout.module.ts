@@ -11,6 +11,8 @@ import {MatMenuModule} from '@angular/material/menu';
 import {MatBadgeModule} from '@angular/material/badge';
 import { RouterModule } from '@angular/router';
 import { SidebarmenulistComponent } from './sidebarmenulist/sidebarmenulist.component';
+import {MatExpansionModule} from '@angular/material/expansion';
+
 @NgModule({
   declarations: [
     HeaderComponent,
@@ -26,7 +28,8 @@ import { SidebarmenulistComponent } from './sidebarmenulist/sidebarmenulist.comp
     MatButtonModule,
     MatMenuModule,
     MatBadgeModule,
-    RouterModule   
+    RouterModule,
+    MatExpansionModule   
   ],
   exports:[
     HeaderComponent,

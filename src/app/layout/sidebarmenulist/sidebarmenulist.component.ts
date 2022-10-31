@@ -18,5 +18,11 @@ export class SidebarmenulistComponent implements OnInit {
     
 
   }
+  activateMenu(item:any){
+    this.list.forEach((element:any) => {
+        element.clicked = false;
+    });
+    item.clicked = true;
+  }
 
 }

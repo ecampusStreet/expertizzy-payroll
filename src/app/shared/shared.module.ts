@@ -24,6 +24,7 @@ import {MatDialogModule} from '@angular/material/dialog';
 import { GenericConfirmPopupComponent } from './components/generic-confirm-popup/generic-confirm-popup.component';
 import { DataModalComponent } from './components/data-modal/data-modal.component';
 import { FormsModule } from '@angular/forms';
+import { ProfilePicComponent } from './components/profile-pic/profile-pic.component';
 
 
 @NgModule({
@@ -34,7 +35,8 @@ import { FormsModule } from '@angular/forms';
     DashboardCardsComponent,
     LeaveComponent,
     GenericConfirmPopupComponent,
-    DataModalComponent
+    DataModalComponent,
+    ProfilePicComponent
   ],
   imports: [
     CommonModule,

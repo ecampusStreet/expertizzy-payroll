@@ -38,11 +38,11 @@ export class LoginComponent implements OnInit {
       if(data.success){
         this.toast.success(data.message);
         this.userService.setUser(data.result);
-        if(data.result.user.role == 'admin' ){
-          this.router.navigate(['admin/dashboard']);
-        }else{
-        this.router.navigate(['user/dashboard']);
-        }
+        // if(data.result.user.role == 'admin' ){
+          this.router.navigate(['expertizzy/dashboard']);
+        // }else{
+        // this.router.navigate(['user/dashboard']);
+        // }
       }else{
         this.toast.error(data.message);
       }

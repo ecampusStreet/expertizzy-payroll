@@ -5,7 +5,8 @@ export const urls = {
         list:'api/emp/list',
         byId:'api/emp/',
         create:'api/emp/create',
-        delete:'api/emp/delete/'
+        delete:'api/emp/delete/',
+        update:'api/emp/update/'
     },
     departments :{
         list:'api/department/list',

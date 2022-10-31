@@ -34,9 +34,24 @@ import { MatTableModule } from '@angular/material/table';
 import { AddDepartmentComponent } from './departments/add/add.component';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatChipsModule} from '@angular/material/chips';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import { OverviewComponent } from './employee/overview/overview.component';
+import { AttendanceComponent } from './employee/attendance/attendance.component';
+import { AttendanceModule } from '../attendance/attendance.module';
 
 @NgModule({
-  declarations: [AddComponent, AdminComponent, DatalistComponent,ListComponent,DashboardComponent,DashboardCardComponent,ViewComponent,DepartmentsComponent,AddDepartmentComponent],
+  declarations: [AddComponent,
+    AdminComponent, 
+    DatalistComponent,
+    ListComponent,
+    DashboardComponent,
+    DashboardCardComponent,
+    ViewComponent,
+    DepartmentsComponent,
+    AddDepartmentComponent,
+    OverviewComponent,
+    AttendanceComponent
+  ],
   
   schemas: [NO_ERRORS_SCHEMA],
   imports: [
@@ -46,7 +61,6 @@ import {MatChipsModule} from '@angular/material/chips';
     ReactiveFormsModule,
     AdminRoutingModule,
     CoreModule,
-    LayoutModule,
     MatSidenavModule,
     FlexLayoutModule,
     RouterModule,
@@ -71,7 +85,10 @@ import {MatChipsModule} from '@angular/material/chips';
     MatNativeDateModule,
     MatTableModule,
     MatAutocompleteModule,
-    MatChipsModule
+    MatChipsModule,
+    MatSlideToggleModule,
+    LayoutModule,
+    AttendanceModule
   ],
   exports:[AdminComponent,AddDepartmentComponent],
   providers: [MatNativeDateModule,  { provide: HTTP_INTERCEPTORS, useClass: ApiInterceptor, multi: true }]
