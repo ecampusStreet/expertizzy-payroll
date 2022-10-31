@@ -24,3 +24,5 @@ export const urls = {
     delete: 'api/designation/delete/',
   },
 };
+    
+

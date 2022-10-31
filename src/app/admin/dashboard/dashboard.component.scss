@@ -4,3 +4,12 @@
   background: #fff;
   border-radius: 6px;
 }
+
+.card-custom:hover{
+  color: #fff;
+  transition: all .3s ease-in-out;
+  transform: scale(1.03);
+  cursor: pointer;
+  background: #3f51b5;
+
+}

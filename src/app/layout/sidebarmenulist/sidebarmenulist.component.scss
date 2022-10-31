@@ -2,14 +2,14 @@
 .side-nav-content{
     color: rgb(9, 9, 17);
     font-weight: 400;
-    width: 230px;
+    width: 220px;
     height: 100%;
     display: block;
     overflow-x: hidden ;
 }
 
 .expand{
-    width: 200px;
+    width: 220px;
 }
 .collapse{
     width: 45px;
@@ -68,4 +68,58 @@ margin-top:8px;
     text-transform: capitalize;
     font-size: 14px;
     font-weight: 400;
+}
+
+.mat-expansion-panel:not([class*='mat-elevation-z']) {
+    box-shadow: none !important;
+    background:transparent !important; 
+  }
+  .mat-expansion-panel-header{
+    padding: 0 0px !important; 
+  }
+  .mat-elevation-z0{
+  .icon{
+    font-size: 20px;
+    height: 25px;
+    width: 25px;
+    margin: 0 15px 0 10px;
+    text-align: center;
+    line-height: 25px;
+}
+  span {
+    text-transform: capitalize;
+    font-size: 14px;
+    font-weight: 400;
+  }
+
+ 
+}
+::ng-deep {
+.mat-list-base .mat-list-item .mat-list-item-content, .mat-list-base .mat-list-option .mat-list-item-content{
+    padding: 0 0px !important;
+  }
+  .mat-content {
+    flex: 0.9  !important;
+}
+.mat-expansion-panel-body {
+    padding: 0 10px 0px  !important;
+}
+.mat-expansion-panel-header.mat-expanded {
+  height: 48px;
+  border-radius: 0px;
+}
+.mat-nav-list .mat-list-item{
+  padding: 0px 0px 0px 18px;
+}
+}
+
+.mat-list-item:hover, .mat-expansion-panel:not(.mat-expanded):hover,.mat-expansion-panel-header.mat-expanded:hover {
+  color: #fff !important;
+  transition: all .3s ease-in-out;
+  transform: scale(1.03);
+  cursor: pointer;
+  background: #3f51b5;
+  .mat-expansion-panel-header-title{
+    color: #fff !important;
+  }
 }

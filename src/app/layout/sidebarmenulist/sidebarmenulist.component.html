@@ -1,23 +1,43 @@
 
-<div class="side-nav-content bg-gray-100"   [ngClass]="expand ? 'expand' : 'collapse'">
+<div class="side-nav-content"   [ngClass]="expand ? 'expand' : 'collapse'">
     <div class="logo">
         <a href="/" class="logo-mini">
           <img src="assets/images/logo2.png" alt="logo of company"  *ngIf="expand"/> 
         </a>
     </div>
     <img  src="assets/images/xlogo.png" alt="logo of company"  *ngIf="!expand"/>
-  <!-- <hr style="border-bottom: 1px solid white; width: 95%; margin-left: 8px" /> -->
-    <ul class="nav-list cursor-pointer">
-        <li class="nav-list-item 
-        "*ngFor="let item of list"
-        routerLink="{{ item.routeLink }}" 
-        >
-            <!-- <i class="{{item.icon}}"></i>  -->
-            <i class="material-icons">{{item.icon}}</i>
-
-            <span>
-                <a> {{item.name}}</a>  
-            </span> 
-        </li>
-    </ul>
+    <mat-nav-list class="nav-list cursor-pointer">
+        <span *ngFor="let item of list">
+          <span *ngIf="item.children && item.children.length > 0">
+            <mat-accordion>
+              <mat-expansion-panel class="mat-elevation-z0">
+                <mat-expansion-panel-header>
+                  <mat-panel-title>
+                    <!-- Cabeceras del submenu -->
+                      <mat-icon class="icon">{{item.icon}}</mat-icon>
+                      <span>  {{item.name}}
+                          </span>
+                  </mat-panel-title>
+                </mat-expansion-panel-header>
+                <span *ngFor="let child of item.children"  [ngStyle]="child.clicked && {'background-color':'red'}"
+                (click)="activateMenu(child)">
+                  <mat-list-item [routerLink]="child.routeLink">
+                    <!-- Entradas de cada submenú  -->
+                      <mat-icon class="icon">{{child.icon}}</mat-icon>
+                      <span>  {{child.name}} </span>
+                  </mat-list-item>
+                </span>
+              </mat-expansion-panel>
+            </mat-accordion>
+          </span>
+          <span *ngIf="!item.children || item.children.length === 0" class="mat-elevation-z0"
+          (click)="activateMenu(item)">
+            <mat-list-item [routerLink]="item.routeLink"  [ngStyle]="item.clicked && {'background-color':'red'}">
+              <!-- Entradas principales -->
+                <mat-icon class="icon">{{item.icon}}</mat-icon>
+                <span>{{item.name}} </span>
+            </mat-list-item>
+          </span>
+        </span>
+      </mat-nav-list>
 </div>

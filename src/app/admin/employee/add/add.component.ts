@@ -1,15 +1,9 @@
+import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import {
-  FormBuilder,
-  FormControl,
-  FormGroup,
-  Validators,
-} from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators,FormArray } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { urls } from 'src/app/core/constants';
-import { ApiService } from 'src/app/core/services/api/api.service';
-import { ToastService } from 'src/app/core/services/toast.service';
-// import { ApiService, ToastService, urls } from 'src/app/core';
+import { ApiService, ToastService, urls } from 'src/app/core';
+import { bloodGroup } from 'src/app/core/constants/data';
 
 @Component({
   selector: 'app-employee',
@@ -31,15 +25,20 @@ export class AddComponent implements OnInit {
   emgDetail!: FormGroup;
   accDetail!: FormGroup;
   qualiDetail!: FormGroup;
-  title = 'Add new employee';
-  employeeData: any;
-  id: string = '';
-  showForm: boolean = false;
+  title = "Add new employee";
+  employeeData :any;
+  id:string ='';
+  showForm : boolean = false;
+  bloodGroups = bloodGroup;
+  selectedBloodGroup : string ='';
+  expDetailForm!: FormGroup;
   constructor(
     private router: Router,
     private routerParams: ActivatedRoute,
-    private apiService: ApiService,
-    private tostService: ToastService
+    private apiService : ApiService,
+    private tostService : ToastService,
+    private location : Location,
+    private fb: FormBuilder
   ) {
     routerParams.queryParams.subscribe((params: any) => {
       if (params.id) {
@@ -53,89 +52,33 @@ export class AddComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  prepareForm() {
+  prepareForm(){
+    console.log(this.employeeData ,"this.employeeData ");
     this.form = new FormGroup({
       // deputy_id: new FormControl('', [Validators.required]),
-      fullName: new FormControl(
-        this.employeeData && this.employeeData.personalDetails[0]
-          ? this.employeeData.personalDetails[0].fullName
-          : '',
-        [Validators.required]
-      ),
-      fatherName: new FormControl(
-        this.employeeData && this.employeeData.personalDetails[0]
-          ? this.employeeData.personalDetails[0].fatherName
-          : '',
-        [Validators.required]
-      ),
-      dob: new FormControl(
-        this.employeeData && this.employeeData.personalDetails[0]
-          ? this.employeeData.personalDetails[0].dob
-          : '',
-        [Validators.required]
-      ),
-      ph_no: new FormControl(
-        this.employeeData && this.employeeData.personalDetails[0]
-          ? this.employeeData.personalDetails[0].ph_no
-          : '',
-        [
-          Validators.required,
-          Validators.minLength(10),
-          Validators.pattern('^((\\+91-?)|0)?[0-9]{10}$'),
-        ]
-      ),
-      email: new FormControl(
-        this.employeeData && this.employeeData.personalDetails[0]
-          ? this.employeeData.personalDetails[0].email
-          : '',
-        [
-          Validators.required,
-          Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$'),
-        ]
-      ),
-      bloodGroup: new FormControl(
-        this.employeeData && this.employeeData.personalDetails[0]
-          ? this.employeeData.personalDetails[0].bloodGroup
-          : '',
-        [Validators.required]
-      ),
-      aadhara_no: new FormControl(
-        this.employeeData && this.employeeData.personalDetails[0]
-          ? this.employeeData.personalDetails[0].aadhara_no
-          : '',
-        [Validators.required]
-      ),
-      address: new FormControl(
-        this.employeeData && this.employeeData.personalDetails[0]
-          ? this.employeeData.personalDetails[0].address
-          : '',
-        [Validators.required]
-      ),
+      firstName: new FormControl(this.employeeData && this.employeeData.personalDetails[0]? this.employeeData.personalDetails[0].firstName :'', [Validators.required]),
+      lastName: new FormControl(this.employeeData && this.employeeData.personalDetails[0]? this.employeeData.personalDetails[0].lastName :'', [Validators.required]),
+      middleName: new FormControl(this.employeeData && this.employeeData.personalDetails[0]? this.employeeData.personalDetails[0].middleName :'', [Validators.required]),
+      dob: new FormControl(this.employeeData && this.employeeData.personalDetails[0]? this.employeeData.personalDetails[0].dob :'', [Validators.required]),
+      ph_no: new FormControl(this.employeeData && this.employeeData.personalDetails[0]? this.employeeData.personalDetails[0].ph_no :'', [Validators.required, Validators.minLength(10), Validators.pattern("^((\\+91-?)|0)?[0-9]{10}$")]),
+      email: new FormControl(this.employeeData && this.employeeData.personalDetails[0]? this.employeeData.personalDetails[0].email :'', [Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]),
+      bloodGroup: new FormControl(this.employeeData && this.employeeData.personalDetails[0]? this.employeeData.personalDetails[0].bloodGroup :'', [Validators.required]),
+      aadhara_no: new FormControl(this.employeeData && this.employeeData.personalDetails[0]? this.employeeData.personalDetails[0].aadhara_no :'', [Validators.required]),
+      presentAddress: new FormControl(this.employeeData && this.employeeData.personalDetails[0]? this.employeeData.personalDetails[0].presentAddress :'', [Validators.required]),
+      permanentAddress: new FormControl(this.employeeData && this.employeeData.personalDetails[0]? this.employeeData.personalDetails[0].permanentAddress :'', [Validators.required]),
+
     });
-    this.selectedDesignation =
-      this.employeeData && this.employeeData.experienceDetails[0]
-        ? this.employeeData.experienceDetails[0].designation
-        : '';
-    this.expDetail = new FormGroup({
-      companyName: new FormControl(
-        this.employeeData && this.employeeData.experienceDetails[0]
-          ? this.employeeData.experienceDetails[0].companyName
-          : '',
-        [Validators.required]
-      ),
-      yearOfExp: new FormControl(
-        this.employeeData && this.employeeData.experienceDetails[0]
-          ? this.employeeData.experienceDetails[0].yearOfExp
-          : '',
-        [Validators.required]
-      ),
-      designation: new FormControl(
-        this.employeeData && this.employeeData.experienceDetails[0]
-          ? this.employeeData.experienceDetails[0].designation
-          : '',
-        [Validators.required]
-      ),
+    this.selectedDesignation =this.employeeData && this.employeeData.experienceDetails[0]? this.employeeData.experienceDetails[0].designation:'';
+    this.expDetail = this.fb.group({
+      companyName: new FormControl(this.employeeData && this.employeeData.experienceDetails[0]? this.employeeData.experienceDetails[0].companyName :'', [Validators.required]),
+      yearOfExp: new FormControl(this.employeeData && this.employeeData.experienceDetails[0]? this.employeeData.experienceDetails[0].yearOfExp :'', [Validators.required]),
+      designation: new FormControl(this.employeeData && this.employeeData.experienceDetails[0]? this.employeeData.experienceDetails[0].designation :'', [Validators.required]),
     });
+    // this.expDetail = new FormGroup({
+    //   data :this.fb.array([
+    //     this.expDetailForm
+    // ])
+    //   })
 
     this.expDetail.patchValue({
       designation:
@@ -363,39 +306,63 @@ export class AddComponent implements OnInit {
       emergencyDetails: this.emgDetail.value,
       experienceDetails: this.expDetail.value,
       personalDetails: this.form.value,
-      qualificationDetails: this.qualiDetail.value,
-    };
-    if (this.id) {
-      payload._id = this.id;
+      qualificationDetails: this.qualiDetail.value
+      }
+    if(this.id ){
+      payload._id = this.id
     }
-    const config = {
-      url: this.id ? urls.employee.update + this.id : urls.employee.create,
-      payload: payload,
-    };
-    this.apiService.post(config).subscribe((resp) => {
-      if (resp.success) {
+    const config ={
+      url : this.id ? urls.employee.update + this.id : urls.employee.create,
+      payload:payload
+    }
+    this.apiService.post(config).subscribe(resp=>{
+      if(resp.success){
         this.tostService.success(resp.message);
-        if (!this.id) {
-          this.router.navigate(['admin/employee/add'], {
-            queryParams: { id: resp.result._id },
-          });
-        }
+        this.location.back();
       }
     });
   }
 
   getEmployeeData() {
     // TODO get employee on id.
-    const config = {
-      url: urls.employee.byId + this.id,
-    };
-    this.apiService.get(config).subscribe((resp) => {
-      this.employeeData = resp.result.data;
+    const config ={
+      url : urls.employee.byId+this.id
+    }
+    this.apiService.get(config).subscribe(resp=>{
+      this.employeeData = resp.result;
       this.prepareForm();
       // this.accDetail.setValue(employee);
     });
   }
   compareFn(a: any, b: any): boolean {
     return a.value === b.value;
+  }
+  back(){
+    this.location.back();
+  }
+  addressChange(event:any){
+    console.log(event,"event")
+    this.form.patchValue({ permanentAddress: ''});
+    if(event.checked){
+      this.form.patchValue({ permanentAddress: this.form.value.presentAddress });
+    }
+  }
+
+  addExperienceForm(){
+   
+  }
+  back(){
+    this.location.back();
+  }
+  addressChange(event:any){
+    console.log(event,"event")
+    this.form.patchValue({ permanentAddress: ''});
+    if(event.checked){
+      this.form.patchValue({ permanentAddress: this.form.value.presentAddress });
+    }
+  }
+
+  addExperienceForm(){
+   
   }
 }

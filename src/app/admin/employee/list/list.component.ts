@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { ApiService, ToastService, urls, UtilsService } from 'src/app/core';
 
 @Component({
@@ -8,7 +8,7 @@ import { ApiService, ToastService, urls, UtilsService } from 'src/app/core';
   styleUrls: ['./list.component.scss'],
 })
 export class ListComponent implements OnInit {
- 
+  title="Employee list"
   count =0;
   limit =5;
   page =1;
@@ -19,8 +19,13 @@ export class ListComponent implements OnInit {
     private router : Router,
     private apiService : ApiService,
     private toast : ToastService,
-    private utilsService:UtilsService
-  ) {}
+    private utilsService:UtilsService,
+    private routerParams : ActivatedRoute
+  ) {
+    routerParams.queryParams.subscribe((params) =>{
+      console.log(params,"params");
+    })
+  }
   
   ngOnInit(): void {
     this.getEmployees();
@@ -57,13 +62,13 @@ export class ListComponent implements OnInit {
   action(event:any){
     switch(event.action){
       case 'edit':
-        this.router.navigate(['admin/employee/add'],{queryParams:{id : event.data._id}});
+        this.router.navigate(['expertizzy/employee/add'],{queryParams:{id : event.data._id}});
         break;
       case 'delete':
         this.deleteConfirmationpopup(event.data);
         break;
         case 'view':
-          this.router.navigate(['admin/employee/view',event.data._id]);
+          this.router.navigate(['expertizzy/employee/view',event.data._id]);
           break;
         
     }
@@ -81,7 +86,7 @@ export class ListComponent implements OnInit {
     })
   }
   add(){
-   this.router.navigate(['admin/employee/add'])
+   this.router.navigate(['expertizzy/employee/add'])
   }
   loadMore(){
     this.count =0;

@@ -40,22 +40,19 @@ export class DepartmentsComponent implements OnInit {
   action(data: any, action: any) {
     switch (action) {
       case 'edit':
-        this.router.navigate(['admin/department/add'], {
-          queryParams: { id: data._id },
-        });
+        this.router.navigate(['expertizzy/department/add'],{queryParams:{id :data._id}});
         break;
       case 'delete':
         this.deleteConfirmationpopup(data);
         break;
-      case 'view':
-        this.router.navigate(['admin/department/add'], {
-          queryParams: { id: data._id, readOnly: true },
-        });
-        break;
+        case 'view':
+          this.router.navigate(['expertizzy/department/add'],{queryParams:{id :data._id, readOnly:true}});
+          break;
+        
     }
   }
-  add() {
-    this.router.navigate(['admin/department/add']);
+  add(){
+    this.router.navigate(['expertizzy/department/add']);
   }
   loadMore() {
     this.count = 0;

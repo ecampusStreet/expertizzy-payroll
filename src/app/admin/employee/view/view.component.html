@@ -19,7 +19,7 @@
             <div style="display: flex; justify-content: space-between;">
               <div class="max-w-[60%] p-2 flex flex-col">
                 <span class="text-grey-400 font-medium "> <i
-                    class="fa-solid fa-user mr-2"></i>{{employee?.personalDetails[0].fullName | titlecase}}</span>
+                    class="fa-solid fa-user mr-2"></i>{{employee?.personalDetails[0].firstName | titlecase}} {{employee?.personalDetails[0].middleName | titlecase}} {{employee?.personalDetails[0].lastName | titlecase}}</span>
                 <span class="text- font-medium "><i class="fa-solid fa-calendar-days mr-2"></i>
                   {{employee?.personalDetails[0].dob | date :'dd/MM/yyyy'}}</span>
                 <span class="text-grey-400 font-medium"><i class="fa-solid fa-suitcase mr-2"></i>

@@ -1,7 +1,15 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AttendanceComponent } from './attendance/attendance.component';
 
-const routes: Routes = [];
+const routes: Routes = [
+  {
+    path: '',component:AttendanceComponent
+  },
+  {
+    path: 'list',component:AttendanceComponent
+  }
+];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],

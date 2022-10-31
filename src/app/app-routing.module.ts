@@ -22,7 +22,7 @@ const routes: Routes = [
     }]
   },
   {
-    path: 'admin',
+    path: 'expertizzy',
     children: [{
       path: '',
       loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule)

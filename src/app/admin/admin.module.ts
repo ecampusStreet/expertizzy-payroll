@@ -34,13 +34,16 @@ import { MatTableModule } from '@angular/material/table';
 import { AddDepartmentComponent } from './departments/add/add.component';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatChipsModule } from '@angular/material/chips';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import { OverviewComponent } from './employee/overview/overview.component';
+import { AttendanceComponent } from './employee/attendance/attendance.component';
+import { AttendanceModule } from '../attendance/attendance.module';
 import { DesignationComponent } from './Designation/list/designation.component';
 import { DesignationaddComponent } from './Designation/add/designationadd.component';
 
 @NgModule({
-  declarations: [
-    AddComponent,
-    AdminComponent,
+  declarations: [AddComponent,
+    AdminComponent, 
     DatalistComponent,
     ListComponent,
     DashboardComponent,
@@ -48,10 +51,10 @@ import { DesignationaddComponent } from './Designation/add/designationadd.compon
     ViewComponent,
     DepartmentsComponent,
     AddDepartmentComponent,
-    DesignationComponent,
-    DesignationaddComponent,
+    OverviewComponent,
+    AttendanceComponent
   ],
-
+  
   schemas: [NO_ERRORS_SCHEMA],
   imports: [
     CommonModule,
@@ -60,7 +63,6 @@ import { DesignationaddComponent } from './Designation/add/designationadd.compon
     ReactiveFormsModule,
     AdminRoutingModule,
     CoreModule,
-    LayoutModule,
     MatSidenavModule,
     FlexLayoutModule,
     RouterModule,
@@ -85,6 +87,9 @@ import { DesignationaddComponent } from './Designation/add/designationadd.compon
     MatTableModule,
     MatAutocompleteModule,
     MatChipsModule,
+    MatSlideToggleModule,
+    LayoutModule,
+    AttendanceModule,
     MatDatepickerModule,
   ],
   exports: [AdminComponent, AddDepartmentComponent],

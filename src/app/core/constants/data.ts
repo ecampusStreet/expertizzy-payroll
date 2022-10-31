@@ -30,3 +30,36 @@ export const leaves =[
     balance : 0
    }
 ]
+
+export const bloodGroup =[
+   {
+      label:'A+ve',
+      value:'A+ve'
+   },
+   {
+      label:'B+ve',
+      value:'B+ve'
+   },
+   {
+      label:'AB+ve',
+      value:'AB+ve'
+   },
+   {
+      label:'O+ve',
+      value:'O+ve'
+   }, {
+      label:'A-ve',
+      value:'A-ve'
+   },
+   {
+      label:'B-ve',
+      value:'B-ve'
+   },
+   {
+      label:'AB-ve',
+      value:'AB-ve'
+   },{
+      label:'O-ve',
+      value:'O-ve'
+   },
+]
