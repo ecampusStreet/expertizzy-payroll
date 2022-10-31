@@ -33,6 +33,7 @@ export class ApiInterceptor implements HttpInterceptor {
 
     async handle(req: HttpRequest<any>, next: HttpHandler) {
         let authReq;
+        console.log(req.url)
         if (req.url != environment.apiBaseUrl + "auth/login") {
             const token :any =  await this.getToken();
             authReq = req.clone({

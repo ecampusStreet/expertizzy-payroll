@@ -28,8 +28,6 @@ export const AdminLayoutRoutes: Routes = [
       { path: 'designation/list', component: DesignationComponent },
       { path: 'designation/add', component: DesignationaddComponent },
 
-      { path: 'employee/view/:id',component:ViewComponent},
-
       {
         path:'attendance',
         loadChildren : () => import('../attendance/attendance.module').then(m => m.AttendanceModule)

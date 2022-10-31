@@ -8,9 +8,9 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { RouterModule } from '@angular/router';
 import { AddComponent } from './employee/add/add.component';
 import { MatIconModule } from '@angular/material/icon';
-import { DatalistComponent } from './datalist/datalist.component';
+// import { DatalistComponent } from './datalist/datalist.component';
 import { MatCheckboxModule } from '@angular/material/checkbox';
-import { DashboardCardComponent } from '../core/components';
+// import { DashboardCardComponent } from '../core/components';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -31,7 +31,6 @@ import { ViewComponent } from './employee/view/view.component';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { DepartmentsComponent } from './departments/list/departments.component';
 import { MatTableModule } from '@angular/material/table';
-import { AddDepartmentComponent } from './departments/add/add.component';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatChipsModule } from '@angular/material/chips';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
@@ -40,6 +39,9 @@ import { AttendanceComponent } from './employee/attendance/attendance.component'
 import { AttendanceModule } from '../attendance/attendance.module';
 import { DesignationComponent } from './Designation/list/designation.component';
 import { DesignationaddComponent } from './Designation/add/designationadd.component';
+import { AddDepartmentComponent } from './departments/add/add.component';
+import { DatalistComponent } from './datalist/datalist.component';
+import { DashboardCardComponent } from '../core/components';
 
 @NgModule({
   declarations: [AddComponent,
@@ -52,7 +54,9 @@ import { DesignationaddComponent } from './Designation/add/designationadd.compon
     DepartmentsComponent,
     AddDepartmentComponent,
     OverviewComponent,
-    AttendanceComponent
+    AttendanceComponent,
+    DesignationaddComponent,
+    DesignationComponent
   ],
   
   schemas: [NO_ERRORS_SCHEMA],
