@@ -4,7 +4,7 @@
     <div class="grid grid-cols-2 gap-3">
       <mat-form-field appearance="outline">
         <mat-label>leaveType</mat-label>
-        <mat-select name="leaveType" formControlName="leaveType">
+        <mat-select name="type" formControlName="type">
           <mat-option *ngFor="let type of leaveType " [value]="type.value">
             {{type.label}}
           </mat-option>
@@ -14,7 +14,7 @@
 
       <mat-form-field appearance="outline">
         <mat-label>ContactDetail</mat-label>
-        <input type="number" matInput placeholder=" Enter contact detail" name="phone_no" formControlName="phone_no">
+        <input type="number" matInput placeholder=" Enter contact detail" maxlength="10" name="phone_no" formControlName="phone_no">
       </mat-form-field>
     </div>
 
