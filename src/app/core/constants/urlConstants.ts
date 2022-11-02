@@ -23,6 +23,9 @@ export const urls = {
     list: 'api/designation/list',
     delete: 'api/designation/delete/',
   },
+  financialYear:{
+    list:'api/year/list',
+  },
 };
     
 

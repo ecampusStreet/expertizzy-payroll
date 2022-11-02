@@ -42,6 +42,8 @@ import { DesignationaddComponent } from './Designation/add/designationadd.compon
 import { AddDepartmentComponent } from './departments/add/add.component';
 import { DatalistComponent } from './datalist/datalist.component';
 import { DashboardCardComponent } from '../core/components';
+import { MatDialogModule } from '@angular/material/dialog';
+import { PopupFormComponent } from './employee/popup-form/popup-form.component';
 
 @NgModule({
   declarations: [AddComponent,
@@ -56,7 +58,8 @@ import { DashboardCardComponent } from '../core/components';
     OverviewComponent,
     AttendanceComponent,
     DesignationaddComponent,
-    DesignationComponent
+    DesignationComponent,
+    PopupFormComponent
   ],
   
   schemas: [NO_ERRORS_SCHEMA],
@@ -95,11 +98,14 @@ import { DashboardCardComponent } from '../core/components';
     LayoutModule,
     AttendanceModule,
     MatDatepickerModule,
+    MatDialogModule,
+
   ],
   exports: [AdminComponent, AddDepartmentComponent],
   providers: [
     MatNativeDateModule,
     { provide: HTTP_INTERCEPTORS, useClass: ApiInterceptor, multi: true },
   ],
+
 })
 export class AdminModule {}

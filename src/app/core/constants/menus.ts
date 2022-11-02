@@ -221,7 +221,7 @@ export const menu = [
       {
         name: 'Designation',
         icon: 'work_history',
-        routeLink: '',
+        routeLink: 'designation/list',
       },
     ],
   },
