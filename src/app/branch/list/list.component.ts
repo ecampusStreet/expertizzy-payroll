@@ -40,7 +40,7 @@ branchList:any=[];
   }
 
   add(){
-    this,this.router.navigate(['/expertizzy/branch/add']);
+    this.router.navigate(['/expertizzy/branch/add']);
   }
 
   action(data: any, action: any) {

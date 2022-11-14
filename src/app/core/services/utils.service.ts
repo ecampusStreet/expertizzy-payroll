@@ -32,7 +32,6 @@ export class UtilsService {
               });
               dialogRef.afterClosed().subscribe(result => {
                 resolve(result);
-      console.log(result,"set value response");
                 
               });
         })

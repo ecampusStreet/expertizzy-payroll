@@ -80,7 +80,6 @@ export class ManageAttendanceComponent implements OnInit {
       width: '60%',
     });
     dialogRef.afterClosed().subscribe((result) => {
-      console.log(result);
       if (result) {
       }
     });

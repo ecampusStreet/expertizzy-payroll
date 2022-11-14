@@ -1,0 +1,37 @@
+
+table {
+        width: 100%;
+  }
+.example-container{
+    height: 75vh;
+    max-width: 100%;
+    overflow: auto;
+}
+.mat-header-cell {
+    color: #4050b5 !important;
+    font-weight: 800;
+    border-bottom-width: 1px;
+    border-bottom-color: #4050b5;
+    border-bottom-style: solid;
+
+  }
+  .mat-header-cell.left{
+    text-align: left;
+
+  }
+  .mat-header-cell.right{
+    text-align: right;
+
+  }
+  .mat-row:hover {
+        background-color: #cccccc4a;
+        cursor: pointer;
+      }
+.mat-cell{
+    text-align: right;
+}
+.mat-cell.left{
+  text-align: left;
+}
+
+

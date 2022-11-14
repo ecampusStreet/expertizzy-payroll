@@ -49,7 +49,6 @@ export class DesignationaddComponent implements OnInit {
       url: urls.designation.getById + this.id,
     };
     this.apiService.get(config).subscribe((resp) => {
-      console.log(resp, 'resp');
       if (resp) {
         this.designationData = resp.result;
         this.prepareForm();

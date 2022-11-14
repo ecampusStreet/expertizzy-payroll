@@ -71,7 +71,7 @@ export class DesignationComponent implements OnInit {
   }
 
   add() {
-    this.router.navigate(['expertizzy/designation/add']);
+    this.router.navigate(['/expertizzy/designation/add']);
   }
   deleteConfirmationpopup(event: any) {
     let data = {

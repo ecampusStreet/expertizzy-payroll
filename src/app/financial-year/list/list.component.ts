@@ -11,7 +11,7 @@ import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 export class FinancialYearComponent implements OnInit {
   searchText = '';
   financialYear: any;
-  displayedColumns = ['financialYear', 'currentYear', 'action'];
+  displayedColumns = ['financialYear', 'currentYear', ];
   constructor(
     private router: Router,
     private apiService: ApiService,
@@ -24,8 +24,8 @@ export class FinancialYearComponent implements OnInit {
     this.getYear();
   }
   add() {
-    // this.router.navigate(['expertizzy/financialyear/add']);
-    this.matdialog
+    this.router.navigate(['expertizzy/financialyear/add']);
+    // this.matdialog
 
 
   }
@@ -38,7 +38,6 @@ export class FinancialYearComponent implements OnInit {
       url: urls.financialYear.list,
     };
     this.apiService.get(config).subscribe((resp) => {
-      console.log(resp, 'years');
       if (resp) {
         this.toast.success(resp.message);
         this.financialYear = resp.result.data;

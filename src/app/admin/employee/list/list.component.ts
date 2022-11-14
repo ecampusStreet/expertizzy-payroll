@@ -79,7 +79,6 @@ export class ListComponent implements OnInit {
         this.filters.experience,
     };
     this.apiService.get(config).subscribe((resp) => {
-      console.log(resp, 'employee list');
 
       if (resp.success) {
         this.employeeList = this.employeeList.concat(resp.result.data);
@@ -154,7 +153,6 @@ export class ListComponent implements OnInit {
       
     });
     dialogRef.afterClosed().subscribe((result) => {
-      console.log(result);
       if (result) {
         this.filters.department = result.department ? result.department : '';
         this.filters.designation = result.designation ? result.designation : '';
@@ -164,7 +162,6 @@ export class ListComponent implements OnInit {
         this.filters.financialyear = result.financialyear ? result.financialyear: ''  
         this.filters.experience = result.experience ? result.experience : '';
         this.filters = result;
-        console.log(this.filters, 'filter data');
         this.getEmployees();
         this.employeeList = [];
       }

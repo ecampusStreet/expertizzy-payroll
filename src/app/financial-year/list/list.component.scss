@@ -1,5 +1,6 @@
 table{
     width:100%;
+    padding: 0 10px;
 }
 .example-container {
     height: 75vh;
@@ -19,7 +20,7 @@ table{
     border-bottom-style: solid;
    
   }
-  .mat-header-cell.right{
+  .mat-header-cell.text-right{
     text-align: right;
   }
   .mat-header-cell.center{
@@ -39,8 +40,3 @@ table{
     height: 50px !important;
 }
 
-// .flex{
-//   display:flex ;
-//   justify-content: space-between;
-
-// }

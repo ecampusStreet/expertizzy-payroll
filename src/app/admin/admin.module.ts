@@ -8,9 +8,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { RouterModule } from '@angular/router';
 import { AddComponent } from './employee/add/add.component';
 import { MatIconModule } from '@angular/material/icon';
-// import { DatalistComponent } from './datalist/datalist.component';
 import { MatCheckboxModule } from '@angular/material/checkbox';
-// import { DashboardCardComponent } from '../core/components';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -29,46 +27,32 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ListComponent } from './employee/list/list.component';
 import { ViewComponent } from './employee/view/view.component';
 import { MatDatepickerModule } from '@angular/material/datepicker';
-import { DepartmentsComponent } from './departments/list/departments.component';
 import { MatTableModule } from '@angular/material/table';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { OverviewComponent } from './employee/overview/overview.component';
-// import { AttendanceComponent } from './employee/attendance/attendance.component';
 import { AttendanceModule } from '../attendance/attendance.module';
-import { DesignationComponent } from './Designation/list/designation.component';
-import { DesignationaddComponent } from './Designation/add/designationadd.component';
-import { AddDepartmentComponent } from './departments/add/add.component';
-import { DatalistComponent } from './datalist/datalist.component';
 import { DashboardCardComponent } from '../core/components';
 import { MatDialogModule } from '@angular/material/dialog';
 import { FilterFormComponent } from '../core/components/filter-form/filter-form.component';
-import { BranchesComponent } from './branches/list/list.component';
-import { AddbranchComponent } from './branches/add/add.component';
 import { SettingsModule } from '../settings/settings.module';
-import { FinancialYearComponent } from './financial-year/list/list.component';
-import { AddfinancialYearComponent } from './financial-year/add/add.component';
+import { DesignationModule } from '../designation/designation.module';
+import { BranchModule } from '../branch/branch.module';
+import { DepartmentModule } from '../department/department.module';
+import { FinancialYearModule } from '../financial-year/financial-year.module';
 
 @NgModule({
   declarations: [
     AddComponent,
     AdminComponent,
-    DatalistComponent,
     ListComponent,
     DashboardComponent,
     DashboardCardComponent,
     ViewComponent,
-    DepartmentsComponent,
-    AddDepartmentComponent,
     OverviewComponent,
-    DesignationaddComponent,
-    DesignationComponent,
-    BranchesComponent,
-    AddbranchComponent,
     FilterFormComponent,
-    FinancialYearComponent,
-    AddfinancialYearComponent,
+   
   ],
 
   schemas: [NO_ERRORS_SCHEMA],
@@ -81,9 +65,12 @@ import { AddfinancialYearComponent } from './financial-year/add/add.component';
     CoreModule,
     AttendanceModule,
     SharedModule,
-    FormsModule,
     SettingsModule,
-
+    DesignationModule,
+    BranchModule,
+    DepartmentModule,
+    
+    FinancialYearModule,
     FlexLayoutModule,
     MatCheckboxModule,
     MatSidenavModule,
@@ -107,7 +94,7 @@ import { AddfinancialYearComponent } from './financial-year/add/add.component';
     MatDatepickerModule,
     MatDialogModule,
   ],
-  exports: [AdminComponent, AddDepartmentComponent],
+  exports: [AdminComponent],
   providers: [
     MatNativeDateModule,
     { provide: HTTP_INTERCEPTORS, useClass: ApiInterceptor, multi: true },

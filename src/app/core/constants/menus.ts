@@ -170,7 +170,7 @@ export const menu = [
       {
         name: 'Manage branch',
         icon: 'emergency_share',
-        routeLink: 'branch/list',
+        routeLink: 'branch',
       },
       {
         name: 'Gateway',
@@ -180,7 +180,7 @@ export const menu = [
       {
         name: 'Financial year',
         icon: 'edit_calendar',
-        routeLink: 'financialyear/list',
+        routeLink: 'financialyear',
       },
       {
         name: 'User role',
@@ -275,12 +275,12 @@ export const menu = [
       {
         name: 'Manage department',
         icon: 'badge',
-        routeLink: 'department/list',
+        routeLink: 'department',
       },
       {
         name: 'Manage designastion',
         icon: 'work',
-        routeLink: 'designation/list',
+        routeLink: 'designation',
       },
      
       {

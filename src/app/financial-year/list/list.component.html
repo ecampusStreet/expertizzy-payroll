@@ -40,31 +40,12 @@
               </td>
             </ng-container>
             <ng-container matColumnDef="currentYear">
-              <th mat-header-cell class="ml-10"  *matHeaderCellDef>Current year</th>
-              <td mat-cell class="ml-10"  *matCellDef="let element">
+              <th mat-header-cell class="text-right"  *matHeaderCellDef>Current year</th>
+              <td mat-cell class="text-right mr-8"  *matCellDef="let element">
                 {{ element.currentYear | titlecase }}
               </td>
             </ng-container>
   
-            <ng-container  matColumnDef="action">
-              <th mat-header-cell class="right" *matHeaderCellDef>Action</th>
-              <td mat-cell class="text-right" *matCellDef="let element">
-                <button
-                  mat-icon-button
-                  color="primary"
-                  aria-label="Example icon button with a vertical three dot icon"
-                >
-                  <mat-icon>edit</mat-icon>
-                </button>
-                <button
-                  mat-icon-button
-                  color="primary"
-                  aria-label="Example icon button with a home icon"
-                >
-                  <mat-icon>delete_forever</mat-icon>
-                </button>
-              </td>
-            </ng-container>
             <tr
               mat-header-row
               *matHeaderRowDef="displayedColumns; sticky: true"

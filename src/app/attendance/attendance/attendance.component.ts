@@ -50,7 +50,6 @@ export class AttendanceComponent implements OnInit {
     };
     this.apiService.post(config).subscribe((resp) => {
       if (resp) {
-        console.log(resp);
         this.tostService.success(resp.message);
         
       }
