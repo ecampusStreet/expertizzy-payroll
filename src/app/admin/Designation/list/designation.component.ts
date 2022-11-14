@@ -11,6 +11,9 @@ import { ToastService } from 'src/app/core/services/toast.service';
   styleUrls: ['./designation.component.scss'],
 })
 export class DesignationComponent implements OnInit {
+  count = 0;
+  limit = 5;
+  page = 1;
   constructor(
     private router: Router,
     private apiService: ApiService,
@@ -21,6 +24,7 @@ export class DesignationComponent implements OnInit {
   displayedColumns = ['designationName', 'actions'];
 
   designationList = [];
+  searchText = "";
 
   ngOnInit(): void {
     this.getDesignation();
@@ -33,7 +37,6 @@ export class DesignationComponent implements OnInit {
     this.apiService.get(config).subscribe((resp) => {
       if (resp.success) {
         this.designationList = this.designationList.concat(resp.result.data);
-        console.log(this.designationList);
         this.toast.success(resp.message);
       } else {
         this.toast.error(resp.message);
@@ -41,19 +44,26 @@ export class DesignationComponent implements OnInit {
     });
   }
 
+    search() {
+      this.count = 0;
+      this.page = 1;
+      this.designationList = [];
+      this.getDesignation();
+    }
+  
+
   action(data: any, action: any) {
     switch (action) {
       case 'edit':
-        // this.router.navigate(['admin/designation/add'], {
-        //   queryParams: { id: data._id },
-        // });
-        this.toast.error("Not yet implemented")
+        this.router.navigate(['expertizzy/designation/add'], {
+          queryParams: { id: data._id },
+        });
         break;
       case 'delete':
         this.deleteConfirmationpopup(data);
         break;
       case 'view':
-        this.router.navigate(['admin/designation/add'], {
+        this.router.navigate(['expertizzy/designation/add'], {
           queryParams: { id: data._id, readOnly: true },
         });
         break;
@@ -61,8 +71,7 @@ export class DesignationComponent implements OnInit {
   }
 
   add() {
-    // this.router.navigate(['admin/designation/add']);
-    this.toast.error('Not yet implemented ');
+    this.router.navigate(['expertizzy/designation/add']);
   }
   deleteConfirmationpopup(event: any) {
     let data = {

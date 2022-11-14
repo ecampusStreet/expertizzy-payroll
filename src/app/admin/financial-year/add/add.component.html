@@ -1,0 +1,50 @@
+<div class="flex-auto">
+  <div class="flex flex-col">
+    <app-content-navbar
+      [isBack]="true"
+      [title]="'Add designation'"
+    ></app-content-navbar>
+
+    <!-- card design -->
+    <div class="min-h-screen bg-gray-100">
+      <mat-card class="p-6 bg-white px-2 mx-3 my-3">
+        <div class="p-2 clear-both">
+          <form [formGroup]="financialYear">
+            <div class="grid lg:grid-cols-1 gap-4">
+              <mat-form-field class="example-full-width">
+                <mat-label>Financial year</mat-label>
+                <input
+                  matInput
+                  placeholder="Financial year"
+                  name="financialYear"
+                  formControlName="financialYear"
+                />
+              </mat-form-field>
+
+              <mat-form-field class="example-full-width">
+                <mat-label>Current year</mat-label>
+                <input
+                  matInput
+                  placeholder="Please enter current year"
+                  name="currentYear"
+                  formControlName="currentYear"
+                />
+              </mat-form-field>
+
+            </div>
+            <div class="flex justify-end">
+              <button
+                mat-raised-button
+                color="primary"
+                [disabled]="!financialYear.valid"
+                (click)="submit()"
+              >
+                Submit
+              </button>
+            </div>
+          </form>
+        </div>
+      </mat-card>
+    </div>
+  </div>
+</div>

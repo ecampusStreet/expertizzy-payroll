@@ -12,6 +12,7 @@ import { ToastService } from 'src/app/core/services/toast.service';
   styleUrls: ['./departments.component.scss'],
 })
 export class DepartmentsComponent implements OnInit {
+  searchText="";
   list:any=[];
   displayedColumns: string[] = ['departmentId', 'name','location','departmentHead','actions'];
   count =0;
@@ -26,6 +27,10 @@ export class DepartmentsComponent implements OnInit {
 
   ngOnInit(): void {
     this.getDepartments();
+  }
+
+  search(){
+
   }
   getDepartments() {
     const config = {

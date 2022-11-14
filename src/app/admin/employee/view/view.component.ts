@@ -31,8 +31,10 @@ export class ViewComponent implements OnInit {
       url: urls.employee.byId + this.emplID
     }
     this.apiService.get(config).subscribe(data =>{
+      console.log(data,'view data')
       if(data.success){
-        this.employee = data.result.data;
+        this.employee = data.result;
+        console.log(this.employee)
       }
     })
   }

@@ -165,12 +165,12 @@ export const menu = [
       {
         name: 'Settings',
         icon: 'settings_applications',
-        routeLink: '',
+        routeLink: 'settings',
       },
       {
         name: 'Manage branch',
         icon: 'emergency_share',
-        routeLink: '',
+        routeLink: 'branch/list',
       },
       {
         name: 'Gateway',
@@ -180,7 +180,7 @@ export const menu = [
       {
         name: 'Financial year',
         icon: 'edit_calendar',
-        routeLink: '',
+        routeLink: 'financialyear/list',
       },
       {
         name: 'User role',
@@ -218,11 +218,7 @@ export const menu = [
         icon: 'shuffle',
         routeLink: '',
       },
-      {
-        name: 'Designation',
-        icon: 'work_history',
-        routeLink: 'designation/list',
-      },
+    
     ],
   },
   {
@@ -279,13 +275,14 @@ export const menu = [
       {
         name: 'Manage department',
         icon: 'badge',
-        routeLink: '',
+        routeLink: 'department/list',
       },
       {
         name: 'Manage designastion',
         icon: 'work',
-        routeLink: '',
+        routeLink: 'designation/list',
       },
+     
       {
         name: 'Offer letter',
         icon: 'drafts',

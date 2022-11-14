@@ -33,9 +33,9 @@ import { DepartmentsComponent } from './departments/list/departments.component';
 import { MatTableModule } from '@angular/material/table';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatChipsModule } from '@angular/material/chips';
-import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { OverviewComponent } from './employee/overview/overview.component';
-import { AttendanceComponent } from './employee/attendance/attendance.component';
+// import { AttendanceComponent } from './employee/attendance/attendance.component';
 import { AttendanceModule } from '../attendance/attendance.module';
 import { DesignationComponent } from './Designation/list/designation.component';
 import { DesignationaddComponent } from './Designation/add/designationadd.component';
@@ -43,11 +43,17 @@ import { AddDepartmentComponent } from './departments/add/add.component';
 import { DatalistComponent } from './datalist/datalist.component';
 import { DashboardCardComponent } from '../core/components';
 import { MatDialogModule } from '@angular/material/dialog';
-import { PopupFormComponent } from './employee/popup-form/popup-form.component';
+import { FilterFormComponent } from '../core/components/filter-form/filter-form.component';
+import { BranchesComponent } from './branches/list/list.component';
+import { AddbranchComponent } from './branches/add/add.component';
+import { SettingsModule } from '../settings/settings.module';
+import { FinancialYearComponent } from './financial-year/list/list.component';
+import { AddfinancialYearComponent } from './financial-year/add/add.component';
 
 @NgModule({
-  declarations: [AddComponent,
-    AdminComponent, 
+  declarations: [
+    AddComponent,
+    AdminComponent,
     DatalistComponent,
     ListComponent,
     DashboardComponent,
@@ -56,12 +62,15 @@ import { PopupFormComponent } from './employee/popup-form/popup-form.component';
     DepartmentsComponent,
     AddDepartmentComponent,
     OverviewComponent,
-    AttendanceComponent,
     DesignationaddComponent,
     DesignationComponent,
-    PopupFormComponent
+    BranchesComponent,
+    AddbranchComponent,
+    FilterFormComponent,
+    FinancialYearComponent,
+    AddfinancialYearComponent,
   ],
-  
+
   schemas: [NO_ERRORS_SCHEMA],
   imports: [
     CommonModule,
@@ -70,12 +79,12 @@ import { PopupFormComponent } from './employee/popup-form/popup-form.component';
     ReactiveFormsModule,
     AdminRoutingModule,
     CoreModule,
-    MatSidenavModule,
-    FlexLayoutModule,
-    RouterModule,
-    FormsModule,
+    AttendanceModule,
     SharedModule,
-    MatSidenavModule,
+    FormsModule,
+    SettingsModule,
+
+    FlexLayoutModule,
     MatCheckboxModule,
     MatSidenavModule,
     MatFormFieldModule,
@@ -87,7 +96,6 @@ import { PopupFormComponent } from './employee/popup-form/popup-form.component';
     MatCardModule,
     MatDividerModule,
     MatIconModule,
-    CommonModule,
     MatGridListModule,
     ReactiveFormsModule,
     MatNativeDateModule,
@@ -96,16 +104,13 @@ import { PopupFormComponent } from './employee/popup-form/popup-form.component';
     MatChipsModule,
     MatSlideToggleModule,
     LayoutModule,
-    AttendanceModule,
     MatDatepickerModule,
     MatDialogModule,
-
   ],
   exports: [AdminComponent, AddDepartmentComponent],
   providers: [
     MatNativeDateModule,
     { provide: HTTP_INTERCEPTORS, useClass: ApiInterceptor, multi: true },
   ],
-
 })
 export class AdminModule {}

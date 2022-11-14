@@ -9,14 +9,15 @@ import {
 
 @Component({
   selector: 'app-popup-form',
-  templateUrl: './popup-form.component.html',
-  styleUrls: ['./popup-form.component.scss'],
+  templateUrl: './filter-form.component.html',
+  styleUrls: ['./filter-form.component.scss'],
 })
-export class PopupFormComponent implements OnInit {
+export class FilterFormComponent implements OnInit {
   departmentList: any = [];
   designationList: any = [];
   employeeList: any = [];
-  financialYears:any=[];
+  financialYears: any = [];
+  branchList: any = [];
   search!: FormGroup;
 
   branchName = [
@@ -32,19 +33,21 @@ export class PopupFormComponent implements OnInit {
   constructor(
     private apiService: ApiService,
     private toast: ToastService,
-    public dialogRef: MatDialogRef<PopupFormComponent>,
+    public dialogRef: MatDialogRef<FilterFormComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any
-  ) {}
+  ) {
+    console.log(this.data, 'data');
+  }
 
   ngOnInit(): void {
     this.getDepartment();
     this.getDesignation();
     this.getEmployee();
-    this. getFinancialyear();
-
+    this.getFinancialyear();
+    this.getBranch();
     this.search = new FormGroup({
-      department: new FormControl(''),
-      designation: new FormControl(''),
+      department: new FormControl(this.data ? this.data.department : ''),
+      designation: new FormControl(this.data ? this.data.designation : ''),
       doj: new FormControl(''),
       gender: new FormControl(''),
       branch: new FormControl(''),
@@ -54,12 +57,14 @@ export class PopupFormComponent implements OnInit {
   }
 
   submit() {
-    console.log(this.search.value);
     this.dialogRef.close(this.search.value);
   }
 
-  close(){
-    this.dialogRef.close(false);
+  close() {
+    this.dialogRef.close(false );
+  }
+  reset() {
+    this.dialogRef.close( );
   }
 
   getDepartment() {
@@ -67,7 +72,6 @@ export class PopupFormComponent implements OnInit {
       url: urls.departments.list,
     };
     this.apiService.get(config).subscribe((resp) => {
-      console.log(resp);
       if (resp.success) {
         this.departmentList = resp.result.data;
       } else {
@@ -81,7 +85,6 @@ export class PopupFormComponent implements OnInit {
       url: urls.designation.list,
     };
     this.apiService.get(config).subscribe((resp) => {
-      console.log(resp);
       if (resp.success) {
         this.designationList = resp.result.data;
       } else {
@@ -95,7 +98,6 @@ export class PopupFormComponent implements OnInit {
       url: urls.employee.list,
     };
     this.apiService.get(config).subscribe((resp) => {
-      console.log(resp, 'emplist');
       if (resp.success) {
         this.employeeList = resp.result.data;
       } else {
@@ -104,14 +106,26 @@ export class PopupFormComponent implements OnInit {
     });
   }
 
-  getFinancialyear(){
+  getFinancialyear() {
     const config = {
       url: urls.financialYear.list,
     };
     this.apiService.get(config).subscribe((resp) => {
-      console.log(resp, 'year');
       if (resp.success) {
         this.financialYears = resp.result.data;
+      } else {
+        this.toast.error(resp.message);
+      }
+    });
+  }
+
+  getBranch() {
+    const config = {
+      url: urls.branch.list,
+    };
+    this.apiService.get(config).subscribe((resp) => {
+      if (resp.success) {
+        this.branchList = resp.result.data;
       } else {
         this.toast.error(resp.message);
       }

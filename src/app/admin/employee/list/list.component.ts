@@ -2,7 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ApiService, ToastService, urls, UtilsService } from 'src/app/core';
-import { PopupFormComponent } from '../popup-form/popup-form.component';
+import { FilterFormComponent } from '../../../core/components/filter-form/filter-form.component';
 
 @Component({
   selector: 'app-employees-list',
@@ -10,22 +10,22 @@ import { PopupFormComponent } from '../popup-form/popup-form.component';
   styleUrls: ['./list.component.scss'],
 })
 export class ListComponent implements OnInit {
-  title = 'Employee list';
+  title = 'Employee master data';
   count = 0;
-  limit = 5;
+  limit = 25;
   page = 1;
 
   employeeList = [];
   searchText: any = '';
 
-  filters: any = {
-    department:'',
-    designation:'',
-    doj:'',
-    gender:'',
-    branch:'',
-    financialyear:'',
-    experience:'',
+  filters = {
+    department: '',
+    designation: '',
+    doj: '',
+    gender: '',
+    branch: '',
+    financialyear: '',
+    experience: '',
   };
 
   tableheader = [
@@ -45,7 +45,7 @@ export class ListComponent implements OnInit {
     private matdialog: MatDialog
   ) {
     routerParams.queryParams.subscribe((params) => {
-      console.log(params, 'params');
+      console.log(params, 'params employee');
     });
   }
 
@@ -57,29 +57,30 @@ export class ListComponent implements OnInit {
     const config = {
       url:
         urls.employee.list +
-          '?limit=' +
-          this.limit +
-          '&page=' +
-          this.page +
-          '&search=' +
-          this.searchText +
-          '&department=' +
-          this.filters.department+
-          '&designation='+
-          this.filters.designation+
-          '&doj='+
-          this.filters.doj+
-          '&gender='+
-          this.filters.gender+
-          '&branch='+
-          this.filters.branch+
-          '&financialyear='+
-          this.filters.financialyear+
-          '&experience='+
-          this.filters.experience,
-         
+        '?limit=' +
+        this.limit +
+        '&page=' +
+        this.page +
+        '&search=' +
+        this.searchText +
+        '&department=' +
+        this.filters.department +
+        '&designation=' +
+        this.filters.designation +
+        '&doj=' +
+        this.filters.doj +
+        '&gender=' +
+        this.filters.gender +
+        '&branch=' +
+        this.filters.branch +
+        '&financialyear=' +
+        this.filters.financialyear +
+        '&experience=' +
+        this.filters.experience,
     };
     this.apiService.get(config).subscribe((resp) => {
+      console.log(resp, 'employee list');
+
       if (resp.success) {
         this.employeeList = this.employeeList.concat(resp.result.data);
         this.count = resp.result.count;
@@ -91,8 +92,6 @@ export class ListComponent implements OnInit {
   }
 
   // Empl ID	Name	designation	Grade	department	Team	department Head	Team Leader	Emp mail id	emp Mobile no	Gender	Date of Joining	Date of Birth	Blood Group	Father Name	Marital Status	Bank Name 	Account no	IFSC code	UAN no	PAN No	AADHAARNo	qualification	Work Experience 	Leave entitalment
-
- 
 
   action(event: any) {
     switch (event.action) {
@@ -149,24 +148,26 @@ export class ListComponent implements OnInit {
   }
   openPopup() {
     const dialogConfig = new MatDialogConfig();
-    const dialogRef = this.matdialog.open(PopupFormComponent, { width: '60%' });
+    const dialogRef = this.matdialog.open(FilterFormComponent, {
+      width: '60%',
+      data: this.filters,
+      
+    });
     dialogRef.afterClosed().subscribe((result) => {
+      console.log(result);
       if (result) {
-        this.filters.department =result.department ? result.department : ''; 
-        this.filters.designation =result.designation ? result.designation : ''; 
-        this.filters.doj =result.doj ? result.doj : ''; 
-        this.filters.gender =result.gender ? result.gender : '';
-        this.filters.branch =result.branch ? result.branch : ''; 
-        this.filters.financialyear =result.financialyear ? result.financialyear : ''; 
-        this.filters.experience =result.experience ? result.experience : ''; 
+        this.filters.department = result.department ? result.department : '';
+        this.filters.designation = result.designation ? result.designation : '';
+        this.filters.doj = result.doj ? result.doj : '';
+        this.filters.gender = result.gender ? result.gender : '';
+        this.filters.branch = result.branch ? result.branch : '';
+        this.filters.financialyear = result.financialyear ? result.financialyear: ''  
+        this.filters.experience = result.experience ? result.experience : '';
         this.filters = result;
         console.log(this.filters, 'filter data');
         this.getEmployees();
+        this.employeeList = [];
       }
     });
   }
 }
-
-// this.filters && this.filters.department
-// ? this.filters.department
-// : '',

@@ -32,6 +32,10 @@ export class AddComponent implements OnInit {
   bloodGroups = bloodGroup;
   selectedBloodGroup : string ='';
   expDetailForm!: FormGroup;
+
+  Designation:any= [ ];
+  Department:any = [];
+
   constructor(
     private router: Router,
     private routerParams: ActivatedRoute,
@@ -50,7 +54,11 @@ export class AddComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+   this.getDesignation();
+   this.getDepartment();
+
+  }
 
   prepareForm(){
     console.log(this.employeeData ,"this.employeeData ");
@@ -234,52 +242,6 @@ export class AddComponent implements OnInit {
     return this.form.controls;
   }
 
-  onSubmit() {}
-
-  gender = ['male', 'female'];
-
-  Designation = [
-    { value: 'M/COperator', viewValue: 'M/C Operator' },
-    { value: 'fitter', viewValue: 'Fitter' },
-    { value: 'welder', viewValue: 'Welder' },
-    { value: 'houseKeeping', viewValue: 'House Keeping' },
-    { value: 'asstFitter', viewValue: 'Asst.Fitter' },
-    { value: 'officeBoy', viewValue: 'Office Boy' },
-    { value: 'trainee', viewValue: 'Trainee' },
-    { value: 'operator', viewValue: 'Operator' },
-    { value: 'sharingM/CAsst', viewValue: 'Sharing M/C Asst' },
-    { value: 'storeKeeper', viewValue: 'Store Keeper' },
-    { value: 'grinder', viewValue: 'Grinder' },
-    { value: 'hydroHelper', viewValue: 'Hydro Helper' },
-    { value: 'traineeWelder', viewValue: 'Trainee welder' },
-    { value: 'helper', viewValue: 'Helper' },
-    { value: 'driver', viewValue: 'Driver' },
-    { value: 'electriction', viewValue: 'Electriction' },
-    { value: 'technician', viewValue: 'Technician' },
-  ];
-
-  Department = [
-    { value: 'Sand Blasting', viewValue: 'Sand Blasting' },
-    { value: 'HR & S4', viewValue: 'HR & S4' },
-    { value: 'CR Section', viewValue: 'CR Section' },
-    { value: 'Full Welding', viewValue: 'Full Welding' },
-    { value: 'Hk', viewValue: 'Hk' },
-    { value: 'End Plate', viewValue: 'End Plate' },
-    { value: 'Accessories', viewValue: 'Accessories' },
-    { value: 'Full Welding', viewValue: 'Full Welding' },
-    { value: 'End Plate', viewValue: 'End Plate' },
-    { value: 'Loading', viewValue: 'Loading' },
-    { value: 'Office', viewValue: 'Office' },
-    { value: 'Fitment', viewValue: 'Fitment' },
-    { value: 'Shearing', viewValue: 'Shearing' },
-    { value: 'Store', viewValue: 'Store' },
-    { value: 'Grinding Section', viewValue: 'Grinding Section' },
-    { value: 'Clip Cutting', viewValue: 'Clip Cutting' },
-    { value: 'General', viewValue: 'General' },
-    { value: 'Electrical', viewValue: 'Electrical' },
-    { value: 'D & p', viewValue: 'D & p' },
-    { value: 'Human Resourse', viewValue: 'Human Resourse' },
-  ];
 
   skills = [
     { value: 'Semi skill', viewValue: 'Semi Skill' },
@@ -352,5 +314,33 @@ export class AddComponent implements OnInit {
    
   }
   
+
+  getDesignation() {
+    const config = {
+      url: urls.designation.list,
+    };
+    this.apiService.get(config).subscribe((resp) => {
+      if (resp.success) {
+        this.Designation = this.Designation.concat(resp.result.data);
+      } else {
+        this.tostService.error(resp.message);
+      }
+    });
+  }
+
+  getDepartment(){
+    const config ={
+      url:urls.departments.list,
+    };
+    this.apiService.get(config).subscribe((resp) => {
+      if (resp.success) {
+        this.Department = this.Department.concat(resp.result.data);
+      } else {
+        this.tostService.error(resp.message);
+      }
+    });
+    }
+
+  }
  
-}
+

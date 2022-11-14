@@ -3,19 +3,24 @@ import { CommonModule } from '@angular/common';
 
 import { AttendanceRoutingModule } from './attendance-routing.module';
 import { AttendanceComponent } from './attendance/attendance.component';
-import { ManagaeAttendanceComponent } from './managae-attendance/managae-attendance.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
-
-
+import { SharedModule } from '../shared/shared.module';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { FormsModule } from '@angular/forms';
+import { MatTableModule } from '@angular/material/table';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { ManageAttendanceComponent } from './manage-attendance/manage-attendance.component';
 @NgModule({
-  declarations: [
-    AttendanceComponent,
-    ManagaeAttendanceComponent
-  ],
+  declarations: [AttendanceComponent, ManageAttendanceComponent],
   imports: [
     CommonModule,
     AttendanceRoutingModule,
-    FlexLayoutModule
-  ]
+    FormsModule,
+    FlexLayoutModule,
+    SharedModule,
+    MatDatepickerModule,
+    MatTableModule,
+    MatSlideToggleModule,
+  ],
 })
-export class AttendanceModule { }
+export class AttendanceModule {}

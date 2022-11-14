@@ -9,7 +9,7 @@ import { ApiService } from 'src/app/core';
 })
 export class DataModalComponent implements OnInit {
 page =1;
-limit=1;
+limit=5;
 dataList :any=[];
 selection:any;
 search : any;
@@ -31,6 +31,8 @@ count =0;
       if(dataList.success){
         this.dataList = this.dataList.concat(dataList.result.data);
         this.count = dataList.result.count;
+        console.log(this.dataList, "datalist of employee");
+
       }
     })
   }

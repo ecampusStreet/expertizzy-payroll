@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PopupFormComponent } from './popup-form.component';
+import { PopupFormComponent } from './filter-form.component';
 
 describe('PopupFormComponent', () => {
   let component: PopupFormComponent;

@@ -1,6 +1,6 @@
 <form [formGroup]="search">
   <mat-card class="border p-4">
-    <!-- {{ financialYears| json}} -->
+    <!-- {{ branchList| json}} -->
     <h2 class="text-grey-500">Filter Employee</h2>
     <div class="grid grid-cols-3 gap-4">
       <mat-form-field>
@@ -61,8 +61,8 @@
       <mat-form-field>
         <mat-label>Branch</mat-label>
         <mat-select name="branch" formControlName="branch">
-          <mat-option *ngFor="let branch of branchName" [value]="branch?.value">
-            {{ branch?.viewValue | titlecase }}
+          <mat-option *ngFor="let branch of branchList" [value]="branch?.branchName">
+            {{ branch?.branchName | titlecase }}
           </mat-option>
         </mat-select>
       </mat-form-field>
@@ -73,11 +73,12 @@
         <input matInput placeholder="" name="experience" formControlName="experience">
       </mat-form-field>
     </div>
-    <div class="flex justify-between my-3">
-      <button mat-raised-button color="" (click)="close()">Close</button>
-      <button mat-raised-button color="primary" (click)="submit()">
-        Apply
-      </button>
+  </mat-card>
+  <mat-card class="my-6 border">
+    <div class="flex justify-end ">
+      <button mat-raised-button color="primary" class="mx-2" (click)="submit()">Apply</button>
+      <button mat-raised-button  DISMISS_MODAL="false" class="mx-2" >Reset</button>
+      <button mat-raised-button  (click)="close()" class="mx-2">Close</button>
     </div>
   </mat-card>
 </form>

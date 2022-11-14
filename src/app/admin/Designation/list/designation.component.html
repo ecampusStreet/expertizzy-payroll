@@ -1,40 +1,77 @@
-<div class="flex justify-end ml-3 mt-3 mb-3 mr-3">
-  <button mat-raised-button color="primary" (click)="add()">+ Add</button>
-</div>
-<div style="margin: 15px" class="example-container">
-  <table mat-table [dataSource]="designationList" class="mat-elevation-z8">
-    <ng-container matColumnDef="designationName">
-      <th mat-header-cell *matHeaderCellDef> Designation </th>
-      <td mat-cell *matCellDef="let element">{{ element.designationName | titlecase }}</td>
-    </ng-container>
+<div class="flex-auto">
+  <div class="flex flex-col">
+    <app-content-navbar [isBack]="false" [title]="'Designation'">
+    </app-content-navbar>
 
-    <ng-container matColumnDef="actions">
-      <th mat-header-cell *matHeaderCellDef>Action</th>
-      <td mat-cell *matCellDef="let element">
-        <button
-          mat-icon-button
-          color="primary"
-          aria-label="Example icon button with a vertical three dot icon"
-          (click)="$event.stopPropagation(); action(element, 'edit')">
-          <mat-icon>edit</mat-icon>
-        </button>
-        <button
-          mat-icon-button
-          color="primary"
-          aria-label="Example icon button with a home icon"
-          (click)="$event.stopPropagation(); action(element, 'delete')">
-          <mat-icon>delete_forever</mat-icon>
-        </button>
-      </td>
-    </ng-container>
-    <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
-    <tr
-      mat-row
-      *matRowDef="let row; columns: displayedColumns"
-      (click)="action(row, 'view')"
-    ></tr>
-  </table>
+    <div class="min-h-screen bg-gray-100">
+      <div class="flex justify-end m-3 items-center">
+        <div class="w-full">
+          <mat-form-field class="example-full-width w-full search-box m-0 mr-4">
+            <span matPrefix> </span>
+            <input
+              type="text"
+              matInput
+              placeholder="Search here"
+              name="search"
+              [(ngModel)]="searchText"
+              (click)="search()"
+            />
+            <button matSuffix mat-button>
+              <mat-icon (click)="search()">search</mat-icon>
+            </button>
+          </mat-form-field>
+        </div>
+        <div class="ml-7">
+          <button mat-raised-button color="primary" (click)="add()">
+            Create designation
+          </button>
+        </div>
+      </div>
+      <div style="margin: 15px" class="example-container">
+        <table
+          mat-table
+          [dataSource]="designationList"
+          class="mat-elevation-z8"
+        >
+          <ng-container matColumnDef="designationName">
+            <th mat-header-cell class="left" *matHeaderCellDef>Designation</th>
+            <td mat-cell class="left" *matCellDef="let element">
+              {{ element.designationName | titlecase }}
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="actions">
+            <th mat-header-cell class="right" *matHeaderCellDef>Action</th>
+            <td mat-cell class="right" *matCellDef="let element">
+              <button
+                mat-icon-button
+                color="primary"
+                aria-label="Example icon button with a vertical three dot icon"
+                (click)="$event.stopPropagation(); action(element, 'edit')"
+              >
+                <mat-icon>edit</mat-icon>
+              </button>
+              <button
+                mat-icon-button
+                color="primary"
+                aria-label="Example icon button with a home icon"
+                (click)="$event.stopPropagation(); action(element, 'delete')"
+              >
+                <mat-icon>delete_forever</mat-icon>
+              </button>
+            </td>
+          </ng-container>
+          <tr
+            mat-header-row
+            *matHeaderRowDef="displayedColumns; sticky: true"
+          ></tr>
+          <tr
+            mat-row
+            *matRowDef="let row; columns: displayedColumns"
+            (click)="action(row, 'view')"
+          ></tr>
+        </table>
+      </div>
+    </div>
+  </div>
 </div>
-<!-- <pre>
-  {{designationList|json }}
-</pre> -->
