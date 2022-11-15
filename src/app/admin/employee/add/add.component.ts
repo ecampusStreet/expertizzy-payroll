@@ -303,6 +303,7 @@ export class AddComponent implements OnInit {
     this.location.back();
   }
   addressChange(event:any){
+    console.log(event,"event")
     this.form.patchValue({ permanentAddress: ''});
     if(event.checked){
       this.form.patchValue({ permanentAddress: this.form.value.presentAddress });

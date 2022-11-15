@@ -26,9 +26,7 @@
       </button>
     </div>
   </div>
-<!-- <div class="flex justify-end ml-3 mt-3 mb-3 mr-3">
-    <button mat-raised-button color="primary" (click)="add()">Create </button>
-    </div> -->
+
   <div style="margin: 15px;" class="example-container ">
       <table mat-table [dataSource]="branchList" class="mat-elevation-z8">
         <ng-container matColumnDef="departmentId">
@@ -80,6 +78,6 @@
       </table>
       </div>
       <div class="flex justify-center ml-3 mt-3 mb-3 mr-3">
-        <!-- <button mat-raised-button color="primary" (click)="loadMore()" *ngIf="list.length && count > list.length">Load more</button> -->
+        <button mat-raised-button color="primary" (click)="loadMore()" *ngIf="branchList.length && count > branchList.length">Load more</button>
         </div>
       </div>

@@ -13,6 +13,7 @@ import {
   styleUrls: ['./filter-form.component.scss'],
 })
 export class FilterFormComponent implements OnInit {
+  title= 'Filter employee';
   departmentList: any = [];
   designationList: any = [];
   employeeList: any = [];
@@ -28,6 +29,7 @@ export class FilterFormComponent implements OnInit {
   genderName = [
     { value: 'male', viewValue: 'Male' },
     { value: 'female', viewValue: 'Female' },
+    {value:'others',viewValue:'Others'}
   ];
 
   constructor(
@@ -48,11 +50,11 @@ export class FilterFormComponent implements OnInit {
     this.search = new FormGroup({
       department: new FormControl(this.data ? this.data.department : ''),
       designation: new FormControl(this.data ? this.data.designation : ''),
-      doj: new FormControl(''),
-      gender: new FormControl(''),
-      branch: new FormControl(''),
-      financialyear: new FormControl(''),
-      experience: new FormControl(''),
+      doj: new FormControl(this.data ? this.data.doj : ''),
+      gender: new FormControl(this.data ? this.data.gender : ''),
+      branch: new FormControl(this.data ? this.data.branch : ''),
+      financialyear: new FormControl(this.data ? this.data.financialyear : ''),
+      experience: new FormControl(this.data ? this.data.experience : ''),
     });
   }
 
@@ -61,10 +63,18 @@ export class FilterFormComponent implements OnInit {
   }
 
   close() {
-    this.dialogRef.close(false );
+    this.dialogRef.close(false);
   }
   reset() {
-    this.dialogRef.close( );
+    this.search.reset({
+      department: '',
+      designation: '',
+      doj: '',
+      gender: '',
+      branch: '',
+      financialyear: '',
+      experience: '',
+    });
   }
 
   getDepartment() {

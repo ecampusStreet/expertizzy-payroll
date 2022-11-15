@@ -1,7 +1,6 @@
 <form [formGroup]="search">
   <mat-card class="border p-4">
-    <!-- {{ branchList| json}} -->
-    <h2 class="text-grey-500">Filter Employee</h2>
+    <h2 class="text-grey-500">{{title}}</h2>
     <div class="grid grid-cols-3 gap-4">
       <mat-form-field>
         <mat-label>Department</mat-label>
@@ -77,7 +76,7 @@
   <mat-card class="my-6 border">
     <div class="flex justify-end ">
       <button mat-raised-button color="primary" class="mx-2" (click)="submit()">Apply</button>
-      <button mat-raised-button  DISMISS_MODAL="false" class="mx-2" >Reset</button>
+      <button mat-raised-button  (click)="reset()" class="mx-2" >Reset</button>
       <button mat-raised-button  (click)="close()" class="mx-2">Close</button>
     </div>
   </mat-card>

@@ -17,7 +17,7 @@ export class DepartmentsComponent implements OnInit {
   displayedColumns: string[] = ['departmentId', 'name','location','departmentHead','actions'];
   count =0;
   page=1;
-  limit=7;
+  limit=25;
   constructor(
     private apiService: ApiService,
     private toastService: ToastService,
@@ -30,16 +30,26 @@ export class DepartmentsComponent implements OnInit {
   }
 
   search(){
-
+    this.count = 0;
+    this.page = 1;
+    this.list = [];
+    this.getDepartments();
   }
   getDepartments() {
     const config = {
       url:
-        urls.departments.list + '?limit=' + this.limit + '&page=' + this.page,
+        urls.departments.list + '?limit=' + this.limit + '&page=' + this.page + '&deparmentId=' + this.searchText + '&departmentName='+ this.searchText ,
     };
     this.apiService.get(config).subscribe((data) => {
-      this.list = this.list.concat(data.result.data);
+      if(data){
+        this.list = this.list.concat(data.result.data);
       this.count = data.result.count;
+      this.toastService.success(data.message)
+      }
+      else{
+        this.toastService.error(data.message);
+      }
+      
     });
   }
   action(data: any, action: any) {

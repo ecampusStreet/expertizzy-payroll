@@ -32,7 +32,7 @@ export class DesignationComponent implements OnInit {
 
   getDesignation() {
     const config = {
-      url: urls.designation.list,
+      url: urls.designation.list +'?limit=' + this.limit + '&page=' + this.page + '&designation=' + this.searchText ,
     };
     this.apiService.get(config).subscribe((resp) => {
       if (resp.success) {
