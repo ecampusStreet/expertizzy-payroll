@@ -1,14 +1,55 @@
-  <div class="flex justify-space-between ml-3 mt-3 mb-3 mr-3">
-    <mat-form-field class="example-full-width w-full search-box" >
-      <span matPrefix> </span>
-      <input type="text" matInput placeholder="Search here" name= "search" [(ngModel)]= "searchText">
-      <button matSuffix mat-button><mat-icon (click)="search()">search</mat-icon></button>
-      </mat-form-field>
-    <div class="margin-auto">
-      <button mat-raised-button color="primary" (click)="add()">+ Create employee</button>
+<div class="flex-auto">
+  <div class="flex flex-col">
+    <app-content-navbar [isBack]="false" [title]="title"> </app-content-navbar>
+    <div class="min-h-screen bg-gray-100">
+      <div class="m-3">
+        <div class="flex justify-end items-center">
+          <div class="w-full">
+            <mat-form-field class="example-full-width w-full search-box m-0">
+              <span matPrefix> </span>
+              <input
+                type="text"
+                matInput
+                placeholder="Search here"
+                name="search"
+                [(ngModel)]="searchText"
+                (click)="search()"
+              />
+              <button matSuffix mat-button>
+                <mat-icon (click)="search()">search</mat-icon>
+              </button>
+            </mat-form-field>
+          </div>
+          <div class="mx-2">
+            <button mat-button color="primary" (click)="openPopup()">
+              <mat-icon>filter_alt</mat-icon>
+            </button>
+          </div>
+
+          <div class="ml-2">
+            <button mat-raised-button color="primary" (click)="add()">
+              Create employee
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <app-tabledata
+        [list]="employeeList"
+        [titles]="tableheader"
+        (eventAction)="action($event)"
+      ></app-tabledata>
+
+      <div class="flex justify-center ml-3 mt-3 mb-3 mr-3">
+        <button
+          mat-raised-button
+          color="primary"
+          (click)="loadMore()"
+          *ngIf="employeeList.length && count > employeeList.length"
+        >
+          Load more
+        </button>
       </div>
     </div>
-  <app-tabledata [list]="employeeList" [titles]="tableheader" (eventAction)="action($event)" ></app-tabledata>
-  <div class="flex justify-center ml-3 mt-3 mb-3 mr-3">
-    <button mat-raised-button color="primary" (click)="loadMore()" *ngIf="employeeList.length && count > employeeList.length">Load more</button>
-    </div>
+  </div>
+</div>

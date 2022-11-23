@@ -4,7 +4,6 @@ import { LoginComponent } from './auth/login/login.component';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { ProfileComponent } from './profile/profile.component';
-// import { PrivateGuard } from './core';
 const routes: Routes = [
   {
     path: '',

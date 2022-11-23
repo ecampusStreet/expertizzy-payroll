@@ -1,15 +1,66 @@
-<div class="min-h-screen ml-3 mr-3">
-    <div fxLayout="row wrap" fxLayoutGap="10px grid" >
-      <div fxFlex="25%" fxFlex.xs="100%" fxFlex.sm="50%" fxFlex.md="50%" *ngFor="let card of cardData" (click)="onSelect(card)">
-        <div class="flex flex-wrap justify-between card-custom border ">
-          <div class="bg-blue-300 text-blue-700 rounded flex justify-center p-3 ">
-            <i class="material-icons">{{card.icon}}</i>
-          </div>
-          <div class="text-center">
-            <!-- <div class="text-lg font-extrabold">{{card.count}} </div> -->
-            <div class="text-base text-sm">{{card.title}}</div>
-          </div>
+
+<div class="flex-auto">
+  <div class="flex flex-col">
+   
+    <div class="content-banner">
+      <h1 class="banner-text"> Attendance</h1>
+      <img src="assets/images/attendance-overview.jpg" alt="employee-overview">
+  </div>
+
+    <div class="min-h-screen mx-5 my-5">
+      <div class="grid grid-cols-1 gap-5 sm:grid-cols-1 lg:grid-cols-3">
+        <mat-card class="example-card p-3 h-40 relative " >
+          <mat-card-content class="p-3">
+            <div class="flex flex-col">
+              <div>
+                <span class="font-semibold text-gray-600">{{
+                  today | date: "mediumDate"
+                }}</span>
+              </div>
+              <p class="font-bold text-gray-600 absolute top-20 left-8">
+                {{ today | date: "mediumTime" }}
+              </p>
+            </div>
+            <div class="absolute right-3 bottom-5">
+              <button mat-raised-button color="primary" (click)="action()">
+                {{ buttonLabel }}
+              </button>
+            </div>
+          </mat-card-content>
+        </mat-card>
+
+        <mat-card class="example-card p-3 h-40 relative">
+          <mat-card-content class="p-3">
+            <div class="flex flex-col">
+              <div><span> History</span></div>
+            </div>
+            <div class="absolute right-3 bottom-5">
+              <button mat-raised-button color="primary">
+                View <span mat-icon></span>
+              </button>
+            </div>
+          </mat-card-content>
+        </mat-card>
+
+        <mat-card class="example-card p-3 h-40 relative">
+          <mat-card-content class="p-3">
+            <div class="flex flex-col">
+              <div><span>Manage  </span></div>
+            </div>
+            <div class="absolute right-3 bottom-5">
+              <button mat-raised-button color="primary" routerLink="./manage">
+                Manage 
+              </button>
+            </div>
+          </mat-card-content>
+        </mat-card>
+        <div class="">
+          <h3>Pending list</h3>
+          <p>user attendence api</p>
+          <p>user attendance history api</p>
+          <p>manage attendence api </p>
         </div>
       </div>
-    </div>
+    </div> 
   </div>
+</div>

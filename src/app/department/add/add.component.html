@@ -1,0 +1,71 @@
+<div class="flex-auto">
+  <div class="flex flex-col">
+    <app-content-navbar [isBack]="true" [title]="'Add department'"></app-content-navbar>
+    
+
+    <!-- card design -->
+    <div class="min-h-screen  bg-gray-100 my-3">
+      <mat-card class="p-6 bg-white px-2 mx-3 my-3">
+        <div class="p-2 clear-both">
+          <form [formGroup]="department" *ngIf="showForm">
+            <div class="flex">
+              <div class="w-full">
+                <div class="grid lg:grid-cols-1 gap-4">
+                  <mat-form-field class="example-full-width">
+                    <mat-label>Department name</mat-label>
+                    <input
+                      matInput
+                      placeholder="Please enter name of the department"
+                      name="departmentName"
+                      formControlName="departmentName"
+                    />
+                  </mat-form-field>
+
+                  <mat-form-field class="example-full-width">
+                    <mat-label>Head of the department</mat-label>
+                    <input
+                      matInput
+                      placeholder="Please enter head of the department"
+                      name="departmentHead"
+                      formControlName="departmentHead"
+                      (click)="setValue()"
+                      readonly
+                    />
+                  </mat-form-field>
+                  <mat-form-field class="example-full-width">
+                    <mat-label>Location</mat-label>
+                    <input
+                      matInput
+                      placeholder="Please enter lcoation of the department"
+                      name="departmentHead"
+                      formControlName="location"
+                    />
+                  </mat-form-field>
+                </div>
+              </div>
+            </div>
+            <div class="align">
+              <button
+                mat-raised-button
+                color="primary"
+                *ngIf="!isReadOnly"
+                [disabled]="!department.valid"
+                (click)="submit()"
+              >
+                Submit
+              </button>
+              <button
+                mat-raised-button
+                color="primary"
+                *ngIf="isReadOnly"
+                (click)="enableForm()"
+              >
+                Edit
+              </button>
+            </div>
+          </form>
+        </div>
+      </mat-card>
+    </div>
+  </div>
+</div>
