@@ -16,30 +16,36 @@ export const urls = {
     getById: 'api/department/',
   },
   leaves: {
-    apply: 'api/leave/apply',
-    list: 'api/leave/list',
+    apply: 'api/leave/create/',
+    list: 'api/leaveApplication/submitted/',
+    balance: 'api/leave/emp/',
+    delete: '/api/leaveApplication/delete/',
+    approve: 'api/leave/approve/',
+    reject: 'api/leave/reject/',
+    manage: 'api/leaveList',
+    type: 'api/leaveType',
+    leaveTypeList: 'api/leaveType/list',
+    leaveUpdate: 'api/leaveType/update/',
   },
   designation: {
     list: 'api/designation/list',
-    create:'api/designation/create',
-    update:'api/designation/update/',
+    create: 'api/designation/create',
+    update: 'api/designation/update/',
     delete: 'api/designation/delete/',
-    getById:'api/designation/',
+    getById: 'api/designation/',
   },
-  financialYear:{
-    create:'api/year',
-    list:'api/year/list',
+  financialYear: {
+    create: 'api/year',
+    list: 'api/year/list',
   },
-  branch:{
-    create:'api/branch/create',
-    list:'api/branch/list',
-    update:'api/branch/update/',
+  branch: {
+    create: 'api/branch/create',
+    list: 'api/branch/list',
+    update: 'api/branch/update/',
     delete: 'api/branch/delete/',
-    getById:'api/branch/',
+    getById: 'api/branch/',
   },
-  attendance:{
-    create:'api/attendance/entry/'
-  }
+  attendance: {
+    create: 'api/attendance/entry/',
+  },
 };
-    
-

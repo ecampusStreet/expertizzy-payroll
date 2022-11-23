@@ -248,22 +248,27 @@ export const menu = [
       {
         name: 'Leave balance',
         icon: 'account_balance_wallet',
-        routeLink: '',
+        routeLink: 'leave/balance',
       },
       {
         name: 'Apply',
         icon: 'done',
-        routeLink: '',
+        routeLink: 'leave/apply',
       },
       {
         name: 'History',
         icon: 'history',
-        routeLink: '',
+        routeLink: 'leave/history',
       },
       {
         name: 'Manage leave',
         icon: 'manage_history',
-        routeLink: '',
+        routeLink: 'leave/manage',
+      },
+      {
+        name: 'Leave type',
+        icon: 'add',
+        routeLink: 'leave/leavetype',
       },
     ],
   },

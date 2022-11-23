@@ -19,8 +19,7 @@ export class AttendanceComponent implements OnInit {
   today = new Date();
   emplID: any;
   constructor(
-    private router: Router,
-    private routerParams: ActivatedRoute,
+   
     private apiService: ApiService,
     private tostService: ToastService,
     private userService: CurrentUserService
@@ -31,6 +30,7 @@ export class AttendanceComponent implements OnInit {
     
   }
 
+  
   getUserId() {
     this.userService.getUser().then((resp) => {
       this.emplID = resp.user._id;

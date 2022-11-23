@@ -6,3 +6,17 @@
 .mat-expansion-panel-body {
   padding: 9px 24px;
 }
+
+.panel{
+  span{
+    font-size: 11px;
+  }
+    
+}
+
+.flex{
+  .mat-expansion-panel-body {
+    padding:0 !important;
+  } 
+}
+

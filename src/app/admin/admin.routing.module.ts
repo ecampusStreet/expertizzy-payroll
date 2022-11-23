@@ -58,6 +58,13 @@ export const AdminLayoutRoutes: Routes = [
             (m) => m.FinancialYearModule
           ),
       },
+      {
+        path: 'leave',
+        loadChildren: () =>
+          import('../leaves/leaves.module').then(
+            (m) => m.LeavesModule
+          ),
+      },
     ],
   },
 ];

@@ -1,0 +1,44 @@
+<form [formGroup]="leaveType">
+  <div class="p-2 bg-white border">
+    <div class="flex">
+      <div class="w-full">
+        <div class="grid lg:grid-cols">
+          <mat-form-field class="example-full-width">
+            <mat-label>Type </mat-label>
+            <input
+              matInput
+              placeholder="Please enter name of the leavetype "
+              name="typeName"
+              formControlName="typeName"
+            />
+          </mat-form-field>
+
+          <mat-form-field class="example-full-width">
+            <mat-label>Total leaves</mat-label>
+            <input
+              matInput
+              placeholder="Please enter no of days"
+              name="noOfDays"
+              formControlName="total"
+            />
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="flex justify-end mt-2">
+    <button mat-raised-button color="" class="mx-2" (click)="close()">
+      Close
+    </button>
+    <button
+      mat-raised-button
+      color="primary"
+      class="mx-2"
+      [disabled]="!leaveType.valid"
+      (click)="action()"
+    >
+      Submit
+    </button>
+  </div>
+</form>
