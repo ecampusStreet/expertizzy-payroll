@@ -13,19 +13,31 @@
             <div class="flex">
               <div class="w-full">
                 <div class="grid lg:grid-cols-1 gap-4">
-                    <input
+                  <input
                     hidden
-                      type="file"
-                      #logUpload
-                      accept=".jpeg,.jpg,.png"
-                      (change)="onFileChange($event)"
-                      formControlName="logo"
-                    />
+                    type="file"
+                    #logoUpload
+                    accept=".jpeg,.jpg,.png"
+                    (change)="onFileChange($event)"
+                  />
 
-                    <div class=" relative ">
-                      <img  src="assets/images/setting-logo.jpg" alt="logo" class="w-32 border ">
-                      <button class="absolute right-2 top-6 my-2"  (click)="logUpload.click()"> <mat-icon>edit</mat-icon></button>
-                    </div>
+                  <div class="relative m-auto">
+                    <!-- <img 
+                    src="assets/images/setting-logo.jpg"
+                      alt="logo"
+                      class="w-48 "
+                    /> -->
+                    <img src="{{ data.imageUrl }}" alt="logo" class="w-48" />
+                    <span
+                      mat-button
+                      color="primary"
+                      style="bottom: 2px; color: #3f51b5"
+                      class="absolute right-0 bg-gray-300 rounded"
+                      (click)="logoUpload.click()"
+                    >
+                      <mat-icon>edit</mat-icon>
+                    </span>
+                  </div>
 
                   <mat-form-field class="example-full-width">
                     <mat-label> Company name</mat-label>
@@ -58,8 +70,8 @@
                 </div>
               </div>
             </div>
-            <div class="align">
-              <button mat-raised-button color="primary" (click)="submit()">
+            <div class="flex justify-end">
+              <button mat-raised-button color="primary" (click)="action()">
                 Submit
               </button>
             </div>

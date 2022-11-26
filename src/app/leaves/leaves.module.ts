@@ -14,11 +14,9 @@ import { LeavemanageComponent } from './leave-manage/leave-manage.component';
 import { LeaveTypesComponent } from './leave-types/leave-types.component';
 import { MatTableModule } from '@angular/material/table';
 import { AddLeavetypeComponent } from '../core/components/add-leavetype/add-leavetype.component';
-import { CoreModule } from '@angular/flex-layout/core';
 // import { NoDataFoundComponent } from '../core/components/no-data-found/no-data-found.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { NoDataFoundComponent } from '../core/components';
-
+import { CoreModule } from '../core/core.module';
 @NgModule({
   declarations: [
     LeavemanageComponent,
@@ -27,7 +25,6 @@ import { NoDataFoundComponent } from '../core/components';
     LeavehistoryComponent,
     LeaveTypesComponent,
     AddLeavetypeComponent,
-    NoDataFoundComponent,
   ],
   imports: [
     CommonModule,

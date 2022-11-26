@@ -53,6 +53,7 @@ export const urls = {
   },
   setting: {
     create:'api/setting/create',
-    list:'api/setting/list/'
+    list:'api/setting/list/',
+    update:'api/setting/update/'
   }
 };

@@ -41,7 +41,6 @@ import { DesignationModule } from '../designation/designation.module';
 import { BranchModule } from '../branch/branch.module';
 import { DepartmentModule } from '../department/department.module';
 import { FinancialYearModule } from '../financial-year/financial-year.module';
-import { NoDataFoundComponent } from '../core/components/no-data-found/no-data-found.component';
 
 @NgModule({
   declarations: [
@@ -53,7 +52,6 @@ import { NoDataFoundComponent } from '../core/components/no-data-found/no-data-f
     ViewComponent,
     OverviewComponent,
     FilterFormComponent,
-    NoDataFoundComponent,
   ],
 
   schemas: [NO_ERRORS_SCHEMA],
