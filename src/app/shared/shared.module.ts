@@ -36,7 +36,8 @@ import { ProfilePicComponent } from './components/profile-pic/profile-pic.compon
     LeaveComponent,
     GenericConfirmPopupComponent,
     DataModalComponent,
-    ProfilePicComponent
+    ProfilePicComponent,
+    
   ],
   imports: [
     CommonModule,

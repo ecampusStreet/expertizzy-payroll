@@ -57,17 +57,19 @@ export class LeavemanageComponent implements OnInit {
       payload: {},
     };
     this.apiService.put(config).subscribe((resp) => {
-      console.log(resp, 'reject');
+      this.toast.success(resp.message)
     });
   }
 
   approve(list: any) {
     const config = {
       url: urls.leaves.approve + list._id,
-      payload: list,
+      payload: {
+        remark:list.remarks
+      },
     };
     this.apiService.put(config).subscribe((resp) => {
-      console.log(resp, 'approve');
+      this.toast.success(resp.message)
     });
   }
   onChangeStatus(event: any) {}

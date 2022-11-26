@@ -1,5 +1,5 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { urls } from '../../constants';
 import { ApiService, ToastService } from '../../services';
@@ -23,8 +23,8 @@ export class AddLeavetypeComponent implements OnInit {
 
   ngOnInit(): void {
     this.leaveType = new FormGroup({
-      typeName: new FormControl(this.data ? this.data.typeName : ''),
-      total: new FormControl(this.data ? this.data.total : ''),
+      typeName: new FormControl(this.data ? this.data.typeName : '',[Validators.required]),
+      total: new FormControl(this.data ? this.data.total : '',[Validators.required]),
     });
   }
 
@@ -40,7 +40,7 @@ export class AddLeavetypeComponent implements OnInit {
       url: urls.leaves.leaveUpdate + this.data._id,
       payload: this.leaveType.value,
     };
-    config.payload.pendingDays = this.leaveType.value.total;
+    config.payload.balance = this.leaveType.value.total;
     this.apiService.put(config).subscribe((resp) => {
       if (resp.success) {
         this.toast.success(resp.message);
@@ -56,7 +56,7 @@ export class AddLeavetypeComponent implements OnInit {
         url: urls.leaves.type,
         payload: this.leaveType.value,
       };
-      config.payload.pendingDays = this.leaveType.value.total;
+      config.payload.balance = this.leaveType.value.total;
       this.apiService.post(config).subscribe((resp) => {
         if (resp.success) {
           this.toast.success(resp.message);

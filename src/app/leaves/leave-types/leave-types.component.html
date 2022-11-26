@@ -9,8 +9,10 @@
           Create leave type
         </button>
       </div>
+      <no-data-found *ngIf="!leaveTypeList.length"></no-data-found>
+
       <div style="margin: 15px" class="example-container">
-        <table mat-table [dataSource]="leaveTypeList" class="mat-elevation-z8">
+        <table mat-table [dataSource]="leaveTypeList" class="mat-elevation-z8"  *ngIf="leaveTypeList.length">
           <ng-container matColumnDef="typeName">
             <th mat-header-cell class="text-left " *matHeaderCellDef>Type</th>
             <td mat-cell class="text-left " *matCellDef="let element">
@@ -23,10 +25,10 @@
               {{ element.total }}
             </td>
           </ng-container>
-          <ng-container matColumnDef="pendingDays">
-            <th mat-header-cell class="" *matHeaderCellDef>Pending days</th>
+          <ng-container matColumnDef="balance">
+            <th mat-header-cell class="" *matHeaderCellDef>Balance</th>
             <td mat-cell class="" *matCellDef="let element">
-              {{ element.pendingDays }}
+              {{ element.balance }}
             </td>
           </ng-container>
 

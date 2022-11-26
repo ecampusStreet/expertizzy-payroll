@@ -5,8 +5,11 @@
       <mat-form-field appearance="outline">
         <mat-label>Leave type</mat-label>
         <mat-select name="leaveType" formControlName="leaveType">
-          <mat-option *ngFor="let type of leaveTypeList" [value]="type.typeName">
-            {{ type.typeName }}
+          <mat-option
+            *ngFor="let type of leaveTypeList"
+            [value]="type.typeName"
+          >
+            {{ type.typeName | titlecase }}
           </mat-option>
         </mat-select>
         <mat-error>Select leave type</mat-error>
@@ -16,8 +19,8 @@
         <mat-label>Applying to</mat-label>
         <mat-select name="applyingTo" (selectionChange)="setApplyTo($event)">
           <mat-option *ngFor="let manager of managers" [value]="manager?._id">
-            {{ manager?.firstName }} {{ manager?.fatherName }}
-            {{ manager?.lastName }}
+            {{ manager?.firstName | titlecase }} {{ manager?.fatherName | titlecase }}
+            {{ manager?.lastName | titlecase }}
           </mat-option>
         </mat-select>
       </mat-form-field>
@@ -50,8 +53,8 @@
       <mat-form-field appearance="outline">
         <mat-label>From session</mat-label>
         <mat-select name="fromSession" formControlName="fromSession">
-          <mat-option *ngFor="let type of fromSession" [value]="type.value">
-            {{ type.label }}
+          <mat-option *ngFor="let type of sessions" [value]="type.value">
+            {{ type.label | titlecase }}
           </mat-option>
         </mat-select>
       </mat-form-field>
@@ -59,8 +62,8 @@
       <mat-form-field appearance="outline">
         <mat-label>To session</mat-label>
         <mat-select name="toSession" formControlName="toSession">
-          <mat-option *ngFor="let type of toSession" [value]="type.value">
-            {{ type.label }}
+          <mat-option *ngFor="let type of sessions" [value]="type.value">
+            {{ type.label | titlecase }}
           </mat-option>
         </mat-select>
       </mat-form-field>

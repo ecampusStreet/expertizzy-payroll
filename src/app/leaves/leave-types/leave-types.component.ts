@@ -5,7 +5,7 @@ import {
   MatDialogRef,
 } from '@angular/material/dialog';
 import { Router } from '@angular/router';
-import { ApiService, ToastService, urls } from 'src/app/core';
+import { ApiService, ToastService, urls, UtilsService } from 'src/app/core';
 import { AddLeavetypeComponent } from 'src/app/core/components/add-leavetype/add-leavetype.component';
 @Component({
   selector: 'app-leave-types',
@@ -15,13 +15,15 @@ import { AddLeavetypeComponent } from 'src/app/core/components/add-leavetype/add
 export class LeaveTypesComponent implements OnInit {
   leaveTypeList: any = [];
   editData: any = [];
-  displayedColumns = ['typeName', 'total', 'pendingDays', 'action'];
+  displayedColumns = ['typeName', 'total', 'balance', 'action'];
 
   constructor(
     public dialog: MatDialog,
     private apiService: ApiService,
     private toast: ToastService,
-    private router: Router
+    private router: Router,
+    private utilsService: UtilsService,
+
   ) {}
 
   ngOnInit(): void {
@@ -58,8 +60,34 @@ export class LeaveTypesComponent implements OnInit {
         this.add(data);
         break;
       case 'delete':
-        // this.deleteConfirmationpopup(data);
+        this.deleteConfirmationpopup(data);
         break;
     }
+  }
+
+   
+  deleteConfirmationpopup(event: any) {
+    let data = {
+      header: '',
+      message: 'are you sure, you want to delete this branch?',
+    };
+    this.utilsService.openDialog(data).then((resp) => {
+      if (resp) {
+        this.delete(event);
+      }
+    });
+  }
+
+  delete(event: any) {
+    const config = {
+      url: urls.leaves.leaveDelete + event._id,
+    };
+    this.apiService.delete(config).subscribe((resp) => {
+      if (resp.success) {
+        this.toast.success(resp.succes);
+        this.leaveTypeList = [];
+        this.getLeavesType();
+      }
+    });
   }
 }

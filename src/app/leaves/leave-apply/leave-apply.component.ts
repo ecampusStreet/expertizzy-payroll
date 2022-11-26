@@ -20,13 +20,9 @@ export class LeaveApplyComponent implements OnInit {
   differenceDate: any;
   leaveTypeList: any = [];
   managers: any = [];
-  fromSession = [
-    { label: 'session 1', value: 'session 1' },
-    { label: 'session 2', value: 'session 2' },
-  ];
-  toSession = [
-    { label: 'session 1', value: 'session 1' },
-    { label: 'session 2', value: 'session 2' },
+  sessions = [
+    { label: 'session 1', value: 'session1' },
+    { label: 'session 2', value: 'session2' },
   ];
 
   selectedFiles: any;
@@ -68,7 +64,6 @@ export class LeaveApplyComponent implements OnInit {
     this.apiService.get(config).subscribe((resp: any) => {
       if (resp.result && resp.result.data) {
         this.leaveTypeList = resp.result.data;
-        this.toast.success(resp.message);
       }
     });
   }

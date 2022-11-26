@@ -8,9 +8,13 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatTableModule } from '@angular/material/table';
 import { SharedModule } from '../shared/shared.module';
+import { CoreModule } from '../core/core.module';
+import { NoDataFoundComponent } from '../core/components';
 
 @NgModule({
-  declarations: [BranchesComponent, AddbranchComponent],
+  declarations: [BranchesComponent, AddbranchComponent,
+    NoDataFoundComponent 
+  ],
   imports: [
     CommonModule,
     BranchRoutingModule,
@@ -19,6 +23,7 @@ import { SharedModule } from '../shared/shared.module';
     MatTableModule,
     MatFormFieldModule,
     ReactiveFormsModule,
+    // CoreModule
   ],
 })
 export class BranchModule {}

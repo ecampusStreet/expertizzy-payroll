@@ -1,6 +1,8 @@
 export const urls = {
   login: 'auth/login',
   profile: 'auth/profile/',
+  dashboard:{
+    list:'api/admin/dashboard'},
   employee: {
     list: 'api/emp/list',
     byId: 'api/emp/',
@@ -26,6 +28,7 @@ export const urls = {
     type: 'api/leaveType',
     leaveTypeList: 'api/leaveType/list',
     leaveUpdate: 'api/leaveType/update/',
+    leaveDelete:'api/leaveType/delete/'
   },
   designation: {
     list: 'api/designation/list',
@@ -48,4 +51,8 @@ export const urls = {
   attendance: {
     create: 'api/attendance/entry/',
   },
+  setting: {
+    create:'api/setting/create',
+    list:'api/setting/list/'
+  }
 };

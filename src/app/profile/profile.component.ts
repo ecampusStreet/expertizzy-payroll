@@ -36,6 +36,7 @@ this.userService.getUser().then(resp =>{
     this.apiService.get(config).subscribe(data =>{
       if(data.success){
         this.employee = data.result.data;
+        console.log(this.employee);
       }
     })
   }

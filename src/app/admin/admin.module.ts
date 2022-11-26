@@ -41,6 +41,7 @@ import { DesignationModule } from '../designation/designation.module';
 import { BranchModule } from '../branch/branch.module';
 import { DepartmentModule } from '../department/department.module';
 import { FinancialYearModule } from '../financial-year/financial-year.module';
+import { NoDataFoundComponent } from '../core/components/no-data-found/no-data-found.component';
 
 @NgModule({
   declarations: [
@@ -52,7 +53,7 @@ import { FinancialYearModule } from '../financial-year/financial-year.module';
     ViewComponent,
     OverviewComponent,
     FilterFormComponent,
-   
+    NoDataFoundComponent,
   ],
 
   schemas: [NO_ERRORS_SCHEMA],
@@ -67,9 +68,8 @@ import { FinancialYearModule } from '../financial-year/financial-year.module';
     SharedModule,
     SettingsModule,
     DesignationModule,
-    BranchModule,
     DepartmentModule,
-    
+
     FinancialYearModule,
     FlexLayoutModule,
     MatCheckboxModule,
