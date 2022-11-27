@@ -27,17 +27,4 @@ export class LocalStorageService {
         resolve(data);
     });
   }
-
-//   deleteOneStorage(key): Promise<any> {
-//     return new Promise((resolve, reject) => {
-//       this.storage
-//         .remove(key)
-//         .then((data) => {
-//           resolve();
-//         })
-//         .catch((error) => {
-//           reject();
-//         });
-//     });
-//   }
 }

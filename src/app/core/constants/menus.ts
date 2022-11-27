@@ -346,7 +346,7 @@ export const menu = [
   },
   {
     name: ' My refferals ',
-    icon: '',
+    icon: 'transcribe',
     routeLink: '',
   },
   {

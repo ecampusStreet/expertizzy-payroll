@@ -56,7 +56,7 @@ import { DashboardCardComponent } from '../core/components';
     OverviewComponent,
     AttendanceComponent,
     DesignationaddComponent,
-    DesignationComponent
+    DesignationComponent,
   ],
   
   schemas: [NO_ERRORS_SCHEMA],

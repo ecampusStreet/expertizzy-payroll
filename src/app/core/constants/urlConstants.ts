@@ -23,6 +23,17 @@ export const urls = {
     list: 'api/designation/list',
     delete: 'api/designation/delete/',
   },
+
+  files:{
+    upload:'api/file-upload',
+    getFileById:'api/fileUpload/file', //+id
+    getFiles:'api/file-upload/list',
+    deleteFileById:'api/file-upload/delete/',// +id
+    updateFile:'api/file-upload/' //+id
+  },
+  shifts:{
+    list:'api/shift/list'
+  }
 };
     
 

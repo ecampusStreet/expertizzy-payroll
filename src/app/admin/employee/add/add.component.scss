@@ -17,4 +17,67 @@
     display: flex;
     justify-content: end;
   }
+.mutlifield{
+  .remove{
+    position: absolute;
+    right: -22px;
+    top: -10px;
+  }
+}
+.nested-card{
+  background: #efefef91;
+}
+
+::ng-deep{
+  mat-datepicker-toggle {
+    button{
+      font-size: 1.5rem !important;
   
+    }
+  }
+}
+
+.upload-btn-wrapper {
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+}
+
+.btn {
+  border: 2px solid gray;
+  color: gray;
+  background-color: white;
+  padding: 8px 20px;
+  border-radius: 8px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.upload-btn-wrapper input[type=file] {
+  font-size: 14px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0;
+}
+
+.fileControl-wrapper {
+  position: relative;
+  width: 360px;
+
+  .mat-form-field {
+      width: 100%;
+  }
+
+  .mat-toolbar-single-row {
+      height: auto !important;
+      background: transparent;
+
+      button {
+          width: 40%;
+          text-align: center;
+      }
+  }
+}
+
+

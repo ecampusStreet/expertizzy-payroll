@@ -1,0 +1,10 @@
+<div>
+    <div class="fileControl-wrapper">
+        <mat-toolbar style="padding: 0 0px;">
+          <input matInput readonly name="File"  hidden />
+          <img src="assets/images/file-upload.png" style="width: 70px;" (click)="uploadControl.click()">
+        </mat-toolbar>
+        <input type="file" #uploadControl id="fileControlInput" (change)="onFileChange($event)" name="fileControlInput" 
+          multiple="multiple" />
+      </div>
+    </div>

@@ -25,6 +25,9 @@ import { GenericConfirmPopupComponent } from './components/generic-confirm-popup
 import { DataModalComponent } from './components/data-modal/data-modal.component';
 import { FormsModule } from '@angular/forms';
 import { ProfilePicComponent } from './components/profile-pic/profile-pic.component';
+import { FileUploadComponent } from './components/file-upload/file-upload.component';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { FileListComponent } from './components/file-list/file-list.component';
 
 
 @NgModule({
@@ -36,7 +39,9 @@ import { ProfilePicComponent } from './components/profile-pic/profile-pic.compon
     LeaveComponent,
     GenericConfirmPopupComponent,
     DataModalComponent,
-    ProfilePicComponent
+    ProfilePicComponent,
+    FileUploadComponent,
+    FileListComponent
   ],
   imports: [
     CommonModule,
@@ -56,7 +61,8 @@ import { ProfilePicComponent } from './components/profile-pic/profile-pic.compon
     MatTableModule,
     MatDialogModule,
     MatRadioModule,
-    FormsModule
+    FormsModule,
+    MatToolbarModule
 
   ],
   exports: [
@@ -80,7 +86,9 @@ import { ProfilePicComponent } from './components/profile-pic/profile-pic.compon
     DashboardCardsComponent,
     LeaveComponent,
     GenericConfirmPopupComponent,
-    DataModalComponent
+    DataModalComponent,
+    FileUploadComponent,
+    FileListComponent
   ]
 })
 export class SharedModule { }
