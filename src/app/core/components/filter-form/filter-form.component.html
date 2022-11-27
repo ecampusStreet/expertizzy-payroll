@@ -1,0 +1,83 @@
+<form [formGroup]="search">
+  <mat-card class="border p-4">
+    <h2 class="text-grey-500">{{title}}</h2>
+    <div class="grid grid-cols-3 gap-4">
+      <mat-form-field>
+        <mat-label>Department</mat-label>
+        <mat-select name="department" formControlName="department">
+          <mat-option
+            *ngFor="let department of departmentList"
+            [value]="department?._id"
+          >
+            {{ department?.departmentName | titlecase }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Designation</mat-label>
+        <mat-select name="designation" formControlName="designation">
+          <mat-option
+            *ngFor="let designation of designationList"
+            [value]="designation?._id"
+          >
+            {{ designation?.designationName | titlecase }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Date of joining</mat-label>
+        <input
+          matInput
+          [matDatepicker]="picker"
+          formControlName="doj"
+          name="doj"
+        />
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Gender</mat-label>
+        <mat-select name="gender" formControlName="gender">
+          <mat-option *ngFor="let gender of genderName" [value]="gender?.value">
+            {{ gender?.viewValue | titlecase }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    
+      <mat-form-field>
+        <mat-label>financialYear</mat-label>
+        <mat-select name="financialyear" formControlName="financialyear">
+          <mat-option *ngFor="let year of financialYears" [value]="year?._id">
+            {{ year?.financialYear | titlecase }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Branch</mat-label>
+        <mat-select name="branch" formControlName="branch">
+          <mat-option *ngFor="let branch of branchList" [value]="branch?.branchName">
+            {{ branch?.branchName | titlecase }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="grid grid-cols-1 ">
+      <mat-form-field class="example-full-width">
+        <mat-label>Experience</mat-label>
+        <input matInput placeholder="" name="experience" formControlName="experience">
+      </mat-form-field>
+    </div>
+  </mat-card>
+  <mat-card class="my-6 border">
+    <div class="flex justify-end ">
+      <button mat-raised-button color="primary" class="mx-2" (click)="submit()">Apply</button>
+      <button mat-raised-button  (click)="reset()" class="mx-2" >Reset</button>
+      <button mat-raised-button  (click)="close()" class="mx-2">Close</button>
+    </div>
+  </mat-card>
+</form>

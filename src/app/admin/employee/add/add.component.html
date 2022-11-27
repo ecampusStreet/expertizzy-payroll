@@ -13,29 +13,64 @@
 
       <mat-card class="p-6 bg-white px-2 mx-3 my-3 ">
         <div class="p-2 clear-both">
-        <h3>Personal information</h3>
-      <form [formGroup]="form">
-          <div class="grid  lg:grid-cols-4 md:grid-cols-2 gap-3 p-2">
-            <mat-form-field class="example-full-width">
-              <mat-label> First name</mat-label>
-              <input matInput placeholder=" Enter First name" name="firstName" formControlName="firstName">
-              <mat-error *ngIf="f['firstName'].touched && f['firstName'].invalid" class="text-red-500">
-                <mat-error *ngIf="f['firstName'].errors && f['firstName'].errors['required']">Full name is required.
+          <h3>Personal information</h3>
+          <form [formGroup]="form">
+            <div class="grid lg:grid-cols-4 md:grid-cols-2 gap-3 p-2">
+              <mat-form-field class="example-full-width">
+                <mat-label> First name</mat-label>
+                <input
+                  matInput
+                  placeholder=" Enter First name"
+                  name="firstName"
+                  formControlName="firstName"
+                />
+                <mat-error
+                  *ngIf="f['firstName'].touched && f['firstName'].invalid"
+                  class="text-red-500"
+                >
+                  <mat-error
+                    *ngIf="
+                      f['firstName'].errors && f['firstName'].errors['required']
+                    "
+                    >Full name is required.
+                  </mat-error>
+                  <mat-error
+                    *ngIf="f['firstName'].errors && f['firstName'].errors['']"
+                  ></mat-error>
                 </mat-error>
-                <mat-error *ngIf="f['firstName'].errors && f['firstName'].errors['']"></mat-error>
-              </mat-error>
-            </mat-form-field>
-         
-            <mat-form-field class="example-full-width">
-              <mat-label>Middle name</mat-label>
-              <input matInput placeholder="Enter middle name" name="middleName" formControlName="middleName">
-              <mat-error>Middle name is required</mat-error>
-            </mat-form-field>
-            <mat-form-field class="example-full-width">
-              <mat-label> Last name</mat-label>
-              <input matInput placeholder=" Enter last name" name="lastName" formControlName="lastName">
-              <mat-error *ngIf="f['lastName'].touched && f['lastName'].invalid" class="text-red-500">
-                <mat-error *ngIf="f['lastName'].errors && f['lastName'].errors['required']">Last name is required.
+              </mat-form-field>
+
+              <mat-form-field class="example-full-width">
+                <mat-label>Middle name</mat-label>
+                <input
+                  matInput
+                  placeholder="Enter middle name"
+                  name="middleName"
+                  formControlName="middleName"
+                />
+                <mat-error>Middle name is required</mat-error>
+              </mat-form-field>
+              <mat-form-field class="example-full-width">
+                <mat-label> Last name</mat-label>
+                <input
+                  matInput
+                  placeholder=" Enter last name"
+                  name="lastName"
+                  formControlName="lastName"
+                />
+                <mat-error
+                  *ngIf="f['lastName'].touched && f['lastName'].invalid"
+                  class="text-red-500"
+                >
+                  <mat-error
+                    *ngIf="
+                      f['lastName'].errors && f['lastName'].errors['required']
+                    "
+                    >Last name is required.
+                  </mat-error>
+                  <mat-error
+                    *ngIf="f['lastName'].errors && f['lastName'].errors['']"
+                  ></mat-error>
                 </mat-error>
                 <mat-error *ngIf="f['lastName'].errors && f['lastName'].errors['']"></mat-error>
               </mat-error>
@@ -74,7 +109,28 @@
               <mat-error *ngIf="f['ph_no'].touched && f['ph_no'].invalid" class="text-red-500">
                 <mat-error *ngIf="f['ph_no'].errors && f['ph_no'].errors['required']">Phone number is required.
                 </mat-error>
-                <mat-error *ngIf="f['ph_no'].errors && f['ph_no'].errors['minlength']">Minimum length require 10
+              </mat-form-field>
+
+              <mat-form-field class="example-full-width">
+                <mat-label>Email id</mat-label>
+                <input
+                  matInput
+                  placeholder=" Please enter employee email"
+                  name="email"
+                  formControlName="email"
+                />
+                <mat-error
+                  *ngIf="f['email'].touched && f['email'].invalid"
+                  class="text-red-500"
+                >
+                  <mat-error
+                    *ngIf="f['email'].errors && f['email'].errors['required']"
+                    >Email id is required.</mat-error
+                  >
+                  <mat-error
+                    *ngIf="f['email'].errors && f['email'].errors['pattern']"
+                    >Please, enter valid email address.
+                  </mat-error>
                 </mat-error>
                 <mat-error *ngIf="f['ph_no'].errors && f['ph_no'].errors['pattern']">Add valid phone number</mat-error>
               </mat-error>
@@ -169,22 +225,32 @@
             <div class="grid lg:grid-cols-2 gap-3">
               <mat-form-field class="example-full-width">
                 <mat-label>Name</mat-label>
-                <input matInput placeholder="Enter name" name="name" formControlName="name">
+                <input
+                  matInput
+                  placeholder="Enter name"
+                  name="name"
+                  formControlName="name"
+                />
                 <mat-error>Name is required</mat-error>
               </mat-form-field>
-  
+
               <mat-form-field class="example-full-width">
                 <mat-label>Relation with</mat-label>
-                <input matInput placeholder="Relation" name="relation_with" formControlName="relation_with">
+                <input
+                  matInput
+                  placeholder="Relation"
+                  name="relation_with"
+                  formControlName="relation_with"
+                />
                 <mat-error>Please fill the above field</mat-error>
               </mat-form-field>
-  
+
               <mat-form-field class="example-full-width">
                 <mat-label>Age</mat-label>
                 <input matInput placeholder="Enter IFSC code " name="age" formControlName="age" numbersOnly type="text">
                 <mat-error>Please enter age</mat-error>
               </mat-form-field>
-  
+
               <mat-form-field class="example-full-width">
                 <mat-label>Phone no</mat-label>
                 <input matInput placeholder="Employee phone number" name="contact_no" formControlName="contact_no" numbersOnly>
@@ -194,8 +260,12 @@
 
             <div class="grid  lg:grid-cols-1">
               <mat-form-field>
-                <textarea matInput placeholder="Enter address" name="address"
-                  formControlName="address"></textarea>
+                <textarea
+                  matInput
+                  placeholder="Enter address"
+                  name="address"
+                  formControlName="address"
+                ></textarea>
                 <mat-error>Please provide address</mat-error>
               </mat-form-field>
             </div>
@@ -364,7 +434,57 @@
         </div>
         </div>
       </mat-card>
-    
+      <!-- Department details -->
+      <mat-card class="p-6 bg-white px-2 mx-3 my-3">
+        <div class="p-2 clear-both">
+          <h3>Department information</h3>
+          <form action="" [formGroup]="depDetail">
+            <div class="grid lg:grid-cols-3 gap-3">
+              <mat-form-field>
+                <mat-label>Department</mat-label>
+                <mat-select name="dept_name" formControlName="dept_name">
+                  <mat-option
+                    *ngFor="let dept of Department"
+                    [value]="dept?._id"
+                  >
+                    {{ dept?.departmentName | titlecase }}
+                  </mat-option>
+                </mat-select>
+                <mat-error>Select department</mat-error>
+              </mat-form-field>
+
+              <mat-form-field class="example-full-width">
+                <mat-label>Team Leader </mat-label>
+                <input
+                  matInput
+                  placeholder="Please Enter Team Leader"
+                  name="teamLeader"
+                  formControlName="teamLeader"
+                />
+                <mat-error>Provide teamleader name</mat-error>
+              </mat-form-field>
+
+              <mat-form-field class="example-full-width">
+                <mat-label>Date of joining</mat-label>
+                <input
+                  matInput
+                  [matDatepicker]="pickerdoj"
+                  placeholder="Please enter joining date"
+                  name="doj"
+                  formControlName="doj"
+                />
+                <mat-datepicker-toggle
+                  matSuffix
+                  [for]="pickerdoj"
+                ></mat-datepicker-toggle>
+                <mat-datepicker #pickerdoj></mat-datepicker>
+                <mat-error>Enter date of joining</mat-error>
+              </mat-form-field>
+            </div>
+          </form>
+        </div>
+      </mat-card>
+
       <!-- Experience details -->
       <mat-card class="p-6 bg-white px-2 mx-3 my-3 " >
         <div class="p-2 clear-both">
@@ -439,8 +559,8 @@
         </div>
         </div>
       </mat-card>
-    
-      <mat-card class="p-6 bg-white px-2 mx-3 my-3 ">
+
+      <mat-card class="p-6 bg-white px-2 mx-3 my-3">
         <div class="p-2 clear-both">
         <h3>Account information</h3>
         <form action="" [formGroup]="accDetail">
@@ -478,13 +598,14 @@
         </form>
 </div>
       </mat-card>
-      <mat-card class=" p-6 bg-white px-2 mx-3 my-3">
+      <mat-card class="p-6 bg-white px-2 mx-3 my-3">
         <div class="p-2 clear-both">
         <div class="flex justify-between">
           <button mat-raised-button color=""  (click)="back()">Cancel</button>
           {{form.valid }} {{qualiDetail.valid}} {{ expDetail.valid | json}} {{ accDetail.valid}} {{ depDetail.valid}} {{emgDetail.valid}}
           <button mat-raised-button color="primary" [disabled]="!form.valid ||  !qualiDetail.valid ||  !expDetail.valid || !accDetail.valid || !depDetail.valid || !emgDetail.valid" (click)="submit()">Submit</button>
         </div>
-        </div>
-        </mat-card>
+      </mat-card>
     </div>
+  </div>
+</div>

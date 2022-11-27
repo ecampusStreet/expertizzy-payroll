@@ -1,0 +1,59 @@
+<div class="flex-auto">
+    <div class="flex flex-col">
+    <app-content-navbar [isBack]="true" [title]="'Add branch'"></app-content-navbar>
+      
+  
+      <!-- card design -->
+      <div class="min-h-screen bg-gray-100">
+        <mat-card class="p-6 bg-white px-2 mx-3 my-3 ">
+          <div class="p-2 clear-both">
+          <form [formGroup]="branch" *ngIf="showForm">
+              <div class="flex ">
+                <div class="w-full">
+                  <div class="grid lg:grid-cols-2 gap-4">
+                    <mat-form-field class="example-full-width">
+                      <mat-label>Branch name</mat-label>
+                      <input matInput placeholder="Please enter name of the branch name" name="branchName"
+                        formControlName="branchName" >
+                    </mat-form-field>
+
+                    <mat-form-field class="example-full-width">
+                      <mat-label>Branch head</mat-label>
+                      <input matInput placeholder="Please enter name of the branch head" name="branchHead"
+                        formControlName="branchHead" >
+                    </mat-form-field>
+
+                    <mat-form-field class="example-full-width">
+                      <mat-label>Branch HR</mat-label>
+                      <input matInput placeholder="Please enter name of the branch hr" name="branchHR"
+                        formControlName="branchHR" >
+                    </mat-form-field>
+
+                    <mat-form-field class="example-full-width">
+                      <mat-label>Branch address</mat-label>
+                      <input matInput placeholder="Please enter name of the branch address" name="branchAddress"
+                        formControlName="branchAddress" >
+                    </mat-form-field>
+                    
+                    <mat-form-field class="example-full-width">
+                      <mat-label>Branch phone no</mat-label>
+                      <input matInput placeholder="Please enter contact number of the branch" name="contactNumber"
+                        formControlName="contactNumber"  >
+                    </mat-form-field>
+                    <mat-form-field class="example-full-width">
+                        <mat-label>Email</mat-label>
+                        <input matInput placeholder="Please enter email of the branch" name="email"
+                          formControlName="email">
+                      </mat-form-field>
+                  </div>
+                </div>
+              </div>
+            <div class="flex justify-end">
+              <button mat-raised-button color="primary"  [disabled]="!branch.valid" (click)="submit()">Submit</button>
+            </div>
+          </form>
+          </div>
+        </mat-card>
+      </div>
+  </div>
+</div>

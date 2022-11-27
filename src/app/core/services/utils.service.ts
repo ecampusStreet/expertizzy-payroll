@@ -30,7 +30,8 @@ export class UtilsService {
                 data: payload,
               });
               dialogRef.afterClosed().subscribe(result => {
-                resolve(result)
+                resolve(result);
+                
               });
         })
       }
