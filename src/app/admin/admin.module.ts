@@ -41,6 +41,7 @@ import { DesignationModule } from '../designation/designation.module';
 import { BranchModule } from '../branch/branch.module';
 import { DepartmentModule } from '../department/department.module';
 import { FinancialYearModule } from '../financial-year/financial-year.module';
+import { PayrollModule } from '../payroll/payroll.module';
 
 @NgModule({
   declarations: [
@@ -67,7 +68,7 @@ import { FinancialYearModule } from '../financial-year/financial-year.module';
     SettingsModule,
     DesignationModule,
     DepartmentModule,
-
+    PayrollModule,
     FinancialYearModule,
     FlexLayoutModule,
     MatCheckboxModule,

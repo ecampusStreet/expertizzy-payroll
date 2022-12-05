@@ -234,7 +234,7 @@ export const menu = [
   {
     name: 'Event',
     icon: 'event',
-    routeLink: '',
+    routeLink: 'event',
   },
   {
     name: 'Gallery',
@@ -363,7 +363,7 @@ export const menu = [
       {
         name: 'Salary grade',
         icon: 'grade',
-        routeLink: '',
+        routeLink: 'payroll',
       },
       {
         name: 'Make payment ',

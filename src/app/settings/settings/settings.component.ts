@@ -13,6 +13,8 @@ export class SettingsComponent implements OnInit {
   uploadedFiles: any;
   settingId: any;
   data: any = [];
+  copyofdata:any;
+  newData: any;
   constructor(
     private router: Router,
     private apiService: ApiService,
@@ -26,10 +28,10 @@ export class SettingsComponent implements OnInit {
 
   prepareForm() {
     this.setting = new FormGroup({
-      // logo: new FormControl(
-      //   this.data && this.data.imageUrl ? this.data.imageUrl : '',
-      //   [Validators.required]
-      // ),
+      logo: new FormControl(
+        this.data && this.data.imageUrl ? this.data.imageUrl : '',
+        [Validators.required]
+      ),
       companyName: new FormControl(
         this.data && this.data.companyName ? this.data.companyName : '',
         [Validators.required]
@@ -59,11 +61,13 @@ export class SettingsComponent implements OnInit {
   }
 
   update() {
+    let diff = this.copyofdata === this.data;
+    console.log(diff , "status");
+
     const formData = new FormData();
     formData.append('companyName', this.setting.value.companyName);
     formData.append('address', this.setting.value.address);
     formData.append('brandFooter', this.setting.value.brandFooter);
-    formData.append('fileSource', this.setting.value.fileSource);
     formData.append(
       'logo',
       this.uploadedFiles ? this.uploadedFiles : this.data.imageUrl
@@ -74,6 +78,7 @@ export class SettingsComponent implements OnInit {
     };
     this.apiService.put(config).subscribe((resp) => {
       if (resp.success) {
+        this.newData = resp.result.data;
         this.toast.success(resp.message);
       }
     });
@@ -83,7 +88,6 @@ export class SettingsComponent implements OnInit {
     formData.append('companyName', this.setting.value.companyName);
     formData.append('address', this.setting.value.address);
     formData.append('brandFooter', this.setting.value.brandFooter);
-    formData.append('fileSource', this.setting.value.fileSource);
     formData.append(
       'logo',
       this.uploadedFiles ? this.uploadedFiles : this.data.imageUrl
@@ -92,6 +96,7 @@ export class SettingsComponent implements OnInit {
       url:  urls.setting.create,
       payload: formData,
     };
+    
     this.apiService.post(config).subscribe((resp) => {
       if (resp.success) {
         this.toast.success(resp.message);
@@ -106,9 +111,11 @@ export class SettingsComponent implements OnInit {
     this.apiService.get(config).subscribe((resp) => {
       if (resp.success) {
         this.settingId = resp.result.data[0]._id;
-        this.data = resp.result.data[0];
+        this.data = resp.result.data[0]; 
+        this.copyofdata = {...this.data};
+    console.log(this.copyofdata , "copy")
+
         this.prepareForm();
-        console.log(this.data, ' this.data ');
       } else {
         this.prepareForm();
       }

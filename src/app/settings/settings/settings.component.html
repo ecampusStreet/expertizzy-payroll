@@ -4,7 +4,7 @@
       [isBack]="true"
       [title]="'Settting'"
     ></app-content-navbar>
-
+{{data | json}}
     <!-- card design -->
     <div class="min-h-screen bg-gray-100 my-3">
       <mat-card class="p-6 bg-white px-2 mx-3 my-3">
@@ -22,12 +22,12 @@
                   />
 
                   <div class="relative m-auto">
-                    <!-- <img 
+                    <img *ngIf="!data.imageUrl" 
                     src="assets/images/setting-logo.jpg"
                       alt="logo"
                       class="w-48 "
-                    /> -->
-                    <img src="{{ data.imageUrl }}" alt="logo" class="w-48" />
+                    />
+                    <img style="object-fit: cover;" *ngIf="data.imageUrl"  src="{{data.imageUrl}}" alt="" class="w-48 h-48" />
                     <span
                       mat-button
                       color="primary"
@@ -71,7 +71,7 @@
               </div>
             </div>
             <div class="flex justify-end">
-              <button mat-raised-button color="primary" (click)="action()">
+              <button mat-raised-button color="primary" [disabled]="!setting.valid" (click)="action()">
                 Submit
               </button>
             </div>
