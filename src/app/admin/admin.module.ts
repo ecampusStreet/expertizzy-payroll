@@ -51,9 +51,6 @@ import {MatExpansionModule} from '@angular/material/expansion';
     DashboardCardComponent,
     ViewComponent,
     OverviewComponent,
-    AttendanceComponent,
-    DesignationaddComponent,
-    DesignationComponent,
     FilterFormComponent,
    
   ],

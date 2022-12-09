@@ -42,8 +42,9 @@ export class UtilsService {
           url:urls.departments.list
         }
          this.apiService.get(config).subscribe(resp =>{
-          console.log(resp,"resp 43")
+          if(resp.success){
           resolve(resp.result.data);
+          }
         })
       })
       }
@@ -53,8 +54,9 @@ export class UtilsService {
           url:urls.shifts.list
         }
          this.apiService.get(config).subscribe(resp =>{
-          console.log(resp,"resp 52")
+          if(resp.success){
           resolve(resp.result.data);
+          }
         })
       })
       }
@@ -62,22 +64,24 @@ export class UtilsService {
       designations(){
         return new Promise((resolve, reject) => {
         const config ={
-          url:urls.shifts.list
+          url:urls.designation.list
         }
          this.apiService.get(config).subscribe(resp =>{
-          console.log(resp,"resp 52")
+          if(resp.success){
           resolve(resp.result.data);
+          }
         })
       })
       }
       branches(){
         return new Promise((resolve, reject) => {
         const config ={
-          url:urls.shifts.list
+          url:urls.branch.list
         }
          this.apiService.get(config).subscribe(resp =>{
-          console.log(resp,"resp 52")
-          resolve(resp.result.data);
+           if(resp.success){
+            resolve(resp.result.data);
+           }
         })
       })
       }

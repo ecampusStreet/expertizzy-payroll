@@ -15,6 +15,15 @@
         <div class="p-2 clear-both">
           <h3>Personal information</h3>
           <form [formGroup]="form">
+            <div class="image-block flex justify-center"  >
+              <div class="relative">
+              <img src="assets/images/profile.jpg" class="rounded-full w-24" *ngIf="!form.value.profilePic">
+              <img src="{{form?.value.profilePic.link}}" class="rounded-full w-24" *ngIf="form.value.profilePic">
+            
+              <input style="max-width: 0px;" type="file" #uploadProfile id="fileControlInput" (change)="uploadImage($event)" />
+              <mat-icon class="pen-icon" title="Upload profile photo" (click)="uploadProfile.click()">edit</mat-icon>
+              </div>
+              </div>
             <div class="grid lg:grid-cols-4 md:grid-cols-2 gap-3 p-2">
               <mat-form-field class="example-full-width">
                 <mat-label> First name</mat-label>
@@ -68,12 +77,11 @@
                     "
                     >Last name is required.
                   </mat-error>
+                  </mat-error>
                   <mat-error
                     *ngIf="f['lastName'].errors && f['lastName'].errors['']"
                   ></mat-error>
-                </mat-error>
                 <mat-error *ngIf="f['lastName'].errors && f['lastName'].errors['']"></mat-error>
-              </mat-error>
             </mat-form-field>
             <mat-form-field class="example-full-width">
               <mat-label>Date of birth </mat-label>
@@ -109,6 +117,7 @@
               <mat-error *ngIf="f['ph_no'].touched && f['ph_no'].invalid" class="text-red-500">
                 <mat-error *ngIf="f['ph_no'].errors && f['ph_no'].errors['required']">Phone number is required.
                 </mat-error>
+                </mat-error>
               </mat-form-field>
 
               <mat-form-field class="example-full-width">
@@ -133,7 +142,6 @@
                   </mat-error>
                 </mat-error>
                 <mat-error *ngIf="f['ph_no'].errors && f['ph_no'].errors['pattern']">Add valid phone number</mat-error>
-              </mat-error>
             </mat-form-field>
             <mat-form-field class="example-full-width ">
               <mat-label>Email id</mat-label>
@@ -434,57 +442,7 @@
         </div>
         </div>
       </mat-card>
-      <!-- Department details -->
-      <mat-card class="p-6 bg-white px-2 mx-3 my-3">
-        <div class="p-2 clear-both">
-          <h3>Department information</h3>
-          <form action="" [formGroup]="depDetail">
-            <div class="grid lg:grid-cols-3 gap-3">
-              <mat-form-field>
-                <mat-label>Department</mat-label>
-                <mat-select name="dept_name" formControlName="dept_name">
-                  <mat-option
-                    *ngFor="let dept of Department"
-                    [value]="dept?._id"
-                  >
-                    {{ dept?.departmentName | titlecase }}
-                  </mat-option>
-                </mat-select>
-                <mat-error>Select department</mat-error>
-              </mat-form-field>
-
-              <mat-form-field class="example-full-width">
-                <mat-label>Team Leader </mat-label>
-                <input
-                  matInput
-                  placeholder="Please Enter Team Leader"
-                  name="teamLeader"
-                  formControlName="teamLeader"
-                />
-                <mat-error>Provide teamleader name</mat-error>
-              </mat-form-field>
-
-              <mat-form-field class="example-full-width">
-                <mat-label>Date of joining</mat-label>
-                <input
-                  matInput
-                  [matDatepicker]="pickerdoj"
-                  placeholder="Please enter joining date"
-                  name="doj"
-                  formControlName="doj"
-                />
-                <mat-datepicker-toggle
-                  matSuffix
-                  [for]="pickerdoj"
-                ></mat-datepicker-toggle>
-                <mat-datepicker #pickerdoj></mat-datepicker>
-                <mat-error>Enter date of joining</mat-error>
-              </mat-form-field>
-            </div>
-          </form>
-        </div>
-      </mat-card>
-
+    
       <!-- Experience details -->
       <mat-card class="p-6 bg-white px-2 mx-3 my-3 " >
         <div class="p-2 clear-both">
@@ -542,7 +500,7 @@
                     <mat-form-field>
                       <mat-label>Designation</mat-label>
                       <mat-select  matNativeControl name="designation" formControlName="old_designation">
-                        <mat-option *ngFor="let desg of Designation" [value]="desg.value">
+                        <mat-option *ngFor="let desg of designations" [value]="desg.value">
                           {{desg.viewValue}}
                         </mat-option>
                       </mat-select>
@@ -604,6 +562,7 @@
           <button mat-raised-button color=""  (click)="back()">Cancel</button>
           {{form.valid }} {{qualiDetail.valid}} {{ expDetail.valid | json}} {{ accDetail.valid}} {{ depDetail.valid}} {{emgDetail.valid}}
           <button mat-raised-button color="primary" [disabled]="!form.valid ||  !qualiDetail.valid ||  !expDetail.valid || !accDetail.valid || !depDetail.valid || !emgDetail.valid" (click)="submit()">Submit</button>
+        </div>
         </div>
       </mat-card>
     </div>

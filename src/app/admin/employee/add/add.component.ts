@@ -59,6 +59,7 @@ export class AddComponent implements OnInit {
 
   async ngOnInit() {
   this.departments = await this.utils.getDepartments();
+  console.log( this.departments ," this.departments ");
   this.shifts = await this.utils.getShifts();
   this.branches = await this.utils.branches();
   this.designations = await this.utils.designations();
@@ -69,6 +70,7 @@ export class AddComponent implements OnInit {
  
   prepareForm(){
     this.form = new FormGroup({
+      profilePic: new FormControl(this.employeeData && this.employeeData.personalDetails[0]? this.employeeData.personalDetails[0].profilePic :'',[]),
       firstName: new FormControl(this.employeeData && this.employeeData.personalDetails[0]? this.employeeData.personalDetails[0].firstName :'', [Validators.required]),
       lastName: new FormControl(this.employeeData && this.employeeData.personalDetails[0]? this.employeeData.personalDetails[0].lastName :'', [Validators.required]),
       middleName: new FormControl(this.employeeData && this.employeeData.personalDetails[0]? this.employeeData.personalDetails[0].middleName :'', [Validators.required]),
@@ -177,32 +179,6 @@ export class AddComponent implements OnInit {
     value:'pg'
   }];
 
-  Designation = [
-    { value: 'M/COperator', viewValue: 'M/C Operator' },
-    { value: 'fitter', viewValue: 'Fitter' },
-    { value: 'welder', viewValue: 'Welder' },
-    { value: 'houseKeeping', viewValue: 'House Keeping' },
-    { value: 'asstFitter', viewValue: 'Asst.Fitter' },
-    { value: 'officeBoy', viewValue: 'Office Boy' },
-    { value: 'trainee', viewValue: 'Trainee' },
-    { value: 'operator', viewValue: 'Operator' },
-    { value: 'sharingM/CAsst', viewValue: 'Sharing M/C Asst' },
-    { value: 'storeKeeper', viewValue: 'Store Keeper' },
-    { value: 'grinder', viewValue: 'Grinder' },
-    { value: 'hydroHelper', viewValue: 'Hydro Helper' },
-    { value: 'traineeWelder', viewValue: 'Trainee welder' },
-    { value: 'helper', viewValue: 'Helper' },
-    { value: 'driver', viewValue: 'Driver' },
-    { value: 'electriction', viewValue: 'Electriction' },
-    { value: 'technician', viewValue: 'Technician' },
-  ];
-
-
-  qualification = [
-    { value: 'SSLC', viewValue: 'SSLC' },
-    { value: 'Graduate', viewValue: 'Graduate' },
-    { value: 'Post Graduate', viewValue: 'Post Graduate' },
-  ];
 
   // checkPattern(data : any):any{
   //   if(this.form.value[data]){
@@ -433,8 +409,41 @@ submit() {
   this.apiService.post(config).subscribe(resp=>{
     if(resp.success){
       this.tostService.success(resp.message);
-      this.location.back();
+      // this.location.back();
     }
   });
+}
+uploadImage(e:any){
+  let formData = new FormData();
+    if (e.target.files && e.target.files[0]) {
+      Array.from(e.target.files).forEach((file: any) => {
+        formData.append('files',file)
+      });
+      const config ={
+        url : urls.files.upload,
+        payload:formData
+      }
+      this.apiService.post(config).subscribe(resp =>{
+        if(this.form.value.profilePic && this.form.value.profilePic._id){
+          this.deleteFile(this.form.value.profilePic,resp.result[0]);
+        }else{
+          this.form.value.profilePic = resp.result[0];
+          if(this.id) {
+          this.submit();
+        }
+        }
+      })
+    }
+}
+deleteFile(old:any, newObj : any){
+  const config ={
+    url: urls.files.deleteFileById + old._id
+  }
+  this.apiService.delete(config).subscribe(resp =>{
+    this.form.value.profilePic = newObj;
+   if(this.id) {
+    this.submit();
+  }
+  })
 }
 }
