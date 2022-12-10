@@ -58,11 +58,10 @@ export class AddComponent implements OnInit {
   }
 
   async ngOnInit() {
+  this.designations = await this.utils.designations();
   this.departments = await this.utils.getDepartments();
-  console.log( this.departments ," this.departments ");
   this.shifts = await this.utils.getShifts();
   this.branches = await this.utils.branches();
-  this.designations = await this.utils.designations();
   }
   onDepartmentChange(department : any){
     this.selectedDepartment = department;
@@ -73,7 +72,7 @@ export class AddComponent implements OnInit {
       profilePic: new FormControl(this.employeeData && this.employeeData.personalDetails[0]? this.employeeData.personalDetails[0].profilePic :'',[]),
       firstName: new FormControl(this.employeeData && this.employeeData.personalDetails[0]? this.employeeData.personalDetails[0].firstName :'', [Validators.required]),
       lastName: new FormControl(this.employeeData && this.employeeData.personalDetails[0]? this.employeeData.personalDetails[0].lastName :'', [Validators.required]),
-      middleName: new FormControl(this.employeeData && this.employeeData.personalDetails[0]? this.employeeData.personalDetails[0].middleName :'', [Validators.required]),
+      fatherName: new FormControl(this.employeeData && this.employeeData.personalDetails[0]? this.employeeData.personalDetails[0].fatherName :'', [Validators.required]),
       dob: new FormControl(this.employeeData && this.employeeData.personalDetails[0]? this.employeeData.personalDetails[0].dob :'', [Validators.required]),
       gender: new FormControl(this.employeeData && this.employeeData.personalDetails[0]? this.employeeData.personalDetails[0].gender :'', [Validators.required]),
       ph_no: new FormControl(this.employeeData && this.employeeData.personalDetails[0]? this.employeeData.personalDetails[0].ph_no :'', [Validators.required, Validators.minLength(10), Validators.pattern("^((\\+91-?)|0)?[0-9]{10}$")]),
@@ -85,7 +84,7 @@ export class AddComponent implements OnInit {
     });
 
     this.kycInformation = new FormGroup({
-      aadhaarNumber: new FormControl(this.employeeData && this.employeeData.kycInformation? this.employeeData.kycInformation.aadhaarNumber :'', []),
+      aadhaarNumber: new FormControl(this.employeeData && this.employeeData.kycInformation? this.employeeData.kycInformation.aadhaarNumber :'', [Validators.required]),
       panCardNumber: new FormControl(this.employeeData && this.employeeData.kycInformation? this.employeeData.kycInformation.panCardNumber :'', []),
       drivingLicence: new FormControl(this.employeeData && this.employeeData.kycInformation? this.employeeData.kycInformation.drivingLicence :'', []),
       passportNumber: new FormControl(this.employeeData && this.employeeData.kycInformation? this.employeeData.kycInformation.passportNumber :'', []),
@@ -95,8 +94,20 @@ export class AddComponent implements OnInit {
     this.expDetail = this.fb.group({
      experDetails: this.fb.array([])
    });
-      this.depDetail = this.fb.group({
-        department: this.fb.array([])
+      this.depDetail =  new FormGroup({
+        dept_name: new FormControl('', []),
+          teamLeader: new FormControl('', []),
+          doj: new FormControl('', []),
+          shift: new FormControl('', []),
+          reportingManager:new FormControl('', []),
+          projectManager:new FormControl('', []),
+          departmentId: new FormControl('', []),
+          designationId: new FormControl('', []),
+          designationName:new FormControl('', []),
+          financialYear:new FormControl('', []),
+          branch:new FormControl('', []),
+          deputy_id:new FormControl('', []),
+          experience:new FormControl('', []),
       });
       this.qualiDetail = this.fb.group({
         qualifications: this.fb.array([])
@@ -215,31 +226,14 @@ export class AddComponent implements OnInit {
         fields = this.fb.group({
           companyName: new FormControl('', [Validators.required]),
           yearOfExp: new FormControl('', [Validators.required]),
-          old_designation: new FormControl('', [Validators.required]),
+          old_designation: new FormControl('', []),
           start_date: new FormControl('', [Validators.required]),
           end_date: new FormControl('', [Validators.required]),
           files:new FormControl([]),
         });
         this.experDetails.push(fields);
         break;
-      case 'department' :
-        fields = this.fb.group({
-          dept_name: new FormControl('', [Validators.required]),
-          teamLeader: new FormControl('', [Validators.required]),
-          doj: new FormControl('', [Validators.required]),
-          shift: new FormControl('', []),
-          reportingManager:new FormControl('', [Validators.required]),
-          projectManager:new FormControl('', [Validators.required]),
-          departmentId: new FormControl('', []),
-          designationId: new FormControl('', []),
-          designationName:new FormControl('', [Validators.required]),
-          financialYear:new FormControl('', [Validators.required]),
-          branch:new FormControl('', [Validators.required]),
-          deputy_id:new FormControl('', []),
-          experience:new FormControl('', [Validators.required]),
-        })
-        this.department.push(fields);
-        break;
+ 
         case 'qualification' :
         fields = this.fb.group({
             course: new FormControl('', [Validators.required]),
@@ -272,7 +266,7 @@ export class AddComponent implements OnInit {
         let fieldsExp = this.fb.group({
           companyName: new FormControl(element.companyName, [Validators.required]),
           yearOfExp: new FormControl(element.yearOfExp, [Validators.required]),
-          old_designation: new FormControl(element.old_designation, [Validators.required]),
+          old_designation: new FormControl(element.old_designation, []),
           start_date: new FormControl(element.start_date, [Validators.required]),
           end_date: new FormControl(element.end_date, [Validators.required]),
           files:new FormControl(element.files),
@@ -283,50 +277,14 @@ export class AddComponent implements OnInit {
     let  fields = this.fb.group({
         companyName: new FormControl('', [Validators.required]),
         yearOfExp: new FormControl('', [Validators.required]),
-        old_designation: new FormControl('', [Validators.required]),
+        old_designation: new FormControl('', []),
         start_date: new FormControl('', [Validators.required]),
           end_date: new FormControl('', [Validators.required]),
           files:new FormControl([]),
       });
       this.experDetails.push(fields);
     }
-    if(this.employeeData && this.employeeData.departmentDetails){
-      this.employeeData.departmentDetails.forEach((element:any) => {
-      let fieldsDep = this.fb.group({
-        dept_name: new FormControl(element.dept_name, [Validators.required]),
-        teamLeader: new FormControl(element.teamLeader, [Validators.required]),
-        doj: new FormControl(element.doj, [Validators.required]),
-        shift: new FormControl(element.shift, []),
-        reportingManager:new FormControl(element.reportingManager, [Validators.required]),
-        projectManager:new FormControl(element.projectManager, [Validators.required]),
-        departmentId: new FormControl(element.departmentId, []),
-        designationId: new FormControl(element.designationId, []),
-        designationName:new FormControl(element.designationName, [Validators.required]),
-        financialYear:new FormControl(element.financialYear, [Validators.required]),
-        branch:new FormControl(element.branch, [Validators.required]),
-        deputy_id:new FormControl(element.deputy_id, []),
-        experience:new FormControl(element.experience, [Validators.required]),
-        })
-        this.department.push(fieldsDep);
-      })
-    }else{
-      let fieldsDep = this.fb.group({
-        dept_name: new FormControl('', [Validators.required]),
-          teamLeader: new FormControl('', [Validators.required]),
-          doj: new FormControl('', [Validators.required]),
-          shift: new FormControl('', []),
-          reportingManager:new FormControl('', [Validators.required]),
-          projectManager:new FormControl('', [Validators.required]),
-          departmentId: new FormControl('', []),
-          designationId: new FormControl('', []),
-          designationName:new FormControl('', [Validators.required]),
-          financialYear:new FormControl('', [Validators.required]),
-          branch:new FormControl('', [Validators.required]),
-          deputy_id:new FormControl('', []),
-          experience:new FormControl('', [Validators.required]),
-        })
-        this.department.push(fieldsDep);
-    }
+
     if(this.employeeData && this.employeeData.qualificationDetails){
       this.employeeData.qualificationDetails.forEach((element:any) => {
      let fieldQulification = this.fb.group({

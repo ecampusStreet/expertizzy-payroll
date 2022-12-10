@@ -1,5 +1,5 @@
 export const urls = {
-  login: 'auth/login',
+  login: 'api/login',
   profile: 'auth/profile/',
   dashboard:{
     list:'api/admin/dashboard'},
@@ -9,6 +9,7 @@ export const urls = {
     update: 'api/emp/update/',
     create: 'api/emp/create',
     delete: 'api/emp/delete/',
+    overview:'api/emp/overview'
   },
   departments: {
     list: 'api/department/list',
