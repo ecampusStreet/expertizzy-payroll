@@ -43,6 +43,7 @@ import { DepartmentModule } from '../department/department.module';
 import { FinancialYearModule } from '../financial-year/financial-year.module';
 import { PayrollModule } from '../payroll/payroll.module';
 
+import {MatExpansionModule} from '@angular/material/expansion';
 @NgModule({
   declarations: [
     AddComponent,
@@ -69,6 +70,7 @@ import { PayrollModule } from '../payroll/payroll.module';
     DesignationModule,
     DepartmentModule,
     PayrollModule,
+    MatExpansionModule,
     FinancialYearModule,
     FlexLayoutModule,
     MatCheckboxModule,

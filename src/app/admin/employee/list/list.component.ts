@@ -14,7 +14,6 @@ export class ListComponent implements OnInit {
   count = 0;
   limit = 25;
   page = 1;
-
   employeeList = [];
   searchText: any = '';
 

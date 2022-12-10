@@ -1,0 +1,12 @@
+<div *ngIf="data" class="flex flex-wrap">
+    <div *ngFor="let item of data; let i = index" class="gallery">
+      <mat-icon class="close-icon material-symbols-outlined" *ngIf="item" (click)="deleteConfirm(item,i)">
+        cancel
+      </mat-icon>
+        <a target="_blank" href="{{item.link}}" target="system" title="{{item.name}}">
+          <img *ngIf="item.contentType.includes('image')" class="img-box" src="{{item.link}}" alt="item._id">
+          <img *ngIf="!item.contentType.includes('image')" class="img-box" src="assets/images/file.png"  alt="item._id">
+          <div class="file-name">{{item.name}}</div>
+        </a>
+      </div>
+    </div>

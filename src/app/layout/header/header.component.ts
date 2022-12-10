@@ -20,7 +20,7 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
   }
   toggleMenu(){
-this.toggle.emit();
+  this.toggle.emit();
   }
  action(item:any){
   if(item == 'logout'){

@@ -37,7 +37,7 @@
                   </div>
 
                   <div *ngFor="let salary of breakups().controls; let i=index" [formGroupName]="i">
-                    <mat-card class="shadow-md border relative">
+                    <mat-card class="shadow-md border relative mb-3">
                       <div class="flex justify-end ">
                         <span class="absolute right-0 top-0" (click)="removeBreakups(i)">
                           <mat-icon class="bg-black ">close</mat-icon>
@@ -66,7 +66,7 @@
                   </div>
 
                   <div *ngFor="let deductsalary of deduction().controls; let i=index" [formGroupName]="i">
-                    <mat-card class="shadow-md border relative">
+                    <mat-card class="shadow-md border relative mb-3">
                       <div class="flex justify-end">
                         <span  class="absolute right-0 top-0"  (click)="removeDeduction(i)">
                           <mat-icon class="bg-black "> close</mat-icon>

@@ -26,6 +26,10 @@ import { DataModalComponent } from './components/data-modal/data-modal.component
 import { FormsModule } from '@angular/forms';
 import { ProfilePicComponent } from './components/profile-pic/profile-pic.component';
 import { NoDataFoundComponent } from '../core/components/no-data-found/no-data-found.component';
+import { FileUploadComponent } from './components/file-upload/file-upload.component';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { FileListComponent } from './components/file-list/file-list.component';
+
 
 @NgModule({
   declarations: [
@@ -38,6 +42,8 @@ import { NoDataFoundComponent } from '../core/components/no-data-found/no-data-f
     DataModalComponent,
     ProfilePicComponent,
     NoDataFoundComponent,
+    FileUploadComponent,
+    FileListComponent
   ],
   imports: [
     CommonModule,
@@ -58,6 +64,8 @@ import { NoDataFoundComponent } from '../core/components/no-data-found/no-data-f
     MatDialogModule,
     MatRadioModule,
     FormsModule,
+    MatToolbarModule
+
   ],
   exports: [
     TabledataComponent,
@@ -81,6 +89,8 @@ import { NoDataFoundComponent } from '../core/components/no-data-found/no-data-f
     LeaveComponent,
     GenericConfirmPopupComponent,
     DataModalComponent,
-  ],
+    FileUploadComponent,
+    FileListComponent
+  ]
 })
 export class SharedModule {}

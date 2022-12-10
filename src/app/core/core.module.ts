@@ -17,9 +17,10 @@ import { MatNativeDateModule, MatRippleModule } from '@angular/material/core';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatCardModule } from '@angular/material/card';
 import { MatDividerModule } from '@angular/material/divider';
+import { NumberDirective } from './pipes';
 
 @NgModule({
-  declarations: [],
+  declarations: [NumberDirective],
   imports: [
     CommonModule,
     SharedModule,
@@ -40,9 +41,10 @@ import { MatDividerModule } from '@angular/material/divider';
     MatIconModule,
     RouterModule,
     LayoutModule,
-    FlexLayoutModule,
+    FlexLayoutModule,    
   ],
   schemas: [NO_ERRORS_SCHEMA],
-  exports: [],
+  exports:[NumberDirective]
+  
 })
 export class CoreModule {}

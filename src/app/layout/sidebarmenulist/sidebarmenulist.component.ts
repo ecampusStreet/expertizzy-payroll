@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit,EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-sidebarmenulist',
@@ -7,22 +7,28 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class SidebarmenulistComponent implements OnInit {
 
-
+  selectedParentMenu :any;
+  selectedChildMenu : any;
   @Input() expand :boolean = true;
-  
+  @Output() toggle = new EventEmitter();
   @Input() list: any;
   
-  constructor() { }
+  constructor(
+  ) { }
 
   ngOnInit(): void {
-    
+    this.selectedParentMenu = this.list[0].name;
 
   }
-  activateMenu(item:any){
-    this.list.forEach((element:any) => {
-        element.clicked = false;
-    });
-    item.clicked = true;
+  activateChildMenu(item:any){
+    this.selectedChildMenu = item.name;
+  }
+  activateParentMenu(item:any){
+    this.selectedParentMenu = item.name;
+    this.selectedChildMenu = '';
+  }
+  toggleBtn(){
+   this.toggle.emit();
   }
 
 }

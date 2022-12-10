@@ -1,7 +1,5 @@
-import { Component, ViewChild } from '@angular/core';
-import { adminMenu,menu } from '../core';
-import { SidebarComponent } from '../layout/sidebar/sidebar.component';
-
+import { Component } from '@angular/core';
+import { menu } from '../core';
 @Component({
   selector: 'admin-root',
   templateUrl: './admin.component.html',

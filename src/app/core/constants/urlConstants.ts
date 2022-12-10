@@ -37,9 +37,20 @@ export const urls = {
     delete: 'api/designation/delete/',
     getById: 'api/designation/',
   },
-  financialYear: {
-    create: 'api/year',
-    list: 'api/year/list',
+
+  files:{
+    upload:'api/file-upload',
+    getFileById:'api/fileUpload/file', //+id
+    getFiles:'api/file-upload/list',
+    deleteFileById:'api/file-upload/delete/',// +id
+    updateFile:'api/file-upload/' //+id
+  },
+  shifts:{
+    list:'api/shift/list'
+  },
+  financialYear:{
+    create:'api/year',
+    list:'api/year/list',
   },
   branch: {
     create: 'api/branch/create',
