@@ -37,7 +37,7 @@ export class LoginComponent implements OnInit {
     this.apiService.post(config).subscribe(data =>{
       if(data.success){
         this.toast.success(data.message);
-        this.userService.setUser(data.result);
+        this.userService.setUser(data.data);
         // if(data.result.user.role == 'admin' ){
           this.router.navigate(['expertizzy/dashboard']);
         // }else{

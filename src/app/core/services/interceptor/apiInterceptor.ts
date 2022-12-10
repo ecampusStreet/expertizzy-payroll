@@ -3,7 +3,8 @@ import {
     HttpRequest,
     HttpHandler,
     HttpEvent,
-    HttpInterceptor
+    HttpInterceptor,
+    HttpHeaders
 } from '@angular/common/http';
 import { Observable, from } from 'rxjs';
 import { AuthService } from '../auth/auth.service';
@@ -18,13 +19,13 @@ export class ApiInterceptor implements HttpInterceptor {
     constructor(
         private userService: CurrentUserService,
         // private platform: Platform,
-        private auth: AuthService
+        private auth: AuthService,
     ) {
     }
     getToken(){
         return this.userService.getAccessToken().then(token =>{
             let accessToken:any =  JSON.parse(token);
-            return accessToken.accessToken;
+            return accessToken.token;
         })
     }
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
@@ -34,13 +35,13 @@ export class ApiInterceptor implements HttpInterceptor {
     async handle(req: HttpRequest<any>, next: HttpHandler) {
         let authReq;
         console.log(req.url)
-        if (req.url != environment.apiBaseUrl + "auth/login") {
+        if (req.url != environment.apiBaseUrl + "api/login") {
             const token :any =  await this.getToken();
-            authReq = req.clone({
-                setHeaders: {
-                    'authorization':'bearer '+ token,
-                }
-            });
+            const authReq = req.clone({
+                headers: new HttpHeaders({
+                  'Authorization':'Bearer' + ' ' +  token
+                })
+              });
         return next.handle(authReq).toPromise()
         } else {
             authReq = req.clone({

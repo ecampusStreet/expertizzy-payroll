@@ -1,5 +1,5 @@
 export const urls = {
-  login: 'auth/login',
+  login: 'api/login',
   profile: 'auth/profile/',
   employee: {
     list: 'api/emp/list',
