@@ -8,6 +8,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatTableModule } from '@angular/material/table';
 import { SharedModule } from '../shared/shared.module';
+import { CoreModule } from '../core/core.module';
 
 @NgModule({
   declarations: [BranchesComponent, AddbranchComponent],
@@ -19,6 +20,7 @@ import { SharedModule } from '../shared/shared.module';
     MatTableModule,
     MatFormFieldModule,
     ReactiveFormsModule,
+    CoreModule,
   ],
 })
 export class BranchModule {}

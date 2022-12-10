@@ -34,7 +34,8 @@
         </div>
       </div>
 
-      <app-tabledata
+      <no-data-found *ngIf="!employeeList.length"></no-data-found>
+      <app-tabledata *ngIf="employeeList.length"
         [list]="employeeList"
         [titles]="tableheader"
         (eventAction)="action($event)"

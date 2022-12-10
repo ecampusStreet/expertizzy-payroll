@@ -1,0 +1,22 @@
+.mat-action-row {
+  justify-content: flex-start;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+.mat-expansion-panel-body {
+  padding: 9px 24px;
+}
+
+.panel{
+  span{
+    font-size: 11px;
+  }
+    
+}
+
+.flex{
+  .mat-expansion-panel-body {
+    padding:0 !important;
+  } 
+}
+

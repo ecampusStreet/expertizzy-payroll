@@ -234,7 +234,7 @@ export const menu = [
   {
     name: 'Event',
     icon: 'event',
-    routeLink: '',
+    routeLink: 'event',
   },
   {
     name: 'Gallery',
@@ -264,6 +264,11 @@ export const menu = [
         name: 'Manage leave',
         icon: 'manage_history',
         routeLink: 'leave/manage',
+      },
+      {
+        name: 'Leave type',
+        icon: 'add',
+        routeLink: 'leave/leavetype',
       },
     ],
   },
@@ -358,7 +363,7 @@ export const menu = [
       {
         name: 'Salary grade',
         icon: 'grade',
-        routeLink: '',
+        routeLink: 'payroll',
       },
       {
         name: 'Make payment ',

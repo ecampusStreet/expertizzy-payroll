@@ -18,7 +18,7 @@
             <div class="image-block flex justify-center"  >
               <div class="relative">
               <img src="assets/images/profile.jpg" class="rounded-full w-24" *ngIf="!form.value.profilePic">
-              <img src="{{form?.value.profilePic.link}}" class="rounded-full w-24" *ngIf="form.value.profilePic">
+              <img src="{{form.value.profilePic.link}}" class="rounded-full w-24" *ngIf="form.value.profilePic">
             
               <input style="max-width: 0px;" type="file" #uploadProfile id="fileControlInput" (change)="uploadImage($event)" />
               <mat-icon class="pen-icon" title="Upload profile photo" (click)="uploadProfile.click()">edit</mat-icon>
@@ -55,7 +55,7 @@
                   matInput
                   placeholder="Enter middle name"
                   name="middleName"
-                  formControlName="middleName"
+                  formControlName="fatherName"
                 />
                 <mat-error>Middle name is required</mat-error>
               </mat-form-field>
@@ -142,15 +142,6 @@
                   </mat-error>
                 </mat-error>
                 <mat-error *ngIf="f['ph_no'].errors && f['ph_no'].errors['pattern']">Add valid phone number</mat-error>
-            </mat-form-field>
-            <mat-form-field class="example-full-width ">
-              <mat-label>Email id</mat-label>
-              <input matInput placeholder=" Please enter employee email" name="email" formControlName="email">
-              <mat-error *ngIf="f['email'].touched && f['email'].invalid" class="text-red-500">
-                <mat-error *ngIf="f['email'].errors && f['email'].errors['required']">Email id is required.</mat-error>
-                <mat-error *ngIf="f['email'].errors && f['email'].errors['pattern']">Please, enter valid email address.
-                </mat-error>
-              </mat-error>
             </mat-form-field>
           </div>
         
@@ -365,17 +356,16 @@
         <div class="p-2 clear-both">
        <div class="flex justify-between">
         <h3>Department information</h3>
-        <button  mat-button color="primary" (click)="addFeilds('department')">
+        <!-- <button  mat-button color="primary" (click)="addFeilds('department')">
            Add new
-        </button>
+        </button> -->
          </div>
         <div class="mutlifield" [formGroup]="depDetail">
-          <ng-container formArrayName="department">
-              <ng-container *ngFor="let lessonForm of department.controls; let i = index">
-                <mat-card [formGroupName]="i" class="mb-3 nested-card">
-                  <button mat-button (click)="deleteFeild(i,'department')" class="remove">
+          <ng-container >
+              <!-- <ng-container *ngFor="let lessonForm of department.controls; let i = index"> -->
+                  <!-- <button mat-button (click)="deleteFeild(i,'department')" class="remove">
                     <mat-icon>cancel</mat-icon>
-                 </button>
+                 </button> -->
                   <div class="grid  lg:grid-cols-3  gap-3 ">
                     <mat-form-field>
                       <mat-label>Department</mat-label>
@@ -420,8 +410,8 @@
                     <mat-form-field class="example-full-width">
                       <mat-label>Designation</mat-label>
                       <mat-select name="shift" formControlName="shift">
-                        <mat-option *ngFor="let designation of designations" [value]="designation.value">
-                          {{designation?.label}}
+                        <mat-option *ngFor="let designation of designations" [value]="designation._id">
+                          {{designation?.designationName}}
                         </mat-option>
                       </mat-select>
                       <mat-error>Select shift</mat-error>
@@ -436,8 +426,7 @@
                       <mat-error>Select shift</mat-error>
                     </mat-form-field>
                   </div>
-                 </mat-card>
-              </ng-container>
+              <!-- </ng-container> -->
             </ng-container>
         </div>
         </div>

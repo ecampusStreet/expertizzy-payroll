@@ -1,83 +1,131 @@
 <div class="flex-auto">
   <div class="flex flex-col">
-    <app-content-navbar [isBack]="false" [title]="'Branch'"></app-content-navbar>
+    <app-content-navbar
+      [isBack]="false"
+      [title]="'Branch'"
+    ></app-content-navbar>
 
-<div class=" min-h-screen bg-gray-100">
-  <div class="flex justify-end m-3 items-center">
-    <div class="w-full">
-      <mat-form-field class="example-full-width w-full search-box m-0 mr-4">
-        <span matPrefix> </span>
-        <input
-          type="text"
-          matInput
-          placeholder="Search here"
-          name="search"
-          [(ngModel)]="searchText"
-          (click)="search()"
-        />
-        <button matSuffix mat-button>
-          <mat-icon (click)="search()">search</mat-icon>
-        </button>
-      </mat-form-field>
-    </div>
-    <div class="ml-7">
-      <button mat-raised-button color="primary" (click)="add()">
-        Create branch
-      </button>
-    </div>
-  </div>
-
-  <div style="margin: 15px;" class="example-container ">
-      <table mat-table [dataSource]="branchList" class="mat-elevation-z8">
-        <ng-container matColumnDef="departmentId">
-          <th mat-header-cell *matHeaderCellDef> Id </th>
-          <td mat-cell *matCellDef="let element">{{element.departmentId}} </td>
-        </ng-container>
-      
-        <ng-container matColumnDef="branchName">
-          <th mat-header-cell *matHeaderCellDef> Name </th>
-          <td mat-cell *matCellDef="let element"> {{element.branchName | titlecase}} </td>
-        </ng-container>
-
-        <ng-container matColumnDef="branchHead">
-          <th mat-header-cell *matHeaderCellDef> Branch head </th>
-          <td mat-cell *matCellDef="let element"> {{element.branchHead | titlecase}} </td>
-        </ng-container>
-
-        <ng-container matColumnDef="branchHR">
-          <th mat-header-cell *matHeaderCellDef> Branch hr </th>
-          <td mat-cell *matCellDef="let element"> {{element.branchHR | titlecase}} </td>
-        </ng-container>
-
-        <ng-container matColumnDef="branchAddress">
-          <th mat-header-cell *matHeaderCellDef> Address </th>
-          <td mat-cell *matCellDef="let element"> {{element.branchAddress | titlecase}} </td>
-        </ng-container>
-      
-        <ng-container matColumnDef="contactNumber">
-          <th mat-header-cell *matHeaderCellDef> Contact no </th>
-          <td mat-cell *matCellDef="let element"> {{element.contactNumber}} </td>
-        </ng-container>
-        <ng-container matColumnDef="email">
-          <th mat-header-cell *matHeaderCellDef> Email</th>
-          <td mat-cell *matCellDef="let element"> {{element.email | titlecase}} </td>
-        </ng-container>
-        <ng-container matColumnDef="actions">
-          <th mat-header-cell *matHeaderCellDef> Action </th>
-          <td mat-cell *matCellDef="let element" > 
-            <button mat-icon-button color="primary" aria-label="Example icon button with a vertical three dot icon" (click)="$event.stopPropagation();action(element,'edit')">
-              <mat-icon>edit</mat-icon>
+    <div class="min-h-screen bg-gray-100">
+      <div class="flex justify-end m-3 items-center">
+        <div class="w-full">
+          <mat-form-field class="example-full-width w-full search-box m-0 mr-4">
+            <span matPrefix> </span>
+            <input
+              type="text"
+              matInput
+              placeholder="Search here"
+              name="search"
+              [(ngModel)]="searchText"
+              (click)="search()"
+            />
+            <button matSuffix mat-button>
+              <mat-icon (click)="search()">search</mat-icon>
             </button>
-            <button mat-icon-button color="primary" aria-label="Example icon button with a home icon" (click)="$event.stopPropagation();action(element,'delete')">
-              <mat-icon>delete_forever</mat-icon>
-            </button>
-          </td>
-        </ng-container>
-        <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="action(row,'view')"></tr>
-      </table>
-      </div>
-      <div class="flex justify-center ml-3 mt-3 mb-3 mr-3">
-        <button mat-raised-button color="primary" (click)="loadMore()" *ngIf="branchList.length && count > branchList.length">Load more</button>
+          </mat-form-field>
+        </div>
+        <div class="ml-7">
+          <button mat-raised-button color="primary" (click)="add()">
+            Create branch
+          </button>
         </div>
       </div>
+      <no-data-found *ngIf="!branchList.length"></no-data-found>
+
+      <div
+        style="margin: 15px"
+        class="branch-container"
+        *ngIf="branchList.length"
+      >
+        <table mat-table [dataSource]="branchList" class="mat-elevation-z8 table-auto ">
+          <ng-container matColumnDef="departmentId">
+            <th mat-header-cell *matHeaderCellDef>Id</th>
+            <td mat-cell *matCellDef="let element">
+              {{ element.departmentId }}
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="branchName">
+            <th mat-header-cell *matHeaderCellDef>Name</th>
+            <td mat-cell *matCellDef="let element">
+              {{ element.branchName | titlecase }}
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="branchHead">
+            <th mat-header-cell *matHeaderCellDef>Branch head</th>
+            <td mat-cell *matCellDef="let element">
+              {{ element.branchHead | titlecase }}
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="branchHR">
+            <th mat-header-cell *matHeaderCellDef>Branch hr</th>
+            <td mat-cell *matCellDef="let element">
+              {{ element.branchHR | titlecase }}
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="branchAddress">
+            <th mat-header-cell *matHeaderCellDef>Address</th>
+            <td mat-cell *matCellDef="let element">
+              {{ element.branchAddress | titlecase }}
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="contactNumber">
+            <th mat-header-cell *matHeaderCellDef>Contact no</th>
+            <td mat-cell *matCellDef="let element">
+              {{ element.contactNumber }}
+            </td>
+          </ng-container>
+          <ng-container matColumnDef="email">
+            <th mat-header-cell *matHeaderCellDef>Email</th>
+            <td mat-cell *matCellDef="let element">
+              {{ element.email | titlecase }}
+            </td>
+          </ng-container>
+          <ng-container matColumnDef="actions">
+            <th mat-header-cell *matHeaderCellDef>Action</th>
+            <td mat-cell *matCellDef="let element">
+              <button
+                mat-icon-button
+                color="primary"
+                aria-label="Example icon button with a vertical three dot icon"
+                (click)="$event.stopPropagation(); action(element, 'edit')"
+              >
+                <mat-icon>edit</mat-icon>
+              </button>
+              <button
+                mat-icon-button
+                color="primary"
+                aria-label="Example icon button with a home icon"
+                (click)="$event.stopPropagation(); action(element, 'delete')"
+              >
+                <mat-icon>delete_forever</mat-icon>
+              </button>
+            </td>
+          </ng-container>
+          <tr
+            mat-header-row
+            *matHeaderRowDef="displayedColumns; sticky: true"
+          ></tr>
+          <tr
+            mat-row
+            *matRowDef="let row; columns: displayedColumns"
+            (click)="action(row, 'view')"
+          ></tr>
+        </table>
+      </div>
+      <div class="flex justify-center ml-3 mt-3 mb-3 mr-3">
+        <button
+          mat-raised-button
+          color="primary"
+          (click)="loadMore()"
+          *ngIf="branchList.length && count > branchList.length"
+        >
+          Load more
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -17,7 +17,6 @@ export class LeavehistoryComponent implements OnInit {
     private router : Router,
     private apiService : ApiService,
     private toast : ToastService,
-    private utilsService:UtilsService
   ) { }
 
   leaveHistory=[];
@@ -32,8 +31,6 @@ export class LeavehistoryComponent implements OnInit {
       url:urls.leaves.list,
     }
     this.apiService.get(config).subscribe(resp =>{
-      console.log("Typeof data =" , typeof resp);
-      console.log('response=',JSON.stringify(resp) )
       if(resp.success){
         this.leaveHistory =   this.leaveHistory.concat(resp.result.data);
         this.toast.success(resp.message);

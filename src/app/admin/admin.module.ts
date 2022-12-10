@@ -41,6 +41,8 @@ import { DesignationModule } from '../designation/designation.module';
 import { BranchModule } from '../branch/branch.module';
 import { DepartmentModule } from '../department/department.module';
 import { FinancialYearModule } from '../financial-year/financial-year.module';
+import { PayrollModule } from '../payroll/payroll.module';
+
 import {MatExpansionModule} from '@angular/material/expansion';
 @NgModule({
   declarations: [
@@ -52,7 +54,6 @@ import {MatExpansionModule} from '@angular/material/expansion';
     ViewComponent,
     OverviewComponent,
     FilterFormComponent,
-   
   ],
 
   schemas: [NO_ERRORS_SCHEMA],
@@ -67,8 +68,8 @@ import {MatExpansionModule} from '@angular/material/expansion';
     SharedModule,
     SettingsModule,
     DesignationModule,
-    BranchModule,
     DepartmentModule,
+    PayrollModule,
     MatExpansionModule,
     FinancialYearModule,
     FlexLayoutModule,

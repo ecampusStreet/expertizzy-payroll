@@ -1,0 +1,27 @@
+<div class="flex-auto">
+    <div class="flex flex-col">
+      <app-content-navbar [isBack]="false" [title]="'Leave balance'"></app-content-navbar>
+      
+  
+      <!-- card design -->
+      <div class="min-h-screen ml-3 mr-3">
+        <div fxLayout="row wrap" fxLayoutGap="10px grid" >
+          <div fxFlex="25%" fxFlex.xs="100%" fxFlex.sm="50%" fxFlex.md="50%" *ngFor="let balance of leaveBalance" >
+            <div class="flex flex-wrap justify-between card-custom border ">
+              <div class="bg-gradient-to-r from-green-200 to-blue-300  rounded flex  p-2 ">
+                <div class=" flex flex-col text-center font-bold text-white">
+                <span >Total</span>
+                  <span >{{balance['total']}}</span>
+                </div>
+              </div>
+              <div class="text-center">
+                <div class="text-lg font-extrabold">{{balance['balance']}}/{{balance['total']}}  </div>
+                <div class="text-base text-sm">{{balance['typeName']}} </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+

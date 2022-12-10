@@ -77,13 +77,14 @@ export class BranchesComponent implements OnInit {
         break;
       case 'delete':
         this.deleteConfirmationpopup(data);
-        break;
+        break; 
       case 'view':
         this.router.navigate(['expertizzy/branch/add'],{queryParams:{id :data._id, readOnly:true}});
         break;
     }
   }
 
+  
   deleteConfirmationpopup(event: any) {
     let data = {
       header: '',
