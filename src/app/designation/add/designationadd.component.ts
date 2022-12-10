@@ -55,13 +55,26 @@ export class DesignationaddComponent implements OnInit {
       }
     });
   }
+  action(){
+    this.id ? this.update() : this.submit();
+  }
+  update() {
+  this.designation.value._id = this.id;
+    const config = {
+      url:  urls.designation.update + this.id,
+      payload: this.designation.value,
+    };
+    this.apiService.put(config).subscribe((resp) => {
+      if (resp.success) {
+        this.toastService.success(resp.message);
+        this.location.back();
+      }
+    });
+  }
 
   submit() {
-    this.id ? (this.designation.value._id = this.id) : '';
     const config = {
-      url: this.id
-        ? urls.designation.update + this.id
-        : urls.designation.create,
+      url: urls.designation.create,
       payload: this.designation.value,
     };
     this.apiService.post(config).subscribe((resp) => {

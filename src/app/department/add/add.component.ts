@@ -53,7 +53,7 @@ export class AddDepartmentComponent implements OnInit {
       ),
       departmentHead: new FormControl(
         this.data && this.data.departmentHead ? this.data.departmentHead : '',
-        [Validators.required]
+        []
       ),
       location: new FormControl(
         this.data && this.data.location ? this.data.location : '',

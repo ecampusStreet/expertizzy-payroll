@@ -24,7 +24,7 @@ export class ApiInterceptor implements HttpInterceptor {
     getToken(){
         return this.userService.getAccessToken().then(token =>{
             let accessToken:any =  JSON.parse(token);
-            return accessToken.accessToken;
+            return accessToken.token;
         })
     }
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
@@ -34,11 +34,11 @@ export class ApiInterceptor implements HttpInterceptor {
     async handle(req: HttpRequest<any>, next: HttpHandler) {
         let authReq;
         console.log(req.url)
-        if (req.url != environment.apiBaseUrl + "auth/login") {
+        if (req.url != environment.apiBaseUrl + "api/login") {
             const token :any =  await this.getToken();
             authReq = req.clone({
                 setHeaders: {
-                    'authorization':'bearer '+ token,
+                    'Authorization': token,
                 }
             });
         return next.handle(authReq).toPromise()
