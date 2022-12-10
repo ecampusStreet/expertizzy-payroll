@@ -60,9 +60,9 @@ export class DepartmentsComponent implements OnInit {
       case 'delete':
         this.deleteConfirmationpopup(data);
         break;
-        case 'view':
-          this.router.navigate(['expertizzy/department/add'],{queryParams:{id :data._id, readOnly:true}});
-          break;
+      case 'view':
+        this.router.navigate(['expertizzy/department/add'],{queryParams:{id :data._id, readOnly:true}});
+        break;
         
     }
   }

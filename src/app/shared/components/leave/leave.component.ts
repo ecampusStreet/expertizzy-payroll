@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { leaves } from 'src/app/core/constants/data';
 
 @Component({
-  selector: 'app-leave',
+  selector: 'leave-balance',
   templateUrl: './leave.component.html',
   styleUrls: ['./leave.component.scss']
 })

@@ -42,7 +42,7 @@ import { CoreModule } from '../core/core.module';
     MatSelectModule,
     MatOptionModule,
     MatFormFieldModule,
-    CoreModule
+    // CoreModule
   ], exports:[
     MatCardModule
   ]

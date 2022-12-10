@@ -21,7 +21,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatTableModule } from '@angular/material/table';
-
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { AdminModule } from './admin/admin.module';
 import {  FlexLayoutModule } from '@angular/flex-layout';
 import { ProfileComponent } from './profile/profile.component';
@@ -63,7 +63,8 @@ import { SharedModule } from './shared/shared.module';
     AdminModule,
     FlexLayoutModule,
     CoreModule,
-    SharedModule
+    SharedModule,
+    MatProgressSpinnerModule
   ],
   providers: [],
   bootstrap: [AppComponent],

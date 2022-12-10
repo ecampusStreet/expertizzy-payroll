@@ -19,7 +19,6 @@ const routes: Routes = [
     path: '',
     component: UserComponent,
     children: [
-      // { path: '', component: HomeComponent },
       { path: '', component: UserDashboardComponent },
       {path:'dashboard',component:UserDashboardComponent},
       {path:'user',component:UserComponent},
@@ -30,7 +29,6 @@ const routes: Routes = [
       {path:'leaves',component:LeavemanagementComponent},
       {path:'events',component:EventsComponent},
       {path:'departments',component:DepartmentsComponent},
-      // {path:'employees',component:EmployeeComponent},
       {path:'apply',component:LeaveApplyComponent},
       {path:'history',component:LeavehistoryComponent},
       {path:'balance',component:BalanceleaveComponent},

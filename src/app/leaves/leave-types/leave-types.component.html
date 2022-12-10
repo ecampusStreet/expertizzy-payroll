@@ -1,0 +1,65 @@
+<div class="flex-auto">
+  <div class="flex flex-col">
+    <app-content-navbar [isBack]="false" [title]="'Leave type'">
+    </app-content-navbar>
+
+    <div class="min-h-screen bg-gray-100">
+      <div class="flex justify-end m-4">
+        <button mat-raised-button color="primary" (click)="add()">
+          Create leave type
+        </button>
+      </div>
+      <no-data-found *ngIf="!leaveTypeList.length"></no-data-found>
+
+      <div style="margin: 15px" class="example-container">
+        <table mat-table [dataSource]="leaveTypeList" class="mat-elevation-z8"  *ngIf="leaveTypeList.length">
+          <ng-container matColumnDef="typeName">
+            <th mat-header-cell class="text-left " *matHeaderCellDef>Type</th>
+            <td mat-cell class="text-left " *matCellDef="let element">
+              {{ element.typeName | titlecase }}
+            </td>
+          </ng-container>
+          <ng-container matColumnDef="total">
+            <th mat-header-cell class="" *matHeaderCellDef>Total</th>
+            <td mat-cell class="" *matCellDef="let element">
+              {{ element.total }}
+            </td>
+          </ng-container>
+          <ng-container matColumnDef="balance">
+            <th mat-header-cell class="" *matHeaderCellDef>Balance</th>
+            <td mat-cell class="" *matCellDef="let element">
+              {{ element.balance }}
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="action">
+            <th mat-header-cell class="text-right" *matHeaderCellDef>Action</th>
+            <td mat-cell class="text-right" *matCellDef="let element">
+              <button
+                mat-icon-button
+                color="primary"
+                aria-label="Example icon button with a vertical three dot icon"
+                (click)="$event.stopPropagation(); action(element, 'edit')"
+              >
+                <mat-icon>edit</mat-icon>
+              </button>
+              <button
+                mat-icon-button
+                color="primary"
+                aria-label="Example icon button with a home icon"
+                (click)="$event.stopPropagation(); action(element, 'delete')"
+              >
+                <mat-icon>delete_forever</mat-icon>
+              </button>
+            </td>
+          </ng-container>
+          <tr
+            mat-header-row
+            *matHeaderRowDef="displayedColumns; sticky: true"
+          ></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

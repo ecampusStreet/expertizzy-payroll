@@ -1,6 +1,8 @@
 export const urls = {
   login: 'api/login',
   profile: 'auth/profile/',
+  dashboard:{
+    list:'api/admin/dashboard'},
   employee: {
     list: 'api/emp/list',
     byId: 'api/emp/',
@@ -17,15 +19,24 @@ export const urls = {
     getById: 'api/department/',
   },
   leaves: {
-    apply: 'api/leave/apply',
-    list: 'api/leave/list',
+    apply: 'api/leave/create/',
+    list: 'api/leaveApplication/submitted/',
+    balance: 'api/leave/emp/',
+    delete: '/api/leaveApplication/delete/',
+    approve: 'api/leave/approve/',
+    reject: 'api/leave/reject/',
+    manage: 'api/leaveList',
+    type: 'api/leaveType',
+    leaveTypeList: 'api/leaveType/list',
+    leaveUpdate: 'api/leaveType/update/',
+    leaveDelete:'api/leaveType/delete/'
   },
   designation: {
     list: 'api/designation/list',
-    create:'api/designation/create',
-    update:'api/designation/update/',
+    create: 'api/designation/create',
+    update: 'api/designation/update/',
     delete: 'api/designation/delete/',
-    getById:'api/designation/',
+    getById: 'api/designation/',
   },
 
   files:{
@@ -42,16 +53,26 @@ export const urls = {
     create:'api/year',
     list:'api/year/list',
   },
-  branch:{
-    create:'api/branch/create',
-    list:'api/branch/list',
-    update:'api/branch/update/',
+  branch: {
+    create: 'api/branch/create',
+    list: 'api/branch/list',
+    update: 'api/branch/update/',
     delete: 'api/branch/delete/',
-    getById:'api/branch/',
+    getById: 'api/branch/',
   },
-  attendance:{
-    create:'api/attendance/entry/'
+  attendance: {
+    create: 'api/attendance/entry/',
+  },
+  setting: {
+    create:'api/setting/create',
+    list:'api/setting/list/',
+    update:'api/setting/update/'
+  },
+  payroll:{
+    create:'api/salarybreakups/create',
+    list:'api/salarybreakups/list',
+    update:'api/salarybreakups/update/',
+    delete:'api/salarybreakups/delete/',
+    getById:'api/salarybreakups/'
   }
 };
-    
-

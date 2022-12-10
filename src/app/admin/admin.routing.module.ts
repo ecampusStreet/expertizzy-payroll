@@ -57,7 +57,22 @@ export const AdminLayoutRoutes: Routes = [
           import('../financial-year/financial-year.module').then(
             (m) => m.FinancialYearModule
           ),
-      },
+        },
+        {
+          path: 'leave',
+          loadChildren: () =>
+            import('../leaves/leaves.module').then(
+              (m) => m.LeavesModule
+            ),
+        },
+        {
+          path: 'payroll',
+          loadChildren: () =>
+            import('../payroll/payroll.module').then(
+              (m) => m.PayrollModule
+            ),
+        },
+      
     ],
   },
 ];
