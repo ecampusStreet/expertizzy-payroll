@@ -1,30 +1,33 @@
-.mat-card{
+.branch-container {
+  height: 75vh;
+    max-width: 100%;
+    overflow: auto;
+
+  .mat-card{
     padding: 10px 15px !important;
     border-radius: 4px;
     color: #5f6162;
+
 }
 table {
     width: 100%;
   }
  
-  
-  .example-container {
-    height: 75vh;
-    max-width: 100%;
-    overflow: auto;
+  th, td{
+    max-width:14.28%;
   }
 
   .mat-header-cell {
     color: #4050b5 !important;
     font-weight: 800;
-    text-align: left;
+    // text-align: left;
     border-bottom-width: 1px;
     border-bottom-color: #4050b5;
     border-bottom-style: solid;
   }
   .mat-cell, .mat-footer-cell {
     color: rgba(0,0,0,.87);
-    text-align: left;
+    // text-align: left;
   }
  
   .mat-row:hover {
@@ -33,5 +36,8 @@ table {
   }
   tr.mat-row, tr.mat-footer-row {
     height: 50px !important;
+}
+
+
 }
 

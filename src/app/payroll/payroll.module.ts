@@ -9,7 +9,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatTableModule } from '@angular/material/table';
 import { SharedModule } from '../shared/shared.module';
-
+import {MatCardModule} from '@angular/material/card';
 
 @NgModule({
   declarations: [
@@ -25,6 +25,7 @@ import { SharedModule } from '../shared/shared.module';
     MatFormFieldModule,
     ReactiveFormsModule,
     CoreModule,
+    MatCardModule
   ]
 })
 export class PayrollModule { }

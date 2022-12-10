@@ -33,10 +33,10 @@
 
       <div
         style="margin: 15px"
-        class="example-container"
+        class="branch-container"
         *ngIf="branchList.length"
       >
-        <table mat-table [dataSource]="branchList" class="mat-elevation-z8">
+        <table mat-table [dataSource]="branchList" class="mat-elevation-z8 table-auto ">
           <ng-container matColumnDef="departmentId">
             <th mat-header-cell *matHeaderCellDef>Id</th>
             <td mat-cell *matCellDef="let element">

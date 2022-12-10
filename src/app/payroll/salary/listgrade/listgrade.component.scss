@@ -1,3 +1,39 @@
-table{
-    width:100%;
+.container-table {
+  table {
+    width: 100%;
+    overflow-y: auto;
+  }
+
+  td,
+  th {
+    width: 25%;
+  }
+
+  .example-container {
+    height: 75vh;
+    max-width: 100%;
+    overflow: auto;
+  }
+
+  .mat-header-cell {
+    color: #4050b5 !important;
+    font-weight: 800;
+    text-align: left;
+    border-bottom-width: 1px;
+    border-bottom-color: #4050b5;
+    border-bottom-style: solid;
+
+  }
+
+  .mat-header-cell.left {
+    text-align: left;
+
+  }
+
+  .mat-row:hover {
+    background-color: #cccccc4a;
+    cursor: pointer;
+  }
+
+ 
 }

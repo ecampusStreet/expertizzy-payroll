@@ -6,7 +6,11 @@
 table {
     width: 100%;
   }
- 
+  
+  td,
+  th {
+    width: 20%;
+  }
   
   .example-container {
     height: 75vh;

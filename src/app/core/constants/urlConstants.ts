@@ -58,5 +58,9 @@ export const urls = {
   },
   payroll:{
     create:'api/salarybreakups/create',
+    list:'api/salarybreakups/list',
+    update:'api/salarybreakups/update/',
+    delete:'api/salarybreakups/delete/',
+    getById:'api/salarybreakups/'
   }
 };

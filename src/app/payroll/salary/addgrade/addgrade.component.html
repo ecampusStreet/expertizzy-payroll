@@ -4,7 +4,7 @@
 
 
     <!-- card design -->
-    <div class="min-h-screen  bg-gray-100 my-3">
+    <div class="min-h-screen  bg-gray-100 my-3 grade" *ngIf="salaryGrade">
       <mat-card class="p-6 bg-white px-2 mx-3 my-3">
         <div class="p-2 clear-both">
           <form [formGroup]="salaryGrade" *ngIf="showForm">
@@ -27,83 +27,77 @@
                   </mat-form-field>
                 </div>
                 <div formArrayName="breakups">
-                  <div class="flex justify-between my-4">
+                  <div class="flex justify-between items-center my-2">
+                    <div>
                     <h3 class="text-gray-600"> Breakups</h3>
-                    <button type="button" (click)="addBreakups()" mat-mini-fab>
-                      <mat-icon>add</mat-icon>
+                    </div>
+                    <button mat-button color="primary" (click)="addBreakups()">
+                      Add new
                     </button>
                   </div>
 
                   <div *ngFor="let salary of breakups().controls; let i=index" [formGroupName]="i">
-                    <div class="flex my-4">
-                      <div class="w-11/12">
-                        <div class="grid lg:grid-cols-2 gap-4">
-                          <mat-form-field class="example-full-width">
-                            <mat-label>Name</mat-label>
-                            <input matInput name="name" formControlName="name" />
-                          </mat-form-field>
-
-                          <mat-form-field class="example-full-width">
-                            <mat-label>Percentage</mat-label>
-                            <input matInput name="percentage" formControlName="percentage" />
-                          </mat-form-field>
-                        </div>
+                    <mat-card class="shadow-md border relative">
+                      <div class="flex justify-end ">
+                        <span class="absolute right-0 top-0" (click)="removeBreakups(i)">
+                          <mat-icon class="bg-black ">close</mat-icon>
+                        </span>
                       </div>
+                      <div class="grid lg:grid-cols-2 gap-4 mt-3">
+                        <mat-form-field class="example-full-width">
+                          <mat-label>Name</mat-label>
+                          <input matInput name="name" formControlName="name" />
+                        </mat-form-field>
 
-                      <div class="w-1/12 flex justify-end items-center">
-                        <div>
-                          <button (click)="removeBreakups(i)" color="warn" mat-mini-fab>
-                            <mat-icon>remove</mat-icon>
-                          </button>
-                        </div>
+                        <mat-form-field class="example-full-width">
+                          <mat-label>Percentage</mat-label>
+                          <input matInput name="percentage" formControlName="percentage" />
+                        </mat-form-field>
                       </div>
-                    </div>
+                    </mat-card>
                   </div>
                 </div>
                 <div formArrayName="deduction">
-                  <div class="flex justify-between my-4">
+                  <div class="flex justify-between items-center my-2">
                     <h3 class="text-gray-600">Deduction</h3>
-                    <button type="button" (click)="addDeduction()" mat-mini-fab>
-                      <mat-icon>add</mat-icon>
+                    <button mat-button color="primary" (click)="addDeduction()">
+                      Add new
                     </button>
                   </div>
 
                   <div *ngFor="let deductsalary of deduction().controls; let i=index" [formGroupName]="i">
-                    <div class="flex my-4">
-                      <div class="w-11/12">
-                        <div class="grid lg:grid-cols-3 gap-4">
-                          <mat-form-field class="example-full-width">
-                            <mat-label>Name</mat-label>
-                            <input matInput name="name" formControlName="name" />
-                          </mat-form-field>
+                    <mat-card class="shadow-md border relative">
+                      <div class="flex justify-end">
+                        <span  class="absolute right-0 top-0"  (click)="removeDeduction(i)">
+                          <mat-icon class="bg-black "> close</mat-icon>
+                        </span>
+                      </div>
+                      <div class="grid lg:grid-cols-3 gap-4">
+                        <mat-form-field class="example-full-width">
+                          <mat-label>Name</mat-label>
+                          <input matInput name="name" formControlName="name" />
+                        </mat-form-field>
 
-                          <mat-form-field class="example-full-width">
-                            <mat-label>Percentage</mat-label>
-                            <input matInput name="percentage" formControlName="percentage" />
-                          </mat-form-field>
-                          
-                          <mat-form-field class="example-full-width">
-                            <mat-label>Amount</mat-label>
-                            <input matInput name="amount" formControlName="amount" />
+                        <mat-form-field class="example-full-width">
+                          <mat-label>Percentage</mat-label>
+                          <input matInput name="percentage" formControlName="percentage" />
+                        </mat-form-field>
+
+                        <mat-form-field class="example-full-width">
+                          <mat-label>Amount</mat-label>
+                          <input matInput name="amount" formControlName="amount" />
+                        </mat-form-field>
+                      </div>
+
                       
-                          </mat-form-field>
-                        </div>
-                      </div>
-
-                      <div class="w-1/12 flex justify-end items-center">
-                        <div>
-                          <button (click)="removeDeduction(i)" color="warn" mat-mini-fab>
-                            <mat-icon>remove</mat-icon>
-                          </button>
-                        </div>
-                      </div>
-                    </div>
+                    </mat-card>
                   </div>
                 </div>
               </div>
             </div>
             <div class="flex justify-end my-4">
-              <button mat-raised-button color="primary" [disabled]="!salaryGrade.valid" (click)="submit()">
+              <button mat-raised-button color="primary" class="animate-spin" [disabled]="!salaryGrade.valid"
+                (click)="submit()">
                 Submit
               </button>
             </div>
