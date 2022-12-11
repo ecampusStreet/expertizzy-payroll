@@ -97,7 +97,6 @@ export class AddbranchComponent implements OnInit {
       if (resp.success) {
         this.toastService.success(resp.message);
         this.location.back();
-        localStorage.setItem('branch',JSON.stringify(resp));
       }
     });
   }
