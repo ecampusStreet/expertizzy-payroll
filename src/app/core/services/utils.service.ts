@@ -85,4 +85,16 @@ export class UtilsService {
         })
       })
       }
+      getSalaryGrade(){
+        return new Promise((resolve, reject) => {
+        const config ={
+          url:urls.payroll.list
+        }
+         this.apiService.get(config).subscribe(resp =>{
+          if(resp.success){
+          resolve(resp.result.data);
+          }
+        })
+      })
+      }
 }

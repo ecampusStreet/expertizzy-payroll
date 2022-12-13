@@ -2,8 +2,7 @@
   <div class="flex flex-col">
     <div class="flex flex-col bg-white-500">
       <div class="flex flex-row">
-        <app-content-navbar></app-content-navbar>
-        <h3 class="font-bold text-gray-500 p-2">{{title}}</h3>
+        <app-content-navbar [isBack]="true" [title]="title"></app-content-navbar>
       </div>
       <!--p tag -->
     </div>
@@ -356,21 +355,13 @@
         <div class="p-2 clear-both">
        <div class="flex justify-between">
         <h3>Department information</h3>
-        <!-- <button  mat-button color="primary" (click)="addFeilds('department')">
-           Add new
-        </button> -->
          </div>
-        <div class="mutlifield" [formGroup]="depDetail">
-          <ng-container >
-              <!-- <ng-container *ngFor="let lessonForm of department.controls; let i = index"> -->
-                  <!-- <button mat-button (click)="deleteFeild(i,'department')" class="remove">
-                    <mat-icon>cancel</mat-icon>
-                 </button> -->
+          <form [formGroup]="depDetail">
                   <div class="grid  lg:grid-cols-3  gap-3 ">
                     <mat-form-field>
                       <mat-label>Department</mat-label>
-                      <mat-select name="dept_name" formControlName="dept_name">
-                        <mat-option *ngFor="let dept of departments" [value]="dept._id" (change)="onDepartmentChange(dept)">
+                      <mat-select name="dept_name" formControlName="departmentId" (selectionChange)="onDepartmentChange($event.value)">
+                        <mat-option *ngFor="let dept of departments" [value]="dept._id" >
                           {{dept?.departmentName}}
                         </mat-option>
                       </mat-select>
@@ -391,6 +382,7 @@
                       <input matInput placeholder="Please Enter Team Leader" name="projectManager" formControlName="projectManager">
                       <mat-error>Please assign project manager.</mat-error>
                     </mat-form-field>
+
                     <mat-form-field class="example-full-width">
                       <mat-label>Date of joining</mat-label>
                       <input matInput [matDatepicker]="pickerdoj"  readonly placeholder="Please enter joining date" name="doj" formControlName="doj" >
@@ -398,40 +390,41 @@
                       <mat-datepicker #pickerdoj></mat-datepicker>
                       <mat-error>Enter date of joining</mat-error>
                     </mat-form-field>
+
                     <mat-form-field class="example-full-width">
                       <mat-label>Shift</mat-label>
-                      <mat-select name="shift" formControlName="shift">
-                        <mat-option *ngFor="let shift of shifts" [value]="shift.value">
-                          {{shift?.label}}
+                      <mat-select name="shift" formControlName="shift" (selectionChange)="onShiftChange($event.value)">
+                        <mat-option *ngFor="let shift of shifts" [value]="shift._id">
+                          {{shift?.shift_name}}
                         </mat-option>
                       </mat-select>
                       <mat-error>Select shift</mat-error>
                     </mat-form-field>
+
                     <mat-form-field class="example-full-width">
                       <mat-label>Designation</mat-label>
-                      <mat-select name="shift" formControlName="shift">
+                      <mat-select name="designationName" formControlName="designationId"  (selectionChange)="onDesignationChange($event.value)">
                         <mat-option *ngFor="let designation of designations" [value]="designation._id">
                           {{designation?.designationName}}
                         </mat-option>
                       </mat-select>
-                      <mat-error>Select shift</mat-error>
+                      <mat-error>Select designation</mat-error>
                     </mat-form-field>
+                   
                     <mat-form-field class="example-full-width">
                       <mat-label>Branch</mat-label>
-                      <mat-select name="shift" formControlName="shift">
-                        <mat-option *ngFor="let branch of branches" [value]="branch.value">
-                          {{branch?.label}}
+                      <mat-select name="branch" formControlName="branchId"  (selectionChange)="onBranchChange($event.value)">
+                        <mat-option *ngFor="let branch of branches" [value]="branch._id">
+                          {{branch?.branchName}}
                         </mat-option>
                       </mat-select>
-                      <mat-error>Select shift</mat-error>
+                      <mat-error>Select branch</mat-error>
                     </mat-form-field>
                   </div>
-              <!-- </ng-container> -->
-            </ng-container>
-        </div>
+                </form>
         </div>
       </mat-card>
-    
+   
       <!-- Experience details -->
       <mat-card class="p-6 bg-white px-2 mx-3 my-3 " >
         <div class="p-2 clear-both">
@@ -506,7 +499,7 @@
         </div>
         </div>
       </mat-card>
-
+<!-- account details -->
       <mat-card class="p-6 bg-white px-2 mx-3 my-3">
         <div class="p-2 clear-both">
         <h3>Account information</h3>
@@ -545,6 +538,40 @@
         </form>
 </div>
       </mat-card>
+      <!-- Current organization -->
+      <mat-card class="p-6 bg-white px-2 mx-3 my-3 " >
+        <div class="p-2 clear-both">
+         <div class="flex justify-between">
+          <h3>In this organization</h3>
+           </div>
+          <form class="mutlifield" [formGroup]="shift">
+                  <mat-card class="mb-3 nested-card">
+                  <div class="grid  lg:grid-cols-2  gap-3 " >
+                    <mat-form-field>
+                      <mat-label>Shift</mat-label>
+                      <mat-select  matNativeControl name="shift" formControlName="shift">
+                        <mat-option *ngFor="let shift of shifts" [value]="shift._id">
+                          {{shift.shift_name}}
+                        </mat-option>
+                      </mat-select>
+                      <mat-error>Please select shift.</mat-error>
+                    </mat-form-field>
+                    <mat-form-field>
+                      <mat-label>Salary grade</mat-label>
+                      <mat-select  matNativeControl name="salaryGrade" formControlName="salaryGrade">
+                        <mat-option *ngFor="let sg of salaryGrade" [value]="sg._id">
+                          {{sg.grade}}
+                        </mat-option>
+                      </mat-select>
+                      <mat-error>Please Select salary grade.</mat-error>
+                    </mat-form-field>
+                  </div>
+                </mat-card>
+              </form>
+        </div>
+      </mat-card>
+
+      <!-- current organization ends here -->
       <mat-card class="p-6 bg-white px-2 mx-3 my-3">
         <div class="p-2 clear-both">
         <div class="flex justify-between">

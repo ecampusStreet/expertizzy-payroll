@@ -1,19 +1,19 @@
 <div class="flex-auto">
   <div class="flex flex-col">
     <app-content-navbar [isBack]="false" [title]="title"> </app-content-navbar>
-    <div class="min-h-screen bg-gray-100">
+    <div class="bg-gray-100">
       <div class="m-3">
         <div class="flex justify-end items-center">
           <div class="w-full">
             <mat-form-field class="example-full-width w-full search-box m-0">
               <span matPrefix> </span>
-              <input
+              <input #input
                 type="text"
                 matInput
                 placeholder="Search here"
                 name="search"
                 [(ngModel)]="searchText"
-                (click)="search()"
+                (input)="search()"
               />
               <button matSuffix mat-button>
                 <mat-icon (click)="search()">search</mat-icon>

@@ -72,6 +72,13 @@ export const AdminLayoutRoutes: Routes = [
               (m) => m.PayrollModule
             ),
         },
+        {
+          path: 'shifts',
+          loadChildren: () =>
+            import('../shifts/shifts.module').then(
+              (m) => m.ShiftsModule
+            ),
+        },
       
     ],
   },

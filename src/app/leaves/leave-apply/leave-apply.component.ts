@@ -107,7 +107,7 @@ export class LeaveApplyComponent implements OnInit {
 
   getUserId() {
     this.userService.getUser().then((resp) => {
-      this.emplID = resp.user._id;
+      this.emplID = resp.employee._id;
     });
   }
 

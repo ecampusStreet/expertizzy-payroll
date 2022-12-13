@@ -47,7 +47,11 @@ export const urls = {
     updateFile:'api/file-upload/' //+id
   },
   shifts:{
-    list:'api/shift/list'
+    list:'api/shift/list',
+    update:'api/shift/update/',
+    delete:'api/shift/delete/',
+    getById:'api/shift/',
+    create:'api/shift/create'
   },
   financialYear:{
     create:'api/year',
