@@ -80,6 +80,13 @@ export const AdminLayoutRoutes: Routes = [
               (m) => m.HolidaysModule
             ),
         },
+        {
+          path: 'reshuffle',
+          loadChildren: () =>
+            import('../reshuffle/reshuffle.module').then(
+              (m) => m.ReshuffleModule
+            ),
+        },
       
     ],
   },

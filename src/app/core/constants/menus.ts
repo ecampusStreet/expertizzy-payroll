@@ -216,7 +216,7 @@ export const menu = [
       {
         name: 'Reshuffle',
         icon: 'shuffle',
-        routeLink: '',
+        routeLink: 'reshuffle',
       },
     
     ],

@@ -21,7 +21,7 @@ export class BalanceleaveComponent implements OnInit {
   }
   getUserId() {
     this.userService.getUser().then((resp) => {
-      this.empID = resp.user._id;
+      this.empID = resp.employee._id;
       this.getLeaveBalance();
     });
   }
