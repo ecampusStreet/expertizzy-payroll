@@ -216,7 +216,7 @@ export const menu = [
       {
         name: 'Reshuffle',
         icon: 'shuffle',
-        routeLink: '',
+        routeLink: 'reshuffle',
       },
     
     ],
@@ -224,18 +224,26 @@ export const menu = [
   {
     name: 'Calendar',
     icon: 'calendar_month',
-    routeLink: '',
+    children:[
+      {
+        name: 'Notice',
+        icon: 'notification_important',
+        routeLink: '',
+      },
+      {
+        name: 'Event',
+        icon: 'event',
+        routeLink: 'event',
+      },
+      {
+        name: 'Holidays',
+        icon: 'festival',
+        routeLink: 'holiday',
+      },
+    ],
   },
-  {
-    name: 'Notice',
-    icon: 'notification_important',
-    routeLink: '',
-  },
-  {
-    name: 'Event',
-    icon: 'event',
-    routeLink: 'event',
-  },
+ 
+
   {
     name: 'Gallery',
     icon: 'collections_bookmark',

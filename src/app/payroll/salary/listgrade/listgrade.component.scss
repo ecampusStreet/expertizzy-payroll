@@ -1,7 +1,10 @@
 .container-table {
+  height: 75vh;
+  max-width: 100%;
+  overflow: auto;
+
   table {
     width: 100%;
-    overflow-y: auto;
   }
 
   td,
@@ -9,31 +12,26 @@
     width: 25%;
   }
 
-  .example-container {
-    height: 65vh;
-    max-width: 100%;
-    overflow: auto;
-  }
 
   .mat-header-cell {
     color: #4050b5 !important;
     font-weight: 800;
-    text-align: left;
     border-bottom-width: 1px;
     border-bottom-color: #4050b5;
     border-bottom-style: solid;
 
   }
 
-  .mat-header-cell.left {
-    text-align: left;
-
+  .mat-cell, .mat-footer-cell {
+    color: rgba(0,0,0,.87);
   }
 
   .mat-row:hover {
     background-color: #cccccc4a;
     cursor: pointer;
   }
-
+  tr.mat-row, tr.mat-footer-row {
+    height: 50px !important;
+  }
  
 }

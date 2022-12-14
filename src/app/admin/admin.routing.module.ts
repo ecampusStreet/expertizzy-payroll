@@ -72,6 +72,20 @@ export const AdminLayoutRoutes: Routes = [
               (m) => m.PayrollModule
             ),
         },
+
+        {
+          path: 'holiday',
+          loadChildren: () =>
+            import('../holidays/holidays.module').then(
+              (m) => m.HolidaysModule
+            ),
+        },
+        {
+          path: 'reshuffle',
+          loadChildren: () =>
+            import('../reshuffle/reshuffle.module').then(
+              (m) => m.ReshuffleModule),
+            },
         {
           path: 'shifts',
           loadChildren: () =>

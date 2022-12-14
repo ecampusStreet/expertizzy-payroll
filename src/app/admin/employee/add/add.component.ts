@@ -67,7 +67,7 @@ export class AddComponent implements OnInit {
     this.departments = await this.utils.getDepartments();
     this.shifts = await this.utils.getShifts();
     this.branches = await this.utils.branches();
-    this.salaryGrade = await this.utils.getSalaryGrade();
+    this.salaryGrade = await this.utils.salaryGrade();
 
   }
   onDepartmentChange(department : Event){
@@ -75,8 +75,8 @@ export class AddComponent implements OnInit {
     this.depDetail.value.dept_name = data.departmentName;
   }
   onShiftChange(shift : Event){
-    let data =  this.departments.find((t:any) =>t._id ===shift);
-    this.depDetail.value.dept_name = data.departmentName;
+    let data =  this.shifts.find((t:any) =>t._id ===shift);
+    this.shift.value.shift = data.shift_name;
   }
   onDesignationChange(designation : Event){
     let data =  this.designations.find((t:any) =>t._id === designation);
@@ -274,11 +274,11 @@ export class AddComponent implements OnInit {
         break;
         case 'emergency' :
           fields = this.fb.group({
-            name: new FormControl('',[Validators.required]),
-            relation_with: new FormControl('',[Validators.required]),
-            age: new FormControl('',[Validators.required]),
-            address: new FormControl('',[Validators.required]),
-            contact_no: new FormControl('',[Validators.required]),
+            name: new FormControl('',[]),
+            relation_with: new FormControl('',[]),
+            age: new FormControl('',[]),
+            address: new FormControl('',[]),
+            contact_no: new FormControl('',[]),
           })
           this.emergency.push(fields);
           break;
@@ -340,21 +340,21 @@ export class AddComponent implements OnInit {
   if(this.employeeData && this.employeeData.emergencyDetails){
     this.employeeData.emergencyDetails.forEach((element:any) => {
       let fields = this.fb.group({
-        name: new FormControl(element.name,[Validators.required]),
-        relation_with: new FormControl(element.relation_with,[Validators.required]),
-        age: new FormControl(element.age,[Validators.required]),
-        address: new FormControl(element.address,[Validators.required]),
-        contact_no: new FormControl(element.contact_no,[Validators.required]),
+        name: new FormControl(element.name,[]),
+        relation_with: new FormControl(element.relation_with,[]),
+        age: new FormControl(element.age,[]),
+        address: new FormControl(element.address,[]),
+        contact_no: new FormControl(element.contact_no,[]),
       })
       this.emergency.push(fields);
    })
   }else{
     let fields = this.fb.group({
-      name: new FormControl('',[Validators.required]),
-      relation_with: new FormControl('',[Validators.required]),
-      age: new FormControl('',[Validators.required]),
-      address: new FormControl('',[Validators.required]),
-      contact_no: new FormControl('',[Validators.required]),
+      name: new FormControl('',[]),
+      relation_with: new FormControl('',[]),
+      age: new FormControl('',[]),
+      address: new FormControl('',[]),
+      contact_no: new FormControl('',[]),
     })
     this.emergency.push(fields);
   }

@@ -10,7 +10,7 @@
           <form [formGroup]="salaryGrade" *ngIf="showForm">
             <div class="flex">
               <div class="w-full">
-                <div class="grid lg:grid-cols-1 gap-4">
+                <div class="grid lg:grid-cols-3 gap-4">
                   <mat-form-field class="example-full-width">
                     <mat-label>Grade</mat-label>
                     <input matInput name="grade" formControlName="grade" />
@@ -39,8 +39,8 @@
                   <div *ngFor="let salary of breakups().controls; let i=index" [formGroupName]="i">
                     <mat-card class="shadow-md border relative mb-3">
                       <div class="flex justify-end ">
-                        <span class="absolute right-0 top-0" (click)="removeBreakups(i)">
-                          <mat-icon class="bg-black ">close</mat-icon>
+                        <span class="absolute -right-2 -top-2" (click)="removeBreakups(i)">
+                          <mat-icon class="bg-black">close</mat-icon>
                         </span>
                       </div>
                       <div class="grid lg:grid-cols-2 gap-4 mt-3">
@@ -68,7 +68,7 @@
                   <div *ngFor="let deductsalary of deduction().controls; let i=index" [formGroupName]="i">
                     <mat-card class="shadow-md border relative mb-3">
                       <div class="flex justify-end">
-                        <span  class="absolute right-0 top-0"  (click)="removeDeduction(i)">
+                        <span  class="absolute -right-2 -top-2" (click)="removeDeduction(i)">
                           <mat-icon class="bg-black "> close</mat-icon>
                         </span>
                       </div>
@@ -97,7 +97,7 @@
             </div>
             <div class="flex justify-end my-4">
               <button mat-raised-button color="primary" class="animate-spin" [disabled]="!salaryGrade.valid"
-                (click)="submit()">
+                (click)="action()">
                 Submit
               </button>
             </div>

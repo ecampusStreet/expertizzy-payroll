@@ -72,11 +72,29 @@ export const urls = {
     list:'api/setting/list/',
     update:'api/setting/update/'
   },
+  holiday:{
+    create:'api/holiday/add',
+    list:'api/holiday/list',
+    delete:'api/holiday/delete/',
+    update:'api/holiday/update/',
+    getById:'api/holiday/'
+  },
   payroll:{
     create:'api/salarybreakups/create',
     list:'api/salarybreakups/list',
     update:'api/salarybreakups/update/',
     delete:'api/salarybreakups/delete/',
     getById:'api/salarybreakups/'
+  },
+  reshuffle:{
+    designation:'api/designationRotation/emp/',
+    department:'api/departmentRotation/emp/ ',
+    branch:'api/branchRotation/emp/',
+    shift:'api/shiftRotation/emp/',
+    grade:'api/salaryGradeRotation/emp/'
+  },
+  shift:{
+    list:'api/shift/list'
   }
+
 };

@@ -64,16 +64,16 @@ export class AddgradeComponent implements OnInit {
 
     this.salaryData.breakups.forEach((element :any) => {
      let data = this.fb.group({
-        name: [element.name,Validators.required],
-        percentage: [element.percentage,Validators.required],
+        name: [element.name],
+        percentage: [element.percentage],
       })
     this.breakups().push(data);
     });
     }
     else{
       let nodata = this.fb.group({
-        name: ['',Validators.required],
-        percentage: ['',Validators.required],
+        name: ['',],
+        percentage: ['',],
       })
       this.breakups().push(nodata);
     } 
@@ -84,18 +84,18 @@ export class AddgradeComponent implements OnInit {
     if(this.salaryData && this.salaryData.deduction){
       this.salaryData.deduction.forEach((element :any) => {
         let data = this.fb.group({
-          name: [element.name,Validators.required],
-          percentage: [ element.percentage,Validators.required],
-          amount:[element.amount.$numberDecimal,Validators.required],
+          name: [element.name],
+          percentage: [ element.percentage],
+          amount:[element.amount.$numberDecimal],
         })
         this.deduction().push(data);
       });
     }
     else{
       let nodata = this.fb.group({
-        name: ["",Validators.required],
-        percentage: [ "",Validators.required],
-        amount:["",Validators.required],
+        name: [""],
+        percentage: [ ""],
+        amount:[""],
       })
       this.deduction().push(nodata);
     }
@@ -105,8 +105,8 @@ export class AddgradeComponent implements OnInit {
   addBreakups() {
     // this.breakups().push(this.newbreakups());
     let nodata = this.fb.group({
-      name: ['',Validators.required],
-      percentage: ['',Validators.required],
+      name: [''],
+      percentage: [''],
     })
     this.breakups().push(nodata);
   }
@@ -114,9 +114,9 @@ export class AddgradeComponent implements OnInit {
   addDeduction(){
     // this.deduction().push(this.newdeduction());
     let nodata = this.fb.group({
-      name: ["",Validators.required],
-      percentage: [ "",Validators.required],
-      amount:["",Validators.required],
+      name: [""],
+      percentage: [ ""],
+      amount:[""],
     })
     this.deduction().push(nodata);
   }
@@ -128,15 +128,35 @@ export class AddgradeComponent implements OnInit {
     this.deduction().removeAt(i);
   }
   
+  action(){
+    if(this.id){
+      this.update();
+    }
+    else{
+      this.submit();
+    }
+  }
 
-  submit(){
+  update(){
     this.id ? (this.salaryGrade.value._id = this.id) : '';
     const config = {
-      url:this.id ? urls.payroll.update + this.id :  urls.payroll.create,
+      url: urls.payroll.update + this.id,
+      payload:this.salaryGrade.value,
+    };
+    this.apiService.put(config).subscribe((resp) => {
+      if(resp.success){
+        this.tostService.success(resp.message);
+        this.location.back();
+      }
+    })
+  }
+
+  submit(){
+    const config = {
+      url: urls.payroll.create,
       payload:this.salaryGrade.value,
     };
     this.apiService.post(config).subscribe((resp) => {
-      console.log(resp,"resp");
       if(resp.success){
         this.tostService.success(resp.message);
         this.location.back();
