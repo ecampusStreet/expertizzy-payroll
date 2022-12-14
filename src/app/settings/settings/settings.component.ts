@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { ApiService, ToastService, urls } from 'src/app/core';
+import { ApiService, ToastService, urls, UtilsService } from 'src/app/core';
+import { days } from 'src/app/core/constants/data';
+
 @Component({
   selector: 'app-settings',
   templateUrl: './settings.component.html',
@@ -12,13 +14,15 @@ export class SettingsComponent implements OnInit {
   setting!: FormGroup;
   uploadedFiles: any;
   settingId: any;
-  data: any = [];
+  data: any;
   copyofdata:any;
   newData: any;
+  selectedDays:any;
+  days =days
+  selected:any;
   constructor(
-    private router: Router,
     private apiService: ApiService,
-    private toast: ToastService
+    private toast: ToastService,
   ) {}
 
   ngOnInit(): void {
@@ -30,10 +34,14 @@ export class SettingsComponent implements OnInit {
     this.setting = new FormGroup({
       logo: new FormControl(
         this.data && this.data.imageUrl ? this.data.imageUrl : '',
-        [Validators.required]
+        []
       ),
       companyName: new FormControl(
         this.data && this.data.companyName ? this.data.companyName : '',
+        [Validators.required]
+      ),
+      weekOff: new FormControl(
+        this.data && this.data.weekOff ? this.data.weekOff: '',
         [Validators.required]
       ),
       address: new FormControl(
@@ -41,11 +49,11 @@ export class SettingsComponent implements OnInit {
         [Validators.required]
       ),
       brandFooter: new FormControl(
-        this.data && this.data.brandFooter ? this.data.brandFooter : '',
+        this.data && this.data.brandFooter ? this.data && this.data.brandFooter : '',
         [Validators.required]
       ),
     });
-    console.log(this.setting.value, 'sdfsd');
+    this.selected =days;
   }
   onFileChange(event: any) {
     this.uploadedFiles = event.target.files[0];
@@ -53,7 +61,7 @@ export class SettingsComponent implements OnInit {
   }
 
   action(){
-    if( this.data){
+    if(this.data){
       this.update();
     }else{
       this.submit()
@@ -61,17 +69,27 @@ export class SettingsComponent implements OnInit {
   }
 
   update() {
-    let diff = this.copyofdata === this.data;
-    console.log(diff , "status");
-
+    let changedItem :any={};
+    if(JSON.stringify(this.copyofdata) != (JSON.stringify(this.setting.value))){
+            if( this.copyofdata.companyName != this.setting.value.companyName){
+                changedItem.companyName = this.setting.value.companyName
+            }
+            if( this.copyofdata.weekOff != this.setting.value.weekOff){
+                changedItem.weekOff =this.setting.value.weekOff
+             }
+             if( this.copyofdata.brandFooter != this.setting.value.brandFooter){
+                changedItem.brandFooter =this.setting.value.brandFooter
+             }
+             if( this.copyofdata.address != this.setting.value.address){
+                changedItem.address = this.setting.value.address
+             }
+    }
     const formData = new FormData();
-    formData.append('companyName', this.setting.value.companyName);
-    formData.append('address', this.setting.value.address);
-    formData.append('brandFooter', this.setting.value.brandFooter);
-    formData.append(
-      'logo',
-      this.uploadedFiles ? this.uploadedFiles : this.data.imageUrl
-    );
+      changedItem.companyName ? formData.append('companyName',changedItem.companyName) : '';
+      changedItem.address ? formData.append('address', changedItem.address) :'';
+      changedItem.brandFooter ? formData.append('brandFooter', changedItem.brandFooter) : '';
+      changedItem.weekOff ? formData.append('weekOff', changedItem.weekOff) : '';
+      this.uploadedFiles ? formData.append('logo', this.uploadedFiles) :''
     const config = {
       url: urls.setting.update + this.settingId,
       payload: formData,
@@ -88,10 +106,8 @@ export class SettingsComponent implements OnInit {
     formData.append('companyName', this.setting.value.companyName);
     formData.append('address', this.setting.value.address);
     formData.append('brandFooter', this.setting.value.brandFooter);
-    formData.append(
-      'logo',
-      this.uploadedFiles ? this.uploadedFiles : this.data.imageUrl
-    );
+    formData.append('weekOff', this.setting.value.weekOff);
+    this.uploadedFiles ? formData.append('logo', this.uploadedFiles) :''
     const config = {
       url:  urls.setting.create,
       payload: formData,
@@ -113,12 +129,16 @@ export class SettingsComponent implements OnInit {
         this.settingId = resp.result.data[0]._id;
         this.data = resp.result.data[0]; 
         this.copyofdata = {...this.data};
-    console.log(this.copyofdata , "copy")
-
+       if(this.copyofdata.weekOff){
+        // this.copyofdata.weekOff.filter(day => )
+       }
         this.prepareForm();
       } else {
         this.prepareForm();
       }
     });
   }
+  compareFn(c1: any, c2: any): boolean {
+    return c1 && c2 ? c1.id === c2.id : c1 === c2;
+}
 }

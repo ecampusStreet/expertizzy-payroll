@@ -44,6 +44,7 @@ import { FinancialYearModule } from '../financial-year/financial-year.module';
 import { PayrollModule } from '../payroll/payroll.module';
 import {MatExpansionModule} from '@angular/material/expansion';
 import { HolidaysModule } from '../holidays/holidays.module';
+import { ShiftsModule } from '../shifts/shifts.module';
 @NgModule({
   declarations: [
     AddComponent,
@@ -95,6 +96,7 @@ import { HolidaysModule } from '../holidays/holidays.module';
     LayoutModule,
     MatDatepickerModule,
     MatDialogModule,
+    ShiftsModule
   ],
   exports: [AdminComponent],
   providers: [

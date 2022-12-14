@@ -74,9 +74,9 @@ onChangeStatus(emp:any,event:any){
  const config = {
   url:urls.reshuffle.designation + emp._id,
   payload:{
-    emp_id:emp._id,
-    newdesignationId:event,
-    newdesignationName:data.designationName,
+    "emp_id":emp._id,
+    "newdesignationId":event,
+    "newdesignationName":data.designationName,
   }
 }
 this.updateReshuffle(config);
@@ -90,9 +90,9 @@ onChangeDepartment(emp:any,event:any){
  const config = {
   url:urls.reshuffle.department + emp._id,
   payload:{
-    emp_id:emp._id,
-    newdepartmentId:event,
-    newdept_name:data.departmentName,
+    "emp_id":emp._id,
+    "newdepartmentId":event,
+    "newdept_name":data.departmentName,
   }
 }
 this.updateReshuffle(config);

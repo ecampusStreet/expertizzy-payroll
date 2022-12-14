@@ -5,7 +5,7 @@
       <mat-form-field appearance="outline">
         <mat-label>leaveType</mat-label>
         <mat-select name="type" formControlName="type">
-          <mat-option *ngFor="let type of leaveType " [value]="type.value">
+          <mat-option *ngFor="let type of leaveType " [value]="type._id">
             {{type.label}}
           </mat-option>
         </mat-select>

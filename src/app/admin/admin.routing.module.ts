@@ -84,7 +84,13 @@ export const AdminLayoutRoutes: Routes = [
           path: 'reshuffle',
           loadChildren: () =>
             import('../reshuffle/reshuffle.module').then(
-              (m) => m.ReshuffleModule
+              (m) => m.ReshuffleModule),
+            },
+        {
+          path: 'shifts',
+          loadChildren: () =>
+            import('../shifts/shifts.module').then(
+              (m) => m.ShiftsModule
             ),
         },
       

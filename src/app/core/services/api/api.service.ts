@@ -103,20 +103,17 @@ export class ApiService {
 
   private handleError(result : any) {
     return (error: any): Observable<any> => {
-      // TODO: send the error to remote logging infrastructure
-      // TODO: better job of transforming error for user consumption
-      // this.log(`${operation} failed: ${error.message}`);
 console.log(error,"error");
-      // Let the app keep running by returning an empty result.
       if (error.status === 404) {
         this.toastService.error('Somthing went wrong, please try again after sometime.');
       }else
       if (error.status === 401) {
-        alert(error.status);
-        // this.toastService.displayMessage('Session timeout, please login','danger');
-        this.userService.deleteUser().then(resp =>{})
+        this.toastService.error('Authentication failed, please login again');
+        this.userService.deleteUser().then(resp =>{
+          this.router.navigate(['/login'])
+        })
       } else {
-        this.toastService.error(error.error.message);
+        this.toastService.error(error.message);
       }
       return of(result);
     };

@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { leaves } from 'src/app/core/constants/data';
 
 @Component({
   selector: 'leave-balance',
@@ -7,7 +6,6 @@ import { leaves } from 'src/app/core/constants/data';
   styleUrls: ['./leave.component.scss']
 })
 export class LeaveComponent implements OnInit {
-leaves = leaves;
   constructor() { }
 
   ngOnInit(): void {

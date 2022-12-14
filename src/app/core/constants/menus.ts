@@ -340,7 +340,7 @@ export const menu = [
       {
         name: 'Shifts',
         icon: 'punch_clock',
-        routeLink: '',
+        routeLink: 'shifts/list',
       },
     ],
   },

@@ -69,7 +69,7 @@ export class LeaveTypesComponent implements OnInit {
   deleteConfirmationpopup(event: any) {
     let data = {
       header: '',
-      message: 'are you sure, you want to delete this branch?',
+      message: 'are you sure, you want to delete this leave type?',
     };
     this.utilsService.openDialog(data).then((resp) => {
       if (resp) {

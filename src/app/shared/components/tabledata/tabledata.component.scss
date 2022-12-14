@@ -11,7 +11,7 @@ table {
 }
 
 .example-container {
-  height: 75vh;
+  height: 65vh;
   max-width: 100%;
   overflow: auto;
 }
@@ -41,4 +41,11 @@ tr.mat-footer-row {
 
 th.mat-header-cell {
   text-align: left !important;
+}
+
+.img-cell{
+    width: 35px;
+    border-radius: 50%;
+    object-fit: cover;
+    height: 35px;
 }

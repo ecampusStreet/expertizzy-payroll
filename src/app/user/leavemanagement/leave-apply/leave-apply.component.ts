@@ -10,12 +10,7 @@ import { ApiService, urls, ToastService } from 'src/app/core';
 export class LeaveApplyComponent implements OnInit {
   leaveForm!: FormGroup;
 
-  leaveType = [
-    {label:'sick leave',value:'sickLeave'},
-    {label:'casual leave',value:'casualLeave'},
-    {label:'Vacation leave',value:'sickLeave'},
-    {label:'Paternity Leave',value:'paternityLeave'},
-  ];
+  leaveType :any;
   managers:any = [];
   fromSession = [
     {label:'session 1',value:'session 1'},
@@ -38,6 +33,7 @@ export class LeaveApplyComponent implements OnInit {
   ngOnInit(): void {
     this.getDate();
     this.getEmployees();
+    this.getLeaveType();
     this.leaveForm = new FormGroup({
       type:new FormControl('',[Validators.required]),
       reason:new FormControl('',[Validators.required]),
@@ -49,7 +45,16 @@ export class LeaveApplyComponent implements OnInit {
       applyingTo:new FormControl('',[Validators.required]),
     });
   }
-
+  getLeaveType(){
+    const config ={
+      url :urls.leaves.leaveTypeList
+    }
+    this.apiService.get(config).subscribe(resp =>{
+      if(resp.success){
+        this.leaveType = resp.data.result;
+      }
+    })
+  }
   getEmployees(){
     const config ={
       url:urls.employee.list+'?limit=100&page=1'

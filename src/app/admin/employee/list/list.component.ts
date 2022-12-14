@@ -3,7 +3,6 @@ import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ApiService, ToastService, urls, UtilsService } from 'src/app/core';
 import { FilterFormComponent } from '../../../core/components/filter-form/filter-form.component';
-
 @Component({
   selector: 'app-employees-list',
   templateUrl: './list.component.html',
@@ -12,7 +11,7 @@ import { FilterFormComponent } from '../../../core/components/filter-form/filter
 export class ListComponent implements OnInit {
   title = 'Employee master data';
   count = 0;
-  limit = 25;
+  limit = 15;
   page = 1;
   employeeList = [];
   searchText: any = '';
