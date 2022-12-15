@@ -290,7 +290,9 @@
                       <app-file-upload [data]="lessonForm"></app-file-upload>
                     </div>
                   </div>
-                  <app-file-list [data]="lessonForm.value.files"></app-file-list>
+                  <div *ngFor="let file of lessonForm.value.files; let i = index">
+                  <app-file-list [data]="file" [index]="i"></app-file-list>
+                  </div>
                 </mat-card>
               </ng-container>
             </ng-container>
@@ -431,7 +433,9 @@
                       <app-file-upload [data]="lessonForm"></app-file-upload>
                     </div>
                   </div>
-                  <app-file-list [data]="lessonForm.value.files"></app-file-list>
+                  <div *ngFor="let file of lessonForm.value.files; let i = index">
+                    <app-file-list [data]="file" [index]="i"></app-file-list>
+                    </div>
                 </mat-card>
               </ng-container>
             </ng-container>
@@ -519,7 +523,7 @@
           <div class="flex justify-between">
             <button mat-raised-button color="" (click)="back()">Cancel</button>
             <div>
-              <button class="mx-2" mat-raised-button color="primary" *ngIf="employeeData?.id"> Appointment letter</button>
+              <button class="mx-2" mat-raised-button color="primary" *ngIf="employeeData?.id" (click)="getDocument(employeeData)"> Appointment letter</button>
               <button mat-raised-button color="primary"
                 [disabled]="!form.valid ||  !qualiDetail.valid ||  !expDetail.valid || !accDetail.valid || !depDetail.valid || !emgDetail.valid"
                 (click)="submit()">Submit</button>

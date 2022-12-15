@@ -13,7 +13,7 @@
             <div class="grid lg:grid-cols-1 gap-4">
               <mat-form-field class="example-full-width">
                 <mat-label>Financial year</mat-label>
-                <input
+                <input numbersOnly  type="text"
                   matInput
                   placeholder="Financial year"
                   name="financialYear"
@@ -21,15 +21,19 @@
                 />
               </mat-form-field>
 
-              <mat-form-field class="example-full-width">
-                <mat-label>Current year</mat-label>
-                <input
-                  matInput
-                  placeholder="Please enter current year"
-                  name="currentYear"
-                  formControlName="currentYear"
-                />
+              <!-- <mat-form-field class="input-control">
+                <input matInput placeholder="" formControlName="currentYear"
+                       [matDatepicker]="date" readonly>
+                <mat-datepicker-toggle matSuffix [for]="date"></mat-datepicker-toggle>
+                <mat-datepicker #date startView="year"></mat-datepicker>
+              </mat-form-field> -->
+              
+              <mat-form-field>
+                <input matInput [matDatepicker]="date" placeholder="Current year" formControlName="currentYear" readonly>
+                <mat-datepicker-toggle matSuffix [for]="date"></mat-datepicker-toggle>
+                <mat-datepicker startView="multi-year" (yearSelected)="closeDatePicker(date)" #date></mat-datepicker>
               </mat-form-field>
+             
 
             </div>
             <div class="flex justify-end">
@@ -46,5 +50,7 @@
         </div>
       </mat-card>
     </div>
+
+
   </div>
 </div>

@@ -88,13 +88,16 @@ export const urls = {
   },
   reshuffle:{
     designation:'api/designationRotation/emp/',
-    department:'api/departmentRotation/emp/ ',
+    department:'api/departmentRotation/emp/',
     branch:'api/branchRotation/emp/',
     shift:'api/shiftRotation/emp/',
     grade:'api/salaryGradeRotation/emp/'
   },
   shift:{
     list:'api/shift/list'
+  },
+  document:{
+    create:'api/letterpdf',
   }
 
 };

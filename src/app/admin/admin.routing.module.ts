@@ -93,7 +93,13 @@ export const AdminLayoutRoutes: Routes = [
               (m) => m.ShiftsModule
             ),
         },
-      
+        {
+          path: 'document',
+          loadChildren: () =>
+            import('../documents/documents.module').then(
+              (m) => m.DocumentsModule
+            ),
+        },
     ],
   },
 ];
