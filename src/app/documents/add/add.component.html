@@ -5,12 +5,17 @@
 
     <!-- card design -->
     <div class="min-h-screen bg-gray-100">
-      <mat-card class="p-6 bg-white px-2 mx-3 my-3 ">
+      <mat-card class="p-6 bg-white px-2 mx-3 my-3 " *ngIf="data">
         <div class="p-2 clear-both">
           <form [formGroup]="data">
             <div class="flex ">
               <div class="w-full">
-                <div class="grid lg:grid-cols-2 gap-4">
+                <div class="grid lg:grid-cols-2 gap-6">
+                  <mat-form-field class="example-full-width">
+                    <mat-label>Letter name</mat-label>
+                    <input matInput placeholder="Please enter letter name" name="letterName" formControlName="letterName">
+                  </mat-form-field>
+                 
                   <mat-form-field class="example-full-width">
                     <mat-label>Subject</mat-label>
                     <input matInput placeholder="Please enter subject" name="subject" formControlName="subject">
@@ -21,21 +26,17 @@
                   </mat-form-field>
 
                   <mat-form-field class="example-full-width">
-                    <mat-label>remark</mat-label>
+                    <mat-label>Remark</mat-label>
                     <input matInput placeholder="Please " name="signRemarks" formControlName="signRemarks">
                   </mat-form-field>
                   <mat-form-field class="example-full-width">
                     <mat-label>Sign</mat-label>
                     <input matInput placeholder="Please sign" name="signForm" formControlName="signForm">
                   </mat-form-field>
-                  <!-- <div> -->
-                    <!-- <app-file-upload [data]="data" [isform]=""></app-file-upload> -->
-
-                  <!-- </div> -->
-
+                  
                 <mat-form-field class="example-full-width">
                   <mat-label> Body title</mat-label>
-                  <input matInput placeholder="Please head" name="bodyTitle" formControlName="bodyTitle">
+                  <input matInput placeholder="Please body title" name="bodyTitle" formControlName="bodyTitle">
                 </mat-form-field>
               </div>
 
@@ -49,7 +50,7 @@
                     <div class="grid lg:grid-cols-5 gap-4">
                       <mat-form-field class="example-full-width">
                         <mat-label>Image position</mat-label>
-                        <mat-select formControlName="imgPostion">
+                        <mat-select formControlName="imgPosition">
                           <mat-option *ngFor="let view of alignment" [value]="view.value ">
                             {{ view.viewValue | titlecase }}
                           </mat-option>
@@ -58,7 +59,7 @@
 
                       <mat-form-field class="example-full-width">
                         <mat-label>Sign position</mat-label>
-                        <mat-select formControlName="signPostion">
+                        <mat-select formControlName="signPosition">
                           <mat-option *ngFor="let view of alignment" [value]="view.value ">
                             {{ view.viewValue | titlecase }}
                           </mat-option>
@@ -67,7 +68,7 @@
 
                       <mat-form-field class="example-full-width">
                         <mat-label>Date position</mat-label>
-                        <mat-select formControlName="datePostion">
+                        <mat-select formControlName="datePosition">
                           <mat-option *ngFor="let view of alignment" [value]="view.value ">
                             {{ view.viewValue | titlecase }}
                           </mat-option>
@@ -76,7 +77,7 @@
 
                       <mat-form-field class="example-full-width">
                         <mat-label>Subject position</mat-label>
-                        <mat-select formControlName="subjectPostion">
+                        <mat-select formControlName="subjectPosition">
                           <mat-option *ngFor="let view of alignment" [value]="view.value ">
                             {{ view.viewValue | titlecase }}
                           </mat-option>
@@ -85,7 +86,7 @@
 
                       <mat-form-field class="example-full-width">
                         <mat-label>Reciever position</mat-label>
-                        <mat-select formControlName="reciverPostion">
+                        <mat-select formControlName="reciever">
                           <mat-option *ngFor="let view of alignment" [value]="view.value ">
                             {{ view.viewValue | titlecase }}
                           </mat-option>
@@ -95,11 +96,15 @@
                 </div>
                 <div>
                   <!-- <app-file-upload [data]="data"></app-file-upload> -->
-                  <div class="fileControl-wrapper">
+                  <div class="fileControl-wrapper ">
                     <div style="padding: 0 0px;">
                       <label> upload sign  :</label>
                       <input matInput readonly name="File"  hidden />
                       <img src="assets/images/file-upload.png" style="width: 70px;" (click)="uploadControlSign.click()">
+
+                      <div *ngFor="let file of data.value.files; let i = index">
+                        <app-file-list [data]="file" [index]="i"></app-file-list>
+                        </div>
                     </div>
                     <input type="file" #uploadControlSign id="fileControlInput" (change)="onFileChange($event,'sign')" name="fileControlInput" 
                       multiple="multiple" />
@@ -112,11 +117,15 @@
                     <input type="file" #uploadControl id="fileControlInput" (change)="onFileChange($event,'logo')" name="fileControlInput" 
                       multiple="multiple" />
                   </div>
+                  <div *ngFor="let file of data.value.files; let i = index">
+                    <app-file-list [data]="file" [index]="i"></app-file-list>
+                  </div>
+                  
                 </div>
               </div>
             </div>
             <div class="flex justify-end">
-              <button mat-raised-button color="primary" [disabled]="!data.valid" (click)="submit()">Submit</button>
+              <button mat-raised-button color="primary" [disabled]="!data.valid" (click)=" action()">Submit</button>
             </div>
           </form>
         </div>

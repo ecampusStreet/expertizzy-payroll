@@ -6,6 +6,9 @@
       <div class="min-h-screen bg-gray-100">
         <div class="flex justify-end m-3 items-center">
           <div class="ml-7">
+            <button class="mx-2" *ngIf="selected_id " mat-raised-button color="primary" (click)="getLetter()">
+              Get document
+            </button>
             <button mat-raised-button color="primary" (click)="add()">
               Add document
             </button>
@@ -15,16 +18,26 @@
 
         <div style="margin: 15px" class="letter-container" >
           <table
+          class="flex"
             mat-table
-            [dataSource]="letterList"
+            [dataSource]="DocumentList "
             class="mat-elevation-z8 "
           >
-            <ng-container matColumnDef="Lettertype">
+          <ng-container class="right" matColumnDef="selectRadio">
+            <th mat-header-cell *matHeaderCellDef> </th>
+            <td mat-cell *matCellDef="let row" >
+              <mat-radio-group [(ngModel)]="row.selected" (change)="radioSelected(row)">
+                <mat-radio-button [value]="row"></mat-radio-button>
+            </mat-radio-group>
+            </td>
+          </ng-container>
+            <ng-container class="text-left"  matColumnDef="Lettertype">
               <th mat-header-cell  *matHeaderCellDef>Letter name</th>
               <td mat-cell  *matCellDef="let element">
+                {{element.letterName}}
               </td>
             </ng-container>
-            <ng-container matColumnDef="actions">
+            <ng-container class="text-right" matColumnDef="actions">
               <th mat-header-cell *matHeaderCellDef>Action</th>
               <td mat-cell *matCellDef="let element">
                 <button

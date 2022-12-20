@@ -343,16 +343,6 @@
                     </mat-form-field>
 
                     <mat-form-field class="example-full-width">
-                      <mat-label>Shift</mat-label>
-                      <mat-select name="shift" formControlName="shift" (selectionChange)="onShiftChange($event.value)">
-                        <mat-option *ngFor="let shift of shifts" [value]="shift._id">
-                          {{shift?.shift_name}}
-                        </mat-option>
-                      </mat-select>
-                      <mat-error>Select shift</mat-error>
-                    </mat-form-field>
-
-                    <mat-form-field class="example-full-width">
                       <mat-label>Designation</mat-label>
                       <mat-select name="designationName" formControlName="designationId"  (selectionChange)="onDesignationChange($event.value)">
                         <mat-option *ngFor="let designation of designations" [value]="designation._id">
@@ -423,8 +413,8 @@
                     <mat-form-field>
                       <mat-label>Designation</mat-label>
                       <mat-select matNativeControl name="designation" formControlName="old_designation">
-                        <mat-option *ngFor="let desg of designations" [value]="desg.value">
-                          {{desg.viewValue}}
+                        <mat-option *ngFor="let desg of designations" [value]="desg._id">
+                          {{desg.designationName}}
                         </mat-option>
                       </mat-select>
                       <mat-error>Please Select your designation.</mat-error>
@@ -523,7 +513,7 @@
           <div class="flex justify-between">
             <button mat-raised-button color="" (click)="back()">Cancel</button>
             <div>
-              <button class="mx-2" mat-raised-button color="primary" *ngIf="employeeData?.id" (click)="getDocument(employeeData)"> Appointment letter</button>
+              <button class="mx-2" mat-raised-button color="primary" *ngIf="employeeData?._id" (click)="getDocument(employeeData)"> Documents</button>
               <button mat-raised-button color="primary"
                 [disabled]="!form.valid ||  !qualiDetail.valid ||  !expDetail.valid || !accDetail.valid || !depDetail.valid || !emgDetail.valid"
                 (click)="submit()">Submit</button>

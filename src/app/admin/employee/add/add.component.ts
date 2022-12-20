@@ -395,6 +395,7 @@ export class AddComponent implements OnInit {
     this.apiService.post(config).subscribe(resp => {
       if (resp.success) {
         this.tostService.success(resp.message);
+        this.location.back();
       }
     });
   }

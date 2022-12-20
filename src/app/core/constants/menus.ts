@@ -228,7 +228,7 @@ export const menu = [
       {
         name: 'Notice',
         icon: 'notification_important',
-        routeLink: '',
+        routeLink: 'notice',
       },
       {
         name: 'Event',

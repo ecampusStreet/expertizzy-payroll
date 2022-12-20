@@ -9,8 +9,8 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatTableModule } from '@angular/material/table';
 import { SharedModule } from '../shared/shared.module';
-
-
+import {MatRadioModule} from '@angular/material/radio';
+import { FileSaverModule } from 'ngx-filesaver';
 @NgModule({
   declarations: [
     ListComponent,
@@ -25,6 +25,9 @@ import { SharedModule } from '../shared/shared.module';
     MatFormFieldModule,
     ReactiveFormsModule,
     MatDatepickerModule,
+    MatRadioModule,
+    FileSaverModule
+
   ]
 })
 export class DocumentsModule { }

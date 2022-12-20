@@ -1,3 +1,9 @@
+.department-container{
+
+  height: 65vh;
+  max-width: 100%;
+  overflow: auto;
+
 .mat-card{
     padding: 10px 15px !important;
     border-radius: 4px;
@@ -12,12 +18,6 @@ table {
     width: 20%;
   }
   
-  .example-container {
-    height: 65vh;
-    max-width: 100%;
-    overflow: auto;
-  }
-
   .mat-header-cell {
     color: #4050b5 !important;
     font-weight: 800;
@@ -38,4 +38,4 @@ table {
   tr.mat-row, tr.mat-footer-row {
     height: 50px !important;
 }
-
+}

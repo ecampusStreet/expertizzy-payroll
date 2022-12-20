@@ -46,6 +46,8 @@ import {MatExpansionModule} from '@angular/material/expansion';
 import { HolidaysModule } from '../holidays/holidays.module';
 import { ShiftsModule } from '../shifts/shifts.module';
 import { DocumentsModule } from '../documents/documents.module';
+import { NoticeModule } from '../notice/notice.module';
+import { EventModule } from '../event/event.module';
 @NgModule({
   declarations: [
     AddComponent,
@@ -98,7 +100,9 @@ import { DocumentsModule } from '../documents/documents.module';
     MatDatepickerModule,
     MatDialogModule,
     ShiftsModule,
-    DocumentsModule
+    DocumentsModule,
+    NoticeModule,
+    EventModule
   ],
   exports: [AdminComponent],
   providers: [

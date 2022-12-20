@@ -100,6 +100,20 @@ export const AdminLayoutRoutes: Routes = [
               (m) => m.DocumentsModule
             ),
         },
+        {
+          path: 'event',
+          loadChildren: () =>
+            import('../event/event.module').then(
+              (m) => m.EventModule
+            ),
+        },
+        {
+          path: 'notice',
+          loadChildren: () =>
+            import('../notice/notice.module').then(
+              (m) => m.NoticeModule
+            ),
+        },
     ],
   },
 ];
