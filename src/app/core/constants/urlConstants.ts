@@ -101,5 +101,12 @@ reshuffle:{
 },
 shift:{
   list:'api/shift/list'
+},
+document:{
+  create:'api/letterpdf',
+  list:'api/letterpdf/list',
+  update:'api/letterpdf/',
+  getById:'api/letterpdf/',
+  getDocument:'api/letterpdf/',
 }
 }

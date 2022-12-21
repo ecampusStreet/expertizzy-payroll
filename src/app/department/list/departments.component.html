@@ -28,7 +28,7 @@
       </div>
       <no-data-found *ngIf="!list.length"></no-data-found>
 
-      <div style="margin: 15px" class="example-container" *ngIf="list.length">
+      <div style="margin: 15px" class="department-container" *ngIf="list.length">
         <table mat-table [dataSource]="list" class="mat-elevation-z8  table-auto">
           <ng-container matColumnDef="departmentId">
             <th mat-header-cell *matHeaderCellDef>Id</th>
