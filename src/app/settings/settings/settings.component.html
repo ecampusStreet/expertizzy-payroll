@@ -66,19 +66,23 @@
                       formControlName="brandFooter"
                     />
                   </mat-form-field>
-                  <mat-form-field class="example-full-width">
+                  <mat-form-field class="example-full-width flex">
                     <mat-label>Week off days</mat-label>
-                  <mat-select [(value)]="selected"  name="days" formControlName="weekOff" multiple>
+                    <mat-chip-list  name="days" formControlName="weekOff">
+                      <mat-chip   *ngFor="let day of days"   [ngClass]="{'selected' :day.selected }"> {{day.label}}  <mat-icon [ngClass]="{'selected' :day.selected }" matChipRemove  (click)="selectDay(day)" *ngIf="day?.selected">cancel</mat-icon>
+                        <mat-icon matChipRemove  *ngIf="!day?.selected"  (click)="selectDay(day)" >add</mat-icon></mat-chip>
+                    </mat-chip-list>
+                  <!-- <mat-select [(value)]="selected"  name="days" formControlName="weekOff" multiple>
                     <mat-option *ngFor="let day of days" [value]="day.value">
                       {{day.label}}
                     </mat-option>
-                  </mat-select>
+                  </mat-select> -->
                   </mat-form-field>
                 </div>
               </div>
             </div>
             <div class="flex justify-end">
-              <button mat-raised-button color="primary" [disabled]="!setting.valid" (click)="action()">
+              <button mat-raised-button color="primary" [disabled]="!setting.valid || selectedDays?.length" (click)="action()">
                 Submit
               </button>
             </div>

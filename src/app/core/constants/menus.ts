@@ -156,67 +156,87 @@ export const menu = [
     name: 'Dashboard',
     icon: ' dashboard',
     routeLink: 'dashboard',
+    hide:false,
+    key:'dashboard'
   },
 
   {
     name: 'Administrator',
     icon: 'description',
+    hide:false,
     children: [
       {
         name: 'Settings',
         icon: 'settings_applications',
         routeLink: 'settings',
+        hide:false,
       },
       {
         name: 'Manage branch',
         icon: 'emergency_share',
         routeLink: 'branch',
+        hide:false,
+        key:'branch'
       },
       {
         name: 'Gateway',
         icon: 'hub',
+        hide:false,
         routeLink: '',
       },
       {
         name: 'Financial year',
         icon: 'edit_calendar',
         routeLink: 'financialyear',
+        hide:false,
       },
       {
         name: 'User role',
         icon: 'contact_emergency',
-        routeLink: '',
+        routeLink: 'roles',
+        hide:false,
       },
       {
         name: 'Role permission',
         icon: 'person_search',
         routeLink: '',
+        hide:false,
       },
     ],
   },
   {
     name: 'Employees',
     icon: 'group',
+    hide:false,
+    key:'employee',
     children: [
       {
         name: 'Overview',
         icon: 'engineering',
         routeLink: 'employee/overview',
+        hide:false,
+        key:'manage'
       },
       {
         name: 'Employee master data',
         icon: 'groups',
         routeLink: 'employee/list',
+        hide:false,
+        key:'manage'
       },
       {
         name: 'Attendance',
         icon: 'list_alt',
         routeLink: 'attendance',
+        hide:false,
+        key:'attendance'
       },
       {
         name: 'Reshuffle',
         icon: 'shuffle',
         routeLink: '',
+        hide:false,
+        key:'manage'
       },
     
     ],
@@ -225,54 +245,69 @@ export const menu = [
     name: 'Calendar',
     icon: 'calendar_month',
     routeLink: '',
+    hide:false,
   },
   {
     name: 'Notice',
     icon: 'notification_important',
     routeLink: '',
+    hide:false,
   },
   {
     name: 'Event',
     icon: 'event',
     routeLink: 'event',
+    hide:false,
   },
   {
     name: 'Gallery',
     icon: 'collections_bookmark',
     routeLink: '',
+    hide:false,
   },
   {
     name: 'Leave management',
     icon: 'fact_check',
+    hide:false,
+    key:'leaveApplication',
     children: [
       {
         name: 'Leave balance',
         icon: 'account_balance_wallet',
         routeLink: 'leave/balance',
+        hide:false,
+        key:'view'
       },
       {
         name: 'Apply',
         icon: 'done',
         routeLink: 'leave/apply',
+        hide:false,
+        key:'add'
       },
       {
         name: 'History',
         icon: 'history',
         routeLink: 'leave/history',
+        hide:false,
+        key:'view'
       },
       {
         name: 'Manage leave',
         icon: 'manage_history',
         routeLink: 'leave/manage',
+        hide:false,
+        key:'manage'
       },
       {
         name: 'Leave type',
         icon: 'add',
         routeLink: 'leave/leavetype',
+        hide:false,
+        key:'leaveType'
       },
     ],
   },
-
   {
     name: 'Human resource',
     icon: 'diversity_3',
@@ -281,11 +316,15 @@ export const menu = [
         name: 'Manage department',
         icon: 'badge',
         routeLink: 'department',
+        key:'department',
+        hide:false
       },
       {
         name: 'Manage designastion',
         icon: 'work',
         routeLink: 'designation',
+        key:'designation',
+        hide:false
       },
      
       {
@@ -378,3 +417,214 @@ export const menu = [
     ],
   },
 ];
+
+
+
+export const permissions={
+activity:{
+    accessible:false,
+    view:false,
+    add:false,
+    update:false,
+    delete:false,
+    manage:false
+},
+announcement:{
+    accessible:false,
+    view:false,
+    add:false,
+    update:false,
+    delete:false,
+    manage:false
+},
+assetdetail:{
+    accessible:false,
+    view:false,
+    add:false,
+    update:false,
+    delete:false,
+    manage:false
+},
+assets:{
+    accessible:false,
+    view:false,
+    add:false,
+    update:false,
+    delete:false,
+    manage:false
+},
+attendance:{
+    accessible:false,
+    view:false,
+    add:false,
+    update:false,
+    delete:false,
+    manage:false
+},
+dashboard:{
+    accessible:false,
+    view:false,
+    manage:false
+},
+
+department:{
+    accessible:false,
+    view:false,
+    add:false,
+    update:false,
+    delete:false, 
+    manage:false
+},
+designation:{
+    accessible:false,
+    view:false,
+    add:false,
+    update:false,
+    delete:false,
+    manage:false
+},
+employee:{
+  accessible:true,
+  view:true,
+  add:false,
+  update:false,
+  delete:false,
+  manage:false
+},
+event:{
+    accessible:false,
+    view:false,
+    add:false,
+    update:false,
+    delete:false,
+    manage:false
+},
+fileUpload:{
+    accessible:false,
+    view:false,
+    add:false,
+    update:false,
+    delete:false,
+    manage:false
+},
+gallery:{
+    accessible:false,
+    view:false,
+    add:false,
+    update:false,
+    delete:false,
+    manage:false
+},
+helpdesk:{
+    accessible:false,
+    view:false,
+    add:false,
+    update:false,
+    delete:false,
+    manage:false
+},
+holiday:{
+    accessible:false,
+    view:false,
+    add:false,
+    update:false,
+    delete:false,
+    manage:false
+},
+leaveApplication:{
+    accessible:false,
+    view:false,
+    add:false,
+    update:false,
+    delete:false,
+    manage:false
+},
+leaveBalance:{
+    accessible:false,
+    view:false,
+    add:false,
+    update:false,
+    delete:false, 
+    manage:false      
+},
+leaveType:{
+    accessible:false,
+    view:false,
+    add:false,
+    update:false,
+    delete:false,  
+    manage:false     
+},
+branch:{
+    accessible:false,
+    view:false,
+    add:false,
+    update:false,
+    delete:false,  
+    manage:false     
+},
+myreferral:{
+    accessible:false,
+    view:false,
+    add:false,
+    update:false,
+    delete:false,  
+    manage:false     
+},
+
+notice:{
+    accessible:false,
+    view:false,
+    add:false,
+    update:false,
+    delete:false,  
+    manage:false     
+},
+remindernote:{
+    accessible:false,
+    view:false,
+    add:false,
+    update:false,
+    delete:false, 
+    manage:false      
+},
+role:{
+    accessible:false,
+    view:false,
+    add:false,
+    update:false,
+    delete:false,
+    manage:false
+},
+salarybreakups:{
+    accessible:false,
+    view:false,
+    add:false,
+    update:false,
+    delete:false,
+    manage:false
+},
+setting:{
+    accessible:false,
+    view:false,
+    add:false,
+    update:false,
+    delete:false,
+    manage:false
+},
+shift:{
+    accessible:false,
+    view:false,
+    add:false,
+    update:false,
+    delete:false,
+    manage:false
+},
+financialYear:{
+    accessible:false,
+    view:false,
+    add:false,
+    update:false,
+    delete:false,
+    manage:false
+}}

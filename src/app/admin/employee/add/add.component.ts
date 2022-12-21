@@ -41,8 +41,10 @@ export class AddComponent implements OnInit {
   departments :any =[];
   branches :any =[];
   designations  :any =[];
+  roles:any =[];
   genders = [{label:'Male', value:'male'},{label:'Female', value:'female'},{label:'Others', value:'other'}];
   salaryGrade :any;
+  readOnly : boolean = false;
   constructor(
     private router: Router,
     private routerParams: ActivatedRoute,
@@ -53,6 +55,7 @@ export class AddComponent implements OnInit {
     private utils : UtilsService,
   ) {
     routerParams.queryParams.subscribe((params: any) => {
+      this.readOnly = params.readOnly &&   params.readOnly == 'true'? true : false ;
       if (params.id) {
         this.id = params.id;
         this.getEmployeeData();
@@ -68,7 +71,7 @@ export class AddComponent implements OnInit {
     this.shifts = await this.utils.getShifts();
     this.branches = await this.utils.branches();
     this.salaryGrade = await this.utils.getSalaryGrade();
-
+    this.roles = await this.utils.getRoles();
   }
   onDepartmentChange(department : Event){
     let data =  this.departments.find((t:any) =>t._id ===department);
@@ -86,7 +89,6 @@ export class AddComponent implements OnInit {
     let data =  this.branches.find((t:any) =>t._id ===branch);
     this.depDetail.value.branch = data.branchName;
   }
- 
   prepareForm(){
     this.form = new FormGroup({
       profilePic: new FormControl(this.employeeData && this.employeeData.personalDetails[0]? this.employeeData.personalDetails[0].profilePic :'',[]),
@@ -104,7 +106,9 @@ export class AddComponent implements OnInit {
     });
     this.shift = new FormGroup({
       shift : new FormControl(this.employeeData && this.employeeData.shift? this.employeeData.shift:'', []),
-      salaryGrade : new FormControl(this.employeeData && this.employeeData.salaryGrade? this.employeeData.salaryGrade:'', [])
+      salaryGrade : new FormControl(this.employeeData && this.employeeData.salaryGrade? this.employeeData.salaryGrade:'', []),
+      role : new FormControl(this.employeeData && this.employeeData.role? this.employeeData.role:'', []),
+      annualSalary :new FormControl(this.employeeData && this.employeeData.annualSalary? this.employeeData.annualSalary:'', []),
     })
 
     this.kycInformation = new FormGroup({
@@ -176,6 +180,16 @@ export class AddComponent implements OnInit {
     });
     this.showForm = true;
     this.addFeildsFirstTime();
+    if(this.readOnly){
+      this.form.disable();
+      this.accDetail.disable();
+      this.emgDetail.disable();
+      this.expDetail.disable();
+      this.depDetail.disable();
+      this.kycInformation.disable();
+      this.qualiDetail.disable();
+      this.shift.disable();
+    }
   }
   get f() {
     return this.form.controls;

@@ -7,6 +7,8 @@ import { SharedModule } from '../shared/shared.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatTableModule } from '@angular/material/table';
+import { MatSelectModule } from '@angular/material/select';
+import {MatChipsModule} from '@angular/material/chips';
 
 @NgModule({
   declarations: [SettingsComponent],
@@ -19,6 +21,8 @@ import { MatTableModule } from '@angular/material/table';
     MatTableModule,
     MatFormFieldModule,
     ReactiveFormsModule,
+    MatSelectModule,
+    MatChipsModule
   ],
 })
 export class SettingsModule {}

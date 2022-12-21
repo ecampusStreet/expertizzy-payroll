@@ -42,7 +42,7 @@ export class SettingsComponent implements OnInit {
       ),
       weekOff: new FormControl(
         this.data && this.data.weekOff ? this.data.weekOff: '',
-        [Validators.required]
+        []
       ),
       address: new FormControl(
         this.data && this.data.address ? this.data.address : '',
@@ -54,12 +54,21 @@ export class SettingsComponent implements OnInit {
       ),
     });
     this.selected =days;
+    if(this.data && this.data.weekOff && this.data.weekOff.length){
+      this.setting.value.weekOff =this.copyofdata.weekOff;
+      console.log(this.setting.value.weekOff,"this.setting.value.weekOff");
+      const anotherList:any[]=[
+        ]
+        this.setting.value.setValue(anotherList)
+    }
   }
   onFileChange(event: any) {
     this.uploadedFiles = event.target.files[0];
     console.log(this.uploadedFiles, 'event');
   }
-
+  selectDay(day:any){
+    day.selected = !day.selected;
+  }
   action(){
     if(this.data){
       this.update();
@@ -69,14 +78,19 @@ export class SettingsComponent implements OnInit {
   }
 
   update() {
+    console.log(this.setting.value.weekOff,'this.setting.value.weekOff', this.days)
+// let data =  this.days.find()
+let selectedDays :any =[];
+ this.days.filter((day:any) => {if(day.selected) {selectedDays.push(day.value)}});
+console.log(selectedDays,"selectedDays")
     let changedItem :any={};
     if(JSON.stringify(this.copyofdata) != (JSON.stringify(this.setting.value))){
             if( this.copyofdata.companyName != this.setting.value.companyName){
                 changedItem.companyName = this.setting.value.companyName
             }
-            if( this.copyofdata.weekOff != this.setting.value.weekOff){
-                changedItem.weekOff =this.setting.value.weekOff
-             }
+             if( this.copyofdata.weekOff != selectedDays){
+                changedItem.weekOff =JSON.stringify(selectedDays);
+              }
              if( this.copyofdata.brandFooter != this.setting.value.brandFooter){
                 changedItem.brandFooter =this.setting.value.brandFooter
              }
@@ -103,10 +117,12 @@ export class SettingsComponent implements OnInit {
   }
   submit() {
     const formData = new FormData();
+    let selectedDays :any =[];
+    this.days.filter((day:any) => {if(day.selected) {selectedDays.push(day.value)}});
     formData.append('companyName', this.setting.value.companyName);
     formData.append('address', this.setting.value.address);
     formData.append('brandFooter', this.setting.value.brandFooter);
-    formData.append('weekOff', this.setting.value.weekOff);
+    formData.append('weekOff', JSON.stringify(selectedDays));
     this.uploadedFiles ? formData.append('logo', this.uploadedFiles) :''
     const config = {
       url:  urls.setting.create,
@@ -129,9 +145,16 @@ export class SettingsComponent implements OnInit {
         this.settingId = resp.result.data[0]._id;
         this.data = resp.result.data[0]; 
         this.copyofdata = {...this.data};
-       if(this.copyofdata.weekOff){
-        // this.copyofdata.weekOff.filter(day => )
+        console.log(this.data.weekOff,"this.data.weekOff")
+       if(this.data.weekOff){
+          this.days.forEach(day => {
+            debugger
+            resp.result.data[0].weekOff.find( (t:any) => {if(t.includes(day.value)){day.selected = true;
+              console.log(this.days,"this.days");
+            }})
+        });
        }
+     
         this.prepareForm();
       } else {
         this.prepareForm();

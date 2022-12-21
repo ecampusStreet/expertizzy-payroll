@@ -100,7 +100,9 @@ export class ListComponent implements OnInit {
         this.deleteConfirmationpopup(event.data);
         break;
       case 'view':
-        this.router.navigate(['expertizzy/employee/view', event.data._id]);
+        this.router.navigate(['expertizzy/employee/add'], {
+          queryParams: { id: event.data._id, readOnly:true },
+        });
         break;
     }
   }
@@ -150,7 +152,6 @@ export class ListComponent implements OnInit {
       
     });
     dialogRef.afterClosed().subscribe((result) => {
-      console.log(result)
       if (result) {
         this.filters.department = result.department ? result.department : '';
         this.filters.designation = result.designation ? result.designation : '';

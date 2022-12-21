@@ -19,8 +19,8 @@
               <img src="assets/images/profile.jpg" class="rounded-full w-24" *ngIf="!form.value.profilePic">
               <img src="{{form.value.profilePic.link}}" class="rounded-full w-24" *ngIf="form.value.profilePic">
             
-              <input style="max-width: 0px;" type="file" #uploadProfile id="fileControlInput" (change)="uploadImage($event)" />
-              <mat-icon class="pen-icon" title="Upload profile photo" (click)="uploadProfile.click()">edit</mat-icon>
+              <input style="max-width: 0px;" type="file" #uploadProfile id="fileControlInput" (change)="uploadImage($event)"  />
+              <mat-icon class="pen-icon" title="Upload profile photo" (click)="uploadProfile.click()"  *ngIf="!readOnly" >edit</mat-icon>
               </div>
               </div>
             <div class="grid lg:grid-cols-4 md:grid-cols-2 gap-3 p-2">
@@ -170,14 +170,14 @@
           <div class="grid  lg:grid-cols-4 md:grid-cols-2 gap-3 p-2">
             <mat-form-field class="example-full-width">
               <mat-label>Adhar number</mat-label>
-              <input matInput placeholder=" Enter First name" name="aadhaarNumber" formControlName="aadhaarNumber">
+              <input matInput placeholder=" Enter First name" name="aadhaarNumber" formControlName="aadhaarNumber" numbersOnly>
                 <mat-error  class="text-red-500">Adhar number is required.
                 </mat-error>
             </mat-form-field>
          
             <mat-form-field class="example-full-width">
               <mat-label>PAN number</mat-label>
-              <input matInput placeholder="Enter PAN nummber" name="panCardNumber" formControlName="panCardNumber">
+              <input matInput placeholder="Enter PAN nummber" name="panCardNumber" formControlName="panCardNumber" >
               <mat-error>PAN number is required</mat-error>
             </mat-form-field>
             <mat-form-field class="example-full-width">
@@ -483,7 +483,7 @@
                       <mat-label>Designation</mat-label>
                       <mat-select  matNativeControl name="designation" formControlName="old_designation">
                         <mat-option *ngFor="let desg of designations" [value]="desg.value">
-                          {{desg.viewValue}}
+                          {{desg.designationName}}
                         </mat-option>
                       </mat-select>
                       <mat-error>Please Select your designation.</mat-error>
@@ -546,7 +546,7 @@
            </div>
           <form class="mutlifield" [formGroup]="shift">
                   <mat-card class="mb-3 nested-card">
-                  <div class="grid  lg:grid-cols-2  gap-3 " >
+                  <div class="grid  lg:grid-cols-3  gap-3 " >
                     <mat-form-field>
                       <mat-label>Shift</mat-label>
                       <mat-select  matNativeControl name="shift" formControlName="shift">
@@ -565,6 +565,20 @@
                       </mat-select>
                       <mat-error>Please Select salary grade.</mat-error>
                     </mat-form-field>
+                    <mat-form-field>
+                      <mat-label>Roles</mat-label>
+                      <mat-select  matNativeControl name="role" formControlName="role" *ngIf="roles?.length">
+                        <mat-option *ngFor="let role of roles" [value]="role._id">
+                          {{role.roleName}}
+                        </mat-option>
+                      </mat-select>
+                      <mat-error>Please Select role.</mat-error>
+                    </mat-form-field>
+                    <mat-form-field class="example-full-width">
+                      <mat-label>Annual salary</mat-label>
+                      <input matInput placeholder="Employee UAN number" name="annualSalary" formControlName="annualSalary"  type="text">
+                      <mat-error>Enter Annual salary</mat-error>
+                    </mat-form-field>
                   </div>
                 </mat-card>
               </form>
@@ -572,11 +586,10 @@
       </mat-card>
 
       <!-- current organization ends here -->
-      <mat-card class="p-6 bg-white px-2 mx-3 my-3">
+      <mat-card class="p-6 bg-white px-2 mx-3 my-3" *ngIf="!readOnly">
         <div class="p-2 clear-both">
         <div class="flex justify-between">
           <button mat-raised-button color=""  (click)="back()">Cancel</button>
-          {{form.valid }} {{qualiDetail.valid}} {{ expDetail.valid | json}} {{ accDetail.valid}} {{ depDetail.valid}} {{emgDetail.valid}}
           <button mat-raised-button color="primary" [disabled]="!form.valid ||  !qualiDetail.valid ||  !expDetail.valid || !accDetail.valid || !depDetail.valid || !emgDetail.valid" (click)="submit()">Submit</button>
         </div>
         </div>

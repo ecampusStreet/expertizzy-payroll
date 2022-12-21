@@ -45,6 +45,8 @@ import { PayrollModule } from '../payroll/payroll.module';
 
 import {MatExpansionModule} from '@angular/material/expansion';
 import { ShiftsModule } from '../shifts/shifts.module';
+import { RolesModule } from '../roles/roles.module';
+
 @NgModule({
   declarations: [
     AddComponent,
@@ -95,7 +97,8 @@ import { ShiftsModule } from '../shifts/shifts.module';
     LayoutModule,
     MatDatepickerModule,
     MatDialogModule,
-    ShiftsModule
+    ShiftsModule,
+    RolesModule
   ],
   exports: [AdminComponent],
   providers: [

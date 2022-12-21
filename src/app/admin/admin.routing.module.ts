@@ -79,7 +79,13 @@ export const AdminLayoutRoutes: Routes = [
               (m) => m.ShiftsModule
             ),
         },
-      
+        {
+          path: 'roles',
+          loadChildren: () =>
+            import('../roles/roles.module').then(
+              (m) => m.RolesModule
+            ),
+        },
     ],
   },
 ];

@@ -65,7 +65,7 @@ export const urls = {
     getById: 'api/branch/',
   },
   attendance: {
-    create: 'api/attendance/entry/',
+    create: 'api/attendance/emp/',
   },
   setting: {
     create:'api/setting/create',
@@ -78,5 +78,11 @@ export const urls = {
     update:'api/salarybreakups/update/',
     delete:'api/salarybreakups/delete/',
     getById:'api/salarybreakups/'
+  },
+  roles:{
+    list:'api/role/list',
+    create:'api/role',
+    getId:'api/role/',
+    delete:'',
   }
 };
