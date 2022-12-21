@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AttendanceComponent } from './attendance/attendance.component';
+import { ListComponent } from './list/list.component';
 import { ManageAttendanceComponent } from './manage-attendance/manage-attendance.component';
 
 const routes: Routes = [
@@ -15,6 +16,10 @@ const routes: Routes = [
   {
     path: 'manage',
     component: ManageAttendanceComponent,
+  },
+  {
+    path: 'userList',
+    component: ListComponent,
   },
 ];
 

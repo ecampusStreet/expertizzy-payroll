@@ -30,7 +30,6 @@ export class AttendanceComponent implements OnInit {
     
   }
 
-  
   getUserId() {
     this.userService.getUser().then((resp) => {
       this.emplID = resp.employee._id;
@@ -39,13 +38,13 @@ export class AttendanceComponent implements OnInit {
   action() {
     this.buttonLabel = 'SignOut';
     const config = {
-      url: urls.attendance.create + this.emplID,
+      url: urls.attendance.create ,
       payload: {
-        date: new Date(),
-        timeIn: '09:30am',
-        timeOut: '06:30pm',
-        location: 'bangalore',
-        isPresent:true,
+        date:this.today,
+        // timeIn: '09:30am',
+        // timeOut: '06:30pm',
+        // location: 'bangalore',
+        // isPresent:true,
       },
     };
     this.apiService.post(config).subscribe((resp) => {

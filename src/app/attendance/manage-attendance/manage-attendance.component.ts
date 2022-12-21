@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { Router } from '@angular/router';
+import * as moment from 'moment';
+import { ApiService, ToastService, UtilsService, urls } from 'src/app/core';
 import { FilterFormComponent } from 'src/app/core/components/filter-form/filter-form.component';
 
 @Component({
@@ -9,9 +12,21 @@ import { FilterFormComponent } from 'src/app/core/components/filter-form/filter-
   styleUrls: ['./manage-attendance.component.scss'],
 })
 export class ManageAttendanceComponent implements OnInit {
-  today = new Date();
-  searchText = '';
   isPresent: boolean = false;
+  limit=1;
+  page =1;
+  searchText: any = '';
+
+  filters = {
+    department: '',
+    designation: '',
+    doj: '',
+    gender: '',
+    branch: '',
+    financialyear: '',
+    experience: '',
+  };
+
   displayedColumns: string[] = [
     'profile_photo',
     'name',
@@ -20,48 +35,18 @@ export class ManageAttendanceComponent implements OnInit {
     'department',
     'actions',
   ];
+  today = new Date();
+  
+  employees = [];
+  constructor(private matdialog: MatDialog,
+    private apiService: ApiService,
+    private toastService: ToastService,
+    private router: Router,
+    private utilsService: UtilsService) {}
 
-  employees = [
-    {
-      employee: {
-        firstName: 'vishwanath',
-        lastName: 'badiger',
-        fatherName: 'suresh',
-        gender: 'male',
-        mobile: 8147748824,
-        email: 'vishwanath@gmail.com',
-        departmentName: 'Developer',
-        designation: 'angularDeveloper ',
-      },
-      attendance: {
-        timeIn: null,
-        timeOut: null,
-        location: null,
-        isPresent: false,
-      },
-    },
-    {
-      employee: {
-        firstName: 'vishwanath',
-        lastName: 'badiger',
-        fatherName: 'suresh',
-        gender: 'male',
-        mobile: 7816892014,
-        email: 'vishwanath@gmail.com',
-        departmentName: 'Developer',
-        designation: 'angularDeveloper ',
-      },
-      attendance: {
-        timeIn: null,
-        timeOut: null,
-        location: null,
-        isPresent: true,
-      },
-    },
-  ];
-  constructor(private matdialog: MatDialog) {}
-
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.handleAdmDateChange();
+  }
 
   add() {}
   search() {}
@@ -69,11 +54,55 @@ export class ManageAttendanceComponent implements OnInit {
   updateAttendance(employee: any) {
     console.log(employee, 'employee');
     const config = {
-      url: '',
-      payload: employee,
+      url: urls.attendance.update + employee._id,
+      payload: {
+        isPresent:employee.isPresent
+      },
     };
+    this.apiService.put(config).subscribe((resp) =>{
+      if(resp){
+        this.toastService.success(resp.message);
+      }
+    })
+
   }
 
+  handleAdmDateChange(){
+    console.log(moment(this.today).format('MM/DD/YYYY'),"ssdfsf");
+    const config = {
+          url: urls.attendance.create +'?limit=' +
+          this.limit +
+          '&page=' +
+          this.page +
+          '&search=' +
+          this.searchText +
+          '&department=' +
+          this.filters.department +
+          '&designation=' +
+          this.filters.designation +
+          '&doj=' +
+          this.filters.doj +
+          '&gender=' +
+          this.filters.gender +
+          '&branch=' +
+          this.filters.branch +
+          '&financialyear=' +
+          this.filters.financialyear +
+          '&experience=' +
+          this.filters.experience,
+          payload: {
+            date:moment(this.today).format('YYYY-MM-DD'),
+          },
+        };
+        this.apiService.post(config).subscribe((resp) => {
+          console.log(resp,'response')
+          if (resp) {
+            this.toastService.success(resp.message);
+            this.employees=resp.data
+          }
+        });
+  }
+ 
   openPopup() {
     const dialogConfig = new MatDialogConfig();
     const dialogRef = this.matdialog.open(FilterFormComponent, {
