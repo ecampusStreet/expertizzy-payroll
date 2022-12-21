@@ -8,6 +8,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatTableModule } from '@angular/material/table';
 import { SharedModule } from '../shared/shared.module';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 
 @NgModule({
   declarations: [AddfinancialYearComponent, FinancialYearComponent],
@@ -17,6 +18,8 @@ import { SharedModule } from '../shared/shared.module';
     SharedModule,
     MatTableModule,
     MatFormFieldModule,
-    ReactiveFormsModule,],
+    ReactiveFormsModule,
+    MatDatepickerModule
+  ],
 })
 export class FinancialYearModule {}

@@ -8,6 +8,8 @@ import { ApiService, urls, UtilsService } from 'src/app/core';
 })
 export class FileListComponent implements OnInit {
 @Input() data :any;
+@Input() index :any;
+
   constructor(
     private apiService :ApiService,
     private utils :UtilsService
@@ -24,14 +26,14 @@ export class FileListComponent implements OnInit {
       this.data.splice(index,1)
     })
   }
-  deleteConfirm(item:any, index:any){
+  deleteConfirm(item:any){
     let payload = {
       header:"",
       message:"Are you sure, you want to delete "+ item.name +" ?"
     }
     this.utils.openDialog(payload).then(resp =>{
         if(resp){
-          this.delete(item._id, index);
+          this.delete(item._id, this.index);
         }
       })
   }

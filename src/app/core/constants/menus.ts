@@ -228,7 +228,7 @@ export const menu = [
       {
         name: 'Notice',
         icon: 'notification_important',
-        routeLink: '',
+        routeLink: 'notice',
       },
       {
         name: 'Event',
@@ -295,30 +295,9 @@ export const menu = [
         icon: 'work',
         routeLink: 'designation',
       },
-     
-      {
-        name: 'Offer letter',
-        icon: 'drafts',
-        routeLink: '',
-      },
-      {
-        name: 'Appointment letter',
-        icon: 'post_add',
-        routeLink: '',
-      },
       {
         name: 'Off bording',
         icon: '',
-        routeLink: '',
-      },
-      {
-        name: 'Relieving letter',
-        icon: 'mail',
-        routeLink: '',
-      },
-      {
-        name: 'Experience letter',
-        icon: 'mail',
         routeLink: '',
       },
       {
@@ -328,6 +307,11 @@ export const menu = [
       },
     ],
   },
+  {
+      name: 'Documents',
+      icon: 'picture_as_pdf',
+      routeLink: 'document',
+    },
   {
     name: ' Employee activity',
     icon: 'local_activity',

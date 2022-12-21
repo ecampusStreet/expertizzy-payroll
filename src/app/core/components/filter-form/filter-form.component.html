@@ -1,13 +1,13 @@
 <form [formGroup]="search">
   <mat-card class="border p-4">
     <h2 class="text-grey-500">{{title}}</h2>
-    <div class="grid grid-cols-3 gap-4">
+    <div class="grid grid-cols-2 gap-4">
       <mat-form-field>
         <mat-label>Department</mat-label>
         <mat-select name="department" formControlName="department">
           <mat-option
             *ngFor="let department of departmentList"
-            [value]="department?._id"
+            [value]="department?.departmentName"
           >
             {{ department?.departmentName | titlecase }}
           </mat-option>
@@ -19,14 +19,14 @@
         <mat-select name="designation" formControlName="designation">
           <mat-option
             *ngFor="let designation of designationList"
-            [value]="designation?._id"
+            [value]="designation?.designationName"
           >
             {{ designation?.designationName | titlecase }}
           </mat-option>
         </mat-select>
       </mat-form-field>
 
-      <mat-form-field>
+      <!-- <mat-form-field>
         <mat-label>Date of joining</mat-label>
         <input
           matInput
@@ -37,7 +37,7 @@
         <mat-hint>MM/DD/YYYY</mat-hint>
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
-      </mat-form-field>
+      </mat-form-field> -->
 
       <mat-form-field>
         <mat-label>Gender</mat-label>
@@ -48,14 +48,14 @@
         </mat-select>
       </mat-form-field>
     
-      <mat-form-field>
+      <!-- <mat-form-field>
         <mat-label>financialYear</mat-label>
         <mat-select name="financialyear" formControlName="financialyear">
           <mat-option *ngFor="let year of financialYears" [value]="year?._id">
             {{ year?.financialYear | titlecase }}
           </mat-option>
         </mat-select>
-      </mat-form-field>
+      </mat-form-field> -->
 
       <mat-form-field>
         <mat-label>Branch</mat-label>
@@ -66,12 +66,12 @@
         </mat-select>
       </mat-form-field>
     </div>
-    <div class="grid grid-cols-1 ">
+    <!-- <div class="grid grid-cols-1 ">
       <mat-form-field class="example-full-width">
         <mat-label>Experience</mat-label>
         <input matInput placeholder="" name="experience" formControlName="experience">
       </mat-form-field>
-    </div>
+    </div> -->
   </mat-card>
   <mat-card class="my-6 border">
     <div class="flex justify-end ">

@@ -45,6 +45,9 @@ import { PayrollModule } from '../payroll/payroll.module';
 import {MatExpansionModule} from '@angular/material/expansion';
 import { HolidaysModule } from '../holidays/holidays.module';
 import { ShiftsModule } from '../shifts/shifts.module';
+import { DocumentsModule } from '../documents/documents.module';
+import { NoticeModule } from '../notice/notice.module';
+import { EventModule } from '../event/event.module';
 @NgModule({
   declarations: [
     AddComponent,
@@ -96,7 +99,10 @@ import { ShiftsModule } from '../shifts/shifts.module';
     LayoutModule,
     MatDatepickerModule,
     MatDialogModule,
-    ShiftsModule
+    ShiftsModule,
+    DocumentsModule,
+    NoticeModule,
+    EventModule
   ],
   exports: [AdminComponent],
   providers: [

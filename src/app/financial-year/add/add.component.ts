@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { ApiService, ToastService, urls } from 'src/app/core';
 import { Location } from '@angular/common';
+import { MatDatepicker } from '@angular/material/datepicker';
 
 @Component({
   selector: 'app-addfinancial-year',
@@ -23,6 +24,10 @@ export class AddfinancialYearComponent implements OnInit {
     this.prepareForm()
   }
 
+  closeDatePicker(elem: MatDatepicker<any> ) {
+    console.log(elem);
+    elem.close();
+  }
   prepareForm(){
     this.financialYear=new FormGroup({
       financialYear:new FormControl('',[Validators.required]),
