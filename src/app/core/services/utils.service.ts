@@ -85,20 +85,20 @@ export class UtilsService {
            }
         })
       })
-      }
-      getSalaryGrade(){
-        return new Promise((resolve, reject) => {
-        const config ={
-          url:urls.payroll.list
-        }
-         this.apiService.get(config).subscribe(resp =>{
-          if(resp.success){
-          resolve(resp.result.data);
-          }
-        })
-      })
-      }
+    }
 
+    salaryGrade(){
+      return new Promise((resolve, reject) => {
+      const config ={
+        url:urls.payroll.list
+      }
+       this.apiService.get(config).subscribe(resp =>{
+         if(resp.success){
+          resolve(resp.result.data);
+         }
+      })
+      })
+    }
       getRoles(){
         return new Promise((resolve, reject) => {
         const config ={
@@ -125,4 +125,17 @@ export class UtilsService {
             }
         });
       }
+
+  shifts(){
+    return new Promise((resolve, reject) => {
+    const config ={
+      url:urls.shift.list
+    }
+     this.apiService.get(config).subscribe(resp =>{
+       if(resp.success){
+        resolve(resp.result.data);
+       }
+    })
+  })
+}
 }

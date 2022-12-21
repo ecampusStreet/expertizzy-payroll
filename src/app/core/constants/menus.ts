@@ -234,9 +234,9 @@ export const menu = [
       {
         name: 'Reshuffle',
         icon: 'shuffle',
-        routeLink: '',
         hide:false,
-        key:'manage'
+        key:'manage',
+        routeLink: 'reshuffle',
       },
     
     ],
@@ -248,16 +248,27 @@ export const menu = [
     hide:false,
   },
   {
-    name: 'Notice',
-    icon: 'notification_important',
-    routeLink: '',
-    hide:false,
-  },
-  {
     name: 'Event',
     icon: 'event',
     routeLink: 'event',
     hide:false,
+    children:[
+      {
+        name: 'Notice',
+        icon: 'notification_important',
+        routeLink: '',
+      },
+      {
+        name: 'Event',
+        icon: 'event',
+        routeLink: 'event',
+      },
+      {
+        name: 'Holidays',
+        icon: 'festival',
+        routeLink: 'holiday',
+      },
+    ],
   },
   {
     name: 'Gallery',

@@ -6,6 +6,7 @@
         </a>
     </div>
     <img  src="assets/images/xlogo.png" alt="logo of company"  *ngIf="!expand"/>
+    <div id="sideMenu">
     <mat-nav-list class="nav-list cursor-pointer" *ngIf="expand">
         <span *ngFor="let item of list">
           <span *ngIf="item.children && item.children.length > 0">
@@ -53,4 +54,5 @@
           </span>
         </span>
       </mat-nav-list>
+      </div>
 </div>

@@ -42,8 +42,8 @@ import { BranchModule } from '../branch/branch.module';
 import { DepartmentModule } from '../department/department.module';
 import { FinancialYearModule } from '../financial-year/financial-year.module';
 import { PayrollModule } from '../payroll/payroll.module';
-
 import {MatExpansionModule} from '@angular/material/expansion';
+import { HolidaysModule } from '../holidays/holidays.module';
 import { ShiftsModule } from '../shifts/shifts.module';
 import { RolesModule } from '../roles/roles.module';
 
@@ -73,6 +73,7 @@ import { RolesModule } from '../roles/roles.module';
     DesignationModule,
     DepartmentModule,
     PayrollModule,
+    HolidaysModule,
     MatExpansionModule,
     FinancialYearModule,
     FlexLayoutModule,

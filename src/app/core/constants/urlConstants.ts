@@ -72,6 +72,13 @@ export const urls = {
     list:'api/setting/list/',
     update:'api/setting/update/'
   },
+  holiday:{
+    create:'api/holiday/add',
+    list:'api/holiday/list',
+    delete:'api/holiday/delete/',
+    update:'api/holiday/update/',
+    getById:'api/holiday/'
+  },
   payroll:{
     create:'api/salarybreakups/create',
     list:'api/salarybreakups/list',
@@ -84,5 +91,15 @@ export const urls = {
     create:'api/role',
     getId:'api/role/',
     delete:'',
-  }
-};
+},
+reshuffle:{
+  designation:'api/designationRotation/emp/',
+  department:'api/departmentRotation/emp/ ',
+  branch:'api/branchRotation/emp/',
+  shift:'api/shiftRotation/emp/',
+  grade:'api/salaryGradeRotation/emp/'
+},
+shift:{
+  list:'api/shift/list'
+}
+}

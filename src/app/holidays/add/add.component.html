@@ -1,0 +1,68 @@
+<div class="flex-auto">
+    <div class="flex flex-col">
+      <app-content-navbar [isBack]="true" [title]="'Add department'"></app-content-navbar>
+      
+  
+      <!-- card design -->
+      <div class="min-h-screen  bg-gray-100 my-3" *ngIf="holidayData">
+        <mat-card class="p-6 bg-white px-2 mx-3 my-3">
+          <div class="p-2 clear-both">
+            <form [formGroup]="holiday" *ngIf="!showForm">
+              <div class="flex">
+                <div class="w-full">
+                  <div class="grid lg:grid-cols-1 gap-4">
+                    <mat-form-field class="example-full-width">
+                      <mat-label></mat-label>
+                      <input
+                        matInput
+                        placeholder=""
+                        name="onThisDay"
+                        formControlName="onThisDay"
+                      />
+                    </mat-form-field>
+                    <mat-form-field class="example-full-width">
+                      <mat-label>Description</mat-label>
+                      <input
+                        matInput
+                        placeholder="Please enter description "
+                        name="description"
+                        formControlName="description"
+                      />
+                    </mat-form-field>
+                    <mat-form-field class="example-full-width">
+                        <mat-label> From date</mat-label>
+                        <input matInput [matDatepicker]="picker" readonly placeholder=" Please enter from date" name="fromDate"
+                          formControlName="fromDate">
+                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                        <mat-error>Please provide from date </mat-error>
+                      </mat-form-field>
+
+                      <mat-form-field class="example-full-width">
+                        <mat-label> To date</mat-label>
+                        <input matInput [matDatepicker]="picker1" readonly placeholder=" Please enter to date" name="toDate"
+                          formControlName="toDate">
+                        <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                        <mat-datepicker #picker1></mat-datepicker>
+                        <mat-error>Please provide to date </mat-error>
+                      </mat-form-field>
+                  </div>
+                </div>
+              </div>
+              <div class="flex justify-end">
+                <button
+                  mat-raised-button
+                  color="primary"
+                  [disabled]="!holiday.valid"
+                  (click)="submit()"
+                >
+                  Submit
+                </button>
+              </div>
+            </form>
+          </div>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+  
