@@ -10,7 +10,7 @@ import * as moment from 'moment';
 })
 export class ListsComponent implements OnInit {
   list :any;
-  displayedColumns = ['name', 'fromDate','toDate','startTime','endTime', 'action'];
+  displayedColumns = ['name','startTime','endTime', 'action'];
   count =0;
   page = 1;
   limit =25;

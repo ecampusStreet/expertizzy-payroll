@@ -10,6 +10,7 @@ import { MatTableModule } from '@angular/material/table';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDatepickerModule, } from '@angular/material/datepicker';
+import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
 @NgModule({
   declarations: [
     ListsComponent,
@@ -25,6 +26,7 @@ import { MatDatepickerModule, } from '@angular/material/datepicker';
     ReactiveFormsModule,
     MatIconModule,
     MatDatepickerModule,
+    NgxMaterialTimepickerModule
   ]
 })
 export class ShiftsModule { }

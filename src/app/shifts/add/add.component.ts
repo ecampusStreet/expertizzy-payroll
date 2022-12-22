@@ -6,7 +6,8 @@ import { ApiService, ToastService, urls } from 'src/app/core';
 @Component({
   selector: 'app-add',
   templateUrl: './add.component.html',
-  styleUrls: ['./add.component.scss']
+  styleUrls: ['./add.component.scss'],
+  
 })
 export class AddComponent implements OnInit {
   myDatePicker:any;
@@ -44,18 +45,18 @@ export class AddComponent implements OnInit {
           : '',
         [Validators.required]
       ),
-      fromDate: new FormControl(
-        this.data && this.data.fromDate
-          ? this.data.fromDate
-          : '',
-        [Validators.required]
-      ),
-      toDate: new FormControl(
-        this.data && this.data.toDate
-          ? this.data.toDate
-          : '',
-        [Validators.required]
-      ),
+      // fromDate: new FormControl(
+      //   this.data && this.data.fromDate
+      //     ? this.data.fromDate
+      //     : '',
+      //   [Validators.required]
+      // ),
+      // toDate: new FormControl(
+      //   this.data && this.data.toDate
+      //     ? this.data.toDate
+      //     : '',
+      //   [Validators.required]
+      // ),
       fromTime: new FormControl(
         this.data && this.data.fromTime
           ? this.data.fromTime
@@ -95,12 +96,12 @@ export class AddComponent implements OnInit {
             if( this.baseCopy.shift_name != this.shift.value.shift_name){
                 changedItem.shift_name = this.shift.value.shift_name
             }
-            if( this.baseCopy.fromDate != this.shift.value.fromDate){
-                changedItem.fromDate =this.shift.value.fromDate
-             }
-             if( this.baseCopy.fromTime != this.shift.value.fromTime){
-                changedItem.fromTime =this.shift.value.fromTime
-             }
+            // if( this.baseCopy.fromDate != this.shift.value.fromDate){
+            //     changedItem.fromDate =this.shift.value.fromDate
+            //  }
+            //  if( this.baseCopy.fromTime != this.shift.value.fromTime){
+            //     changedItem.fromTime =this.shift.value.fromTime
+            //  }
              if( this.baseCopy.toTime != this.shift.value.toTime){
                 changedItem.toTime = this.shift.value.toTime
              }

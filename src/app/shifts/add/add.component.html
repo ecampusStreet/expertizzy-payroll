@@ -10,14 +10,14 @@
           <form [formGroup]="shift" *ngIf="showForm">
               <div class="flex ">
                 <div class="w-full">
-                  <div class="grid lg:grid-cols-2 gap-4">
+                  <div class="grid lg:grid-cols gap-4">
                     <mat-form-field class="example-full-width">
                       <mat-label>Shift name</mat-label>
                       <input matInput placeholder="Please enter name of the shift" name="shift_name"
                         formControlName="shift_name" >
                     </mat-form-field>
 
-                    <mat-form-field class="example-full-width">
+                    <!-- <mat-form-field class="example-full-width">
                       <mat-label>From  </mat-label>
                       <input matInput [matDatepicker]="pickerFrom" readonly placeholder="Please enter the from date" name="fromDate" formControlName="fromDate">
                       <mat-datepicker-toggle matSuffix [for]="pickerFrom"></mat-datepicker-toggle>
@@ -31,17 +31,19 @@
                       <mat-datepicker-toggle matSuffix [for]="pickerTO"></mat-datepicker-toggle>
                       <mat-datepicker #pickerTO></mat-datepicker>
                       <mat-error>Please provide Date of birth</mat-error>
-                    </mat-form-field>
-
+                    </mat-form-field> -->
+                  </div>
+                  <div class="grid lg:grid-cols-2 gap-4">
                     <mat-form-field class="example-full-width">
                       <mat-label>Start time</mat-label>
-                      <input matInput type="time" min="09:00" max="12:00" placeholder="Please enter the start time" name="fromTime" formControlName="fromTime">
+                      <input matInput  [ngxTimepicker]="picker" placeholder="Please enter the start time" name="fromTime" formControlName="fromTime">
+                      <ngx-material-timepicker #picker></ngx-material-timepicker>
                     </mat-form-field>
                     
                     <mat-form-field class="example-full-width">
                       <mat-label>End time</mat-label>
-                      <input matInput placeholder="Please enter end time" name="toTime"
-                        formControlName="toTime" type="time" min="09:00" max="12:00" >
+                      <input matInput  [ngxTimepicker]="picker2" placeholder="Please enter end time" name="toTime" formControlName="toTime"  >
+                      <ngx-material-timepicker #picker2></ngx-material-timepicker>
                     </mat-form-field>
                   </div>
                 </div>

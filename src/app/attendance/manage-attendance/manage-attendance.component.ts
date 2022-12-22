@@ -13,7 +13,7 @@ import { FilterFormComponent } from 'src/app/core/components/filter-form/filter-
 })
 export class ManageAttendanceComponent implements OnInit {
   isPresent: boolean = false;
-  limit=1;
+  limit=25;
   page =1;
   searchText: any = '';
 
@@ -33,6 +33,7 @@ export class ManageAttendanceComponent implements OnInit {
     'mobile',
     'designation',
     'department',
+    'status',
     'actions',
   ];
   today = new Date();
@@ -52,7 +53,6 @@ export class ManageAttendanceComponent implements OnInit {
   search() {}
 
   updateAttendance(employee: any) {
-    console.log(employee, 'employee');
     const config = {
       url: urls.attendance.update + employee._id,
       payload: {
@@ -64,7 +64,6 @@ export class ManageAttendanceComponent implements OnInit {
         this.toastService.success(resp.message);
       }
     })
-
   }
 
   handleAdmDateChange(){

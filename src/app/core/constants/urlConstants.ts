@@ -65,6 +65,7 @@ export const urls = {
     getById: 'api/branch/',
   },
   attendance: {
+    entry:'api/attendance/single/',
     create: 'api/attendance',
     update:'api/attendance/',
     empList:'api/attendance/emp/'
