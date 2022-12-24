@@ -107,7 +107,7 @@ console.log(formData,"formData");
   updateDocument(){
   const  changed:any ={}
   if(JSON.stringify(this.copyofdata) != (JSON.stringify(this.data.value))){
-    if( this.copyofdata.companyName != this.data.value.letterName){
+    if( this.copyofdata.letterName != this.data.value.letterName){
       changed.letterName = this.data.value.companyName
   }
   }

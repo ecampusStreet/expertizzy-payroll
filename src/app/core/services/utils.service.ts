@@ -26,7 +26,7 @@ export class UtilsService {
       dataFilter(payload:any): Promise<any> {
         return new Promise((resolve, reject) => {
             const dialogRef = this.dialog.open(DataModalComponent, {
-                width: '500px',
+                width: '700px',
                 data: payload,
               });
               dialogRef.afterClosed().subscribe(result => {

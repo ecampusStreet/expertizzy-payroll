@@ -1,42 +1,47 @@
-.holiday-container {
-  height: 75vh;
-  max-width: 100%;
-  overflow: auto;
-
-.mat-card{
-  padding: 10px 15px !important;
-  border-radius: 4px;
-  color: #5f6162;
+.calendar-card{
+  .mat-card-header{
+    color: #3f51b5;
+  }
+height: 14rem;
+::ng-deep{ .mat-card-header-text{
+  margin:4px 16px !important;
+}
+}
+.card-avatar{
+  height: 0 !important;
+  width: 1rem !important;
+}
+no-data-found {
+  width:100% !important;
+  height:100% !important;
+}
+ul {
+  list-style: none;
+}
+ul li{
+  font-size: 18px;
+  font-weight: 400;
+  color: rgb(246, 19, 19);
 
 }
-table {
-  width: 100%;
+ul li::before {
+  content: "\2022";
+  color: rgb(246, 19, 19);
+  font-weight: bold;
+  display: inline-block;
+  width: 1em;
+  margin-left: -1em;
 }
-
-td,
-  th {
-   max-width: 20%;
+}
+.calenderView-card{
+  padding: 14px 10px !important;
+  .border{
+  padding: 14px 10px !important;
+  }
+  .mat-icon-button{
+    width:40px !important;
   }
 
-.mat-header-cell {
-  color: #4050b5 !important;
-  font-weight: 800;
-  border-bottom-width: 1px;
-  border-bottom-color: #4050b5;
-  border-bottom-style: solid;
-}
-.mat-cell, .mat-footer-cell {
-  color: rgba(0,0,0,.87);
-}
-
-.mat-row:hover {
-  background-color: #cccccc4a;
-  cursor: pointer;
-}
-tr.mat-row, tr.mat-footer-row {
-  height: 50px !important;
-}
-
-
-}
-
+  // flex-wrap: wrap;
+  //   word-break: break-all;
+ }

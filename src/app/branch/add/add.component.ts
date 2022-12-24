@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { ApiService, ToastService, urls } from 'src/app/core';
+import { ApiService, ToastService, urls, UtilsService } from 'src/app/core';
 
 @Component({
   selector: 'app-addbranch',
@@ -19,7 +19,9 @@ export class AddbranchComponent implements OnInit {
     private location: Location,
     private apiService: ApiService,
     private toastService: ToastService,
-    private routerParams: ActivatedRoute
+    private routerParams: ActivatedRoute,
+    private utils: UtilsService
+
   ) {
     routerParams.queryParams.subscribe((params: any) => {
       if (params) {
@@ -97,6 +99,32 @@ export class AddbranchComponent implements OnInit {
       if (resp.success) {
         this.toastService.success(resp.message);
         this.location.back();
+      }
+    });
+  }
+
+  
+
+  setValue(title:any){
+    const config = {
+      url: urls.employee.list,
+      title:title
+    };
+    this.utils.dataFilter(config).then((resp) => {
+      if (resp) {
+        if(title ==='Select branch hr'){
+          this.branch.patchValue({
+            branchHR:
+              resp.firstName + ' ' + resp.fatherName + ' ' + resp.lastName,
+          });
+        }
+        else{
+          this.branch.patchValue({
+            branchHead:
+              resp.firstName + ' ' + resp.fatherName + ' ' + resp.lastName,
+          });
+        }
+       
       }
     });
   }

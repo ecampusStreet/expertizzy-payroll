@@ -1,7 +1,9 @@
 <div mat-dialog-content>
+    <h4>{{data?.title}}</h4>
 <mat-form-field class="example-full-width w-full" >
     <span matPrefix> </span>
-    <input type="text" matInput placeholder="Search here" name= "search" [(ngModel)]= "search">
+               
+    <input type="text" matInput placeholder="Search here" name= "search" [(ngModel)]= "searchText"  (input)="search()">
     <button matSuffix mat-button><mat-icon >search</mat-icon></button>
     </mat-form-field>
     <mat-list role="list">
@@ -15,7 +17,7 @@
         <button mat-raised-button color="primary" (click)="loadMore()" *ngIf="dataList.length && count > dataList.length">Load more</button>
         </div>
 </div>
-    <div mat-dialog-actions>
+    <div mat-dialog-actions class="flex justify-between">
         <button mat-button (click)="action()">Cancel </button>
-        <button mat-button  (click)="action()">Submit</button>
+        <button mat-raised-button color="primary" (click)="action()">Submit</button>
       </div>

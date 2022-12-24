@@ -70,7 +70,7 @@ export class ListComponent implements OnInit {
   deleteConfirmationpopup(event: any) {
     let data = {
       header: '',
-      message: 'Are you sure, you want to delete this department?',
+      message: 'Are you sure, you want to delete this document?',
     };
     this.utilsService.openDialog(data).then((resp) => {
       if (resp) {

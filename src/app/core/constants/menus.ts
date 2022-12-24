@@ -182,11 +182,11 @@ export const menu = [
         icon: 'edit_calendar',
         routeLink: 'financialyear',
       },
-      {
-        name: 'User role',
-        icon: 'contact_emergency',
-        routeLink: '',
-      },
+      // {
+      //   name: 'User role',
+      //   icon: 'contact_emergency',
+      //   routeLink: '',
+      // },
       {
         name: 'Role permission',
         icon: 'person_search',
@@ -370,3 +370,18 @@ export const menu = [
     ],
   },
 ];
+
+export const holiDays =[
+  {name:'January',data:[]},
+  {name:'February',data:[]},
+  {name:'March',data:[]},
+  {name:'April',data:[]},
+  {name:'May',data:[]},
+  {name:'June',data:[]},
+  {name:'July',data:[]},
+  {name:'August',data:[]},
+  {name:'September',data:[]},
+  {name:'October',data:[]},
+  {name:'November',data:[]},
+  {name:'December',data:[]},
+]

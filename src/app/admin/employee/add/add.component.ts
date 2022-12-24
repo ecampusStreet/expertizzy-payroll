@@ -439,4 +439,34 @@ export class AddComponent implements OnInit {
     })
 
   }
+
+
+  setValue(title:string) {
+    const config = {
+      url: urls.employee.list,
+      title:title
+    };
+    this.utils.dataFilter(config).then((resp) => {
+      if (resp) {
+        if(title === 'Select team leader'){
+          this.depDetail.patchValue({
+            teamLeader:
+              resp.firstName + ' ' + resp.fatherName + ' ' + resp.lastName,
+          });
+        }
+        if(title === 'Select reporting manager'){
+          this.depDetail.patchValue({
+            reportingManager:
+              resp.firstName + ' ' + resp.fatherName + ' ' + resp.lastName,
+          });
+        }
+        if(title === 'Select project manager'){
+          this.depDetail.patchValue({
+            projectManager:
+              resp.firstName + ' ' + resp.fatherName + ' ' + resp.lastName,
+          });
+        }
+      }
+    });
+  }
 }
