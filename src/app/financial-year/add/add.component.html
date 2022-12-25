@@ -2,7 +2,7 @@
   <div class="flex flex-col">
     <app-content-navbar
       [isBack]="true"
-      [title]="'Add financialYear'"
+      [title]="'Add financial year'"
     ></app-content-navbar>
 
     <!-- card design -->
@@ -10,7 +10,7 @@
       <mat-card class="p-6 bg-white px-2 mx-3 my-3">
         <div class="p-2 clear-both">
           <form [formGroup]="financialYear">
-            <div class="grid lg:grid-cols-1 gap-4">
+            <div class="grid lg:grid-cols-2 gap-4">
               <mat-form-field class="example-full-width">
                 <mat-label>Financial year</mat-label>
                 <input numbersOnly  type="text"
@@ -20,28 +20,16 @@
                   formControlName="financialYear"
                 />
               </mat-form-field>
-
-              <!-- <mat-form-field class="input-control">
-                <input matInput placeholder="" formControlName="currentYear"
-                       [matDatepicker]="date" readonly>
-                <mat-datepicker-toggle matSuffix [for]="date"></mat-datepicker-toggle>
-                <mat-datepicker #date startView="year"></mat-datepicker>
-              </mat-form-field> -->
-              
               <mat-form-field>
-                <input matInput [matDatepicker]="date" placeholder="Current year" formControlName="currentYear" readonly>
-                <mat-datepicker-toggle matSuffix [for]="date"></mat-datepicker-toggle>
-                <mat-datepicker startView="multi-year" (yearSelected)="closeDatePicker(date)" #date></mat-datepicker>
+                <input matInput placeholder="Current year"  formControlName="currentYear" >
               </mat-form-field>
-             
-
             </div>
             <div class="flex justify-end">
               <button
                 mat-raised-button
                 color="primary"
                 [disabled]="!financialYear.valid"
-                (click)="submit()"
+                (click)="action()"
               >
                 Submit
               </button>
@@ -50,7 +38,5 @@
         </div>
       </mat-card>
     </div>
-
-
   </div>
 </div>

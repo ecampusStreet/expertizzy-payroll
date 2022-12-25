@@ -12,11 +12,13 @@ import { days } from 'src/app/core/constants/data';
 export class SettingsComponent implements OnInit {
   // companyName: string = '';
   setting!: FormGroup;
-  uploadedFiles: any;
+  uploadedFiles: any ={
+    url:'',
+    isUploaded:false
+  };
   settingId: any;
   data: any;
   copyofdata:any;
-  newData: any;
   selectedDays:any;
   days =days
   selected:any;
@@ -53,18 +55,38 @@ export class SettingsComponent implements OnInit {
         [Validators.required]
       ),
     });
-    this.selected =days;
-    if(this.data && this.data.weekOff && this.data.weekOff.length){
-      this.setting.value.weekOff =this.copyofdata.weekOff;
-      console.log(this.setting.value.weekOff,"this.setting.value.weekOff");
-      const anotherList:any[]=[
-        ]
-        this.setting.value.setValue(anotherList)
+  }
+  onFileChange(e: any) {
+    let formData = new FormData();
+    if (e.target.files && e.target.files[0]) {
+      Array.from(e.target.files).forEach((file: any) => {
+        // formData.append('files',file)
+        this.uploadedFiles.url = file;
+        this.uploadedFiles.isUploaded = false;
+      });
+      if(this.data){
+        this.updateLogo();
+      }else{
+        this.submit()
+      }
+      
     }
   }
-  onFileChange(event: any) {
-    this.uploadedFiles = event.target.files[0];
-    console.log(this.uploadedFiles, 'event');
+
+  updateLogo(){
+    const formData = new FormData();
+    formData.append('logo', this.uploadedFiles.url);
+    const config ={
+      url:urls.setting.logoUpdate + this.data._id,
+      payload : formData
+    }
+    this.apiService.put(config).subscribe(resp =>{
+      if (resp.success) {
+        this.toast.success(resp.message);
+        this.uploadedFiles.url = resp.imageUrl;
+        this.update();
+      }
+    })
   }
   selectDay(day:any){
     day.selected = !day.selected;
@@ -78,19 +100,12 @@ export class SettingsComponent implements OnInit {
   }
 
   update() {
-    console.log(this.setting.value.weekOff,'this.setting.value.weekOff', this.days)
-// let data =  this.days.find()
-let selectedDays :any =[];
- this.days.filter((day:any) => {if(day.selected) {selectedDays.push(day.value)}});
-console.log(selectedDays,"selectedDays")
-    let changedItem :any={};
+        let changedItem :any={};
     if(JSON.stringify(this.copyofdata) != (JSON.stringify(this.setting.value))){
             if( this.copyofdata.companyName != this.setting.value.companyName){
                 changedItem.companyName = this.setting.value.companyName
             }
-             if( this.copyofdata.weekOff != selectedDays){
-                changedItem.weekOff =JSON.stringify(selectedDays);
-              }
+                changedItem.weekOff =this.setting.value.weekOff;
              if( this.copyofdata.brandFooter != this.setting.value.brandFooter){
                 changedItem.brandFooter =this.setting.value.brandFooter
              }
@@ -99,31 +114,26 @@ console.log(selectedDays,"selectedDays")
              }
     }
     const formData = new FormData();
-      changedItem.companyName ? formData.append('companyName',changedItem.companyName) : '';
-      changedItem.address ? formData.append('address', changedItem.address) :'';
-      changedItem.brandFooter ? formData.append('brandFooter', changedItem.brandFooter) : '';
-      changedItem.weekOff ? formData.append('weekOff', changedItem.weekOff) : '';
-      this.uploadedFiles ? formData.append('logo', this.uploadedFiles) :''
+       this.uploadedFiles.isUploaded ?'' :  changedItem.imageUrl = this.uploadedFiles.url;
     const config = {
       url: urls.setting.update + this.settingId,
-      payload: formData,
+      payload: changedItem,
     };
     this.apiService.put(config).subscribe((resp) => {
       if (resp.success) {
-        this.newData = resp.result.data;
+        this.uploadedFiles.isUploaded = true;
         this.toast.success(resp.message);
+        this.getData()
       }
     });
   }
   submit() {
     const formData = new FormData();
-    let selectedDays :any =[];
-    this.days.filter((day:any) => {if(day.selected) {selectedDays.push(day.value)}});
     formData.append('companyName', this.setting.value.companyName);
     formData.append('address', this.setting.value.address);
     formData.append('brandFooter', this.setting.value.brandFooter);
-    formData.append('weekOff', JSON.stringify(selectedDays));
-    this.uploadedFiles ? formData.append('logo', this.uploadedFiles) :''
+    // formData.append('weekOff', this.setting.value.weekOff);
+    this.uploadedFiles.isUploaded ?'' : formData.append('logo', this.uploadedFiles.url) 
     const config = {
       url:  urls.setting.create,
       payload: formData,
@@ -131,7 +141,12 @@ console.log(selectedDays,"selectedDays")
     
     this.apiService.post(config).subscribe((resp) => {
       if (resp.success) {
+        this.uploadedFiles.isUploaded = true;
         this.toast.success(resp.message);
+        if(this.setting.value.weekOff){
+          this.update();
+        }
+        this.getData();
       }
     });
   }
@@ -145,15 +160,14 @@ console.log(selectedDays,"selectedDays")
         this.settingId = resp.result.data[0]._id;
         this.data = resp.result.data[0]; 
         this.copyofdata = {...this.data};
-        console.log(this.data.weekOff,"this.data.weekOff")
-       if(this.data.weekOff){
-          this.days.forEach(day => {
-            debugger
-            resp.result.data[0].weekOff.find( (t:any) => {if(t.includes(day.value)){day.selected = true;
-              console.log(this.days,"this.days");
-            }})
-        });
-       }
+        this.data.imageUrl ? this.uploadedFiles.isUploaded = true : this.uploadedFiles.isUploaded = false;
+      //  if(this.data.weekOff){
+      //     this.days.forEach(day => {
+      //       resp.result.data[0].weekOff.find( (t:any) => {if(t.includes(day.value)){day.selected = true;
+      //         console.log(this.days,"this.days");
+      //       }})
+      //   });
+      //  }
      
         this.prepareForm();
       } else {

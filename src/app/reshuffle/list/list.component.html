@@ -1,6 +1,6 @@
 <div class="flex-auto">
   <div class="flex flex-col">
-    <app-content-navbar [isBack]="false" [title]="'reshuffle'">
+    <app-content-navbar [isBack]="false" [title]="'Reshuffle'">
     </app-content-navbar>
 
     <div class="min-h-screen bg-gray-100">
@@ -52,7 +52,7 @@
              
             </mat-expansion-panel-header>
             <div class="grid grid-cols-5 gap-3 p-3">
-              <mat-form-field class="text-xs w-full">
+              <mat-form-field class="text-base w-full">
                 <mat-label>Designation</mat-label>
                 <mat-select [(ngModel)]="emp['designationId']" (selectionChange)="onChangeStatus(emp, $event.value)">
                   <mat-option *ngFor="let status of designations" [value]="status._id ">
@@ -62,7 +62,7 @@
               </mat-form-field>
 
 
-              <mat-form-field class="text-xs w-full">
+              <mat-form-field class="text-base w-full">
                 <mat-label>Department</mat-label>
                 <mat-select [(ngModel)]="emp['departmentId']" (selectionChange)="onChangeDepartment(emp, $event.value)">
                   <mat-option *ngFor="let dep of departments" [value]="dep._id ">
@@ -71,7 +71,7 @@
                 </mat-select>
               </mat-form-field>
 
-              <mat-form-field class="text-xs w-full">
+              <mat-form-field class="text-base w-full">
                 <mat-label>Branch</mat-label>
                 <mat-select [(ngModel)]="emp['branchId']"  (selectionChange)="onChangeBranch(emp, $event.value)">
                   <mat-option *ngFor="let branch of branches" [value]="branch._id ">
@@ -80,7 +80,7 @@
                 </mat-select>
               </mat-form-field>
 
-              <mat-form-field class="text-xs w-full">
+              <mat-form-field class="text-base w-full">
                 <mat-label>Salary grade</mat-label>
                 <mat-select [(ngModel)]="emp['salaryGradeId']"  (selectionChange)="onChangeSalaryGrade(emp, $event.value)">
                   <mat-option *ngFor="let grade of salaryGrades" [value]="grade._id ">
@@ -89,7 +89,7 @@
                 </mat-select>
               </mat-form-field>
 
-              <mat-form-field class="text-xs w-full">
+              <mat-form-field class="text-base w-full">
                 <mat-label>Shift</mat-label>
                 <mat-select [(ngModel)]="emp['shiftId']"  (selectionChange)="onChangeShift(emp, $event.value)">
                   <mat-option *ngFor="let shift of shifts" [value]="shift._id ">

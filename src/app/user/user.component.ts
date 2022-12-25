@@ -1,6 +1,4 @@
 import { Component } from '@angular/core';
-import { userMenu } from '../core';
-
 @Component({
   selector: 'user-root',
   templateUrl: './user.component.html',
@@ -14,7 +12,7 @@ export class UserComponent {
     this.expand = !this.expand;
   }
 
-  lists =userMenu;
+  lists =[];
   // lists = [
     
   //   {

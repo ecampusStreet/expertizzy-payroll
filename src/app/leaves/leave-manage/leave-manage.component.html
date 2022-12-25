@@ -1,5 +1,6 @@
 <no-data-found *ngIf="!leavesList.length"></no-data-found>
 
+<app-content-navbar [isBack]="false" [title]="'Leave manage'"> </app-content-navbar>
 
 <div class="m-4 manage-leave" *ngIf="leavesList.length">
   <mat-accordion class="my-4 mx-4" *ngFor="let list of leavesList">
@@ -11,8 +12,8 @@
       <mat-expansion-panel-header class="flex custom-panel p-4">
         <div class="lg:w-3/12 w-3/12 md:w-3/12 sm:w-3/12">
           <span class="flex flex-col">
-            <small class="text-gray-500 text-xs">Name</small>
-            <span class="font-medium"
+            <small class="text-gray-500 text-base mb-2">Name</small>
+            <span class="text-base"
               >{{ list.applicantName | titlecase }}
             </span>
           </span>
@@ -20,31 +21,31 @@
 
         <div class="lg:w-2/12 w-2/12 md:w-2/12 sm:w-2/12">
           <span class="flex flex-col">
-            <small class="text-gray-500 text-xs">From date</small>
-            <span class="font-medium"
+            <small class="text-gray-500 text-base mb-2">From date</small>
+            <span class="text-base"
               >{{ list.start_date | date: "shortDate" }}
             </span>
           </span>
         </div>
         <div class="lg:w-2/12 w-2/12 md:w-2/12 sm:w-2/12">
           <span class="flex flex-col">
-            <small class="text-gray-500 text-xs">To date</small>
-            <span class="font-medium">{{
+            <small class="text-gray-500 text-base mb-2">To date</small>
+            <span class="text-base">{{
               list.end_date | date: "shortDate"
             }}</span>
           </span>
         </div>
         <div class="lg:w-2/12 w-2/12 md:w-2/12 sm:w-2/12">
           <span class="flex flex-col">
-            <small class="text-gray-500 text-xs"> No of days</small>
-            <span class="font-medium">{{ list?.leaveDays}}</span>
+            <small class="text-gray-500 text-base mb-2"> No of days</small>
+            <span class="text-base">{{ list?.leaveDays}}</span>
           </span>
         </div>
 
         <div class="lg:w-3/12 w-3/12 md:w-3/12 sm:w-3/12">
           <div class="flex flex-col">
-            <small class="text-gray-500 text-xs"> Applied on </small>
-            <span class="font-medium">
+            <small class="text-gray-500 text-base mb-2"> Applied on </small>
+            <span class="text-base">
               {{ list?.requested_at | date: "short" }}</span
             >
           </div>
@@ -54,11 +55,11 @@
       <!-- <div style="padding: 15px"> -->
       <div class="flex justify-between items-center text">
         <div class="w-9/12 lg:w-9/12 sm:w-9/12 md:w-9/12">
-          <small class="text-gray-500 text-xs mr-4">Reason :</small>
+          <small class="text-gray-500 text-base mr-4">Reason :</small>
           <span class="">{{ list.reason }}</span>
         </div>
         <div class="flex flex-row w-3/12 lg:w-3/12 sm:w-3/12 md:w-3/12">
-          <mat-form-field class="text-xs w-full">
+          <mat-form-field class="text-base w-full">
             <mat-select
               [(value)]="list.leaveStatus"
               (click)="$event.stopPropagation(); onChangeStatus($event)"

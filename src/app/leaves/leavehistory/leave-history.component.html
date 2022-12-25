@@ -1,43 +1,44 @@
 <no-data-found *ngIf="!leaveHistory.length"></no-data-found>
+<app-content-navbar [isBack]="false" [title]="'Leave history'"> </app-content-navbar>
 <div class="m-4" *ngIf="leaveHistory.length"> 
      <mat-accordion class="mx-1  panel " *ngFor=" let list of leaveHistory ; let i=index ">
         <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false" class="border">
             <mat-expansion-panel-header class=" flex p-4">
                 <div class="lg:w-3/12 w-3/12 md:w-3/12 sm:w-3/12 ">
                     <span class="flex flex-col">
-                        <small class="text-gray-500 text-xs">Leave type</small>
-                        <span class="font-medium">{{list['leaveType'] | titlecase }} </span>
+                        <small class="text-gray-500 text-base">Leave type</small>
+                        <span class="text-base">{{list['leaveType'] | titlecase }} </span>
                     </span>
                 </div>
                 <div class="lg:w-3/12 w-2/12 md:w-2/12 sm:w-2/12">
                     <span class="flex flex-col">
-                        <small class="text-gray-500 text-xs">Applied to</small>
-                        <span class="font-medium">{{list['applyToName'] | titlecase}} </span>
+                        <small class="text-gray-500 text-base">Applied to</small>
+                        <span class="text-base">{{list['applyToName'] | titlecase}} </span>
                     </span>
                 </div>
                 <div class="lg:w-3/12 w-2/12 md:w-2/12 sm:w-2/12">
                     <span class="flex flex-col">
-                        <small class="text-gray-500 text-xs"> No of days</small>
-                        <span class="font-medium">{{list['leaveDays']}}</span>
+                        <small class="text-gray-500 text-base"> No of days</small>
+                        <span class="text-base">{{list['leaveDays']}}</span>
                     </span>
                 </div>
                 <div class="lg:w-3/12 w-3/12 md:w-3/12 sm:w-3/12">
-                    <span class="text-green-500 font-medium">{{list['leaveStatus'] | titlecase}}</span>
+                    <span class="text-green-500 text-base">{{list['leaveStatus'] | titlecase}}</span>
                 </div>
             </mat-expansion-panel-header >
             <mat-divider></mat-divider>
-            <div class="flex lg:text-sm  text-xs">
-            <small class="lg:w-1/12 w-3/12 text-gray-500 text-xs">Duration :</small>
-            <span class="w-11/12 font-medium">{{list['start_date'] | date:'mediumDate'}},{{list['fromSession'] | titlecase}}  To  {{list['end_date'] | date:'mediumDate'}},{{list['toSession'] | titlecase}}  </span>   
+            <div class="flex lg:text-base  text-base">
+            <small class="lg:w-1/12 w-3/12 text-gray-500 text-base">Duration :</small>
+            <span class="w-11/12 text-base">{{list['start_date'] | date:'mediumDate'}},{{list['fromSession'] | titlecase}}  To  {{list['end_date'] | date:'mediumDate'}},{{list['toSession'] | titlecase}}  </span>   
             </div>
-            <div class="flex lg:text-sm ">
-            <small class="lg:w-1/12 w-3/12 text-gray-500 text-xs">Reason :</small>
-            <span class="w-11/12 font-medium"> {{list['reason' | titlecase ]}} </span>   
+            <div class="flex lg:text-base ">
+            <small class="lg:w-1/12 w-3/12 text-gray-500 text-base">Reason :</small>
+            <span class="w-11/12 text-base"> {{list['reason' | titlecase ]}} </span>   
             </div>
             <mat-action-row >
                     <div class="flex flex-col">
-                        <small class="text-gray-500 font-medium">Applied on </small>
-                        <span class="font-medium">{{list['requested_at'] | date:'short'}}</span>
+                        <small class="text-gray-500 text-base">Applied on </small>
+                        <span class="text-base">{{list['requested_at'] | date:'short'}}</span>
                     </div>
             </mat-action-row>
         </mat-expansion-panel>

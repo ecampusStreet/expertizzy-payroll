@@ -8,9 +8,11 @@
     <div class="min-h-screen bg-gray-100" *ngIf="showForm">
       <!-- Personal Information -->
 
-      <mat-card class="p-6 bg-white px-2 mx-3 my-3 ">
+      <mat-card class="p-6 bg-white px-2 mx-3 my-3">
         <div class="p-2 clear-both">
-          <h3>Personal information</h3>
+          <h3 class="flex justify-between">Personal information
+          <button class="mx-2" mat-raised-button color="primary" *ngIf="employeeData?._id" (click)="getDocument(employeeData)"> Documents</button>
+          </h3>
           <form [formGroup]="form">
             <div class="image-block flex justify-center">
               <div class="relative">
@@ -21,7 +23,6 @@
               <mat-icon class="pen-icon" title="Upload profile photo" (click)="uploadProfile.click()"  *ngIf="!readOnly" >edit</mat-icon>
               </div>
               </div>
-            </div>
             <div class="grid lg:grid-cols-4 md:grid-cols-2 gap-3 p-2">
               <mat-form-field class="example-full-width">
                 <mat-label> First name</mat-label>
@@ -54,7 +55,7 @@
               </mat-form-field>
               <mat-form-field class="example-full-width">
                 <mat-label>Date of birth </mat-label>
-                <input matInput [matDatepicker]="picker" readonly placeholder=" Employee date Of birth" name="dob"
+                <input matInput [matDatepicker]="picker"  (click)="picker.open()"  readonly placeholder=" Employee date Of birth" name="dob"
                   formControlName="dob">
                 <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                 <mat-datepicker #picker></mat-datepicker>
@@ -336,7 +337,7 @@
 
                     <mat-form-field class="example-full-width">
                       <mat-label>Date of joining</mat-label>
-                      <input matInput [matDatepicker]="pickerdoj"  readonly placeholder="Please enter joining date" name="doj" formControlName="doj" >
+                      <input matInput [matDatepicker]="pickerdoj"  (click)="pickerdoj.open()" readonly placeholder="Please enter joining date" name="doj" formControlName="doj" >
                       <mat-datepicker-toggle matSuffix [for]="pickerdoj"></mat-datepicker-toggle>
                       <mat-datepicker #pickerdoj></mat-datepicker>
                       <mat-error>Enter date of joining</mat-error>
@@ -392,14 +393,14 @@
 
                     <mat-form-field class="example-full-width">
                       <mat-label> Start date -- End date</mat-label>
-                      <mat-date-range-input [rangePicker]="picker">
-                        <input matStartDate placeholder=" From date -" name="start_date" formControlName="start_date"
+                      <mat-date-range-input [rangePicker]="expDate">
+                        <input matStartDate placeholder=" From date -" name="start_date" formControlName="start_date"  (click)="expDate.open()"
                           #dateRangeStart />
-                        <input matEndDate placeholder=" To date" name="end" formControlName="end_date" #dateRangeEnd />
+                        <input matEndDate placeholder=" To date" name="end" formControlName="end_date" #dateRangeEnd  (click)="expDate.open()" />
                       </mat-date-range-input>
                       <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>
-                      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                      <mat-date-range-picker #picker></mat-date-range-picker>
+                      <mat-datepicker-toggle matSuffix [for]="expDate"></mat-datepicker-toggle>
+                      <mat-date-range-picker #expDate></mat-date-range-picker>
                     </mat-form-field>
 
                   </div>

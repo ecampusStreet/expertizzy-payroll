@@ -22,6 +22,16 @@
               formControlName="total"
             />
           </mat-form-field>
+          <mat-form-field class="example-full-width">
+            <mat-label>Deduct in salary</mat-label>
+          <mat-select matNativeControl name="deductInSalary" formControlName="deductInSalary">
+            <mat-option *ngFor="let val of deductInSal" [value]="val.value">
+              {{val.label}}
+            </mat-option>
+          </mat-select>
+          <mat-error>Select your Bloodgroup.</mat-error>
+          </mat-form-field>
+          
         </div>
       </div>
     </div>

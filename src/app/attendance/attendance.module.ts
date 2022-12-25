@@ -10,6 +10,7 @@ import { FormsModule } from '@angular/forms';
 import { MatTableModule } from '@angular/material/table';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { ManageAttendanceComponent } from './manage-attendance/manage-attendance.component';
+import {MatBadgeModule} from '@angular/material/badge';
 @NgModule({
   declarations: [AttendanceComponent, ManageAttendanceComponent],
   imports: [
@@ -21,6 +22,7 @@ import { ManageAttendanceComponent } from './manage-attendance/manage-attendance
     MatDatepickerModule,
     MatTableModule,
     MatSlideToggleModule,
+    MatBadgeModule
   ],
 })
 export class AttendanceModule {}

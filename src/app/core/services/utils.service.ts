@@ -4,6 +4,7 @@ import { DataModalComponent } from 'src/app/shared/components/data-modal/data-mo
 import { GenericConfirmPopupComponent } from 'src/app/shared/components/generic-confirm-popup/generic-confirm-popup.component';
 import { menu, urls } from '../constants';
 import { ApiService } from './api/api.service';
+import { CurrentUserService } from './current-user/current-user/current-user.service';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,8 @@ import { ApiService } from './api/api.service';
 export class UtilsService {
   list =menu;
     constructor(public dialog: MatDialog,
-      private apiService : ApiService){
+      private apiService : ApiService,
+      private userService : CurrentUserService){
     }
     openDialog(payload:any): Promise<any> {
         return new Promise((resolve, reject) => {
@@ -138,4 +140,20 @@ export class UtilsService {
     })
   })
 }
+  getPermission(){
+    return new Promise((resolve, reject) => {
+      this.userService.getUser().then(resp =>{
+        const config ={
+          url:urls.roles.getId + resp.employee.role
+        }
+        this.apiService.get(config).subscribe(resp =>{
+          if(resp.success){
+            resolve(resp.data);
+          }
+        })
+      })
+    })
+
+}
+
 }

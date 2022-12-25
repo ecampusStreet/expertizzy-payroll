@@ -30,10 +30,8 @@ export class AdminComponent  implements OnInit{
       url: urls.roles.getId+id
     }
     this.api.get(config).subscribe(async resp =>{
-      console.log(resp,"resp");
       if(resp.success){
         this.permissions = resp.data;
-      this.lists =  await this.utilService.checkPermissions(this.permissions);
       } 
     })
   }

@@ -18,17 +18,17 @@
             </div>
             <div style="display: flex; justify-content: space-between;">
               <div class="max-w-[60%] p-2 flex flex-col">
-                <span class="text-grey-400 font-medium "> <i
+                <span class="text-grey-400 text-base "> <i
                     class="fa-solid fa-user mr-2"></i>{{employee?.personalDetails[0].firstName | titlecase}} {{employee?.personalDetails[0].middleName | titlecase}} {{employee?.personalDetails[0].lastName | titlecase}}</span>
-                <span class="text- font-medium "><i class="fa-solid fa-calendar-days mr-2"></i>
+                <span class="text- text-base "><i class="fa-solid fa-calendar-days mr-2"></i>
                   {{employee?.personalDetails[0].dob | date :'dd/MM/yyyy'}}</span>
-                <span class="text-grey-400 font-medium"><i class="fa-solid fa-suitcase mr-2"></i>
+                <span class="text-grey-400 text-base"><i class="fa-solid fa-suitcase mr-2"></i>
                   {{employee?.personalDetails[0].designation | titlecase}} </span>
               </div>
               <div class="p-2 flex flex-col">
-                <span class="text-grey-400 font-medium"><i
+                <span class="text-grey-400 text-base"><i
                     class="fa-solid fa-envelope mr-2"></i>{{employee?.personalDetails[0].email }}</span>
-                <span class="text-grey-400 font-medium"><i
+                <span class="text-grey-400 text-base"><i
                     class="fa-solid fa-mobile-retro mr-2"></i>{{employee?.personalDetails[0].ph_no }} </span>
               </div>
             </div>
@@ -40,7 +40,7 @@
         <mat-accordion class="mx-4 ">
           <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false" class="my-3" >
             <mat-expansion-panel-header style="background-color: #dc3545">
-              <mat-panel-title class="font-medium" style="color:white">
+              <mat-panel-title class="text-base" style="color:white">
              Personal Details
               </mat-panel-title>
             </mat-expansion-panel-header>
@@ -81,7 +81,7 @@
           </mat-expansion-panel>
           <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false" class="my-3" >
             <mat-expansion-panel-header style="background-color: #dc3545">
-              <mat-panel-title class="font-medium" style="color:white">
+              <mat-panel-title class="text-base" style="color:white">
                 Experience details
               </mat-panel-title>
             </mat-expansion-panel-header>
@@ -106,7 +106,7 @@
           <!-- Department details -->
           <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false" class="my-3" >
             <mat-expansion-panel-header style="background-color: #dc3545">
-              <mat-panel-title class="font-medium" style="color:white">
+              <mat-panel-title class="text-base" style="color:white">
                 Department details
               </mat-panel-title>
             </mat-expansion-panel-header>
@@ -131,7 +131,7 @@
           <!-- Emergency details -->
           <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false" class="my-3" >
             <mat-expansion-panel-header style="background-color: #dc3545">
-              <mat-panel-title class="font-medium" style="color:white">
+              <mat-panel-title class="text-base" style="color:white">
                 Emergency details
               </mat-panel-title>
             </mat-expansion-panel-header>
@@ -173,7 +173,7 @@
           <!-- Qualification details -->
           <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false" class="my-3" >
             <mat-expansion-panel-header style="background-color: #dc3545">
-              <mat-panel-title class="font-medium" style="color:white">
+              <mat-panel-title class="text-base" style="color:white">
                 Qualification details
               </mat-panel-title>
             </mat-expansion-panel-header>
@@ -232,7 +232,7 @@
           <!-- Account details -->
           <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false" class="my-3" >
             <mat-expansion-panel-header style="background-color: #dc3545">
-              <mat-panel-title class="font-medium" style="color:white">
+              <mat-panel-title class="text-base" style="color:white">
                 Account details
               </mat-panel-title>
             </mat-expansion-panel-header>

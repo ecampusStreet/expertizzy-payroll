@@ -7,16 +7,20 @@
   padding: 9px 24px;
 }
 
-.panel{
-  span{
-    font-size: 11px;
-  }
-    
-}
-
 .flex{
   .mat-expansion-panel-body {
     padding:0 !important;
-  } 
+  }
 }
 
+
+.mat-expansion-panel{
+  height: auto;
+  padding: 10px 0px;
+}
+
+::ng-deep{
+  *, ::before, ::after {
+    border-color: #3e51b4;
+}
+}

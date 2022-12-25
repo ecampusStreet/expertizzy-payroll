@@ -15,8 +15,8 @@ export class ListComponent implements OnInit {
   page = 1;
   employeeList = [];
   searchText: any = '';
-
-  filters = {
+  filtersLength =0;
+  filters :any= {
     department: '',
     designation: '',
     doj: '',
@@ -42,8 +42,11 @@ export class ListComponent implements OnInit {
     private routerParams: ActivatedRoute,
     private matdialog: MatDialog
   ) {
-    routerParams.queryParams.subscribe((params) => {
-      console.log(params, 'params employee');
+    routerParams.queryParams.subscribe((params:any) => {
+      if(params.type){
+        this.filters.gender = params.type;
+       this.getFilterLength();
+      }
     });
   }
 
@@ -161,8 +164,41 @@ export class ListComponent implements OnInit {
         this.filters.financialyear = result.financialyear ? result.financialyear: ''  
         this.filters.experience = result.experience ? result.experience : '';
         this.filters = result;
+        this.getFilterLength();
         this.getEmployees();
         this.employeeList = [];
+      }
+    });
+  }
+  download(){
+    const config ={
+      url: urls.reports.employee +
+      '?search=' +
+      this.searchText +
+      '&department=' +
+      this.filters.department +
+      '&designation=' +
+      this.filters.designation +
+      '&doj=' +
+      this.filters.doj +
+      '&gender=' +
+      this.filters.gender +
+      '&branch=' +
+      this.filters.branch +
+      '&financialyear=' +
+      this.filters.financialyear +
+      '&experience=' +
+      this.filters.experience,
+    }
+    this.apiService.get(config).subscribe(resp =>{
+    })
+  }
+
+  getFilterLength():any{
+    this.filtersLength =0;
+    Object.keys(this.filters).forEach(key => {
+      if (this.filters[key]) {
+        this.filtersLength =  this.filtersLength +1;
       }
     });
   }

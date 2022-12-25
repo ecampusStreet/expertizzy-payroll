@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { RestApiService } from 'src/app/services/rest-api.service';
-import { ApiService, CurrentUserService, ToastService, urls } from '../../core'
+import { ApiService, CurrentUserService, ToastService, urls, UtilsService } from '../../core'
 
 @Component({
   selector: 'app-login',
@@ -20,7 +20,8 @@ export class LoginComponent implements OnInit {
     private toast : ToastService,
     private userService : CurrentUserService,
     private router : Router,
-    private api:RestApiService
+    private api:RestApiService,
+    private utils: UtilsService
 
   ) { }
 
@@ -39,6 +40,9 @@ export class LoginComponent implements OnInit {
         this.toast.success(data.message);
         this.userService.setUser(data.data);
         // if(data.result.user.role == 'admin' ){
+          this.utils.getPermission().then((resp:any) =>{
+              localStorage.setItem('permissions',resp);
+          })
           this.router.navigate(['expertizzy/dashboard']);
         // }else{
         // this.router.navigate(['user/dashboard']);

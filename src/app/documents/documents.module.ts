@@ -10,7 +10,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatTableModule } from '@angular/material/table';
 import { SharedModule } from '../shared/shared.module';
 import {MatRadioModule} from '@angular/material/radio';
-import { FileSaverModule } from 'ngx-filesaver';
+import { CoreModule } from '../core/core.module';
+
 @NgModule({
   declarations: [
     ListComponent,
@@ -26,8 +27,7 @@ import { FileSaverModule } from 'ngx-filesaver';
     ReactiveFormsModule,
     MatDatepickerModule,
     MatRadioModule,
-    FileSaverModule
-
+    CoreModule
   ]
 })
 export class DocumentsModule { }

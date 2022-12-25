@@ -14,7 +14,7 @@ export class ListComponent implements OnInit {
 
   letterList = [];
   emp_id: any;
-  DocumentList: any;
+  documentList: any;
   selected_id: any;
   constructor(
     private router: Router,
@@ -45,9 +45,9 @@ export class ListComponent implements OnInit {
       url: urls.document.list
     }
     this.apiService.get(config).subscribe((resp) => {
-      if (resp) {
+      if (resp.success) {
         this.toastService.success(resp.message);
-        this.DocumentList = resp.data;
+        this.documentList = resp.data;
       }
     })
   }

@@ -28,13 +28,13 @@
           </div>
         </div>
 
-      <no-data-found *ngIf="!financialYear.length"></no-data-found>
+      <no-data-found *ngIf="!financialYear?.length"></no-data-found>
 
-        <div style="margin: 15px" class="example-container" *ngIf="!financialYear.length">
+        <div style="margin: 15px" class="example-container" *ngIf="financialYear?.length">
           <table
             mat-table
             [dataSource]="financialYear"
-            class="mat-elevation-z8 "
+            class="mat-elevation-z8"
           >
             <ng-container matColumnDef="financialYear">
               <th mat-header-cell  *matHeaderCellDef>Financial year</th>
@@ -48,7 +48,27 @@
                 {{ element.currentYear | titlecase }}
               </td>
             </ng-container>
-  
+            <ng-container matColumnDef="actions">
+              <th mat-header-cell class="text-right"  *matHeaderCellDef>Actions</th>
+              <td mat-cell *matCellDef="let element"  class="text-right mr-8">
+                <button
+                  mat-icon-button
+                  color="primary"
+                  aria-label="Example icon button with a vertical three dot icon"
+                  (click)="$event.stopPropagation(); action(element, 'edit')"
+                >
+                  <mat-icon>edit</mat-icon>
+                </button>
+                <button
+                  mat-icon-button
+                  color="primary"
+                  aria-label="Example icon button with a home icon"
+                  (click)="$event.stopPropagation(); action(element, 'delete')"
+                >
+                  <mat-icon>delete_forever</mat-icon>
+                </button>
+              </td>
+            </ng-container>
             <tr
               mat-header-row
               *matHeaderRowDef="displayedColumns; sticky: true"

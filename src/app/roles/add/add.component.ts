@@ -1,12 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { ApiService, permissions, ToastService, urls } from 'src/app/core';
+import { ApiService, ToastService, urls, UtilsService } from 'src/app/core';
 import {
   FormBuilder,
   FormControl,
   FormGroup,
   Validators,
 } from '@angular/forms';
-
 import { Location } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 
@@ -17,7 +16,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class AddComponent implements OnInit {
 fields :any;
-actions :any = permissions;
+actions :any =[];
 permission!: FormGroup;
 allComplete: boolean = false;
 data :any;
@@ -27,7 +26,8 @@ id :any;
     private location : Location,
     private apiService : ApiService,
     private routerParamas : ActivatedRoute,
-    private toast :ToastService
+    private toast :ToastService,
+    private utils : UtilsService
   ) { 
     routerParamas.queryParams.subscribe((param:any) =>{
       if(param.id){
@@ -37,7 +37,8 @@ id :any;
     })
   }
  
-  ngOnInit(): void {
+  async ngOnInit() {
+  this.actions= await this.utils.getPermission();
   this.prepareForm();
   }
 
@@ -45,7 +46,7 @@ id :any;
     this.id ? this.submit() : this.create();
   }
 prepareForm(){
-  this.fields =  Object.keys(permissions);
+  this.fields =  Object.keys(this.actions);
     this.permission = new FormGroup({
       roleName : new FormControl(this.data && this.data.roleName ?this.data.roleName :'',[Validators.required] )
     })

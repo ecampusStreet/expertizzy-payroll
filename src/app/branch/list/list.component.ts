@@ -40,14 +40,13 @@ export class BranchesComponent implements OnInit {
     this.branchList = [];
     this.getBranch();
   }
-
   getBranch() {
     const config = {
       url: urls.branch.list + '?limit=' +
       this.limit +
       '&page=' +
       this.page +
-      '&branch=' +
+      '&search=' +
       this.searchText,
     };
     this.apiService.get(config).subscribe((resp) => {
@@ -84,7 +83,6 @@ export class BranchesComponent implements OnInit {
     }
   }
 
-  
   deleteConfirmationpopup(event: any) {
     let data = {
       header: '',

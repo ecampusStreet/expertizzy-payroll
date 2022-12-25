@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { ApiService, employeeOverview, urls } from 'src/app/core';
+import { ApiService, urls } from 'src/app/core';
 
 @Component({
   selector: 'app-overview',
@@ -8,7 +8,7 @@ import { ApiService, employeeOverview, urls } from 'src/app/core';
   styleUrls: ['./overview.component.scss']
 })
 export class OverviewComponent implements OnInit {
-  cardData =employeeOverview;
+  cardData :any=[];
   constructor(
     private router : Router,
     private apiService : ApiService
@@ -25,7 +25,9 @@ export class OverviewComponent implements OnInit {
       url : urls.employee.overview
     }
     this.apiService.get(config).subscribe(resp =>{
-      console.log(resp,"resp");
+      if(resp.success){
+        this.cardData = resp.result;
+      }
     })
   }
 }

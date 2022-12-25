@@ -12,6 +12,7 @@ import { ApiService, ToastService } from '../../services';
 export class AddLeavetypeComponent implements OnInit {
   showForm: boolean = false;
   leaveType!: FormGroup;
+  deductInSal =[{label:'Yes',value:true},{label:'No',value:false}]
   constructor(
     public dialogRef: MatDialogRef<AddLeavetypeComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
@@ -25,9 +26,11 @@ export class AddLeavetypeComponent implements OnInit {
     this.leaveType = new FormGroup({
       typeName: new FormControl(this.data ? this.data.typeName : '',[Validators.required]),
       total: new FormControl(this.data ? this.data.total : '',[Validators.required]),
+      deductInSalary: new FormControl(this.data ? this.data.deductInSalary : '',[Validators.required]),
     });
   }
-
+  valueChange(e:any){
+  }
   action() {
     if (this.data) {
       this.update();
@@ -40,7 +43,7 @@ export class AddLeavetypeComponent implements OnInit {
       url: urls.leaves.leaveUpdate + this.data._id,
       payload: this.leaveType.value,
     };
-    config.payload.balance = this.leaveType.value.total;
+    config.payload.pendingDays = this.leaveType.value.total;
     this.apiService.put(config).subscribe((resp) => {
       if (resp.success) {
         this.toast.success(resp.message);
@@ -56,7 +59,7 @@ export class AddLeavetypeComponent implements OnInit {
         url: urls.leaves.type,
         payload: this.leaveType.value,
       };
-      config.payload.balance = this.leaveType.value.total;
+      config.payload.pendingDays = this.leaveType.value.total;
       this.apiService.post(config).subscribe((resp) => {
         if (resp.success) {
           this.toast.success(resp.message);

@@ -65,7 +65,7 @@ this.getRoles();
   deleteConfirmationpopup(event: any) {
     let data = {
       header: '',
-      message: 'Are you sure, you want to delete this roles?',
+      message: 'Are you sure, you want to delete this role?',
     };
     this.utilsService.openDialog(data).then((resp) => {
       if (resp) {
@@ -75,7 +75,7 @@ this.getRoles();
   }
   delete(event: any) {
     const config = {
-      url: urls.departments.delete + event._id,
+      url: urls.roles.delete + event._id,
     };
     this.apiService.delete(config).subscribe((resp) => {
       if (resp.success) {

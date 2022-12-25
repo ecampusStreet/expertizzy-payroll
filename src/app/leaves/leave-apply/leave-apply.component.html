@@ -1,6 +1,7 @@
+<app-content-navbar [isBack]="false" [title]="'Applying for leave'"> </app-content-navbar>
+
 <mat-card class="m-4">
   <form [formGroup]="leaveForm">
-    <h3 class="font-medium">Applying for leave</h3>
     <div class="grid grid-cols-2 gap-3">
       <mat-form-field appearance="outline">
         <mat-label>Leave type</mat-label>
@@ -26,28 +27,20 @@
       </mat-form-field>
     </div>
 
-    <div class="grid grid-cols-3 gap-3">
+    <div class="grid grid-cols-4 gap-3">
       <mat-form-field appearance="outline">
-        <mat-label> Start date -- End date</mat-label>
-        <mat-date-range-input [rangePicker]="picker" min="{{ minDate }}">
-          <input
-            matStartDate
-            placeholder=" From date -"
-            name="start_date"
-            formControlName="start_date"
-            #dateRangeStart
-          />
-          <input
-            matEndDate
-            placeholder=" To date"
-            name="end"
-            formControlName="end_date"
-            #dateRangeEnd
-          />
-        </mat-date-range-input>
-        <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>
-        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-        <mat-date-range-picker #picker></mat-date-range-picker>
+        <mat-label>Start date</mat-label>
+        <input matInput [matDatepicker]="pickersd" (dateChange)="dateChange()" (click)="pickersd.open()" readonly placeholder="Please enter start date" name="start_date" formControlName="start_date" >
+        <mat-datepicker-toggle matSuffix [for]="pickersd"></mat-datepicker-toggle>
+        <mat-datepicker #pickersd></mat-datepicker>
+        <mat-error>Enter start date</mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>End date</mat-label>
+        <input matInput [matDatepicker]="pickered"  (dateChange)="dateChange()"  (click)="pickered.open()" readonly placeholder="Please enter end  date" name="end_date" formControlName="end_date" >
+        <mat-datepicker-toggle matSuffix [for]="pickered"></mat-datepicker-toggle>
+        <mat-datepicker #pickered></mat-datepicker>
+        <mat-error>Enter start date</mat-error>
       </mat-form-field>
 
       <mat-form-field appearance="outline">
