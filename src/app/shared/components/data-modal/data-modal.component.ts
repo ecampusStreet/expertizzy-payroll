@@ -12,26 +12,24 @@ page =1;
 limit=25;
 dataList :any=[];
 selection:any;
-search : any;
+searchText='';
 count =0;
   constructor(
     public dialogRef: MatDialogRef<DataModalComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
     private apiService : ApiService
   ) { }
-
   ngOnInit(): void {
     this.getData();
   }
   getData(){
     const config={
-      url : this.data.url + '?page='+this.page+'&limit='+this.limit
+      url : this.data.url + '?page='+this.page+'&limit='+this.limit+'&search='+this.searchText
     }
     this.apiService.get(config).subscribe(dataList =>{
       if(dataList.success){
         this.dataList = this.dataList.concat(dataList.result.data);
         this.count = dataList.result.count;
-
       }
     })
   }
@@ -40,6 +38,12 @@ this.selection = event.value
   }
   action(){
     this.dialogRef.close(this.selection);
+  }
+  search(){
+    this.count = 0;
+    this.page = 1;
+    this.dataList = [];
+    this.getData();
   }
   loadMore(){
     this.count =0;

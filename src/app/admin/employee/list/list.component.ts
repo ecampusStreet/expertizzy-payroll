@@ -11,7 +11,7 @@ import { FilterFormComponent } from '../../../core/components/filter-form/filter
 export class ListComponent implements OnInit {
   title = 'Employee master data';
   count = 0;
-  limit = 15;
+  limit = 1;
   page = 1;
   employeeList = [];
   searchText: any = '';
@@ -40,7 +40,8 @@ export class ListComponent implements OnInit {
     private toast: ToastService,
     private utilsService: UtilsService,
     private routerParams: ActivatedRoute,
-    private matdialog: MatDialog
+    private matdialog: MatDialog,
+
   ) {
     routerParams.queryParams.subscribe((params:any) => {
       if(params.type){

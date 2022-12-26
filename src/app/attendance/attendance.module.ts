@@ -10,9 +10,10 @@ import { FormsModule } from '@angular/forms';
 import { MatTableModule } from '@angular/material/table';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { ManageAttendanceComponent } from './manage-attendance/manage-attendance.component';
+import { ListComponent } from './list/list.component';
 import {MatBadgeModule} from '@angular/material/badge';
 @NgModule({
-  declarations: [AttendanceComponent, ManageAttendanceComponent],
+  declarations: [AttendanceComponent, ManageAttendanceComponent, ListComponent],
   imports: [
     CommonModule,
     AttendanceRoutingModule,

@@ -319,12 +319,44 @@
                       </mat-select>
                       <mat-error>Select department</mat-error>
                     </mat-form-field>
+
                     <mat-form-field class="example-full-width">
                       <mat-label>Team Leader </mat-label>
-                      <input matInput placeholder="Please Enter Team Leader" name="teamLeader" formControlName="teamLeader">
-                      <mat-error>Please assign teamleader.</mat-error>
+                      <input
+                        matInput
+                        placeholder="Please enter team leader"
+                        name="teamLeader"
+                        formControlName="teamLeader"
+                        (click)="setValue('Select team leader')"
+                        readonly
+                      />
                     </mat-form-field>
+
                     <mat-form-field class="example-full-width">
+                      <mat-label>Reporting manager </mat-label>
+                      <input
+                        matInput
+                        placeholder="Please enter reporting manager"
+                        name="reportingManager"
+                        formControlName="reportingManager"
+                        (click)="setValue('Select reporting manager')"
+                        readonly
+                      />
+                    </mat-form-field>
+
+                    <mat-form-field class="example-full-width">
+                      <mat-label>Project manager</mat-label>
+                      <input
+                        matInput
+                        placeholder="Please enter  project manager"
+                        name="projectManager"
+                        formControlName="projectManager"
+                        (click)="setValue('Select project manager')"
+                        readonly
+                      />
+                    </mat-form-field>
+
+                    <!-- <mat-form-field class="example-full-width">
                       <mat-label>Reporting manager </mat-label>
                       <input matInput placeholder="Please Enter Team Leader" name="reportingManager" formControlName="reportingManager">
                       <mat-error>Please assign reporting manager. </mat-error>
@@ -333,7 +365,7 @@
                       <mat-label>Project manager </mat-label>
                       <input matInput placeholder="Please Enter Team Leader" name="projectManager" formControlName="projectManager">
                       <mat-error>Please assign project manager.</mat-error>
-                    </mat-form-field>
+                    </mat-form-field> -->
 
                     <mat-form-field class="example-full-width">
                       <mat-label>Date of joining</mat-label>

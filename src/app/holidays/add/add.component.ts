@@ -31,20 +31,43 @@ export class AddComponent implements OnInit {
    }
 
   ngOnInit(): void {
+    console.log(this.id,"id")
   }
 
   prepareForm(){
     this.holiday = new FormGroup ({
       onThisDay: new FormControl (this.holidayData && this.holidayData.onThisDay ? this.holidayData.onThisDay :'',[Validators.required]),
-      description:new FormControl (this.holidayData && this.holidayData.description ? this.holidayData.description :'',[Validators.required]),
+      description:new FormControl (this.holidayData && this.holidayData.description ? this.holidayData.description :''),
       fromDate:new FormControl (this.holidayData && this.holidayData.fromDate ? this.holidayData.fromDate :'',[Validators.required]),
       toDate:new FormControl (this.holidayData && this.holidayData.toDate ? this.holidayData.toDate :'',[Validators.required]),
     })
   }
 
+  action(){
+    if(this.id){
+      this.update()
+    }
+    else{
+      this.submit();
+    }
+  }
+
+  update(){
+    const config = {
+      url: urls.holiday.update + this.id ,
+      payload:this.holiday.value,
+    }
+    this.apiService.put(config).subscribe((resp) =>{
+      if(resp.success){
+        this.tostService.success(resp.message);
+        this.location.back();
+      }
+    })
+  }
+
   submit(){
     const config = {
-      url: this.id ? urls.holiday.update + this.id : urls.holiday.create ,
+      url:urls.holiday.create ,
       payload:this.holiday.value,
     }
     this.apiService.post(config).subscribe((resp) =>{

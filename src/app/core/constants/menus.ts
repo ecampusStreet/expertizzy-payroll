@@ -420,3 +420,18 @@ export const menu = [
     ],
   },
 ];
+
+export const holiDays =[
+  {name:'January',data:[]},
+  {name:'February',data:[]},
+  {name:'March',data:[]},
+  {name:'April',data:[]},
+  {name:'May',data:[]},
+  {name:'June',data:[]},
+  {name:'July',data:[]},
+  {name:'August',data:[]},
+  {name:'September',data:[]},
+  {name:'October',data:[]},
+  {name:'November',data:[]},
+  {name:'December',data:[]},
+]

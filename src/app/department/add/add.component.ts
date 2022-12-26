@@ -107,15 +107,16 @@ export class AddDepartmentComponent implements OnInit {
     });
   }
 
-  setValue() {
+  setValue(title:string) {
     const config = {
       url: urls.employee.list,
+      title:title
     };
     this.utils.dataFilter(config).then((resp) => {
       if (resp) {
         this.department.patchValue({
           departmentHead:
-            resp.firstName + ' ' + resp.middleName + ' ' + resp.lastName,
+            resp.firstName + ' ' + resp.fatherName + ' ' + resp.lastName,
         });
       }
     });

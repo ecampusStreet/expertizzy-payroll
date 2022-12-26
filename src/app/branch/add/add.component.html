@@ -19,14 +19,26 @@
 
                     <mat-form-field class="example-full-width">
                       <mat-label>Branch head</mat-label>
-                      <input matInput placeholder="Please enter name of the branch head" name="branchHead"
-                        formControlName="branchHead" >
+                      <input
+                        matInput
+                        placeholder="Please enter name of the branch head"
+                        name="branchHead"
+                        formControlName="branchHead"
+                        (click)="setValue('Select branch head')"
+                        readonly
+                      />
                     </mat-form-field>
 
                     <mat-form-field class="example-full-width">
                       <mat-label>Branch HR</mat-label>
-                      <input matInput placeholder="Please enter name of the branch hr" name="branchHR"
-                        formControlName="branchHR" >
+                      <input
+                        matInput
+                        placeholder="Please enter name of the branch hr"
+                        name="branchHR"
+                        formControlName="branchHR"
+                        (click)="setValue('Select branch hr')"
+                        readonly
+                      />
                     </mat-form-field>
 
                     <mat-form-field class="example-full-width">
