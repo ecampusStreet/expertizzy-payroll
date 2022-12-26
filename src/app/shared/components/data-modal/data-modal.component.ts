@@ -12,7 +12,7 @@ page =1;
 limit=25;
 dataList :any=[];
 selection:any;
-searchText :any='';
+searchText='';
 count =0;
   constructor(
     public dialogRef: MatDialogRef<DataModalComponent>,

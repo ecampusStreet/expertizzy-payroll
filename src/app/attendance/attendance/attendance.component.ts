@@ -6,7 +6,6 @@ import * as moment from 'moment';
 import {
   ApiService,
   CurrentUserService,
-  employeeOverview,
   ToastService,
   urls,
 } from 'src/app/core';
