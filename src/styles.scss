@@ -3,6 +3,7 @@
 html,
 body {
   height: 100%;
+  font-size: 1rem !important;
 }
 body {
   margin: 0;
@@ -49,5 +50,12 @@ body {
     padding: 4rem 4rem;
     font-size: 3rem;
     text-shadow: 5px 3px #2a2929;
+  }
+}
+::ng-deep {
+  .mat-expansion-indicator:after {
+    border-color: #0652e9;
+    height: 12px;
+    width: 12px;
   }
 }

@@ -44,61 +44,9 @@ export const adminMenu = [
   //
 ];
 
-export const userMenu = [
-  {
-    name: 'Dashboard',
-    icon: ' dashboard',
-    routeLink: 'dashboard',
-  },
-  // {
-  //   name:'Employees',
-  //   icon:'groups',
-  //   routeLink:"employees"
-  // },
-  // {
-  //   name:'Attendance',
-  //   icon:'groups',
-  //   routeLink:"attendance"
-  // },
-  {
-    name: 'Departments',
-    icon: 'badge',
-    routeLink: 'departments',
-  },
-  {
-    name: 'Events',
-    icon: 'event_note',
-    routeLink: 'events',
-  },
-  {
-    name: 'Leaves',
-    icon: 'edit_calendar',
-    routeLink: 'leaves',
-  },
-];
 
-export const employeeOverview = [
-  {
-    lable: 'Total employees',
-    count: 200,
-    icon: 'groups',
-    url: 'expertizzy/employee/list',
-  },
-  {
-    lable: 'Total female employees',
-    count: 100,
-    icon: 'woman',
-    url: 'expertizzy/employee/list',
-    paramQuery: { type: 'female' },
-  },
-  {
-    lable: 'Total male employees',
-    count: 100,
-    icon: 'man',
-    url: 'expertizzy/employee/list',
-    paramQuery: { type: 'male' },
-  },
-];
+
+
 
 export const adminDashboard = [
   {
@@ -156,67 +104,111 @@ export const menu = [
     name: 'Dashboard',
     icon: ' dashboard',
     routeLink: 'dashboard',
+    hide:false,
+    key:'dashboard',
+    permissionKey:'dashboard',
+    permissions:{}
   },
 
   {
     name: 'Administrator',
     icon: 'description',
+    hide:false,
+    permissionKey:'administrator',
+    permissions:{},
     children: [
       {
         name: 'Settings',
         icon: 'settings_applications',
         routeLink: 'settings',
+        hide:false,
+        permissionKey:'manage',
+        permissions:{},
       },
       {
         name: 'Manage branch',
         icon: 'emergency_share',
         routeLink: 'branch',
+        hide:false,
+        permissionKey:'manage',
+        permissions:{},
+        key:'branch'
       },
       {
         name: 'Gateway',
         icon: 'hub',
+        hide:false,
         routeLink: '',
+        permissionKey:'mane',
+        permissions:{},
       },
       {
         name: 'Financial year',
         icon: 'edit_calendar',
         routeLink: 'financialyear',
+        hide:false,
+        permissionKey:'manage',
+        permissions:{}
+      },
+      {
+        name: 'User role',
+        icon: 'contact_emergency',
+        routeLink: 'roles',
+        hide:false,
+        permissionKey:'manage',
+        permissions:{},
       },
       // {
-      //   name: 'User role',
-      //   icon: 'contact_emergency',
+      //   name: 'Role permission',
+      //   icon: 'person_search',
       //   routeLink: '',
+      //   hide:false,
       // },
-      {
-        name: 'Role permission',
-        icon: 'person_search',
-        routeLink: '',
-      },
     ],
   },
   {
     name: 'Employees',
     icon: 'group',
+    hide:false,
+    key:'employee',
+    permissionKey:'employee',
+    permissions:{},
     children: [
       {
         name: 'Overview',
         icon: 'engineering',
         routeLink: 'employee/overview',
+        hide:false,
+        key:'manage',
+        permissionKey:'manage',
+        permissions:{},
       },
       {
         name: 'Employee master data',
         icon: 'groups',
         routeLink: 'employee/list',
+        hide:false,
+        key:'manage',
+        permissionKey:'manage',
+        permissions:{},
       },
       {
         name: 'Attendance',
         icon: 'list_alt',
         routeLink: 'attendance',
+        hide:false,
+        key:'attendance',
+        permissionKey:'view',
+        permissions:{},
       },
       {
         name: 'Reshuffle',
         icon: 'shuffle',
+        hide:false,
+        key:'manage',
         routeLink: 'reshuffle',
+        permissionKey:'manage',
+        permissions:{},
       },
     
     ],
@@ -224,86 +216,134 @@ export const menu = [
   {
     name: 'Calendar',
     icon: 'calendar_month',
+    routeLink: '',
+    hide:false,
+    permissionKey:'calendar',
+    permissions:{},
     children:[
       {
         name: 'Notice',
         icon: 'notification_important',
         routeLink: 'notice',
+        permissionKey:'view',
+        permissions:{},
       },
       {
-        name: 'Event',
+        name: 'Events',
         icon: 'event',
         routeLink: 'event',
+        permissionKey:'view',
+        permissions:{},
       },
       {
         name: 'Holidays',
         icon: 'festival',
         routeLink: 'holiday',
+        permissionKey:'view',
+        permissions:{},
       },
     ],
   },
- 
-
   {
     name: 'Gallery',
     icon: 'collections_bookmark',
     routeLink: '',
+    hide:false,
+    permissionKey:'gallery',
+    permissions:{},
   },
   {
     name: 'Leave management',
     icon: 'fact_check',
+    hide:false,
+    key:'leaveApplication',
+    permissionKey:'leaveApplication',
+    permissions:{},
     children: [
       {
         name: 'Leave balance',
         icon: 'account_balance_wallet',
         routeLink: 'leave/balance',
+        hide:false,
+        key:'view',
+        permissionKey:'view',
+        permissions:{},
       },
       {
         name: 'Apply',
         icon: 'done',
         routeLink: 'leave/apply',
+        hide:false,
+        key:'add',
+        permissionKey:'add',
+        permissions:{},
       },
       {
         name: 'History',
         icon: 'history',
         routeLink: 'leave/history',
+        hide:false,
+        key:'view',
+        permissionKey:'view',
+        permissions:{},
       },
       {
         name: 'Manage leave',
         icon: 'manage_history',
         routeLink: 'leave/manage',
+        hide:false,
+        key:'manage',
+        permissionKey:'manage',
+        permissions:{},
       },
       {
         name: 'Leave type',
         icon: 'add',
         routeLink: 'leave/leavetype',
+        hide:false,
+        key:'leaveType',
+        permissionKey:'manage',
+        permissions:{},
       },
     ],
   },
-
   {
     name: 'Human resource',
     icon: 'diversity_3',
+    permissionKey:'humanResource',
+    permissions:{}, 
     children: [
       {
         name: 'Manage department',
         icon: 'badge',
         routeLink: 'department',
+        key:'department',
+        hide:false,
+        permissionKey:'manage',
+        permissions:{}, 
       },
       {
         name: 'Manage designastion',
         icon: 'work',
         routeLink: 'designation',
+        key:'designation',
+        hide:false,
+        permissionKey:'manage',
+        permissions:{}, 
       },
       {
         name: 'Off bording',
         icon: '',
         routeLink: '',
+        permissionKey:'manage',
+        permissions:{}, 
       },
       {
         name: ' Manage refferals',
         icon: 'manage_accounts',
         routeLink: '',
+        permissionKey:'manage',
+        permissions:{}, 
       },
     ],
   },
@@ -311,61 +351,71 @@ export const menu = [
       name: 'Documents',
       icon: 'picture_as_pdf',
       routeLink: 'document',
+      permissionKey:'documents',
+      permissions:{}, 
     },
+  // {
+  //   name: ' Employee activity',
+  //   icon: 'local_activity',
+  //   routeLink: '',
+  // },
   {
-    name: ' Employee activity',
-    icon: 'local_activity',
-    routeLink: '',
-  },
-  {
-    name: 'Work timings',
-    icon: 'timer',
-    children: [
-      {
         name: 'Shifts',
         icon: 'punch_clock',
         routeLink: 'shifts/list',
-      },
-    ],
+        permissionKey:'shift',
+        permissions:{}, 
   },
   {
     name: ' Assets management',
     icon: 'web_asset',
     routeLink: '',
+    permissionKey:'assets',
+    permissions:{}, 
   },
-  {
-    name: ' Remainder notes',
-    icon: 'note_alt',
-    routeLink: '',
-  },
-  {
-    name: ' My refferals ',
-    icon: 'transcribe',
-    routeLink: '',
-  },
+  // {
+  //   name: ' Remainder notes',
+  //   icon: 'note_alt',
+  //   routeLink: '',
+  // },
+  // {
+  //   name: ' My refferals ',
+  //   icon: 'transcribe',
+  //   routeLink: '',
+  // },
   {
     name: ' Help desk',
     icon: 'live_help',
     routeLink: '',
+    permissionKey:'helpDesk',
+    permissions:{}, 
   },
   {
     name: ' Payroll',
     icon: 'receipt_long',
+    permissionKey:'payroll',
+    permissions:{}, 
     children: [
       {
         name: 'Salary grade',
         icon: 'grade',
         routeLink: 'payroll',
+        permissionKey:'salaryGrade',
+        permissions:{}, 
       },
       {
         name: 'Make payment ',
         icon: 'payments',
         routeLink: '',
+        permissionKey:'payments',
+        permissions:{}, 
       },
       {
         name: 'Payment history',
         icon: 'account_balance_wallet',
         routeLink: '',
+        permissionKey:'paymentsHistory',
+        permissions:{}, 
       },
     ],
   },

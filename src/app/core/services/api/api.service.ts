@@ -108,10 +108,16 @@ console.log(error,"error");
         this.toastService.error('Somthing went wrong, please try again after sometime.');
       }else
       if (error.status === 401) {
-        this.toastService.error('Authentication failed, please login again');
-        this.userService.deleteUser().then(resp =>{
-          this.router.navigate(['/login'])
-        })
+        debugger
+        if(error.error.message == 'permission denied'){
+          this.toastService.error('Permission Denied');
+        }else{
+          this.toastService.error('Authentication failed, please login again');
+          this.userService.deleteUser().then(resp =>{
+            this.router.navigate(['/login'])
+          })
+        }
+        
       } else {
         this.toastService.error(error.message);
       }

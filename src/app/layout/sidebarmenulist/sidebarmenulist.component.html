@@ -9,12 +9,12 @@
     <div id="sideMenu">
     <mat-nav-list class="nav-list cursor-pointer" *ngIf="expand">
         <span *ngFor="let item of list">
+          <span *ngIf="item.permissions.accessible">
           <span *ngIf="item.children && item.children.length > 0">
             <mat-accordion>
               <mat-expansion-panel class="mat-elevation-z0">
                 <mat-expansion-panel-header  (click)="activateParentMenu(item)" [ngClass]="{'active-parent': item.name == selectedParentMenu}">
                   <mat-panel-title>
-                    <!-- Cabeceras del submenu -->
                       <mat-icon class="icon">{{item.icon}}</mat-icon>
                       <span>  {{item.name}}
                           </span>
@@ -22,18 +22,20 @@
                 </mat-expansion-panel-header>
                 <span *ngFor="let child of item.children"
                 (click)="activateChildMenu(child)"  [ngClass]="{'active-child': child.name == selectedChildMenu}">
-                  <mat-list-item [routerLink]="child.routeLink"  [ngClass]="{'active-child': child.name == selectedChildMenu}">
-                    <!-- Entradas de cada submenú  -->
+                <span   *ngIf="item.permissions[child.permissionKey]">
+                  <mat-list-item [routerLink]="[child.routeLink,child.permissions]"  [ngClass]="{'active-child': child.name == selectedChildMenu}">
                       <mat-icon class="icon">{{child.icon}}</mat-icon>
                       <span>  {{child.name}} </span>
                   </mat-list-item>
+                  </span>
                 </span>
               </mat-expansion-panel>
             </mat-accordion>
           </span>
+          </span>
           <span *ngIf="!item.children || item.children.length === 0" class="mat-elevation-z0"
           (click)="activateParentMenu(item)">
-            <mat-list-item [routerLink]="item.routeLink" [ngClass]="{'active-parent': item.name == selectedParentMenu}">
+            <mat-list-item [routerLink]="[item.routeLink,item.permissions]" [ngClass]="{'active-parent': item.name == selectedParentMenu}">
               <!-- Entradas principales -->
                 <mat-icon class="icon">{{item.icon}}</mat-icon>
                 <span>{{item.name}} </span>
@@ -46,7 +48,7 @@
         <span *ngFor="let item of list" >
           <span class="mat-elevation-z0"
           (click)="activateParentMenu(item)">
-            <mat-list-item [routerLink]="item.routeLink" [ngClass]="{'active-parent': item.name == selectedParentMenu}">
+            <mat-list-item [routerLink]="[item.routeLink,item.permissions]" [ngClass]="{'active-parent': item.name == selectedParentMenu}">
               <!-- Entradas principales -->
                 <mat-icon class="icon">{{item.icon}}</mat-icon>
                 <!-- <span>{{item.name}} </span> -->

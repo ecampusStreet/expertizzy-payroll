@@ -11,6 +11,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { ManageAttendanceComponent } from './manage-attendance/manage-attendance.component';
 import { ListComponent } from './list/list.component';
+import {MatBadgeModule} from '@angular/material/badge';
 @NgModule({
   declarations: [AttendanceComponent, ManageAttendanceComponent, ListComponent],
   imports: [
@@ -22,6 +23,7 @@ import { ListComponent } from './list/list.component';
     MatDatepickerModule,
     MatTableModule,
     MatSlideToggleModule,
+    MatBadgeModule
   ],
 })
 export class AttendanceModule {}

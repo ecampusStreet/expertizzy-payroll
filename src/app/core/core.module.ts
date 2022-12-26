@@ -18,9 +18,10 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatCardModule } from '@angular/material/card';
 import { MatDividerModule } from '@angular/material/divider';
 import { NumberDirective } from './pipes';
+import { TimeFormat } from './pipes/timeConvert';
 
 @NgModule({
-  declarations: [NumberDirective],
+  declarations: [NumberDirective,TimeFormat],
   imports: [
     CommonModule,
     SharedModule,
@@ -44,7 +45,7 @@ import { NumberDirective } from './pipes';
     FlexLayoutModule,    
   ],
   schemas: [NO_ERRORS_SCHEMA],
-  exports:[NumberDirective]
+  exports:[NumberDirective,TimeFormat]
   
 })
 export class CoreModule {}

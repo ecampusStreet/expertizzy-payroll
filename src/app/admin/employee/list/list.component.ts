@@ -15,8 +15,8 @@ export class ListComponent implements OnInit {
   page = 1;
   employeeList = [];
   searchText: any = '';
-
-  filters = {
+  filtersLength =0;
+  filters :any= {
     department: '',
     designation: '',
     doj: '',
@@ -43,8 +43,11 @@ export class ListComponent implements OnInit {
     private matdialog: MatDialog,
 
   ) {
-    routerParams.queryParams.subscribe((params) => {
-      console.log(params, 'params employee');
+    routerParams.queryParams.subscribe((params:any) => {
+      if(params.type){
+        this.filters.gender = params.type;
+       this.getFilterLength();
+      }
     });
   }
 
@@ -101,7 +104,9 @@ export class ListComponent implements OnInit {
         this.deleteConfirmationpopup(event.data);
         break;
       case 'view':
-        this.router.navigate(['expertizzy/employee/view', event.data._id]);
+        this.router.navigate(['expertizzy/employee/add'], {
+          queryParams: { id: event.data._id, readOnly:true },
+        });
         break;
     }
   }
@@ -151,7 +156,6 @@ export class ListComponent implements OnInit {
       
     });
     dialogRef.afterClosed().subscribe((result) => {
-      console.log(result)
       if (result) {
         this.filters.department = result.department ? result.department : '';
         this.filters.designation = result.designation ? result.designation : '';
@@ -161,12 +165,42 @@ export class ListComponent implements OnInit {
         this.filters.financialyear = result.financialyear ? result.financialyear: ''  
         this.filters.experience = result.experience ? result.experience : '';
         this.filters = result;
+        this.getFilterLength();
         this.getEmployees();
         this.employeeList = [];
       }
     });
   }
+  download(){
+    const config ={
+      url: urls.reports.employee +
+      '?search=' +
+      this.searchText +
+      '&department=' +
+      this.filters.department +
+      '&designation=' +
+      this.filters.designation +
+      '&doj=' +
+      this.filters.doj +
+      '&gender=' +
+      this.filters.gender +
+      '&branch=' +
+      this.filters.branch +
+      '&financialyear=' +
+      this.filters.financialyear +
+      '&experience=' +
+      this.filters.experience,
+    }
+    this.apiService.get(config).subscribe(resp =>{
+    })
+  }
 
-
-
+  getFilterLength():any{
+    this.filtersLength =0;
+    Object.keys(this.filters).forEach(key => {
+      if (this.filters[key]) {
+        this.filtersLength =  this.filtersLength +1;
+      }
+    });
+  }
 }

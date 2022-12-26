@@ -36,7 +36,11 @@ export class HeaderComponent implements OnInit {
       }
     })
   }else if(item == 'profile'){
-    this.router.navigate(['/profile']);
+    this.userService.getUser().then(resp =>{
+      this.router.navigate(['expertizzy/employee/add'], {
+        queryParams: { id: resp.employee._id},
+      });
+    })
   }
  }
 }

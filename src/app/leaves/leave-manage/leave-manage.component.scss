@@ -3,23 +3,16 @@
     padding-right: 0;
   }
 
-  .custom-panel {
-    span {
-      font-size: 10px;
-    }
-  }
 
-  .text{
-    span {
-      font-size: 11px;
-    }
-  }
   .mat-expansion-panel-header {
-    padding: 5px 24px;
+    padding: 1rem 1.5rem !important;
   }
   // .mat-action-row-custom {
   //   justify-content: flex-start;
   //   padding-top: 5px;
   //   padding-bottom: 5px;
   // }
+  .mat-expansion-panel-header {
+    height: 4rem !important;
+}
 }

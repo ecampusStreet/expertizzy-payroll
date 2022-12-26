@@ -1,32 +1,41 @@
 export const days =[
    {
       label:'Sunday',
-      value:'sunday'
+      value:0,
+      selected : false
    },
    {
       label:'Monday',
-      value:'monday',
-      checked:true
+      value:1,
+      selected : false
    },
    {
       label:'Tueday',
-      value:'tuesday'
+      value:2,
+      selected:false
    },
    {
       label:'Wednesday',
-      value:'wednesday'
+      value:3,
+      selected:false
    },
    {
       label:'Thursday',
-      value:'thursday'
+      value:4,
+      selected:false
+
    },
    {
       label:'Friday',
-      value:'friday'
+      value:5,
+      selected:false
+
    },
    {
       label:'Saturday',
-      value:'saturday'
+      value:6,
+      selected:false
+
    }
 ]
 

@@ -2,10 +2,10 @@
   <div class="flex flex-col">
     <app-content-navbar
       [isBack]="false"
-      [title]="'Settting'"
+      [title]="'Settings'"
     ></app-content-navbar>
     <!-- card design -->
-    <div class="min-h-screen bg-gray-100 my-3">
+    <div class="bg-gray-10">
       <mat-card class="p-6 bg-white px-2 mx-3 my-3">
         <div class="p-2 clear-both">
           <form [formGroup]="setting" enctype="multipart/form-data">
@@ -24,10 +24,10 @@
                     <img *ngIf="!data?.imageUrl" 
                     src="assets/images/setting-logo.jpg"
                       alt="logo"
-                      class="w-48 "
+                      class="w-48"  (click)="logoUpload.click()"
                     />
-                    <img style="object-fit: cover;" *ngIf="data?.imageUrl"  src="{{data?.imageUrl}}" alt="" class="w-48 h-48" />
-                    <span
+                    <img style="object-fit: fill;" *ngIf="data?.imageUrl"  src="{{data?.imageUrl}}" alt="" class="w-48 h-20" />
+                    <span *ngIf="data?.imageUrl"
                       mat-button
                       color="primary"
                       style="bottom: 2px; color: #3f51b5"
@@ -42,7 +42,7 @@
                     <mat-label> Company name</mat-label>
                     <input
                       matInput
-                      placeholder="Please enter companyname"
+                      placeholder="Please enter company name"
                       name="companyName "
                       formControlName="companyName"
                     />
@@ -58,17 +58,17 @@
                     />
                   </mat-form-field>
                   <mat-form-field class="example-full-width">
-                    <mat-label>brandFooter</mat-label>
+                    <mat-label>Brand footer</mat-label>
                     <input
                       matInput
-                      placeholder="Please enter brandFooter"
+                      placeholder="Please enter brand footer"
                       name="brandFooter"
                       formControlName="brandFooter"
                     />
                   </mat-form-field>
-                  <mat-form-field class="example-full-width">
+                  <mat-form-field class="example-full-width flex">
                     <mat-label>Week off days</mat-label>
-                  <mat-select [(value)]="selected"  name="days" formControlName="weekOff" multiple>
+                  <mat-select  name="days" formControlName="weekOff" multiple>
                     <mat-option *ngFor="let day of days" [value]="day.value">
                       {{day.label}}
                     </mat-option>
@@ -78,7 +78,7 @@
               </div>
             </div>
             <div class="flex justify-end">
-              <button mat-raised-button color="primary" [disabled]="!setting.valid" (click)="action()">
+              <button mat-raised-button color="primary" [disabled]="!setting.valid || selectedDays?.length" (click)="action()">
                 Submit
               </button>
             </div>

@@ -8,6 +8,7 @@ import {
   ToastService,
   CurrentUserService,
 } from 'src/app/core';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-leave-apply',
@@ -125,5 +126,19 @@ export class LeaveApplyComponent implements OnInit {
         this.router.navigate(['expertizzy/leave/history']);
       }
     });
+  }
+  dateChange(){
+    if(this.leaveForm.value.start_date && this.leaveForm.value.end_date){
+    let res =  moment(this.leaveForm.value.end_date).isSameOrAfter(this.leaveForm.value.start_date);
+    let result =  (new Date(this.leaveForm.value.end_date).getMonth()+1) == (new Date(this.leaveForm.value.start_date).getMonth()+1);
+    if(!res){
+      this.toast.error('End date should be greater than start date, please select once again');
+      this.leaveForm.controls['end_date'].reset();
+    }
+    if(!result){
+      this.toast.error('Uhh! Please make sure your leaves dates are within a same month.');
+      this.leaveForm.controls['end_date'].reset();
+    }
+    }
   }
 }

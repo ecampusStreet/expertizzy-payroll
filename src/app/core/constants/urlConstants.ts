@@ -56,6 +56,9 @@ export const urls = {
   financialYear:{
     create:'api/year',
     list:'api/year/list',
+    update:'api/year/update/',
+    delete:'api/year/delete/',
+    getById:'api/year/get/'
   },
   branch: {
     create: 'api/branch/create',
@@ -73,7 +76,8 @@ export const urls = {
   setting: {
     create:'api/setting/create',
     list:'api/setting/list/',
-    update:'api/setting/update/'
+    update:'api/setting/update/',
+    logoUpdate:'api/setting/updateLogo/'
   },
   holiday:{
     create:'api/holiday/add',
@@ -89,22 +93,30 @@ export const urls = {
     delete:'api/salarybreakups/delete/',
     getById:'api/salarybreakups/'
   },
-  reshuffle:{
-    designation:'api/designationRotation/emp/',
-    department:'api/departmentRotation/emp/',
-    branch:'api/branchRotation/emp/',
-    shift:'api/shiftRotation/emp/',
-    grade:'api/salaryGradeRotation/emp/'
-  },
-  shift:{
-    list:'api/shift/list'
-  },
-  document:{
-    create:'api/letterpdf',
-    list:'api/letterpdf/list',
-    update:'api/letterpdf/',
-    getById:'api/letterpdf/',
-    getDocument:'api/letterpdf/',
-  }
-
-};
+  roles:{
+    list:'api/role/list',
+    create:'api/role',
+    getId:'api/role/',
+    delete:'api/role/',
+},
+reshuffle:{
+  designation:'api/designationRotation/emp/',
+  department:'api/departmentRotation/emp/ ',
+  branch:'api/branchRotation/emp/',
+  shift:'api/shiftRotation/emp/',
+  grade:'api/salaryGradeRotation/emp/'
+},
+shift:{
+  list:'api/shift/list'
+},
+document:{
+  create:'api/letterpdf',
+  list:'api/letterpdf/list',
+  update:'api/letterpdf/',
+  getById:'api/letterpdf/',
+  getDocument:'api/letterpdf/',
+},
+reports:{
+  employee:'api/employeePdf'
+}
+}

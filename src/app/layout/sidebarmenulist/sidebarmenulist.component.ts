@@ -1,4 +1,5 @@
 import { Component, Input, OnInit,EventEmitter, Output } from '@angular/core';
+import { UtilsService } from 'src/app/core';
 
 @Component({
   selector: 'app-sidebarmenulist',
@@ -12,13 +13,14 @@ export class SidebarmenulistComponent implements OnInit {
   @Input() expand :boolean = true;
   @Output() toggle = new EventEmitter();
   @Input() list: any;
-  
-  constructor(
+  permissions :any;
+  constructor( private utils : UtilsService
   ) { }
 
-  ngOnInit(): void {
+  async ngOnInit() {
     this.selectedParentMenu = this.list[0].name;
-
+    this.permissions =  await this.utils.getPermission();
+    this.permissionCheck();
   }
   activateChildMenu(item:any){
     this.selectedChildMenu = item.name;
@@ -31,4 +33,11 @@ export class SidebarmenulistComponent implements OnInit {
    this.toggle.emit();
   }
 
+  permissionCheck(){
+    this.list.forEach((element:any) => {
+      if(this.permissions[element.permissionKey]){
+        element.permissions =this.permissions[element.permissionKey]
+      }
+    });
+  }
 }

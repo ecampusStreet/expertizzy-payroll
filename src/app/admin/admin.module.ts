@@ -45,9 +45,11 @@ import { PayrollModule } from '../payroll/payroll.module';
 import {MatExpansionModule} from '@angular/material/expansion';
 import { HolidaysModule } from '../holidays/holidays.module';
 import { ShiftsModule } from '../shifts/shifts.module';
+import { RolesModule } from '../roles/roles.module';
 import { DocumentsModule } from '../documents/documents.module';
 import { NoticeModule } from '../notice/notice.module';
 import { EventModule } from '../event/event.module';
+import {MatBadgeModule} from '@angular/material/badge';
 @NgModule({
   declarations: [
     AddComponent,
@@ -100,9 +102,11 @@ import { EventModule } from '../event/event.module';
     MatDatepickerModule,
     MatDialogModule,
     ShiftsModule,
+    RolesModule,
     DocumentsModule,
     NoticeModule,
-    EventModule
+    EventModule,
+    MatBadgeModule
   ],
   exports: [AdminComponent],
   providers: [

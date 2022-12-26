@@ -1,0 +1,16 @@
+.mat-row:hover {
+    background-color: #cccccc4a;
+    cursor: pointer;
+  }
+  .mat-header-cell {
+    color: #4050b5 !important;
+    font-weight: 800;
+    text-align: left;
+    border-bottom-width: 1px;
+    border-bottom-color: #4050b5;
+    border-bottom-style: solid;
+  }
+  .mat-cell, .mat-footer-cell {
+    color: rgba(0,0,0,.87);
+    text-align: left;
+  }

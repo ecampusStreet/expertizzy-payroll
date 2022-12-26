@@ -2,15 +2,18 @@ import { Injectable } from '@angular/core';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { DataModalComponent } from 'src/app/shared/components/data-modal/data-modal.component';
 import { GenericConfirmPopupComponent } from 'src/app/shared/components/generic-confirm-popup/generic-confirm-popup.component';
-import { urls } from '../constants';
+import { menu, urls } from '../constants';
 import { ApiService } from './api/api.service';
+import { CurrentUserService } from './current-user/current-user/current-user.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UtilsService {
+  list =menu;
     constructor(public dialog: MatDialog,
-      private apiService : ApiService){
+      private apiService : ApiService,
+      private userService : CurrentUserService){
     }
     openDialog(payload:any): Promise<any> {
         return new Promise((resolve, reject) => {
@@ -96,8 +99,34 @@ export class UtilsService {
           resolve(resp.result.data);
          }
       })
-    })
-  }
+      })
+    }
+      getRoles(){
+        return new Promise((resolve, reject) => {
+        const config ={
+          url:urls.roles.list
+        }
+         this.apiService.get(config).subscribe(resp =>{
+          if(resp.success){
+          resolve(resp.data);
+          }
+        })
+      })
+      }
+
+      checkPermissions(permissions:any){
+        this.list.forEach((element:any) => {
+            console.log(element,permissions[element.key],"permissions");
+            if(permissions[element.key] && permissions[element.key].accessible){
+              console.log(element.children,"element.children");
+              if(element.children && element.children.length){
+                element.children.forEach((child :any) => {
+                    console.log(child,"children" );
+                });
+              }
+            }
+        });
+      }
 
   shifts(){
     return new Promise((resolve, reject) => {
@@ -111,4 +140,20 @@ export class UtilsService {
     })
   })
 }
+  getPermission(){
+    return new Promise((resolve, reject) => {
+      this.userService.getUser().then(resp =>{
+        const config ={
+          url:urls.roles.getId + resp.employee.role
+        }
+        this.apiService.get(config).subscribe(resp =>{
+          if(resp.success){
+            resolve(resp.data);
+          }
+        })
+      })
+    })
+
+}
+
 }
