@@ -426,7 +426,7 @@
                     <mat-form-field class="example-full-width">
                       <mat-label> Start date -- End date</mat-label>
                       <mat-date-range-input [rangePicker]="expDate">
-                        <input matStartDate placeholder=" From date -" name="start_date" formControlName="start_date"  (click)="expDate.open()"
+                        <input matInput matStartDate placeholder=" From date -" name="start_date" formControlName="start_date"  (click)="expDate.open()"
                           #dateRangeStart />
                         <input matEndDate placeholder=" To date" name="end" formControlName="end_date" #dateRangeEnd  (click)="expDate.open()" />
                       </mat-date-range-input>
@@ -536,7 +536,7 @@
                     </mat-form-field>
                     <mat-form-field>
                       <mat-label>Roles</mat-label>
-                      <mat-select  matNativeControl name="role" formControlName="role" *ngIf="roles?.length">
+                      <mat-select  matNativeControl name="role" formControlName="role">
                         <mat-option *ngFor="let role of roles" [value]="role._id">
                           {{role.roleName}}
                         </mat-option>
