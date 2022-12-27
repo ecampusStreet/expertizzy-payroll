@@ -38,7 +38,7 @@ export class ManageAttendanceComponent implements OnInit {
   ];
   today = new Date();
   
-  employees = [];
+  employees:any = [];
   constructor(private matdialog: MatDialog,
     private apiService: ApiService,
     private toastService: ToastService,
@@ -53,10 +53,12 @@ export class ManageAttendanceComponent implements OnInit {
   search() {}
 
   updateAttendance(employee: any) {
+    employee.swipes.push(new Date());
     const config = {
       url: urls.attendance.update + employee._id,
       payload: {
-        isPresent:employee.isPresent
+        isPresent:employee.isPresent,
+        swpipes:employee.swipes
       },
     };
     this.apiService.put(config).subscribe((resp) =>{
@@ -97,7 +99,7 @@ export class ManageAttendanceComponent implements OnInit {
           console.log(resp,'response')
           if (resp) {
             this.toastService.success(resp.message);
-            this.employees=resp.data
+            this.employees=resp.data;
           }
         });
   }

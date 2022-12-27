@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { DataModalComponent } from 'src/app/shared/components/data-modal/data-modal.component';
 import { GenericConfirmPopupComponent } from 'src/app/shared/components/generic-confirm-popup/generic-confirm-popup.component';
+import { environment } from 'src/environments/environment';
 import { menu, urls } from '../constants';
 import { ApiService } from './api/api.service';
 import { CurrentUserService } from './current-user/current-user/current-user.service';
@@ -153,7 +154,16 @@ export class UtilsService {
         })
       })
     })
-
 }
 
+downloadPDF(pdfUrl:any) {
+   fetch(pdfUrl).then(resp => resp.arrayBuffer()).then(resp => {
+       const file = new Blob([resp], {type: 'application/pdf'});
+       const fileURL = URL.createObjectURL(file);
+       const link = document.createElement('a');
+       link.href = fileURL;
+       link.download = "FileName" + new Date() + ".pdf";
+       link.click();
+   });
+}
 }

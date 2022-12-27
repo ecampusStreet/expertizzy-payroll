@@ -1,8 +1,10 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { Router, ActivatedRoute } from '@angular/router';
-import { ApiService, ToastService, urls, UtilsService } from 'src/app/core';
+import { ApiService, CurrentUserService, ToastService, urls, UtilsService } from 'src/app/core';
+import { environment } from 'src/environments/environment';
 import { FilterFormComponent } from '../../../core/components/filter-form/filter-form.component';
+
 @Component({
   selector: 'app-employees-list',
   templateUrl: './list.component.html',
@@ -11,11 +13,12 @@ import { FilterFormComponent } from '../../../core/components/filter-form/filter
 export class ListComponent implements OnInit {
   title = 'Employee master data';
   count = 0;
-  limit = 1;
+  limit = 25;
   page = 1;
   employeeList = [];
   searchText: any = '';
   filtersLength =0;
+  myBranch :string ='';
   filters :any= {
     department: '',
     designation: '',
@@ -41,6 +44,7 @@ export class ListComponent implements OnInit {
     private utilsService: UtilsService,
     private routerParams: ActivatedRoute,
     private matdialog: MatDialog,
+    private currentUser : CurrentUserService
 
   ) {
     routerParams.queryParams.subscribe((params:any) => {
@@ -52,10 +56,16 @@ export class ListComponent implements OnInit {
   }
 
   ngOnInit(): void {
+this.currentUser.getUser().then(userData =>{
+  // if(userData){
+  //   userData.employee.
+  // }
+})
     this.getEmployees();
   }
 
   getEmployees(showToast = true) {
+    // this.current
     const config = {
       url:
         urls.employee.list +
@@ -190,9 +200,9 @@ export class ListComponent implements OnInit {
       this.filters.financialyear +
       '&experience=' +
       this.filters.experience,
+
     }
-    this.apiService.get(config).subscribe(resp =>{
-    })
+    this.utilsService.downloadPDF(environment.apiBaseUrl+ config.url);
   }
 
   getFilterLength():any{

@@ -97,11 +97,6 @@ export class ListComponent implements OnInit {
     this.selected_id = rowdata._id;
   }
   getLetter() {
-    let url =environment.apiBaseUrl + urls.document.getDocument + this.selected_id + '/emp/' + this.emp_id
-    Object.assign(document.createElement('a'), {
-    target: '_blank',
-    rel: 'noopener noreferrer',
-    href: url,
-  }).click();
+    this.utilsService.downloadPDF(environment.apiBaseUrl+ urls.document.getDocument + this.selected_id + '/emp/' + this.emp_id);
   }
 }
