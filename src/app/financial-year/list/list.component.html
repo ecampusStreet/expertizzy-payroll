@@ -21,7 +21,7 @@
               </button>
             </mat-form-field>
           </div>
-          <div class="ml-7">
+          <div class="ml-7" *ngIf="permissions?.manage || permissions?.add ">
             <button mat-raised-button color="primary" (click)="add()">
               Create financial year
             </button>
@@ -48,10 +48,11 @@
                 {{ element.currentYear | titlecase }}
               </td>
             </ng-container>
-            <ng-container matColumnDef="actions">
+            <ng-container *ngIf="permissions?.manage || permissions?.delete || permissions?.update " matColumnDef="actions">
               <th mat-header-cell class="text-right"  *matHeaderCellDef>Actions</th>
               <td mat-cell *matCellDef="let element"  class="text-right mr-8">
                 <button
+                *ngIf="permissions?.manage || permissions?.update "
                   mat-icon-button
                   color="primary"
                   aria-label="Example icon button with a vertical three dot icon"
@@ -60,6 +61,7 @@
                   <mat-icon>edit</mat-icon>
                 </button>
                 <button
+                *ngIf="permissions?.manage || permissions?.delete "
                   mat-icon-button
                   color="primary"
                   aria-label="Example icon button with a home icon"

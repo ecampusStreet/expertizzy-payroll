@@ -6,7 +6,7 @@
     <div class=" bg-gray-100">
       <div class="flex justify-end m-3 items-center">
 
-        <div class="ml-7">
+        <div class="ml-7" *ngIf="permissions?.manage || permissions?.add">
           <button mat-raised-button color="primary" (click)="add()">
             Add holidays
           </button>
@@ -58,11 +58,14 @@
                           <span class=" text-md font-medium">{{day?.onThisDay | titlecase}}</span>
                         </div> 
                       </div> 
-                      <div class="max-width:20%; width:20% sm:flex">
-                        <button class="md:w-2/4 sm:w-2/4" mat-icon-button color="primary" (click)="$event.stopPropagation(); action(day, 'edit')" >
+                      <div class="max-width:20%; width:20% sm:flex"  *ngIf="permissions?.manage || permissions?.update">
+                        <button 
+                        class="md:w-2/4 sm:w-2/4" mat-icon-button color="primary" (click)="$event.stopPropagation(); action(day, 'edit')" >
                           <mat-icon>edit</mat-icon>
                         </button>
-                        <button class="md:w-2/4 sm:w-2/4" mat-icon-button color="primary" (click)="$event.stopPropagation(); action(day, 'delete')">
+                        <button 
+                        *ngIf="permissions?.manage || permissions?.delete"
+                        class="md:w-2/4 sm:w-2/4" mat-icon-button color="primary" (click)="$event.stopPropagation(); action(day, 'delete')">
                           <mat-icon>delete</mat-icon>
                         </button>
                        

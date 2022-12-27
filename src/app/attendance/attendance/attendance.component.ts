@@ -8,6 +8,7 @@ import {
   CurrentUserService,
   ToastService,
   urls,
+  UtilsService,
 } from 'src/app/core';
 
 @Component({
@@ -20,18 +21,24 @@ export class AttendanceComponent implements OnInit {
   today = moment(new Date()).format('YYYY-MM-DD')
   emplID: any;
   todayAttendance : any ={};
+  permissions: any;
   constructor(
    
     private apiService: ApiService,
     private toastService: ToastService,
-    private userService: CurrentUserService
+    private userService: CurrentUserService,
+    private utilsService: UtilsService,
+
   ) {}
 
-  ngOnInit(): void {
+ 
+  async ngOnInit(){
     this.getTodayAttendance() ;
-    
-  }
 
+    this.permissions =  await this.utilsService.getPermission();
+    this.permissionCheck();
+
+  }
 
   getTodayAttendance() {
     const config = {
@@ -69,4 +76,11 @@ export class AttendanceComponent implements OnInit {
       }
     })
   }
+
+  permissionCheck(){
+    if(this.permissions['employee']){
+      this.permissions =this.permissions['employee'];
+      console.log(this.permissions,'bdhfsdhf')
+    }
+}
 }

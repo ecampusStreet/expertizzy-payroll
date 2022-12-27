@@ -15,13 +15,14 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./add.component.scss']
 })
 export class AddComponent implements OnInit {
-fields :any;
+fields :any =[];
 actions :any =[];
 permission!: FormGroup;
 allComplete: boolean = false;
 data :any;
 showPermission : boolean = false;
 id :any;
+roleName : string='';
   constructor(
     private location : Location,
     private apiService : ApiService,
@@ -46,10 +47,16 @@ id :any;
     this.id ? this.submit() : this.create();
   }
 prepareForm(){
-  this.fields =  Object.keys(this.actions);
-    this.permission = new FormGroup({
-      roleName : new FormControl(this.data && this.data.roleName ?this.data.roleName :'',[Validators.required] )
-    })
+ let keys =  Object.keys(this.actions);
+  keys.forEach((element:any) => {
+    console.log(element)
+    if(element != '_id' && element != 'roleName' && element != '__v' ){
+      this.fields.push(element)
+    }
+  });
+    // this.permission = new FormGroup({
+    //   roleName : new FormControl(this.data && this.data.roleName ?this.data.roleName :'',[Validators.required] )
+    // })
 }
   updateAllComplete(action:any) {
     // this.allComplete = this.task.subtasks != null && this.task.subtasks.every(t => t.completed);
@@ -77,12 +84,13 @@ prepareForm(){
         this.data = resp.data;
         this.showPermission = true;
         this.actions = resp.data;
+        this.roleName = resp.data.roleName;
         this.prepareForm();
       }
     })
   }
   submit(){
-    this.actions.roleName =this.permission.value.roleName;
+    this.actions.roleName =this.roleName;
     this.actions._id =this.id;
     const config ={
       url : urls.roles.getId +this.id,
@@ -90,10 +98,10 @@ prepareForm(){
     }
     this.apiService.put(config).subscribe(resp =>{
       console.log(resp,"sdfsdfds");
-      if(resp.data){
+      if(resp.success){
+        this.toast.success(resp.message);
         this.showPermission = true;
         this.actions = resp.data;
-        this.toast.success(resp.message);
       }
     }) 
   }
@@ -101,16 +109,16 @@ prepareForm(){
     const config ={
       url : urls.roles.create,
       payload : {
-        roleName: this.permission.value.roleName,
-       payload : this.permission.value
+        roleName: this.roleName,
+       payload : this.roleName
       }
     }
     this.apiService.post(config).subscribe(resp =>{
       console.log(resp,"resp");
-      if(resp.data){
+      if(resp.success){
         this.showPermission = true;
         this.actions = resp.data;
-        this.toast.success(resp.message);
+        this.id =resp.data._id;
       }
     })
   }

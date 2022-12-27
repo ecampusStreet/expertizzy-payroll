@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { urls } from 'src/app/core/constants/urlConstants';
 import { UtilsService } from 'src/app/core/services';
 import { ApiService } from 'src/app/core/services/api/api.service';
@@ -14,20 +14,29 @@ export class DesignationComponent implements OnInit {
   count = 0;
   limit = 5;
   page = 1;
+  permissions:any;
+  designationList = [];
+  searchText = "";
+  displayedColumns = ['designationName'];
+
+
   constructor(
     private router: Router,
     private apiService: ApiService,
     private toast: ToastService,
-    private utilsService: UtilsService
-  ) {}
+    private utilsService: UtilsService,
+    private routerParams: ActivatedRoute,
 
-  displayedColumns = ['designationName', 'actions'];
-
-  designationList = [];
-  searchText = "";
-
-  ngOnInit(): void {
+  ) {
+  }
+ 
+  async ngOnInit(){
     this.getDesignation();
+    this.permissions =  await this.utilsService.getPermission();
+    this.permissionCheck();
+    if(this.permissions?.manage || this.permissions?.delete || this.permissions?.update ){
+      this.displayedColumns.push('actions');
+    }
   }
 
   getDesignation() {
@@ -96,4 +105,11 @@ export class DesignationComponent implements OnInit {
       }
     });
   }
+
+  permissionCheck(){
+    if(this.permissions['humanResource']){
+      this.permissions =this.permissions['humanResource'];
+      console.log(this.permissions,'bdhfsdhf')
+    }
+}
 }

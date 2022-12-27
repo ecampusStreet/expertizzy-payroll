@@ -10,6 +10,7 @@ import { ApiService, ToastService, urls, UtilsService } from 'src/app/core';
 export class ListgradeComponent implements OnInit {
 searchText='';
 gradeList = [];
+permissions:any;
 count = 0;
   limit = 5;
   page = 1;
@@ -22,8 +23,14 @@ displayedColumns =['grade','from', 'to', 'actions'];
 
   ) { }
 
-  ngOnInit(): void {
+
+  async ngOnInit(){
     this.getBreakups();
+    this.permissions =  await this.utilsService.getPermission();
+    this.permissionCheck();
+    if(this.permissions?.manage || this.permissions?.delete || this.permissions?.update ){
+      this.displayedColumns.push('actions');
+    }
   }
 
   getBreakups(){
@@ -92,6 +99,13 @@ delete(event: any) {
       this.getBreakups();
     }
   });
+}
+
+permissionCheck(){
+  if(this.permissions['documents']){
+    this.permissions =this.permissions['documents'];
+    console.log( this.permissions,'document')
+  }
 }
 
 }

@@ -1,13 +1,11 @@
 
-table {
-        width: 100%;
-  }
- 
-
- .example-container{
+ .designation-container{
     height: 65vh;
     max-width: 100%;
     overflow: auto;
+
+    table {
+      width: 100%;
 }
 .mat-header-cell {
     color: #4050b5 !important;
@@ -35,5 +33,4 @@ table {
 .mat-cell.left{
   text-align: left;
 }
-
-
+}

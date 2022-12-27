@@ -5,14 +5,14 @@
         <div class="flex justify-end m-3 items-center">
           <div class="w-full">
                 <mat-card class="p-6 bg-white px-2 mx-3 my-3">
-                    <form [formGroup]="permission">
+                    <form >
                         <mat-form-field class="example-full-width">
                             <mat-label>Role name</mat-label>
                             <input
                             matInput
                             placeholder="Enter role name"
                             name="roleName"
-                            formControlName="roleName"
+                            [(ngModel)]="roleName"
                             />
                             <mat-error>Role name is required</mat-error>
                         </mat-form-field>
@@ -62,30 +62,31 @@
                                     Update</mat-checkbox>
                                     </td>
                                 </tr>
-                                <tr *ngFor="let permission of fields" class="custom-row">
+                               
+                                <tr *ngFor="let permission of fields" class="custom-row" >
                                     <td>{{permission | titlecase}}
                                         </td>
                                         <td><section class="example-section">
-                                            <mat-checkbox class="example-margin"  color="primary" [(ngModel)]="actions[permission].view"></mat-checkbox>
+                                            <mat-checkbox class="example-margin"  color="primary" [(ngModel)]="actions && actions[permission].view"></mat-checkbox>
                                           </section>
                                         </td>
                                         <td><section class="example-section">
-                                            <mat-checkbox class="example-margin"  color="primary" [(ngModel)]="actions[permission].add"></mat-checkbox>
+                                            <mat-checkbox class="example-margin"  color="primary" [(ngModel)]="actions &&  actions[permission].add"></mat-checkbox>
                                           </section>
                                         </td>
                                         <td>
                                             <section class="example-section">
-                                                <mat-checkbox class="example-margin"  color="primary" [(ngModel)]="actions[permission].delete"></mat-checkbox>
+                                                <mat-checkbox class="example-margin"  color="primary" [(ngModel)]="actions &&  actions[permission].delete"></mat-checkbox>
                                               </section>
                                         </td>
                                         <td>
                                             <section class="example-section">
-                                                <mat-checkbox class="example-margin"  color="primary" [(ngModel)]="actions[permission].manage"></mat-checkbox>
+                                                <mat-checkbox class="example-margin"  color="primary" [(ngModel)]="actions &&  actions[permission].manage"></mat-checkbox>
                                               </section>
                                         </td>
                                         <td>
                                             <section class="example-section">
-                                                <mat-checkbox class="example-margin"  color="primary" [(ngModel)]="actions[permission].update"></mat-checkbox>
+                                                <mat-checkbox class="example-margin"  color="primary" [(ngModel)]="actions &&  actions[permission].update"></mat-checkbox>
                                               </section>
                                         </td>
                                     </tr>

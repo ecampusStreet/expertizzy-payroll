@@ -6,16 +6,23 @@ import { UtilsService } from 'src/app/core';
   templateUrl: './tabledata.component.html',
   styleUrls: ['./tabledata.component.scss']
 })
-export class TabledataComponent {
+export class TabledataComponent implements OnInit {
+  @Input() permission:any;
   @Input() list:any;
   @Output() eventAction = new EventEmitter
-  displayedColumns: string[] = ['profile_photo', 'name','mobile', 'designation', 'department','actions'];
+  displayedColumns: string[] = ['profile_photo', 'name','mobile', 'designation', 'department'];
 
   constructor(private utilService :UtilsService){
 
   }
 /** Whether the number of selected elements matches the total number of rows. */
 
+ngOnInit(): void {
+  console.log(this.permission, 'persdhsdghd')
+  if(this.permission?.manage || this.permission?.delete  || this.permission?.update){
+    this.displayedColumns.push('actions')
+  }
+}
 
 action(data:any,type : any){
   let payload ={

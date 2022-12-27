@@ -10,22 +10,32 @@ import * as moment from 'moment';
 })
 export class ListsComponent implements OnInit {
   list :any;
-  displayedColumns = ['name','startTime','endTime', 'action'];
+  displayedColumns = ['name','startTime','endTime'];
   count =0;
   page = 1;
   limit =25;
+  pagePermission:any;
   momentInstance = moment;
+  permissions: any;
 
   constructor(
     private apiService :ApiService,
     private toast:ToastService,
     private utilsService:UtilsService,
     private router : Router
-  ) { }
-
-  ngOnInit(): void {
-    this.getList();
+  ) { 
+    // this.pagePermission= router.getCurrentNavigation()?.extras.state;
+    // console.log(this.pagePermission,'hjsdfs');
   }
+  async ngOnInit(){
+    this.getList();
+    this.permissions =  await this.utilsService.getPermission();
+    this.permissionCheck();
+    if(this.permissions?.manage || this.permissions?.delete || this.permissions?.update ){
+      this.displayedColumns.push('actions');
+    }
+  }
+
   loadMore() {
     this.count = 0;
     this.page = this.page + 1;
@@ -85,4 +95,11 @@ export class ListsComponent implements OnInit {
       }
     });
   }
+
+  permissionCheck(){
+    if(this.permissions['shift']){
+      this.permissions =this.permissions['shift'];
+      console.log(this.permissions,'bdhfsdhf')
+    }
+}
 }

@@ -8,9 +8,9 @@ import { ApiService, holiDays, ToastService, urls, UtilsService } from 'src/app/
   styleUrls: ['./list.component.scss']
 })
 export class ListComponent implements OnInit {
-  displayedColumns=['onThisDay','description','fromDate','toDate','actions'];
   list:any = holiDays;
   selected: any ;
+  permissions: any;
 
   constructor(
     private router: Router,
@@ -20,9 +20,12 @@ export class ListComponent implements OnInit {
 
   ) { }
 
-  ngOnInit(): void {
-    console.log(this.list,"dsgdf");
+
+
+  async ngOnInit(){
     this.getHolidays();
+    this.permissions =  await this.utilsService.getPermission();
+    this.permissionCheck();
   }
 
   add(){
@@ -98,5 +101,10 @@ this.apiService.delete(config).subscribe((resp) => {
     });
 }
 
- 
+permissionCheck(){
+  if(this.permissions['calendar']){
+    this.permissions =this.permissions['calendar'];
+    console.log(this.permissions,'bdhfsdhf')
+  }
+}
 }

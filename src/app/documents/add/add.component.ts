@@ -47,22 +47,22 @@ export class AddComponent implements OnInit {
 prepareForm(){
   this.data = new FormGroup({
     letterName: new FormControl (this.documentData && this.documentData.letterName ? this.documentData.letterName : '',[Validators.required]),
-    subject: new FormControl (this.documentData.data && this.documentData.data.subject ? this.documentData.data.subject :'',[Validators.required]),
-    bodyTitle: new FormControl(this.documentData.data && this.documentData.data.bodyTitle ? this.documentData.data.bodyTitle :'',[Validators.required]),
-    body: new FormControl(this.documentData.data && this.documentData.data.body ? this.documentData.data.body :'',[Validators.required]),
-    companyName: new FormControl(this.documentData.data && this.documentData.data.companyName ? this.documentData.data.companyName :'',[Validators.required]),
-    signRemarks: new FormControl(this.documentData.data && this.documentData.data.signRemarks ? this.documentData.data.signRemarks :'',[Validators.required]),
-    signForm: new FormControl(this.documentData.data && this.documentData.data.signForm ? this.documentData.data.signForm :'',[Validators.required]),
-    sign:new FormControl(this.documentData.data && this.documentData.data.sign ? this.documentData.data.sign :'',[]),
-    logo:new FormControl(this.documentData.data && this.documentData.data.logo ? this.documentData.data.logo :'',[]),
+    subject: new FormControl (this.documentData?.data && this.documentData?.data.subject ? this.documentData?.data.subject :'',[Validators.required]),
+    bodyTitle: new FormControl(this.documentData?.data && this.documentData?.data.bodyTitle ? this.documentData?.data.bodyTitle :'',[Validators.required]),
+    body: new FormControl(this.documentData?.data && this.documentData?.data.body ? this.documentData?.data.body :'',[Validators.required]),
+    companyName: new FormControl(this.documentData?.data && this.documentData?.data.companyName ? this.documentData?.data.companyName :'',[Validators.required]),
+    signRemarks: new FormControl(this.documentData?.data && this.documentData?.data.signRemarks ? this.documentData?.data.signRemarks :'',[Validators.required]),
+    signForm: new FormControl(this.documentData?.data && this.documentData?.data.signForm ? this.documentData?.data.signForm :'',[Validators.required]),
+    sign:new FormControl(this.documentData?.data && this.documentData?.data.sign ? this.documentData?.data.sign :'',[]),
+    logo:new FormControl(this.documentData?.data && this.documentData?.data.logo ? this.documentData?.data.logo :'',[]),
     Options: new FormGroup({
-      imgPosition: new FormControl(this.documentData.options && this.documentData.options.imgPosition ? this.documentData.options.imgPosition :'',[Validators.required]),
-      signPosition: new FormControl(this.documentData.options && this.documentData.options.signPosition ? this.documentData.options.signPosition :'',[Validators.required]),
-      subjectPosition: new FormControl(this.documentData.options && this.documentData.options.subjectPosition ? this.documentData.options.subjectPosition :'',[Validators.required]),
-      datePosition: new FormControl(this.documentData.options && this.documentData.options.datePosition ? this.documentData.options.datePosition :'',[Validators.required]),
-      reciever: new FormControl(this.documentData.options && this.documentData.options.reciever ? this.documentData.options.reciever :'',[Validators.required])
+      imgPosition: new FormControl(this.documentData?.options  && this.documentData?.options .imgPosition ? this.documentData?.options .imgPosition :'',[Validators.required]),
+      signPosition: new FormControl(this.documentData?.options  && this.documentData?.options .signPosition ? this.documentData?.options .signPosition :'',[Validators.required]),
+      subjectPosition: new FormControl(this.documentData?.options  && this.documentData?.options .subjectPosition ? this.documentData?.options .subjectPosition :'',[Validators.required]),
+      datePosition: new FormControl(this.documentData?.options  && this.documentData?.options .datePosition ? this.documentData?.options .datePosition :'',[Validators.required]),
+      reciever: new FormControl(this.documentData?.options  && this.documentData?.options .reciever ? this.documentData?.options .reciever :'',[Validators.required])
     })
-  })
+  })  
 }
 
 

@@ -14,10 +14,11 @@ import { ToastService } from 'src/app/core/services/toast.service';
 export class DepartmentsComponent implements OnInit {
   searchText="";
   list:any=[];
-  displayedColumns: string[] = ['departmentId', 'name','location','departmentHead','actions'];
+  displayedColumns: string[] = ['departmentId', 'name','location','departmentHead'];
   count =0;
   page=1;
   limit=25;
+  permissions: any;
   constructor(
     private apiService: ApiService,
     private toastService: ToastService,
@@ -25,8 +26,13 @@ export class DepartmentsComponent implements OnInit {
     private utilsService: UtilsService
   ) {}
 
-  ngOnInit(): void {
+ async ngOnInit(){
     this.getDepartments();
+    this.permissions =  await this.utilsService.getPermission();
+    this.permissionCheck();
+    if(this.permissions?.manage || this.permissions?.delete || this.permissions?.update ){
+      this.displayedColumns.push('actions');
+    }
   }
 
   search(){
@@ -101,4 +107,11 @@ export class DepartmentsComponent implements OnInit {
   noImplemented() {
     this.toastService.error('This functionality not yet implemented.');
   }
+
+  permissionCheck(){
+    if(this.permissions['humanResource']){
+      this.permissions =this.permissions['humanResource'];
+      console.log(this.permissions,'bdhfsdhf')
+    }
+}
 }

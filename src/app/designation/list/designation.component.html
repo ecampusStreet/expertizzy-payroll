@@ -21,7 +21,7 @@
             </button>
           </mat-form-field>
         </div>
-        <div class="ml-7">
+        <div class="ml-7"  *ngIf="permissions?.manage || permissions?.add ">
           <button mat-raised-button color="primary" (click)="add()">
             Create designation
           </button>
@@ -30,7 +30,7 @@
 
       <no-data-found *ngIf="!designationList.length"></no-data-found>
 
-      <div style="margin: 15px" class="example-container" *ngIf="designationList.length">
+      <div style="margin: 15px" class="designation-container" *ngIf="designationList.length">
         <table
           mat-table
           [dataSource]="designationList"
@@ -43,10 +43,11 @@
             </td>
           </ng-container>
 
-          <ng-container matColumnDef="actions">
+          <ng-container *ngIf="permissions?.manage || permissions?.delete || permissions?.update " matColumnDef="actions">
             <th mat-header-cell class="right" *matHeaderCellDef>Action</th>
             <td mat-cell class="right" *matCellDef="let element">
               <button
+              *ngIf="permissions?.manage || permissions?.update"
                 mat-icon-button
                 color="primary"
                 aria-label="Example icon button with a vertical three dot icon"
@@ -55,6 +56,7 @@
                 <mat-icon>edit</mat-icon>
               </button>
               <button
+              *ngIf="permissions?.manage || permissions?.delete"
                 mat-icon-button
                 color="primary"
                 aria-label="Example icon button with a home icon"
