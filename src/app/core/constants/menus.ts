@@ -174,15 +174,15 @@ export const menu = [
     permissionKey:'employee',
     permissions:{},
     children: [
-      {
-        name: 'Overview',
-        icon: 'engineering',
-        routeLink: 'employee/overview',
-        hide:false,
-        key:'manage',
-        permissionKey:'manage',
-        permissions:{},
-      },
+      // {
+      //   name: 'Overview',
+      //   icon: 'engineering',
+      //   routeLink: 'employee/overview',
+      //   hide:false,
+      //   key:'manage',
+      //   permissionKey:'manage',
+      //   permissions:{},
+      // },
       {
         name: 'Employee master data',
         icon: 'groups',

@@ -34,6 +34,8 @@ export class ListComponent implements OnInit {
     { title: 'MailID' },
     { title: 'MobileNo' },
   ];
+  pagePermission: any;
+  permissions: any;
   constructor(
     private router: Router,
     private apiService: ApiService,
@@ -49,10 +51,14 @@ export class ListComponent implements OnInit {
        this.getFilterLength();
       }
     });
+  
   }
 
-  ngOnInit(): void {
+  async ngOnInit(){
     this.getEmployees();
+    this.permissions =  await this.utilsService.getPermission();
+    this.permissionCheck();
+
   }
 
   getEmployees(showToast = true) {
@@ -202,5 +208,12 @@ export class ListComponent implements OnInit {
         this.filtersLength =  this.filtersLength +1;
       }
     });
+  }
+
+  permissionCheck(){
+      if(this.permissions['employee']){
+        this.permissions =this.permissions['employee'];
+        console.log(this.permissions,'bdhfsdhf')
+      }
   }
 }

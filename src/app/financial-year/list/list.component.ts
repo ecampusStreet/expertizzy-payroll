@@ -11,8 +11,9 @@ import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 export class FinancialYearComponent implements OnInit {
   searchText = '';
   financialYear: any;
-  displayedColumns = ['financialYear', 'currentYear','actions' ];
+  displayedColumns = ['financialYear', 'currentYear' ];
   page =1;
+  permissions: any;
   constructor(
     private router: Router,
     private apiService: ApiService,
@@ -21,8 +22,14 @@ export class FinancialYearComponent implements OnInit {
     private utilsService : UtilsService
   ) {}
 
-  ngOnInit(): void {
+
+  async ngOnInit(){
     this.getYear();
+    this.permissions =  await this.utilsService.getPermission();
+    this.permissionCheck();
+    if(this.permissions?.manage || this.permissions?.delete || this.permissions?.update ){
+      this.displayedColumns.push('actions');
+    }
   }
   add() {
     this.router.navigate(['expertizzy/financialyear/add']);
@@ -88,4 +95,11 @@ export class FinancialYearComponent implements OnInit {
       }
     });
   }
+
+  permissionCheck(){
+    if(this.permissions['administrator']){
+      this.permissions =this.permissions['administrator'];
+      console.log(this.permissions,'bdhfsdhf')
+    }
+}
 }

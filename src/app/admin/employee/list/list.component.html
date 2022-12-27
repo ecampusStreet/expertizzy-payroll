@@ -32,8 +32,7 @@
               <mat-icon>download</mat-icon>
             </button>
           </div>
-
-          <div class="ml-2">
+          <div class="ml-2" *ngIf="permissions?.manage || permissions?.add" >
             <button mat-raised-button color="primary" (click)="add()">
               Create employee
             </button>
@@ -42,9 +41,10 @@
       </div>
 
       <no-data-found *ngIf="!employeeList.length"></no-data-found>
-      <app-tabledata *ngIf="employeeList.length"
+      <app-tabledata *ngIf="employeeList.length && permissions"
         [list]="employeeList"
         [titles]="tableheader"
+        [permission]="permissions"
         (eventAction)="action($event)"
       ></app-tabledata>
 

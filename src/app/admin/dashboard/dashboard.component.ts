@@ -42,6 +42,7 @@ export class DashboardComponent implements OnInit {
   }
 
   async getDashboardData() {
+    this.cardData =[]; 
     const config = {
       url: urls.dashboard.list,
     };

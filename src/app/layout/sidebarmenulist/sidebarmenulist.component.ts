@@ -1,4 +1,5 @@
 import { Component, Input, OnInit,EventEmitter, Output } from '@angular/core';
+import { Router } from '@angular/router';
 import { UtilsService } from 'src/app/core';
 
 @Component({
@@ -14,7 +15,9 @@ export class SidebarmenulistComponent implements OnInit {
   @Output() toggle = new EventEmitter();
   @Input() list: any;
   permissions :any;
-  constructor( private utils : UtilsService
+  constructor( private utils : UtilsService,
+    private router: Router,
+
   ) { }
 
   async ngOnInit() {
@@ -39,5 +42,9 @@ export class SidebarmenulistComponent implements OnInit {
         element.permissions =this.permissions[element.permissionKey]
       }
     });
+  }
+
+  permission(child:any,item:any){
+   this.router.navigate(['expertizzy/' + child]);
   }
 }

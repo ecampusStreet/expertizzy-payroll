@@ -10,7 +10,7 @@ import {
   providedIn: 'root'
 })
 export class ToastService {
-    durationInSeconds = 5;
+    durationInSeconds = 4;
 constructor(private _snackBar: MatSnackBar){ }
     success(msg:any){
         this._snackBar.open(msg,'', {

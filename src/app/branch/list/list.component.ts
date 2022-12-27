@@ -20,8 +20,9 @@ export class BranchesComponent implements OnInit {
     'branchAddress',
     'contactNumber',
     'email',
-    'actions',
+    
   ];
+  permissions: any;
   
 
   constructor(
@@ -31,8 +32,14 @@ export class BranchesComponent implements OnInit {
     private utilsService: UtilsService
   ) {}
 
-  ngOnInit(): void {
+  async ngOnInit(){
     this.getBranch();
+    this.permissions =  await this.utilsService.getPermission();
+    this.permissionCheck();
+
+    if(this.permissions?.manage || this.permissions?.delete || this.permissions?.update ){
+      this.displayedColumns.push('actions');
+    }
   }
   search() {
     this.count = 0;
@@ -107,4 +114,11 @@ export class BranchesComponent implements OnInit {
       }
     });
   }
+
+  permissionCheck(){
+    if(this.permissions['administrator']){
+      this.permissions =this.permissions['administrator'];
+      console.log(this.permissions,'bdhfsdhf')
+    }
+}
 }

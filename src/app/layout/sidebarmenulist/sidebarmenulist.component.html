@@ -23,7 +23,7 @@
                 <span *ngFor="let child of item.children"
                 (click)="activateChildMenu(child)"  [ngClass]="{'active-child': child.name == selectedChildMenu}">
                 <span   *ngIf="item.permissions[child.permissionKey]">
-                  <mat-list-item [routerLink]="[child.routeLink,child.permissions]"  [ngClass]="{'active-child': child.name == selectedChildMenu}">
+                  <mat-list-item  (click)="permission(child.routeLink,item.permissions )" [ngClass]="{'active-child': child.name == selectedChildMenu}">
                       <mat-icon class="icon">{{child.icon}}</mat-icon>
                       <span>  {{child.name}} </span>
                   </mat-list-item>
@@ -35,7 +35,8 @@
           </span>
           <span *ngIf="!item.children || item.children.length === 0" class="mat-elevation-z0"
           (click)="activateParentMenu(item)">
-            <mat-list-item [routerLink]="[item.routeLink,item.permissions]" [ngClass]="{'active-parent': item.name == selectedParentMenu}">
+          <!-- [routerLink]="[item.routeLink,item.permissions]" -->
+            <mat-list-item (click)="permission(item.routeLink,item.permissions )"  [ngClass]="{'active-parent': item.name == selectedParentMenu}">
               <!-- Entradas principales -->
                 <mat-icon class="icon">{{item.icon}}</mat-icon>
                 <span>{{item.name}} </span>

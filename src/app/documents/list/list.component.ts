@@ -10,12 +10,14 @@ import { environment } from 'src/environments/environment';
 })
 export class ListComponent implements OnInit {
 
-  displayedColumns = ['Lettertype', 'actions'];
+  displayedColumns = ['Lettertype'];
 
   letterList = [];
   emp_id: any;
   documentList: any;
   selected_id: any;
+  pagePermission:any;
+  permissions: any;
   constructor(
     private router: Router,
     private routerParams: ActivatedRoute,
@@ -24,8 +26,7 @@ export class ListComponent implements OnInit {
     private utilsService: UtilsService
 
   ) {
-
-    routerParams.queryParams.subscribe((params: any) => {
+   routerParams.queryParams.subscribe((params: any) => {
       if (params) {
         this.emp_id = params.id;
       }
@@ -33,11 +34,18 @@ export class ListComponent implements OnInit {
   }
 
 
-  ngOnInit(): void {
+
+  async ngOnInit(){
     this.getDocument();
     if (this.emp_id) {
       this.displayedColumns.unshift("selectRadio");
     }
+    this.permissions =  await this.utilsService.getPermission();
+    if(this.permissions?.manage || this.permissions?.delete || this.permissions?.update ){
+      this.displayedColumns.push('actions');
+    }
+    this.permissionCheck();
+
   }
 
   getDocument() {
@@ -95,6 +103,7 @@ export class ListComponent implements OnInit {
   }
   radioSelected(rowdata: any) {
     this.selected_id = rowdata._id;
+    console.log(rowdata,'selected')
   }
   getLetter() {
     let url =environment.apiBaseUrl + urls.document.getDocument + this.selected_id + '/emp/' + this.emp_id
@@ -104,4 +113,11 @@ export class ListComponent implements OnInit {
     href: url,
   }).click();
   }
+
+  permissionCheck(){
+    if(this.permissions['documents']){
+      this.permissions =this.permissions['documents'];
+      console.log( this.permissions,'document')
+    }
+}
 }

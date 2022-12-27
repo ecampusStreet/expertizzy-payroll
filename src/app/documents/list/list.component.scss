@@ -6,10 +6,12 @@
     th,td{
         max-width: 50%;  
     }
+  .radio{
+    width:4rem;
+  }
     .mat-header-cell {
         color: #4050b5 !important;
         font-weight: 800;
-        text-align: left;
         border-bottom-width: 1px;
         border-bottom-color: #4050b5;
         border-bottom-style: solid;
@@ -18,7 +20,16 @@
         color: rgba(0,0,0,.87);
         text-align: left;
       }
-     
+
+      .mat-cell.right{
+        text-align: right;
+ 
+      }
+      .mat-header-cell.right{
+        text-align: right;
+
+      }
+
       .mat-row:hover {
         background-color: #cccccc4a;
         cursor: pointer;
