@@ -41,8 +41,9 @@ export class AttendanceComponent implements OnInit {
       if (resp.success) {
         this.toastService.success(resp.message);
         this.todayAttendance =resp.data;
-      this.buttonLabel =   this.todayAttendance.isPresent ? 'SignOut' : 'Sign in';   
-
+        if(this.todayAttendance.swipes && this.todayAttendance.swipes.length ){
+      this.buttonLabel =   this.todayAttendance.swipes.length % 2  ? 'SignOut' : 'Sign in';   
+        }
       }
       else{
         this.toastService.error(resp.message);
@@ -52,10 +53,13 @@ export class AttendanceComponent implements OnInit {
 
   action(data: any) {
     // data.isPresent = data.isPresent ? false : true;
+    this.todayAttendance.swipes.push(new Date());
+    console.log( this.todayAttendance," this.todayAttendance");
     const config = {
       url: urls.attendance.update + data._id,
       payload: {
-        isPresent:  data.isPresent = !data.isPresent 
+        isPresent:  data.isPresent = !data.isPresent ,
+        swipes: this.todayAttendance.swipes
       },
     };
     this.apiService.put(config).subscribe((resp) =>{
