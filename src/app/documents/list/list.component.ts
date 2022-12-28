@@ -37,15 +37,16 @@ export class ListComponent implements OnInit {
 
   async ngOnInit(){
     this.getDocument();
+    console.log(this.permissions);
     if (this.emp_id) {
       this.displayedColumns.unshift("selectRadio");
     }
     this.permissions =  await this.utilsService.getPermission();
+    this.permissionCheck();
     if(this.permissions?.manage || this.permissions?.delete || this.permissions?.update ){
       this.displayedColumns.push('actions');
     }
-    this.permissionCheck();
-
+    
   }
 
   getDocument() {

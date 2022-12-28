@@ -105,10 +105,10 @@ export class AddComponent implements OnInit {
       permanentAddress: new FormControl(this.employeeData && this.employeeData.personalDetails[0] ? this.employeeData.personalDetails[0].permanentAddress : '', [Validators.required]),
     });
     this.shift = new FormGroup({
-      shift : new FormControl(this.employeeData && this.employeeData.shift? this.employeeData.shift:'', []),
-      salaryGrade : new FormControl(this.employeeData && this.employeeData.salaryGrade? this.employeeData.salaryGrade:'', []),
-      role : new FormControl(this.employeeData && this.employeeData.role? this.employeeData.role:'', []),
-      annualSalary :new FormControl(this.employeeData && this.employeeData.annualSalary? this.employeeData.annualSalary:'', []),
+      shift : new FormControl(this.employeeData && this.employeeData.shift? this.employeeData.shift:'', [Validators.required]),
+      salaryGrade : new FormControl(this.employeeData && this.employeeData.salaryGrade? this.employeeData.salaryGrade:'', [Validators.required]),
+      role : new FormControl(this.employeeData && this.employeeData.role? this.employeeData.role:'', [Validators.required]),
+      annualSalary :new FormControl(this.employeeData && this.employeeData.annualSalary? this.employeeData.annualSalary:'', [Validators.required]),
     })
 
     this.kycInformation = new FormGroup({
@@ -397,6 +397,7 @@ export class AddComponent implements OnInit {
       qualificationDetails: this.qualiDetail.value.qualifications,
       kycInformation: this.kycInformation.value,
       shift: this.shift.value.shift,
+      role: this.shift.value.role,
       salaryGrade: this.shift.value.salaryGrade
     }
     if (this.id) {

@@ -32,7 +32,7 @@
         <mat-accordion class="">
 
           <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
-            <mat-expansion-panel-header>
+            <mat-expansion-panel-header class="flex justify-evenly">
               <mat-panel-title>
                 <!-- <div  style="width: 100px;"> 
                 <img *ngIf="emp?.profile_photo" src="{{emp?.profile_photo}}" style=" width: 40px;
@@ -46,8 +46,17 @@
                   <img *ngIf="!emp?.profilePic" src="assets/images/profile.jpg" class="img-cell">
                 </div>
                 <div class="mx-4">
-                  <span>{{emp['firstName'] | titlecase }} {{emp['fatherName'] | titlecase }} {{emp['lastName'] | titlecase }}</span>
-                </div>
+                  <span>
+                  {{emp['firstName'] | titlecase }} {{emp['fatherName'] | titlecase }} {{emp['lastName'] | titlecase }}
+                  </span>
+              </div>
+              </mat-panel-title>
+              <mat-panel-title class="text-left">
+              <span>{{emp['designationName'] | titlecase }}</span>
+              </mat-panel-title>
+
+              <mat-panel-title class="text-left">
+                <span>{{emp['departmentName'] | titlecase }}</span>
               </mat-panel-title>
              
             </mat-expansion-panel-header>
