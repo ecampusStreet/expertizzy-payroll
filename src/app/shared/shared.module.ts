@@ -29,6 +29,7 @@ import { NoDataFoundComponent } from '../core/components/no-data-found/no-data-f
 import { FileUploadComponent } from './components/file-upload/file-upload.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { FileListComponent } from './components/file-list/file-list.component';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
 
 @NgModule({
@@ -64,7 +65,9 @@ import { FileListComponent } from './components/file-list/file-list.component';
     MatDialogModule,
     MatRadioModule,
     FormsModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatSlideToggleModule,
+
 
   ],
   exports: [

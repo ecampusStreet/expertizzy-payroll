@@ -111,7 +111,7 @@
               <mat-form-field>
                 <textarea matInput placeholder="Enter present address" name="presentAddress"
                   formControlName="presentAddress"></textarea>
-                <mat-error>Please enete preset address</mat-error>
+                <mat-error>Please enter preset address</mat-error>
               </mat-form-field>
               <mat-form-field>
                 <textarea matInput placeholder="Enter permanent address" name="permanentAddress"
@@ -133,14 +133,14 @@
           <div class="grid  lg:grid-cols-4 md:grid-cols-2 gap-3 p-2">
             <mat-form-field class="example-full-width">
               <mat-label>Adhar number</mat-label>
-              <input matInput placeholder=" Enter adhar number" name="aadhaarNumber" formControlName="aadhaarNumber" numbersOnly>
+              <input matInput placeholder=" Enter adhar number" name="aadhaarNumber" maxlength="12" formControlName="aadhaarNumber" numbersOnly>
                 <mat-error  class="text-red-500">Adhar number is required.
                 </mat-error>
             </mat-form-field>
          
             <mat-form-field class="example-full-width">
               <mat-label>PAN number</mat-label>
-              <input matInput placeholder="Enter PAN nummber" name="panCardNumber" formControlName="panCardNumber" >
+              <input matInput placeholder="Enter PAN nummber" name="panCardNumber" maxlength="10" formControlName="panCardNumber" >
               <mat-error>PAN number is required</mat-error>
             </mat-form-field>
             <mat-form-field class="example-full-width">
@@ -198,14 +198,14 @@
 
                     <mat-form-field class="example-full-width">
                       <mat-label>Age</mat-label>
-                      <input matInput placeholder="Enter IFSC code " name="age" formControlName="age" numbersOnly
+                      <input matInput placeholder="Enter age " name="age" formControlName="age" numbersOnly
                         type="text">
                       <mat-error>Please enter age</mat-error>
                     </mat-form-field>
 
                     <mat-form-field class="example-full-width">
                       <mat-label>Phone no</mat-label>
-                      <input matInput placeholder="Employee phone number" name="contact_no" formControlName="contact_no"
+                      <input matInput placeholder="Employee phone number" name="contact_no" maxlength="10" formControlName="contact_no"
                         numbersOnly>
                       <mat-error>Phone no is required</mat-error>
                     </mat-form-field>
@@ -321,7 +321,7 @@
                     </mat-form-field>
 
                     <mat-form-field class="example-full-width">
-                      <mat-label>Team Leader </mat-label>
+                      <mat-label>Team leader </mat-label>
                       <input
                         matInput
                         placeholder="Please enter team leader"
@@ -492,10 +492,10 @@
               </mat-form-field>
 
               <mat-form-field class="example-full-width">
-                <mat-label>Uan no</mat-label>
+                <mat-label>UAN no</mat-label>
                 <input matInput placeholder="Employee UAN number" name="uan_no" formControlName="uan_no" numbersOnly
                   type="text">
-                <mat-error>Enter Uan no</mat-error>
+                <mat-error>Enter UANno</mat-error>
               </mat-form-field>
 
               <mat-form-field class="example-full-width">
@@ -561,8 +561,9 @@
             <button mat-raised-button color="" (click)="back()">Cancel</button>
             <div>
               <button class="mx-2" mat-raised-button color="primary" *ngIf="employeeData?._id" (click)="getDocument(employeeData)"> Documents</button>
+              <!-- [disabled]="!form.valid ||  !qualiDetail.valid ||  !expDetail.valid || !accDetail.valid || !depDetail.valid || !emgDetail.valid" -->
+
               <button mat-raised-button color="primary"
-                [disabled]="!form.valid ||  !qualiDetail.valid ||  !expDetail.valid || !accDetail.valid || !depDetail.valid || !emgDetail.valid"
                 (click)="submit()">Submit</button>
             </div>
           </div>

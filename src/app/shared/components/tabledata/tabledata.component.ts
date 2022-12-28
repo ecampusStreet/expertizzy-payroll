@@ -31,4 +31,8 @@ action(data:any,type : any){
   }
 this.eventAction.emit(payload);
 }
+updateAttendance(data:any){
+
+}
+
 }

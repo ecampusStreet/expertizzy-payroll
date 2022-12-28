@@ -42,6 +42,13 @@
         <button *ngIf="permission?.manage || permission?.delete" mat-icon-button color="primary" aria-label="Example icon button with a home icon" (click)="$event.stopPropagation();action(element,'delete')">
           <mat-icon>delete_forever</mat-icon>
         </button>
+        
+        <mat-slide-toggle
+                color="primary"
+                [(ngModel)]="element.false"
+                (change)="updateAttendance(element)"
+                
+              ></mat-slide-toggle>
       </td>
     </ng-container>
     <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
