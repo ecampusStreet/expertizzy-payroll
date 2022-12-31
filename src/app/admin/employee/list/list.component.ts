@@ -119,8 +119,16 @@ export class ListComponent implements OnInit {
           queryParams: { id: event.data._id, readOnly:true },
         });
         break;
+        case 'status':
+          // this.changeStatus(event.status);
+          break;
     }
   }
+
+  // changeStatus(event:any){
+  //   this.employeeList =event;
+  //   this.getEmployees();
+  // }
 
   deleteConfirmationpopup(event: any) {
     let data = {

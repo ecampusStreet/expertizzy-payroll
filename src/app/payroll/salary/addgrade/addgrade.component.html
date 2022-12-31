@@ -10,7 +10,7 @@
           <form [formGroup]="salaryGrade" *ngIf="showForm">
             <div class="flex">
               <div class="w-full">
-                <div class="grid lg:grid-cols-3 gap-4">
+                <div class="grid lg:grid-cols-2 gap-4">
                   <mat-form-field class="example-full-width">
                     <mat-label>Grade</mat-label>
                     <input matInput name="grade" formControlName="grade" />
@@ -25,6 +25,15 @@
                     <mat-label>To</mat-label>
                     <input matInput name="to" formControlName="to" />
                   </mat-form-field>
+                  <mat-form-field>
+                    <mat-label>Status</mat-label>
+                    <mat-select  matNativeControl name="status" [value]="selected" formControlName="status">
+                      <mat-option *ngFor="let status of statuses" [value]="status?.value" >
+                        {{status?.label}}
+                      </mat-option>
+                    </mat-select>
+                    <mat-error>Please Select slary grade status.</mat-error>
+                  </mat-form-field>
                 </div>
                 <div formArrayName="breakups">
                   <div class="flex justify-between items-center my-2">
@@ -37,13 +46,13 @@
                   </div>
 
                   <div *ngFor="let salary of breakups().controls; let i=index" [formGroupName]="i">
-                    <mat-card class="shadow-md border relative mb-3">
+                    <mat-card class="shadow-md border relative ">
                       <div class="flex justify-end ">
                         <span class="absolute -right-2 -top-2" (click)="removeBreakups(i)">
                           <mat-icon class="bg-black">close</mat-icon>
                         </span>
                       </div>
-                      <div class="grid lg:grid-cols-2 gap-4 mt-3">
+                      <div class="grid lg:grid-cols-2 gap-4 ">
                         <mat-form-field class="example-full-width">
                           <mat-label>Name</mat-label>
                           <input matInput name="name" formControlName="name" />
@@ -66,7 +75,7 @@
                   </div>
 
                   <div *ngFor="let deductsalary of deduction().controls; let i=index" [formGroupName]="i">
-                    <mat-card class="shadow-md border relative mb-3">
+                    <mat-card class="shadow-md border relative ">
                       <div class="flex justify-end">
                         <span  class="absolute -right-2 -top-2" (click)="removeDeduction(i)">
                           <mat-icon class="bg-black "> close</mat-icon>

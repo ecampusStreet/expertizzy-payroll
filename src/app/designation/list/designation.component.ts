@@ -17,7 +17,7 @@ export class DesignationComponent implements OnInit {
   permissions:any;
   designationList = [];
   searchText = "";
-  displayedColumns = ['designationName'];
+  displayedColumns = ['designationName','status'];
 
 
   constructor(

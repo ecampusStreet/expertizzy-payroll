@@ -11,7 +11,7 @@ import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 export class FinancialYearComponent implements OnInit {
   searchText = '';
   financialYear: any;
-  displayedColumns = ['financialYear', 'currentYear' ];
+  displayedColumns = ['financialYear', 'currentYear','status' ];
   page =1;
   permissions: any;
   constructor(

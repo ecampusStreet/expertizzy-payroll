@@ -111,7 +111,7 @@
               <mat-form-field>
                 <textarea matInput placeholder="Enter present address" name="presentAddress"
                   formControlName="presentAddress"></textarea>
-                <mat-error>Please enter preset address</mat-error>
+                <mat-error>Please enter present address</mat-error>
               </mat-form-field>
               <mat-form-field>
                 <textarea matInput placeholder="Enter permanent address" name="permanentAddress"
@@ -121,6 +121,9 @@
               <mat-slide-toggle (change)="addressChange($event)" color="primary"
                 [disabled]="!form.value.presentAddress">Use present address as permanent address</mat-slide-toggle>
             </div>
+            <!-- <div class="">
+              <mat-slide-toggle formControlName="status" (change)="statusChange($event)" color="primary"></mat-slide-toggle>
+            </div> -->
           </form>
         </div>
       </mat-card>
@@ -547,6 +550,16 @@
                       <mat-label>Annual salary</mat-label>
                       <input matInput placeholder="Employee UAN number" name="annualSalary" formControlName="annualSalary"  type="text">
                       <mat-error>Enter Annual salary</mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field>
+                      <mat-label>Status</mat-label>
+                      <mat-select  matNativeControl name="status" [value]="selected" formControlName="status">
+                        <mat-option *ngFor="let status of statuses" [value]="status?.value" >
+                          {{status?.label}}
+                        </mat-option>
+                      </mat-select>
+                      <mat-error>Please Select employee status.</mat-error>
                     </mat-form-field>
                   </div>
                 </mat-card>

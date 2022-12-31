@@ -13,7 +13,11 @@ export class DesignationaddComponent implements OnInit {
   designation!: FormGroup;
   id: string = '';
   designationData: any;
-
+  selected: any;
+  statuses :any= [
+    { value:'active',label:'Active'},
+    { value:'inactive',label:'In active'},
+    ];
   constructor(
     private location: Location,
     private apiService: ApiService,
@@ -40,8 +44,14 @@ export class DesignationaddComponent implements OnInit {
           : '',
         [Validators.required]
       ),
+      status: new FormControl(
+        this.designationData && this.designationData.status ? this.designationData.status : 'active',
+        [Validators.required]
+      ),
     });
     this.showForm = true;
+    this.selected = this.designationData?.status ? this.designationData?.status: 'active';
+
   }
 
   getDesignation() {

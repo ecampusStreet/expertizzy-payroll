@@ -40,16 +40,15 @@ roleName : string='';
  
   async ngOnInit() {
   this.actions= await this.utils.getPermission();
-  this.prepareForm();
   }
 
   action(){
     this.id ? this.submit() : this.create();
   }
 prepareForm(){
+  this.fields =[];
  let keys =  Object.keys(this.actions);
   keys.forEach((element:any) => {
-    console.log(element)
     if(element != '_id' && element != 'roleName' && element != '__v' ){
       this.fields.push(element)
     }
@@ -59,11 +58,14 @@ prepareForm(){
     // })
 }
   updateAllComplete(action:any) {
+    console.log("sdf 61");
+
     // this.allComplete = this.task.subtasks != null && this.task.subtasks.every(t => t.completed);
     this.allComplete = this.fields.every((t:any) => t.true);
   }
 
   someComplete(action:any) {
+    console.log("sdf");
     return this.fields.filter((field :any) => this.actions[field][action]).length > 0 && !this.allComplete;
   }
 
@@ -85,6 +87,7 @@ prepareForm(){
         this.showPermission = true;
         this.actions = resp.data;
         this.roleName = resp.data.roleName;
+        console.log("8888888", this.actions);
         this.prepareForm();
       }
     })
@@ -102,6 +105,7 @@ prepareForm(){
         this.toast.success(resp.message);
         this.showPermission = true;
         this.actions = resp.data;
+        this.prepareForm();
       }
     }) 
   }
@@ -119,6 +123,7 @@ prepareForm(){
         this.showPermission = true;
         this.actions = resp.data;
         this.id =resp.data._id;
+        this.prepareForm();
       }
     })
   }

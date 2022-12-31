@@ -43,9 +43,15 @@
               </td>
             </ng-container>
             <ng-container matColumnDef="currentYear">
-              <th mat-header-cell class="text-right"  *matHeaderCellDef>Current year</th>
-              <td mat-cell class="text-right mr-8"  *matCellDef="let element">
+              <th mat-header-cell class=""  *matHeaderCellDef>Current year</th>
+              <td mat-cell class=""  *matCellDef="let element">
                 {{ element.currentYear | titlecase }}
+              </td>
+            </ng-container>
+            <ng-container matColumnDef="status">
+              <th mat-header-cell *matHeaderCellDef>Status</th>
+              <td mat-cell *matCellDef="let element" [style.color]="element?.status =='active' ? 'green' :'red' ">
+                {{ element?.status =='active' ? 'Active': 'In active'}}
               </td>
             </ng-container>
             <ng-container *ngIf="permissions?.manage || permissions?.delete || permissions?.update " matColumnDef="actions">

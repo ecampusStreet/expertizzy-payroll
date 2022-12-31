@@ -20,7 +20,7 @@ export class BranchesComponent implements OnInit {
     'branchAddress',
     'contactNumber',
     'email',
-    
+    'status'
   ];
   permissions: any;
   

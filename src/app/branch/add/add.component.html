@@ -57,6 +57,15 @@
                         <input matInput placeholder="Please enter email of the branch" name="email"
                           formControlName="email">
                       </mat-form-field>
+                      <mat-form-field>
+                        <mat-label>Status</mat-label>
+                        <mat-select  matNativeControl name="status" [value]="selected" formControlName="status">
+                          <mat-option *ngFor="let status of statuses" [value]="status?.value" >
+                            {{status?.label}}
+                          </mat-option>
+                        </mat-select>
+                        <mat-error>Please Select branch status.</mat-error>
+                      </mat-form-field>
                   </div>
                 </div>
               </div>

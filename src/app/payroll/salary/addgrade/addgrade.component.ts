@@ -15,6 +15,11 @@ export class AddgradeComponent implements OnInit {
   showForm:boolean=true;
   salaryData: any;
   id:string='';
+  statuses :any= [
+    { value:'active',label:'Active'},
+    { value:'inactive',label:'In active'},
+    ];
+  selected: any;
   constructor(
     private routerParams: ActivatedRoute,
     private location: Location,
@@ -29,25 +34,25 @@ export class AddgradeComponent implements OnInit {
           this.prepareForm();
         }
       });
-
-    
      }
 
   ngOnInit(): void {
   }
   prepareForm(){
     this.salaryGrade = this.fb.group({
-      grade: [this.salaryData && this.salaryData.grade ?  this.salaryData.grade : '',Validators.required],
-      from:[this.salaryData && this.salaryData.from ?  this.salaryData.from  : ''],
-      to:[this.salaryData && this.salaryData.to ?  this.salaryData.to  : '',Validators.required],
+      grade: [this.salaryData && this.salaryData?.grade ?  this.salaryData?.grade : '',Validators.required],
+      from:[this.salaryData && this.salaryData?.from ?  this.salaryData?.from  : '',Validators.required],
+      to:[this.salaryData && this.salaryData?.to ?  this.salaryData?.to  : '',Validators.required],
+      status:[this.salaryData && this.salaryData?.status ?  this.salaryData?.status  : 'active'],
       breakups: this.fb.array([]),
       deduction: this.fb.array([]),
 
     });
-    console.log(this.salaryGrade,"this.salaryGrade")
     // this.showForm = true;
+    this.selected = this.salaryData?.status ? this.salaryData?.status: 'active';
     this.newbreakups();
     this.newdeduction();
+
   }
 
 

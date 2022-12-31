@@ -14,7 +14,7 @@ import { ToastService } from 'src/app/core/services/toast.service';
 export class DepartmentsComponent implements OnInit {
   searchText="";
   list:any=[];
-  displayedColumns: string[] = ['departmentId', 'name','location','departmentHead'];
+  displayedColumns: string[] = ['departmentId', 'name','location','departmentHead','status'];
   count =0;
   page=1;
   limit=25;
