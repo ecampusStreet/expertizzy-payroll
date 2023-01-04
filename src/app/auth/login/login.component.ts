@@ -12,7 +12,7 @@ import { ApiService, CurrentUserService, ToastService, urls, UtilsService } from
 export class LoginComponent implements OnInit {
   loginValid : boolean = false;
   user:any={};
-
+  hide=true;
   auth:FormGroup | undefined;
 
   constructor(
@@ -39,14 +39,10 @@ export class LoginComponent implements OnInit {
       if(data.success){
         this.toast.success(data.message);
         this.userService.setUser(data.data);
-        // if(data.result.user.role == 'admin' ){
           this.utils.getPermission().then((resp:any) =>{
               localStorage.setItem('permissions',resp);
           })
           this.router.navigate(['expertizzy/dashboard']);
-        // }else{
-        // this.router.navigate(['user/dashboard']);
-        // }
       }else{
         if(data.message){
           this.toast.error(data.message);

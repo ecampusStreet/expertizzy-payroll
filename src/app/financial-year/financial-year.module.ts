@@ -9,7 +9,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatTableModule } from '@angular/material/table';
 import { SharedModule } from '../shared/shared.module';
 import { MatDatepickerModule } from '@angular/material/datepicker';
-
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 @NgModule({
   declarations: [AddfinancialYearComponent, FinancialYearComponent],
   imports: [CommonModule,
@@ -19,7 +19,8 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
     MatTableModule,
     MatFormFieldModule,
     ReactiveFormsModule,
-    MatDatepickerModule
+    MatDatepickerModule,
+    MatSlideToggleModule
   ],
 })
 export class FinancialYearModule {}

@@ -143,7 +143,7 @@ export class AddComponent implements OnInit {
       projectManager: new FormControl(this.employeeData && this.employeeData.departmentDetails[0] ? this.employeeData.departmentDetails[0].projectManager : '', []),
       departmentId: new FormControl(this.employeeData && this.employeeData.departmentDetails[0] ? this.employeeData.departmentDetails[0].departmentId : '', []),
       designationId: new FormControl(this.employeeData && this.employeeData.departmentDetails[0] ? this.employeeData.departmentDetails[0].designationId : '', []),
-      designationName: new FormControl(this.employeeData && this.employeeData.departmentDetails[0] ? this.employeeData.departmentDetails[0].dept_name : '', []),
+      designationName: new FormControl(this.employeeData && this.employeeData.departmentDetails[0] ? this.employeeData.departmentDetails[0].designationName: '', []),
       financialYear: new FormControl(this.employeeData && this.employeeData.departmentDetails[0] ? this.employeeData.departmentDetails[0].financialYear : '', []),
       branchId: new FormControl(this.employeeData && this.employeeData.departmentDetails[0] ? this.employeeData.departmentDetails[0].branchId : '', []),
       branch: new FormControl(this.employeeData && this.employeeData.departmentDetails[0] ? this.employeeData.departmentDetails[0].branch : '', []),
@@ -416,8 +416,8 @@ export class AddComponent implements OnInit {
       shift: this.shift.value.shift,
       role: this.shift.value.role,
       salaryGrade: this.shift.value.salaryGrade,
-      status:this.shift.value.status
-
+      status:this.shift.value.status,
+      annualSalary : this.shift.value.annualSalary
     }
  
     if (this.id) {

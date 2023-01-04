@@ -1,6 +1,6 @@
 <div class="flex-auto">
     <div class="flex flex-col">
-      <app-content-navbar [isBack]="false" [title]="'Roles'"></app-content-navbar>
+      <app-content-navbar [isBack]="true" [title]="'Roles'"></app-content-navbar>
       <div class="min-h-screen bg-gray-100">
         <div class="flex justify-end m-3 items-center">
           <div class="w-full">
@@ -16,7 +16,7 @@
                             />
                             <mat-error>Role name is required</mat-error>
                         </mat-form-field>
-                            <div class="flex justify-between">
+                            <div class="flex justify-between" *ngIf="!id">
                               <button mat-raised-button color=""  (click)="back()">Cancel</button>
                               <button mat-raised-button color="primary" (click)="create()">Submit</button>
                             </div>
@@ -66,7 +66,6 @@
                                 <tr *ngFor="let permission of fields" class="custom-row" >
                                     <td>{{permission | titlecase}}
                                         </td>
-                                        {{actions[permission] | json}}
                                         <td><section class="example-section">
                                             <mat-checkbox class="example-margin"  color="primary" [(ngModel)]="actions[permission].view"></mat-checkbox>
                                           </section>

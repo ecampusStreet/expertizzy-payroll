@@ -1,6 +1,7 @@
 import { Component, Input, OnInit,EventEmitter, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { UtilsService } from 'src/app/core';
+import { PermissionService } from 'src/app/services/permission.service';
 
 @Component({
   selector: 'app-sidebarmenulist',
@@ -17,11 +18,20 @@ export class SidebarmenulistComponent implements OnInit {
   permissions :any;
   constructor( private utils : UtilsService,
     private router: Router,
+    private permissionService : PermissionService
 
-  ) { }
+  ) { 
+    permissionService.subject.subscribe(data =>{
+    this.initializeThePermission();
+    })
+  }
 
   async ngOnInit() {
     this.selectedParentMenu = this.list[0].name;
+   this.initializeThePermission();
+  }
+
+  async initializeThePermission(){
     this.permissions =  await this.utils.getPermission();
     this.permissionCheck();
   }

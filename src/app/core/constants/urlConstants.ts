@@ -91,7 +91,8 @@ export const urls = {
     list:'api/salarybreakups/list',
     update:'api/salarybreakups/update/',
     delete:'api/salarybreakups/delete/',
-    getById:'api/salarybreakups/'
+    getById:'api/salarybreakups/',
+    salaryList:'api/salary/list/'
   },
   roles:{
     list:'api/role/list',

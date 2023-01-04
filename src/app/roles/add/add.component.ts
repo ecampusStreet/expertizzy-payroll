@@ -8,6 +8,7 @@ import {
 } from '@angular/forms';
 import { Location } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
+import { PermissionService } from 'src/app/services/permission.service';
 
 @Component({
   selector: 'app-add',
@@ -23,12 +24,14 @@ data :any;
 showPermission : boolean = false;
 id :any;
 roleName : string='';
+getPermission: any=[];
   constructor(
     private location : Location,
     private apiService : ApiService,
     private routerParamas : ActivatedRoute,
     private toast :ToastService,
-    private utils : UtilsService
+    private utils : UtilsService,
+    private permissionService:PermissionService
   ) { 
     routerParamas.queryParams.subscribe((param:any) =>{
       if(param.id){
@@ -49,7 +52,7 @@ prepareForm(){
   this.fields =[];
  let keys =  Object.keys(this.actions);
   keys.forEach((element:any) => {
-    if(element != '_id' && element != 'roleName' && element != '__v' ){
+    if(element != '_id' && element != 'roleName' && element != '__v' && element != 'status' ){
       this.fields.push(element)
     }
   });
@@ -87,7 +90,6 @@ prepareForm(){
         this.showPermission = true;
         this.actions = resp.data;
         this.roleName = resp.data.roleName;
-        console.log("8888888", this.actions);
         this.prepareForm();
       }
     })
@@ -100,11 +102,12 @@ prepareForm(){
       payload : this.actions
     }
     this.apiService.put(config).subscribe(resp =>{
-      console.log(resp,"sdfsdfds");
       if(resp.success){
         this.toast.success(resp.message);
         this.showPermission = true;
         this.actions = resp.data;
+          localStorage.setItem('permissions',resp);
+      this.permissionService.sendClickEvent(resp);
         this.prepareForm();
       }
     }) 
