@@ -1,0 +1,83 @@
+<div class="flex-auto">
+    <div class="flex flex-col">
+      <app-content-navbar [isBack]="true" [title]="'Add notice'"></app-content-navbar>
+      
+  
+      <!-- card design -->
+      <div class="min-h-screen  bg-gray-100 my-3" >
+        <mat-card class="p-6 bg-white px-2 mx-3 my-3" >
+          <div class="p-2 clear-both">
+            <form [formGroup]="notice" *ngIf="!showForm">
+              <div class="flex">
+                <div class="w-full">
+                  <div class="grid lg:grid-cols-1 gap-4">
+                    <mat-form-field class="example-full-width">
+                      <mat-label>Title</mat-label>
+                      <input
+                        matInput
+                        placeholder=""
+                        name="title"
+                        formControlName="title"
+                      />
+                      <mat-error *ngIf="f['title'].invalid &&( f['title'].touched || f['title'].dirty  )" class="text-red-500">
+                        <mat-error *ngIf="f['title'].errors && f['title'].errors['required']">Title  is required.
+                        </mat-error>
+                      </mat-error>
+                    </mat-form-field>
+                    <mat-form-field class="example-full-width">
+                        <mat-label>Content</mat-label>
+                        <textarea matInput placeholder="Please enter content of notice" formControlName="content" name="content"></textarea>
+                        <mat-error *ngIf="f['content'].invalid &&( f['content'].touched || f['content'].dirty  )" class="text-red-500">
+                          <mat-error *ngIf="f['content'].errors && f['content'].errors['required']">Content  is required.
+                          </mat-error>
+                        </mat-error>
+                      </mat-form-field>
+                    </div>
+
+                  <div class="grid lg:grid-cols-2 gap-4">
+                    <mat-form-field class="example-full-width">
+                        <mat-label> Date</mat-label>
+                        <input matInput [matDatepicker]="picker" readonly placeholder=" Please select date" name="date"
+                          formControlName="date"  (click)="picker.open()"> 
+                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                        <mat-error>Please provide date </mat-error>
+                      </mat-form-field>
+
+                    
+                      <mat-form-field *ngIf="list?.length">
+                        <mat-label>Notice to</mat-label>
+                        <mat-select name="noticeTo" formControlName="noticeTo">
+                          <mat-option *ngFor="let role of list" [value]="list?._id">
+                            <!-- {{ role.rollName | titlecase }}  -->
+                          </mat-option>
+                        </mat-select>
+                        <mat-error *ngIf="f['noticeTo'].invalid &&( f['noticeTo'].touched || f['noticeTo'].dirty  )" class="text-red-500">
+                          <mat-error *ngIf="f['noticeTo'].errors && f['noticeTo'].errors['required']">
+                          </mat-error>
+                        </mat-error>
+                      </mat-form-field>
+
+                  
+                  </div>
+                </div>
+              </div>
+              <div class="flex justify-end">
+                <button
+                  mat-raised-button
+                  color="primary"
+                  [disabled]="!notice.valid"
+                  (click)="action()"
+                >
+                  Submit
+                </button>
+              </div>
+            </form>
+          </div>
+        </mat-card>
+      </div>
+
+      
+    </div>
+  </div>
+  

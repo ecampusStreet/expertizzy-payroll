@@ -1,1 +1,17 @@
-<p>notice works!</p>
+<div class="flex-auto">
+    <div class="flex flex-col">
+        <app-content-navbar [isBack]="false" [title]="'Holidays'">
+        </app-content-navbar>
+
+        <div class=" bg-gray-100">
+            <div class="flex justify-end m-3 items-center">
+
+                <div class="ml-7">
+                    <button mat-raised-button color="primary" (click)="add()">
+                        Add notice
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
