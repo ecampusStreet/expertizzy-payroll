@@ -32,6 +32,10 @@ export class FilterFormComponent implements OnInit {
     {value:'others',viewValue:'Others'}
   ];
 
+  statuses=[
+    { value:'active',label:'Active'},
+    { value:'inactive',label:'In active'},
+    ];
   constructor(
     private apiService: ApiService,
     private toast: ToastService,
@@ -55,6 +59,10 @@ export class FilterFormComponent implements OnInit {
       branch: new FormControl(this.data ? this.data.branch : ''),
       financialyear: new FormControl(this.data ? this.data.financialyear : ''),
       experience: new FormControl(this.data ? this.data.experience : ''),
+      status: new FormControl(
+        this.data && this.data.status ? this.data.status : '',
+        []
+      ),
     });
   }
 
@@ -74,6 +82,7 @@ export class FilterFormComponent implements OnInit {
       branch: '',
       financialyear: '',
       experience: '',
+      status:''
     });
   }
 

@@ -70,7 +70,7 @@
                     {{gender.label}}
                   </mat-option>
                 </mat-select>
-                <mat-error>Select your Bloodgroup.</mat-error>
+                <mat-error>Gender is required*.</mat-error>
               </mat-form-field>
               <mat-form-field class="example-full-width ">
                 <mat-label>Blood group</mat-label>
@@ -102,7 +102,7 @@
                     address.
                   </mat-error>
                 </mat-error>
-                <mat-error *ngIf="f['ph_no'].errors && f['ph_no'].errors['pattern']">Add valid phone number</mat-error>
+                <!-- <mat-error *ngIf="f['ph_no'].errors && f['ph_no'].errors['pattern']">Add valid phone number</mat-error> -->
               </mat-form-field>
             </div>
 
@@ -148,7 +148,7 @@
             </mat-form-field>
             <mat-form-field class="example-full-width">
               <mat-label> Driving licence</mat-label>
-              <input matInput placeholder=" Enter last name" name="drivingLicence" formControlName="drivingLicence">
+              <input matInput placeholder=" Enter driving licence number" name="drivingLicence" formControlName="drivingLicence">
                 <mat-error  class="text-red-500">Driving licence is required.
               </mat-error>
             </mat-form-field>
@@ -160,7 +160,7 @@
               </mat-form-field>
               <mat-form-field class="example-full-width">
                 <mat-label> Voter id</mat-label>
-                <input matInput placeholder=" Enter last name" name="voterId" formControlName="voterId">
+                <input matInput placeholder=" Enter voter id" name="voterId" formControlName="voterId">
                 <mat-error class="text-red-500">Voter id is required.
                 </mat-error>
               </mat-form-field>
@@ -548,7 +548,7 @@
                     </mat-form-field>
                     <mat-form-field class="example-full-width">
                       <mat-label>Annual salary</mat-label>
-                      <input matInput placeholder="Employee UAN number" name="annualSalary" formControlName="annualSalary"  type="text">
+                      <input matInput placeholder="Employee Annual salary" name="annualSalary" formControlName="annualSalary"  type="text">
                       <mat-error>Enter Annual salary</mat-error>
                     </mat-form-field>
 

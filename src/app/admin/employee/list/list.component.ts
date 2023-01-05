@@ -27,6 +27,7 @@ export class ListComponent implements OnInit {
     branch: '',
     financialyear: '',
     experience: '',
+    status:'',
   };
 
   tableheader = [
@@ -89,7 +90,9 @@ export class ListComponent implements OnInit {
         '&financialyear=' +
         this.filters.financialyear +
         '&experience=' +
-        this.filters.experience,
+        this.filters.experience +
+        '&status=' + 
+        this.filters.status
     };
     this.apiService.get(config).subscribe((resp) => {
       if (resp.success) {
@@ -183,6 +186,7 @@ export class ListComponent implements OnInit {
         this.filters.branch = result.branch ? result.branch : '';
         this.filters.financialyear = result.financialyear ? result.financialyear: ''  
         this.filters.experience = result.experience ? result.experience : '';
+        this.filters.status = result.status ? result.status:'';
         this.filters = result;
         this.getFilterLength();
         this.getEmployees();
@@ -208,7 +212,8 @@ export class ListComponent implements OnInit {
       '&financialyear=' +
       this.filters.financialyear +
       '&experience=' +
-      this.filters.experience,
+      this.filters.experience +
+      '&status=' + this.filters.status
 
     }
     this.utilsService.downloadPDF(environment.apiBaseUrl+ config.url);
