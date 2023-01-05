@@ -10,11 +10,14 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatTableModule } from '@angular/material/table';
 import { SharedModule } from '../shared/shared.module';
 import {MatCardModule} from '@angular/material/card';
+import {  PaymentsComponent } from './payments/payments.component';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 
 @NgModule({
   declarations: [
     AddgradeComponent,
-    ListgradeComponent
+    ListgradeComponent,
+    PaymentsComponent
   ],
   imports: [
     CommonModule,
@@ -25,7 +28,10 @@ import {MatCardModule} from '@angular/material/card';
     MatFormFieldModule,
     ReactiveFormsModule,
     CoreModule,
-    MatCardModule
-  ]
+    MatCardModule,
+    MatDatepickerModule,
+
+  ],
+  
 })
 export class PayrollModule { }

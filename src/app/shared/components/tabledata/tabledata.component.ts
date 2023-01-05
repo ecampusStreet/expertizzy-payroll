@@ -7,10 +7,13 @@ import { UtilsService } from 'src/app/core';
   styleUrls: ['./tabledata.component.scss']
 })
 export class TabledataComponent implements OnInit {
+  isPresent: boolean = true;
   @Input() permission:any;
   @Input() list:any;
-  @Output() eventAction = new EventEmitter
-  displayedColumns: string[] = ['profile_photo', 'name','mobile', 'designation', 'department'];
+  @Output() eventAction = new EventEmitter;
+  @Output() eventActions = new EventEmitter
+
+  displayedColumns: string[] = ['profile_photo', 'name','mobile', 'designation', 'department','status'];
 
   constructor(private utilService :UtilsService){
 
@@ -31,8 +34,6 @@ action(data:any,type : any){
   }
 this.eventAction.emit(payload);
 }
-updateAttendance(data:any){
 
-}
 
 }

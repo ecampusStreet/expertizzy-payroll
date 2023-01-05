@@ -45,6 +45,9 @@ export class AddComponent implements OnInit {
   genders = [{label:'Male', value:'male'},{label:'Female', value:'female'},{label:'Others', value:'other'}];
   salaryGrade :any;
   readOnly : boolean = false;
+  statuses : any =[];
+  selected:boolean = true;
+
   constructor(
     private router: Router,
     private routerParams: ActivatedRoute,
@@ -72,6 +75,12 @@ export class AddComponent implements OnInit {
     this.branches = await this.utils.branches();
     this.roles = await this.utils.getRoles();
     this.salaryGrade = await this.utils.salaryGrade();
+   
+    this.statuses=[
+      { value:'active',label:'Active'},
+      { value:'inactive',label:'In active'},
+      ];
+
   }
   onDepartmentChange(department: Event) {
     let data = this.departments.find((t: any) => t._id === department);
@@ -102,14 +111,17 @@ export class AddComponent implements OnInit {
       bloodGroup: new FormControl(this.employeeData && this.employeeData.personalDetails[0] ? this.employeeData.personalDetails[0].bloodGroup : '', [Validators.required]),
       // aadhara_no: new FormControl(this.employeeData && this.employeeData.personalDetails[0]? this.employeeData.personalDetails[0].aadhara_no :'', [Validators.required]),
       presentAddress: new FormControl(this.employeeData && this.employeeData.personalDetails[0] ? this.employeeData.personalDetails[0].presentAddress : '', [Validators.required]),
-      permanentAddress: new FormControl(this.employeeData && this.employeeData.personalDetails[0] ? this.employeeData.personalDetails[0].permanentAddress : '', [Validators.required]),
+      permanentAddress: new FormControl(this.employeeData && this.employeeData.personalDetails[0] ? this.employeeData.personalDetails[0].permanentAddress : '', []),
+      
     });
     this.shift = new FormGroup({
       shift : new FormControl(this.employeeData && this.employeeData.shift? this.employeeData.shift:'', [Validators.required]),
       salaryGrade : new FormControl(this.employeeData && this.employeeData.salaryGrade? this.employeeData.salaryGrade:'', [Validators.required]),
       role : new FormControl(this.employeeData && this.employeeData.role? this.employeeData.role:'', [Validators.required]),
       annualSalary :new FormControl(this.employeeData && this.employeeData.annualSalary? this.employeeData.annualSalary:'', [Validators.required]),
+      status: new FormControl(this.employeeData && this.employeeData.status? this.employeeData.status:'active'),
     })
+    this.selected = this.employeeData?.status ? this.employeeData?.status: 'active';
 
     this.kycInformation = new FormGroup({
       aadhaarNumber: new FormControl(this.employeeData && this.employeeData.kycInformation ? this.employeeData.kycInformation.aadhaarNumber : '', [Validators.required]),
@@ -131,7 +143,7 @@ export class AddComponent implements OnInit {
       projectManager: new FormControl(this.employeeData && this.employeeData.departmentDetails[0] ? this.employeeData.departmentDetails[0].projectManager : '', []),
       departmentId: new FormControl(this.employeeData && this.employeeData.departmentDetails[0] ? this.employeeData.departmentDetails[0].departmentId : '', []),
       designationId: new FormControl(this.employeeData && this.employeeData.departmentDetails[0] ? this.employeeData.departmentDetails[0].designationId : '', []),
-      designationName: new FormControl(this.employeeData && this.employeeData.departmentDetails[0] ? this.employeeData.departmentDetails[0].dept_name : '', []),
+      designationName: new FormControl(this.employeeData && this.employeeData.departmentDetails[0] ? this.employeeData.departmentDetails[0].designationName: '', []),
       financialYear: new FormControl(this.employeeData && this.employeeData.departmentDetails[0] ? this.employeeData.departmentDetails[0].financialYear : '', []),
       branchId: new FormControl(this.employeeData && this.employeeData.departmentDetails[0] ? this.employeeData.departmentDetails[0].branchId : '', []),
       branch: new FormControl(this.employeeData && this.employeeData.departmentDetails[0] ? this.employeeData.departmentDetails[0].branch : '', []),
@@ -231,6 +243,8 @@ export class AddComponent implements OnInit {
   }];
 
 
+ 
+
   // checkPattern(data : any):any{
   //   if(this.form.value[data]){
   //     console.log(this.form.controls[data].hasError('pattern'));
@@ -253,6 +267,9 @@ export class AddComponent implements OnInit {
     if (event.checked) {
       this.form.patchValue({ permanentAddress: this.form.value.presentAddress });
     }
+  }
+  statusChange(event:any){
+    console.log(event,'status');
   }
   back() {
     this.location.back();
@@ -398,8 +415,11 @@ export class AddComponent implements OnInit {
       kycInformation: this.kycInformation.value,
       shift: this.shift.value.shift,
       role: this.shift.value.role,
-      salaryGrade: this.shift.value.salaryGrade
+      salaryGrade: this.shift.value.salaryGrade,
+      status:this.shift.value.status,
+      annualSalary : this.shift.value.annualSalary
     }
+ 
     if (this.id) {
       payload._id = this.id
     }

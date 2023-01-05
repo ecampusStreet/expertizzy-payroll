@@ -15,6 +15,11 @@ export class AddfinancialYearComponent implements OnInit {
   financialYear!: FormGroup;
   id : any;
   data:any;
+  statuses :any= [
+    { value:true,label:'Active'},
+    { value:false,label:'In active'},
+    ];
+  selected: any;
   constructor(
     private location: Location,
     private apiService: ApiService,
@@ -59,7 +64,13 @@ export class AddfinancialYearComponent implements OnInit {
     this.financialYear=new FormGroup({
       financialYear:new FormControl( this.data ?  this.data.financialYear :'',[Validators.required]),
       currentYear:new FormControl(this.data ?  this.data.currentYear :'',[Validators.required]),
+       status: new FormControl(
+    this.data && this.data.status ? this.data.status : true,
+    [Validators.required]
+  ),
     });
+this.selected = this.data?.status ? this.data?.status: true;
+
     this.showForm = true;
   }
 

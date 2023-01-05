@@ -21,6 +21,11 @@ export class AddDepartmentComponent implements OnInit {
   isReadOnly: boolean = false;
   showForm: boolean = false;
   employeeList: any;
+  selected: any;
+  statuses :any= [
+    { value:'active',label:'Active'},
+    { value:'inactive',label:'In active'},
+    ];
 
   constructor(
     private location: Location,
@@ -59,10 +64,15 @@ export class AddDepartmentComponent implements OnInit {
         this.data && this.data.location ? this.data.location : '',
         [Validators.required]
       ),
+      status: new FormControl(
+        this.data && this.data.status ? this.data.status : 'active',
+        [Validators.required]
+      ),
     });
     if (this.isReadOnly) {
       this.department.disable();
     }
+    this.selected = this.data?.status ? this.data?.status: 'active';
     this.showForm = true;
   }
   enableForm() {
@@ -76,7 +86,7 @@ export class AddDepartmentComponent implements OnInit {
     this.apiService.get(config).subscribe((resp) => {
       if (resp.success) {
         this.toastService.success(resp.message);
-        this.data = resp.result.data;
+        this.data = resp.result;
         this.prepareForm();
       }
     });

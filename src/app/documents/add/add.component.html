@@ -20,30 +20,30 @@
                     <mat-label>Subject</mat-label>
                     <input matInput placeholder="Please enter subject" name="subject" formControlName="subject">
                   </mat-form-field>
-                  <mat-form-field class="example-full-width">
+                  <!-- <mat-form-field class="example-full-width">
                     <mat-label>Company name</mat-label>
                     <input matInput placeholder="Please " name="companyName" formControlName="companyName">
-                  </mat-form-field>
+                  </mat-form-field> -->
 
                   <mat-form-field class="example-full-width">
-                    <mat-label>Remark</mat-label>
-                    <input matInput placeholder="Please " name="signRemarks" formControlName="signRemarks">
+                    <mat-label>Sign remarks</mat-label>
+                    <input matInput placeholder="Example : Your faithfully" name="signRemarks" formControlName="signRemarks">
                   </mat-form-field>
                   <mat-form-field class="example-full-width">
                     <mat-label>Sign</mat-label>
-                    <input matInput placeholder="Please sign" name="signForm" formControlName="signForm">
+                    <input matInput placeholder="Example : Full name" name="signForm" formControlName="signForm">
                   </mat-form-field>
                   
                 <mat-form-field class="example-full-width">
-                  <mat-label> Body title</mat-label>
-                  <input matInput placeholder="Please body title" name="bodyTitle" formControlName="bodyTitle">
+                  <mat-label> Title</mat-label>
+                  <input matInput placeholder="Example : Welcome to our organization" name="bodyTitle" formControlName="bodyTitle">
                 </mat-form-field>
               </div>
 
                 <div class="grid lg:grid-cols gap-4">
                 <mat-form-field class="example-full-width">
-                  <mat-label>Body</mat-label>
-                  <textarea matInput placeholder="Please enter document body content" formControlName="body"></textarea>
+                  <mat-label>Content</mat-label>
+                  <textarea matInput placeholder="Please enter document content" formControlName="body"></textarea>
                 </mat-form-field>
                 </div>
                   <div formGroupName="Options">
@@ -109,13 +109,13 @@
                     <input type="file" #uploadControlSign id="fileControlInput" (change)="onFileChange($event,'sign')" name="fileControlInput" 
                       multiple="multiple" />
                 
-                    <div style="padding: 0 0px;">
+                    <!-- <div style="padding: 0 0px;">
                       <label> upload logo :</label>
                       <input matInput readonly name="File"  hidden />
                       <img src="assets/images/file-upload.png" style="width: 70px;" (click)="uploadControl.click()">
                     </div>
                     <input type="file" #uploadControl id="fileControlInput" (change)="onFileChange($event,'logo')" name="fileControlInput" 
-                      multiple="multiple" />
+                      multiple="multiple" /> -->
                   </div>
                   <div *ngFor="let file of data.value.files; let i = index">
                     <app-file-list [data]="file" [index]="i"></app-file-list>

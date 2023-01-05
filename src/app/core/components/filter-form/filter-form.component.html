@@ -48,6 +48,15 @@
         </mat-select>
       </mat-form-field>
     
+      <mat-form-field>
+        <mat-label>Status</mat-label>
+        <mat-select  matNativeControl name="status" formControlName="status">
+          <mat-option *ngFor="let status of statuses" [value]="status?.value" >
+            {{status?.label}}
+          </mat-option>
+        </mat-select>
+        <mat-error>Please Select branch status.</mat-error>
+      </mat-form-field>
       <!-- <mat-form-field>
         <mat-label>financialYear</mat-label>
         <mat-select name="financialyear" formControlName="financialyear">

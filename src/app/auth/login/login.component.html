@@ -1,36 +1,44 @@
 <div class="bg">
-<!-- <img src="assets/images/login-bg.png" alt=""> -->
-<div  style="padding-top:10%">
-  
-  <mat-card>
-    <div class="logo m-auto my-2">
-      <a href="#">
-        <img src="assets/images/logo2.png" alt="logo of expertizzy">
-      </a>
-    </div>
+  <!-- <img src="assets/images/login-bg.png" alt=""> -->
+  <div style="padding-top:10%">
+
+    <mat-card>
+      <div class="logo m-auto my-2">
+        <a href="#">
+          <img src="assets/images/logo2.png" alt="logo of expertizzy">
+        </a>
+      </div>
       <mat-card-content>
-        <form #loginForm="ngForm">               
+        <form #loginForm="ngForm">
           <mat-form-field>
             <input matInput placeholder="Username" [(ngModel)]="user.userName" name="username" required>
             <mat-error>
               Please provide a valid email address
             </mat-error>
           </mat-form-field>
-          <mat-form-field>
-            <input matInput type="password" placeholder="Password" [(ngModel)]="user.password" name="password" required>
+          <!-- <mat-form-field>
+            <input matInput type="password" placeholder="Password" required>
             <mat-error>
               Please provide a valid password
             </mat-error>
+          </mat-form-field> -->
+          <mat-form-field>
+            <input matInput [type]="hide ? 'password' : 'text'" required placeholder="Password" [(ngModel)]="user.password" name="password">
+            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                [attr.aria-pressed]="hide">
+              <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
           </mat-form-field>
-          <div class="my-3"> 
-          <button mat-raised-button color="primary" [disabled]="!loginForm.form.valid" (click)="submit()" class="w-full">Login</button>
-            </div>
-            <div class="no-underline mb-3">
-          <!-- <a routerLink="../forgot-password">Forgot Password ?</a> -->
-            </div>
-        
+          <div class="my-3">
+            <button mat-raised-button color="primary" [disabled]="!loginForm.form.valid" (click)="submit()"
+              class="w-full">Login</button>
+          </div>
+          <div class="no-underline mb-3">
+            <!-- <a routerLink="../forgot-password">Forgot Password ?</a> -->
+          </div>
+
         </form>
       </mat-card-content>
     </mat-card>
-    </div>
   </div>
+</div>

@@ -14,7 +14,11 @@ export class AddbranchComponent implements OnInit {
   branch!: FormGroup;
   id: string = '';
   branchData: any;
-
+  selected:any;
+  statuses :any= [
+    { value:'active',label:'Active'},
+    { value:'inactive',label:'In active'},
+    ];
   constructor(
     private location: Location,
     private apiService: ApiService,
@@ -73,7 +77,12 @@ export class AddbranchComponent implements OnInit {
         this.branchData && this.branchData.email ? this.branchData.email : '',
         [Validators.required]
       ),
+      status: new FormControl(
+        this.branchData && this.branchData.status ? this.branchData.status : 'active',
+        [Validators.required]
+      ),
     });
+    this.selected = this.branchData?.status ? this.branchData?.status: 'active';
     this.showForm = true;
   }
 

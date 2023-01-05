@@ -14,7 +14,7 @@ permissions:any;
 count = 0;
   limit = 5;
   page = 1;
-displayedColumns =['grade','from', 'to', 'actions'];
+displayedColumns =['grade','from', 'to', 'status'];
   constructor(
     private router: Router,
     private apiService : ApiService,

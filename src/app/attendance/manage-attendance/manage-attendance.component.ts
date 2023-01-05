@@ -52,21 +52,7 @@ export class ManageAttendanceComponent implements OnInit {
   add() {}
   search() {}
 
-  updateAttendance(employee: any) {
-    employee.swipes.push(new Date());
-    const config = {
-      url: urls.attendance.update + employee._id,
-      payload: {
-        isPresent:employee.isPresent,
-        swpipes:employee.swipes
-      },
-    };
-    this.apiService.put(config).subscribe((resp) =>{
-      if(resp){
-        this.toastService.success(resp.message);
-      }
-    })
-  }
+
 
   handleAdmDateChange(){
     console.log(moment(this.today).format('MM/DD/YYYY'),"ssdfsf");
@@ -102,7 +88,25 @@ export class ManageAttendanceComponent implements OnInit {
             this.employees=resp.data;
           }
         });
+  } 
+  
+  updateAttendance(employee: any) {
+    employee.swipes.push(new Date());
+    const config = {
+      url: urls.attendance.update + employee._id,
+      payload: {
+        isPresent:employee.isPresent,
+        swpipes:employee.swipes
+      },
+    };
+    this.apiService.put(config).subscribe((resp) =>{
+      if(resp){
+        this.toastService.success(resp.message);
+      }
+    })
   }
+
+
  
   openPopup() {
     const dialogConfig = new MatDialogConfig();

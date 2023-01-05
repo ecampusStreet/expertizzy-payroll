@@ -11,9 +11,10 @@ import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 export class FinancialYearComponent implements OnInit {
   searchText = '';
   financialYear: any;
-  displayedColumns = ['financialYear', 'currentYear' ];
+  displayedColumns = ['financialYear', 'currentYear','status' ];
   page =1;
   permissions: any;
+  id='';
   constructor(
     private router: Router,
     private apiService: ApiService,
@@ -55,6 +56,21 @@ export class FinancialYearComponent implements OnInit {
     });
   }
 
+  async upadateStatus(data:any){
+  await  this.financialYear.forEach((element:any) => {
+      const config ={
+        url :urls.financialYear.update + element._id,
+        payload:{
+          status :  data._id != element._id ? element.status = false : data.status
+        }
+      }
+      this.apiService.put(config).subscribe((resp) =>{
+        if(resp.success){
+          this.toast.success(resp.message);
+        }
+      });
+    });
+  }
   action(data: any, action: any) {
     switch (action) {
       case 'edit':

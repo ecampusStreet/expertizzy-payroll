@@ -8,18 +8,27 @@
           <div class="p-2 clear-both">
           <form [formGroup]="designation" *ngIf="showForm" >
               <div class="flex ">
-                <div class="w-11/12">
+                <div class="w-full">
                   <div class="grid lg:grid-cols-1 gap-4">
                     <mat-form-field class="example-full-width">
                       <mat-label>Designation name</mat-label>
                       <input matInput placeholder="Please enter name of the designation" name="designationName"
                         formControlName="designationName" >
                     </mat-form-field>
+                    <mat-form-field>
+                      <mat-label>Status</mat-label>
+                      <mat-select  matNativeControl name="status" [value]="selected" formControlName="status">
+                        <mat-option *ngFor="let status of statuses" [value]="status?.value" >
+                          {{status?.label}}
+                        </mat-option>
+                      </mat-select>
+                      <mat-error>Please Select designation status.</mat-error>
+                    </mat-form-field>
                   </div>
-                </div>
-                <div class="w-1/12 mx-8">
+                <div class="flex justify-end">
                     <button mat-raised-button color="primary"  [disabled]="!designation.valid" (click)="action()">Submit</button>
                   </div>
+                </div>
               </div>
           </form>
           </div>

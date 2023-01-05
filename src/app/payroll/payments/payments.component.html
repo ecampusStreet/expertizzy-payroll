@@ -1,0 +1,63 @@
+<div class="flex-auto">
+  <div class="flex flex-col">
+    <app-content-navbar [isBack]="true" [title]="'Payments'"></app-content-navbar>
+
+    <div class="min-h-screen  bg-gray-100">
+     
+      <div class="grid grid-cols-1 gap-5 sm:grid-cols-1 lg:grid-cols-2 mx-10">
+        <mat-card class="example-card p-3 h-40 relative">
+          <mat-card-content class="p-3">
+            <div class="flex flex-col">
+              <h2> Salary sheet </h2>
+            <div class="flex justify-start mb-3">
+                <div class="flex">
+                  Date : 
+                  <div style="    margin-top: -15px;
+                  margin-left: 10px;">
+                  <mat-form-field class="example-full-width" style="margin-right: 15px; max-width: 100px;">
+                    <!-- <mat-label> Month </mat-label> -->
+                    <mat-select matNativeControl name="month" [(ngModel)]="currentMonth">
+                      <mat-option *ngFor="let month of months; let i = index" [value]="i+1">
+                        {{month}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                  <mat-form-field class="example-full-width" name="year" style="max-width: 100px;" >
+                    <!-- <mat-label> Year </mat-label> -->
+                    <mat-select matNativeControl name="year" [(ngModel)]="currentYear">
+                      <mat-option *ngFor="let year of financialYear" [value]="year.currentYear">
+                        {{year.currentYear}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="absolute right-3 bottom-5">
+              <button mat-raised-button color="primary" (click)="processPayment()">
+                Process <span mat-icon></span>
+              </button>
+            </div>
+          </mat-card-content>
+        </mat-card>
+
+        <mat-card class="example-card p-3 h-40 relative">
+          <mat-card-content class="p-3">
+            <div class="flex flex-col">
+              <div>
+                <h2> History </h2>
+              </div>
+            </div>
+            <div class="absolute right-3 bottom-5">
+              <button mat-raised-button color="primary" routerLink="./manage">
+                View history
+              </button>
+            </div>
+          </mat-card-content>
+        </mat-card>
+
+      </div>
+    </div>
+  </div>
+</div>

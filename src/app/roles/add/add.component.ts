@@ -8,6 +8,7 @@ import {
 } from '@angular/forms';
 import { Location } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
+import { PermissionService } from 'src/app/services/permission.service';
 
 @Component({
   selector: 'app-add',
@@ -23,12 +24,14 @@ data :any;
 showPermission : boolean = false;
 id :any;
 roleName : string='';
+getPermission: any=[];
   constructor(
     private location : Location,
     private apiService : ApiService,
     private routerParamas : ActivatedRoute,
     private toast :ToastService,
-    private utils : UtilsService
+    private utils : UtilsService,
+    private permissionService:PermissionService
   ) { 
     routerParamas.queryParams.subscribe((param:any) =>{
       if(param.id){
@@ -40,17 +43,16 @@ roleName : string='';
  
   async ngOnInit() {
   this.actions= await this.utils.getPermission();
-  this.prepareForm();
   }
 
   action(){
     this.id ? this.submit() : this.create();
   }
 prepareForm(){
+  this.fields =[];
  let keys =  Object.keys(this.actions);
   keys.forEach((element:any) => {
-    console.log(element)
-    if(element != '_id' && element != 'roleName' && element != '__v' ){
+    if(element != '_id' && element != 'roleName' && element != '__v' && element != 'status' ){
       this.fields.push(element)
     }
   });
@@ -59,11 +61,14 @@ prepareForm(){
     // })
 }
   updateAllComplete(action:any) {
+    console.log("sdf 61");
+
     // this.allComplete = this.task.subtasks != null && this.task.subtasks.every(t => t.completed);
     this.allComplete = this.fields.every((t:any) => t.true);
   }
 
   someComplete(action:any) {
+    console.log("sdf");
     return this.fields.filter((field :any) => this.actions[field][action]).length > 0 && !this.allComplete;
   }
 
@@ -97,11 +102,13 @@ prepareForm(){
       payload : this.actions
     }
     this.apiService.put(config).subscribe(resp =>{
-      console.log(resp,"sdfsdfds");
       if(resp.success){
         this.toast.success(resp.message);
         this.showPermission = true;
         this.actions = resp.data;
+          localStorage.setItem('permissions',resp);
+      this.permissionService.sendClickEvent(resp);
+        this.prepareForm();
       }
     }) 
   }
@@ -119,6 +126,7 @@ prepareForm(){
         this.showPermission = true;
         this.actions = resp.data;
         this.id =resp.data._id;
+        this.prepareForm();
       }
     })
   }

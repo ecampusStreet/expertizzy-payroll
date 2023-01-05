@@ -35,7 +35,6 @@
           style="margin: 15px"
           class="container-table "
         >
-       <pre>{{ permissions | json}}</pre> 
           <table mat-table [dataSource]="gradeList" class="mat-elevation-z8">
             <ng-container matColumnDef="grade">
               <th mat-header-cell *matHeaderCellDef>Grade</th>
@@ -56,6 +55,12 @@
               <td mat-cell *matCellDef="let element">
                 {{ element.to  }}
 
+              </td>
+            </ng-container>
+            <ng-container matColumnDef="status">
+              <th mat-header-cell *matHeaderCellDef>Status</th>
+              <td mat-cell *matCellDef="let element" [style.color]="element?.status =='active' ? 'green' :'red' ">
+                {{ element?.status =='active' ? 'Active': 'In active'}}
               </td>
             </ng-container>
   

@@ -27,7 +27,7 @@
           </div>
 
           <div class="flex">
-            <input matInput [matDatepicker]="picker" [(ngModel)]="today" (dateInput)="handleAdmDateChange()"/>
+            <input matInput [matDatepicker]="picker" [(ngModel)]="today"  readonly (dateInput)="handleAdmDateChange()"/>
             <mat-datepicker-toggle matPreffix [for]="picker">
               <mat-icon matDatepickerToggleIcon color="primary"
                 >calendar_month</mat-icon
