@@ -4,11 +4,9 @@ import {MomentDateAdapter, MAT_MOMENT_DATE_ADAPTER_OPTIONS} from '@angular/mater
 import {DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE} from '@angular/material/core';
 import {MatDatepicker} from '@angular/material/datepicker';
 import { Router } from '@angular/router';
-import * as _moment from 'moment';
-import {default as _rollupMoment, Moment} from 'moment';
+import * as moment from 'moment';
 import { ApiService, ToastService, UtilsService, urls } from 'src/app/core';
 import { environment } from 'src/environments/environment';
-const moment = _rollupMoment || _moment;
 
 export const MY_FORMATS = {
   parse: {
@@ -25,15 +23,6 @@ export const MY_FORMATS = {
   selector: 'app-payments',
   templateUrl: './payments.component.html',
   styleUrls: ['./payments.component.scss'],
-  providers: [
-    {
-      provide: DateAdapter,
-      useClass: MomentDateAdapter,
-      deps: [MAT_DATE_LOCALE, MAT_MOMENT_DATE_ADAPTER_OPTIONS]
-    },
-
-    {provide: MAT_DATE_FORMATS, useValue: MY_FORMATS},
-  ],
 })
 export class PaymentsComponent implements OnInit {
   date:any = moment(new Date());
@@ -53,13 +42,7 @@ export class PaymentsComponent implements OnInit {
     this.months = moment.months();
   }
 
-  setMonthAndYear(normalizedMonthAndYear: Moment, datepicker: MatDatepicker<Moment>) {
-    const ctrlValue = this.date!;
-    ctrlValue.month(normalizedMonthAndYear.month());
-    ctrlValue.year(normalizedMonthAndYear.year());
-    this.date.setValue(ctrlValue);
-    datepicker.close();
-  }
+
 
  
   getYear() {
@@ -74,7 +57,6 @@ export class PaymentsComponent implements OnInit {
       }
     });
   }
-
   processPayment(){
     let month = this.currentMonth <10 ? '0'+this.currentMonth :'';
     let url = environment.apiBaseUrl+ urls.payroll.salaryList+this.currentYear+'-'+month;
