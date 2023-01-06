@@ -49,10 +49,10 @@
                         <mat-label>Notice to</mat-label>
                         <mat-select name="noticeTo" formControlName="noticeTo">
                           <mat-option *ngFor="let role of list" [value]="list?._id">
-                            <!-- {{ role.rollName | titlecase }}  -->
+                            {{ role.roleName | titlecase }} 
                           </mat-option>
                         </mat-select>
-                        <mat-error *ngIf="f['noticeTo'].invalid &&( f['noticeTo'].touched || f['noticeTo'].dirty  )" class="text-red-500">
+                        <mat-error *ngIf="f['noticeTo'].invalid &&( f['noticeTo'].touched || f['noticeTo'].dirty)" class="text-red-500">
                           <mat-error *ngIf="f['noticeTo'].errors && f['noticeTo'].errors['required']">
                           </mat-error>
                         </mat-error>

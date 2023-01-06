@@ -221,13 +221,13 @@ export const menu = [
     permissionKey:'calendar',
     permissions:{},
     children:[
-      // {
-      //   name: 'Notice',
-      //   icon: 'notification_important',
-      //   routeLink: 'notice',
-      //   permissionKey:'view',
-      //   permissions:{},
-      // },
+      {
+        name: 'Notice',
+        icon: 'notification_important',
+        routeLink: 'notice',
+        permissionKey:'view',
+        permissions:{},
+      },
       // {
       //   name: 'Events',
       //   icon: 'event',
