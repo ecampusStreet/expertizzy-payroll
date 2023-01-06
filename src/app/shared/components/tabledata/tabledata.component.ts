@@ -13,7 +13,7 @@ export class TabledataComponent implements OnInit {
   @Output() eventAction = new EventEmitter;
   @Output() eventActions = new EventEmitter
 
-  displayedColumns: string[] = ['profile_photo', 'name','mobile', 'designation', 'department','status'];
+  displayedColumns: string[] = ['profile_photo','id', 'name','mobile', 'designation', 'department','status'];
 
   constructor(private utilService :UtilsService){
 
@@ -21,7 +21,6 @@ export class TabledataComponent implements OnInit {
 /** Whether the number of selected elements matches the total number of rows. */
 
 ngOnInit(): void {
-  console.log(this.permission, 'persdhsdghd')
   if(this.permission?.manage || this.permission?.delete  || this.permission?.update){
     this.displayedColumns.push('actions')
   }

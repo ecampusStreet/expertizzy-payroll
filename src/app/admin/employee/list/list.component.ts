@@ -27,7 +27,7 @@ export class ListComponent implements OnInit {
     branch: '',
     financialyear: '',
     experience: '',
-    status:'',
+    status:'active',
   };
 
   tableheader = [

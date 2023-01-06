@@ -56,13 +56,17 @@
             </td>
           </ng-container>
           
+          <ng-container matColumnDef="id">
+            <th mat-header-cell *matHeaderCellDef>Emp Id</th>         
+      <td mat-cell *matCellDef="let element" style="letter-spacing: 1px;">{{element.empId}} </td>
+          </ng-container>
 
           <!-- Name Column -->
           <ng-container matColumnDef="name">
             <th mat-header-cell *matHeaderCellDef>Name</th>
             <td mat-cell *matCellDef="let element">
               {{ element.employee?.personalDetails[0]?.firstName | titlecase }}
-              {{ element.employee?.personalDetails[0]?.middleName | titlecase }}
+              {{ element.employee?.personalDetails[0]?.fatherName | titlecase }}
               {{ element.employee?.personalDetails[0]?.lastName | titlecase }}
             </td>
           </ng-container>

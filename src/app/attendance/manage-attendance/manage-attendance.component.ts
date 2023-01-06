@@ -16,8 +16,9 @@ export class ManageAttendanceComponent implements OnInit {
   limit=25;
   page =1;
   searchText: any = '';
+  filtersLength =0;
 
-  filters = {
+  filters:any = {
     department: '',
     designation: '',
     doj: '',
@@ -25,10 +26,13 @@ export class ManageAttendanceComponent implements OnInit {
     branch: '',
     financialyear: '',
     experience: '',
+    status:'active',
+
   };
 
   displayedColumns: string[] = [
     'profile_photo',
+    'id',
     'name',
     'mobile',
     'designation',
@@ -75,6 +79,8 @@ export class ManageAttendanceComponent implements OnInit {
           this.filters.branch +
           '&financialyear=' +
           this.filters.financialyear +
+          '&status=' +
+          this.filters.status +
           '&experience=' +
           this.filters.experience,
           payload: {
@@ -86,7 +92,12 @@ export class ManageAttendanceComponent implements OnInit {
           if (resp) {
             this.toastService.success(resp.message);
             this.employees=resp.data;
+            console.log(this.employees,'emp atta list')
+            if(this.employees == 0){
+            this.toastService.error("No attendance list found");
+            }
           }
+          
         });
   } 
   
@@ -112,9 +123,32 @@ export class ManageAttendanceComponent implements OnInit {
     const dialogConfig = new MatDialogConfig();
     const dialogRef = this.matdialog.open(FilterFormComponent, {
       width: '60%',
+      data: this.filters,
+
     });
     dialogRef.afterClosed().subscribe((result) => {
       if (result) {
+        this.filters.department = result.department ? result.department : '';
+        this.filters.designation = result.designation ? result.designation : '';
+        this.filters.doj = result.doj ? result.doj : '';
+        this.filters.gender = result.gender ? result.gender : '';
+        this.filters.branch = result.branch ? result.branch : '';
+        this.filters.financialyear = result.financialyear ? result.financialyear: ''  
+        this.filters.experience = result.experience ? result.experience : '';
+        this.filters.status = result.status ? result.status:'';
+        this.filters = result;
+        this.getFilterLength();
+        this.handleAdmDateChange();
+        this.employees = [];
+      }
+    });
+  }
+
+  getFilterLength():any{
+    this.filtersLength =0;
+    Object.keys(this.filters).forEach(key => {
+      if (this.filters[key]) {
+        this.filtersLength =  this.filtersLength +1;
       }
     });
   }

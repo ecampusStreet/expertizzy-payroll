@@ -23,6 +23,9 @@
               <mat-icon class="pen-icon" title="Upload profile photo" (click)="uploadProfile.click()"  *ngIf="!readOnly" >edit</mat-icon>
               </div>
               </div>
+              <div  class="text-center -mt-2 ml-2" *ngIf="employeeData">
+                <h3 style="letter-spacing: 2px;">{{employeeData?.empId}}</h3>
+              </div>
             <div class="grid lg:grid-cols-4 md:grid-cols-2 gap-3 p-2">
               <mat-form-field class="example-full-width">
                 <mat-label> First name</mat-label>
