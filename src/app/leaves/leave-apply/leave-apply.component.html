@@ -2,7 +2,7 @@
 
 <mat-card class="m-4">
   <form [formGroup]="leaveForm">
-    <div class="grid grid-cols-2 gap-3">
+    <div class="grid lg:grid-cols-2 gap-3">
       <mat-form-field appearance="outline">
         <mat-label>Leave type</mat-label>
         <mat-select name="leaveType" formControlName="leaveType">
@@ -27,7 +27,7 @@
       </mat-form-field>
     </div>
 
-    <div class="grid grid-cols-4 gap-3">
+    <div class="grid lg:grid-cols-4 gap-3">
       <mat-form-field appearance="outline">
         <mat-label>Start date</mat-label>
         <input matInput [matDatepicker]="pickersd" (dateChange)="dateChange()" (click)="pickersd.open()" readonly placeholder="Please enter start date" name="start_date" formControlName="start_date" >

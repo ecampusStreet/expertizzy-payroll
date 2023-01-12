@@ -1,0 +1,63 @@
+<div class="flex-auto">
+  <div class="flex flex-col">
+    <app-content-navbar [isBack]="false" [title]="'Event'"></app-content-navbar>
+
+    <div class="min-h-screen bg-gray-100 ">
+      <div class="flex my-2 justify-between lg:mx-4 sm:mx-4">
+        <div class="">
+          <button mat-raised-button color="primary"  (click)="toggleWeekends()">
+            <span *ngIf="this.calendarOptions.weekends">Hide weekends</span>
+            <span *ngIf="!this.calendarOptions.weekends">Show weekends</span>
+          </button>
+        </div>
+        <div class=" "><button mat-raised-button color="primary" (click)="add()">Add
+          events</button></div>
+      </div>
+      <div class="lg:flex lg:mx-4 sm:mx-4" >
+        <div class="lg:w-4/6 sm:w-full md:w-full">
+          <full-calendar class="event" [options]="calendarOptions" class="bg-white p-4 shadow-md border"  *ngIf="showCalender">
+          </full-calendar>
+        </div>
+        <div class="lg:w-2/6 sm:w-full md:w-full lg:ml-4"> 
+          <mat-card class="shadow-md border" *ngIf="!viewData?.length">
+            <div class="text-center m-auto" >
+              <h2>No event found today..!</h2>
+            </div>
+          </mat-card>
+          <mat-card class="border box-border my-2" *ngFor="let day of viewData" >
+            
+            <div class="flex ">
+              <div style="max-width:80%; width:80%">
+                <div class="">
+                  <span class=" text-md font-medium">{{day?.eventTitle | titlecase}}</span>
+                </div> 
+                <div class="flex sm:flex-col sm:my-2 md:flex-row flex-wrap break-all">
+                   <span class="">From date:<span> {{day?.fromDate | date: 'dd/MM/yyyy'}}</span></span>
+                  <span class="ml-3">To date:<span> {{day?.toDate | date: 'dd/MM/yyyy'}}</span></span>
+                </div>
+                
+                <div class="">
+                  <span class=" text-md font-medium">{{day?.location | titlecase}}</span>
+                </div> 
+              </div> 
+              <div class="max-width:20%; width:20% sm:flex" >
+                <button 
+                class="md:w-2/4 sm:w-2/4" mat-icon-button color="primary" (click)="$event.stopPropagation(); action(day, 'edit')" >
+                  <mat-icon>edit</mat-icon>
+                </button>
+                <button 
+                class="md:w-2/4 sm:w-2/4" mat-icon-button color="primary" (click)="$event.stopPropagation(); action(day, 'delete')">
+                  <mat-icon>delete</mat-icon>
+                </button>
+               
+              </div> 
+            </div>
+            
+         
+        
+        </mat-card>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

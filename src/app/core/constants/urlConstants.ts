@@ -119,5 +119,19 @@ document:{
 },
 reports:{
   employee:'api/employeePdf'
-}
+},
+notice:{
+ create:'api/notice/add',
+ list:'api/notice',
+ update:'api/notice/update/',
+ delete:'api/mynotice/',
+},
+event:{
+  create:'api/event/create',
+  list:'api/event/list',
+  update:'api/event/update/',
+  getById:'api/event/',
+  delete:'api/event/delete/'
+},
+
 }

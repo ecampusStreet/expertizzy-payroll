@@ -1,0 +1,113 @@
+<div class="flex-auto">
+    <div class="flex flex-col">
+      <app-content-navbar [isBack]="true" [title]="'Add events'"></app-content-navbar>
+      
+  
+      <!-- card design -->
+      <div class="min-h-screen  bg-gray-100 my-3"  *ngIf="event">
+        <mat-card class="p-6 bg-white px-2 mx-3 my-3" >
+          <div class="p-2 clear-both">
+            <form [formGroup]="event" *ngIf="showForm">
+              <div class="flex">
+                <div class="w-full">
+                  <div class="grid lg:grid-cols-3 gap-4">
+                    <mat-form-field class="example-full-width">
+                      <mat-label>Event Title</mat-label>
+                      <input
+                        matInput
+                        placeholder=""
+                        name="eventTitle"
+                        formControlName="eventTitle"
+                      />
+                      <mat-error *ngIf="f['eventTitle'].invalid &&( f['eventTitle'].touched || f['eventTitle'].dirty  )" class="text-red-500">
+                        <mat-error *ngIf="f['eventTitle'].errors && f['eventTitle'].errors['required']">Event title  is required.
+                        </mat-error>
+                      </mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field class="example-full-width">
+                      <mat-label>Event For</mat-label>
+                      <input
+                        matInput
+                        placeholder=""
+                        name="eventFor"
+                        formControlName="eventFor"
+                      />
+                      <mat-error *ngIf="f['eventFor'].invalid &&( f['eventFor'].touched || f['eventFor'].dirty  )" class="text-red-500">
+                        <mat-error *ngIf="f['eventFor'].errors && f['eventFor'].errors['required']">Event for  is required.
+                        </mat-error>
+                      </mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field class="example-full-width">
+                      <mat-label> Hosted By</mat-label>
+                      <input
+                        matInput
+                        placeholder=" "
+                        name="hostedBy"
+                        formControlName="hostedBy"
+                      />
+                      <mat-error *ngIf="f['hostedBy'].invalid &&( f['hostedBy'].touched || f['hostedBy'].dirty  )" class="text-red-500">
+                        <mat-error *ngIf="f['hostedBy'].errors && f['hostedBy'].errors['required']">Hosted by  is required.
+                        </mat-error>
+                      </mat-error>
+                    </mat-form-field>
+                    
+                    <mat-form-field class="example-full-width">
+                      <mat-label>Location</mat-label>
+                      <input
+                        matInput
+                        placeholder=""
+                        name="location"
+                        formControlName="location"
+                      />
+                      <mat-error *ngIf="f['location'].invalid &&( f['location'].touched || f['location'].dirty  )" class="text-red-500">
+                        <mat-error *ngIf="f['location'].errors && f['location'].errors['required']">Location  is required.
+                        </mat-error>
+                      </mat-error>
+                    </mat-form-field>
+                    <mat-form-field class="example-full-width">
+                        <mat-label> From date</mat-label>
+                        <input matInput [matDatepicker]="picker" readonly placeholder=" Please enter from date" name="fromDate"
+                          formControlName="fromDate"  (click)="picker.open()"> 
+                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                        <mat-error *ngIf="f['fromDate'].invalid &&( f['fromDate'].touched || f['fromDate'].dirty  )" class="text-red-500">
+                          <mat-error *ngIf="f['fromDate'].errors && f['fromDate'].errors['required']">From date  is required.
+                          </mat-error>
+                        </mat-error>
+                      </mat-form-field>
+
+                      <mat-form-field class="example-full-width">
+                        <mat-label> To date</mat-label>
+                        <input matInput [matDatepicker]="picker1" readonly placeholder=" Please enter to date" name="toDate"
+                          formControlName="toDate"  (click)="picker1.open()">
+                        <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                        <mat-datepicker #picker1></mat-datepicker>
+                        <mat-error *ngIf="f['location'].invalid &&( f['location'].touched || f['location'].dirty  )" class="text-red-500">
+                          <mat-error *ngIf="f['location'].errors && f['location'].errors['required']"> To date is required.
+                          </mat-error>
+                        </mat-error>
+                      </mat-form-field>
+                  </div>
+                </div>
+              </div>
+              <div class="flex justify-end">
+                <button
+                  mat-raised-button
+                  color="primary"
+                  [disabled]="!event.valid"
+                  (click)="action()"
+                >
+                  Submit
+                </button>
+              </div>
+            </form>
+          </div>
+        </mat-card>
+      </div>
+
+      
+    </div>
+  </div>
+  

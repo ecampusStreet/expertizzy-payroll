@@ -228,13 +228,13 @@ export const menu = [
         permissionKey:'view',
         permissions:{},
       },
-      // {
-      //   name: 'Events',
-      //   icon: 'event',
-      //   routeLink: 'event',
-      //   permissionKey:'view',
-      //   permissions:{},
-      // },
+      {
+        name: 'Events',
+        icon: 'event',
+        routeLink: 'event',
+        permissionKey:'view',
+        permissions:{},
+      },
       {
         name: 'Holidays',
         icon: 'festival',
@@ -441,3 +441,5 @@ export const holiDays =[
   {name:'November',data:[]},
   {name:'December',data:[]},
 ]
+
+// export const EventData =[]
